@@ -6,8 +6,8 @@ class BusinessPartnerController < ApplicationController
   end
 
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
-  verify :method => :post, :only => [ :destroy, :create, :update ],
-         :redirect_to => { :action => :list }
+#  verify :method => :post, :only => [ :destroy, :create, :update ],
+#         :redirect_to => { :action => :list }
 
   def set_conditions
     session[:business_partner_search] = {
@@ -116,7 +116,8 @@ class BusinessPartnerController < ApplicationController
       end
       cond = make_conditions
     end
-    @business_partner_pages, @business_partners = paginate(:business_partners, cond)
+    #@business_partner_pages, @business_partners = paginate(:business_partners, cond)
+    @business_partners = BusinessPartner.find(cond).page(params[:page]).per(current_user.per_page)
   end
 
   def show
