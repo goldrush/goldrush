@@ -1,3 +1,3 @@
 # -*- encoding: utf-8 -*-
-module ConfigurationHelper
+module SysConfigHelper
 end

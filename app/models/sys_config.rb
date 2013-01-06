@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-class Configuration < ActiveRecord::Base
+class SysConfig < ActiveRecord::Base
   
   validates_presence_of :config_section
   validates_presence_of :config_key
@@ -11,20 +11,20 @@ class Configuration < ActiveRecord::Base
   
   @@cache = nil
 
-  def Configuration.get_config(section, key)
+  def SysConfig.get_config(section, key)
     find(:first, :conditions => ["deleted = 0 and config_section = ? and config_key = ?", section, key])
   end
 
-  def Configuration.get_value(section, key)
-    Configuration.get_config(section, key).value1
+  def SysConfig.get_value(section, key)
+    SysConfig.get_config(section, key).value1
   end
 
-  def Configuration.init_seq(key, seq)
+  def SysConfig.init_seq(key, seq)
     x = find(:first, :conditions => ["deleted = 0 and config_section = 'seq' and config_key = ?", key], :lock => true)
     if x
       x.value1 = seq
     else
-      x = Configuration.new
+      x = SysConfig.new
       x.config_section = 'seq'
       x.config_key = key
       x.value1 = seq
@@ -35,17 +35,17 @@ class Configuration < ActiveRecord::Base
     return x
   end
 
-  def Configuration.get_seq_0(key, col)
-    seq = Configuration.get_seq(key)
+  def SysConfig.get_seq_0(key, col)
+    seq = SysConfig.get_seq(key)
     sprintf("%.#{col}d", seq)
   end
 
-  def Configuration.get_seq(key)
+  def SysConfig.get_seq(key)
     x = find(:first, :conditions => ["deleted = 0 and config_section = 'seq' and config_key = ?", key], :lock => true)
     if x
       x.value1 = x.value1.to_i + 1
     else
-      x = Configuration.new
+      x = SysConfig.new
       x.config_section = 'seq'
       x.config_key = key
       x.value1 = 1
@@ -56,11 +56,11 @@ class Configuration < ActiveRecord::Base
     return x.value1.to_i
   end
   
-  def Configuration.load_cache
-    @@cache = Configuration.find(:all)
+  def SysConfig.load_cache
+    @@cache = SysConfig.find(:all)
   end
 
-  def Configuration.purge_cache
+  def SysConfig.purge_cache
     @@cache = nil
   end
 
@@ -69,11 +69,11 @@ class Configuration < ActiveRecord::Base
     @@cache.each do |conf|
       break conf if conf.config_section == section and conf.config_key == key
     end
-#    Configuration.find(:first, :conditions => ["deleted = 0 and config_section = ? and config_key = ?", section, key])
+#    SysConfig.find(:first, :conditions => ["deleted = 0 and config_section = ? and config_key = ?", section, key])
   end
 
   def self.get_vacation_half_year(half_year)
-    Configuration.find(:first, :conditions => ["deleted = 0 and config_section = ? and config_key <= ?", 'vacation_half_year', half_year], :order => 'config_key desc').value1
+    SysConfig.find(:first, :conditions => ["deleted = 0 and config_section = ? and config_key <= ?", 'vacation_half_year', half_year], :order => 'config_key desc').value1
   end
 
   def self.get_vacation_month(month)

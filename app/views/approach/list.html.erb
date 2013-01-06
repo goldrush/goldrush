@@ -1,6 +1,6 @@
 <h1><%=getLongName('table_name','approaches')%>一覧</h1>
 
-<%= put_paginates(@approach_pages, 'paginate', @approach_pages.item_count) %>
+<%= paginate(@approaches) %>
 
 <table class="list_table">
   <tr>
@@ -30,7 +30,7 @@
 <% end %>
 </table>
 
-<%= put_paginates(@approach_pages, 'paginate', @approach_pages.item_count) %>
+<%= paginate(@approaches) %>
 
 <br />
 

@@ -218,7 +218,7 @@ class BaseApplication < ActiveRecord::Base
     user = User.find(self.user_id)
     vacation = user.vacation
     next_month = self.monthly_working.base_month.next_month
-    before_month_count = Configuration.get_before_month_count
+    before_month_count = SysConfig.get_before_month_count
     logger.info "Start month: #{next_month.start_date}"
     # 当月を含まずに、before_month_count+1分もってくる(現在月にとっての有効月)
     monthes = BaseMonth.find(:all, :conditions => ["deleted = 0 and start_date < ?", next_month.start_date.to_date], :order => "start_date desc", :limit => (before_month_count + 1)).reverse

@@ -19,13 +19,13 @@ module ApplicationUtil
   def get_color_by_approval_status_type(approval_status_type)
     case approval_status_type
       when 'entry','approved'
-        conf_entry = Configuration.get_color_approval_status_type_entry
+        conf_entry = SysConfig.get_color_approval_status_type_entry
         return conf_entry.value1 if conf_entry
       when 'fixed'
-        conf_approved = Configuration.get_color_approval_status_type_approved
+        conf_approved = SysConfig.get_color_approval_status_type_approved
         return conf_approved.value1 if conf_approved
       when 'reject'
-        conf_reject = Configuration.get_color_approval_status_type_reject
+        conf_reject = SysConfig.get_color_approval_status_type_reject
         return conf_reject.value1 if conf_reject
     end
     return nil

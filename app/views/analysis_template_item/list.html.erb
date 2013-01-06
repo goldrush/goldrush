@@ -1,6 +1,6 @@
 <h1><%=getLongName('table_name','analysis_template_items')%>一覧</h1>
 
-<%= put_paginates(@analysis_template_item_pages, 'paginate', @analysis_template_item_pages.item_count) %>
+<%= paginate(@analysis_template_items) %>
 
 <table class="list_table">
   <tr>
@@ -74,7 +74,7 @@
 <% end %>
 </table>
 
-<%= put_paginates(@analysis_template_item_pages, 'paginate', @analysis_template_item_pages.item_count) %>
+<%= paginate(@analysis_template_items) %>
 
 <br />
 

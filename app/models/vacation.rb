@@ -17,6 +17,10 @@ class Vacation < ActiveRecord::Base
     self.compensatory_hour_total - self.compensatory_used_total
   end
 
+  def calHourMinuteFormatJa(sec)
+    DateTimeUtil.calHourMinuteFormatJa(sec)
+  end
+
   def compensatory_remain_total_format
     calHourMinuteFormatJa(compensatory_remain_total)
   end
@@ -34,8 +38,8 @@ class Vacation < ActiveRecord::Base
   end
 
   def summer_vacation_remain_total(target_date)
-    start_date = Configuration.get_summer_vacation_start_date.value1.to_date
-    end_date = Configuration.get_summer_vacation_end_date.value1.to_date
+    start_date = SysConfig.get_summer_vacation_start_date.value1.to_date
+    end_date = SysConfig.get_summer_vacation_end_date.value1.to_date
     if start_date <= target_date && target_date <= end_date
       self.summer_vacation_day_total - self.summer_vacation_used_total
     else
@@ -44,8 +48,8 @@ class Vacation < ActiveRecord::Base
   end
 
   def Vacation.in_summer_vacation_period?(start_date, end_date)
-    conf_start_date = Configuration.get_summer_vacation_start_date.value1.to_date
-    conf_end_date = Configuration.get_summer_vacation_end_date.value1.to_date
+    conf_start_date = SysConfig.get_summer_vacation_start_date.value1.to_date
+    conf_end_date = SysConfig.get_summer_vacation_end_date.value1.to_date
 
     conf_start_date <= start_date && start_date <= conf_end_date && conf_start_date <= end_date && end_date <= conf_end_date
   end
@@ -66,7 +70,7 @@ class Vacation < ActiveRecord::Base
     # 初年度の計算
     today = date
     today = today.last_year if today.month < 4 # 1～3月なら、1マイナス
-    conf_year_start_date = Configuration.get_year_start_date.value1
+    conf_year_start_date = SysConfig.get_year_start_date.value1
     process_date = Time.parse(today.year.to_s + '/' + conf_year_start_date).to_date
     # 新年度分、年次有給の付与
     Vacation.calculate_day_total(user, process_date)
@@ -107,7 +111,7 @@ class Vacation < ActiveRecord::Base
   # 引数: year: 次に有効になる年度("2008"など・・・)
   def self.calculate_vacations(year)
     logger.debug "Start calculate_vacations: year => #{year}, at => #{Time.now}"
-    conf_year_start_date = Configuration.get_year_start_date.value1
+    conf_year_start_date = SysConfig.get_year_start_date.value1
     process_date = Time.parse(year + '/' + conf_year_start_date).to_date
 
     day_total = 0
@@ -189,8 +193,8 @@ class Vacation < ActiveRecord::Base
   # MAX年数を超えた有給をライフプランに転換
   #
   def self.calculate_life_plan(user, process_date)
-    life_plan_day_behavior_max = Configuration.get_life_plan_behavior_max
-    before_year_count = Configuration.get_before_year_count
+    life_plan_day_behavior_max = SysConfig.get_life_plan_behavior_max
+    before_year_count = SysConfig.get_before_year_count
     before_date = process_date - before_year_count.to_i.year
 
     AnnualVacation.find(:all, :conditions => ["deleted = 0 and life_plan_flg = 0 and year <= ? and user_id = ?", before_date.year, user.id]).each do |annual|
@@ -213,8 +217,8 @@ class Vacation < ActiveRecord::Base
     base_date = process_date.next_year
     monthes = user.employee.calWorkingMonthes(base_date)
     # 半年を経過した回数で計算
-    if (day_total = Configuration.get_vacation_half_year((monthes.to_i - 1) / 6)).blank?
-      day_total = Configuration.get_vacation_month(monthes.to_i).value1
+    if (day_total = SysConfig.get_vacation_half_year((monthes.to_i - 1) / 6)).blank?
+      day_total = SysConfig.get_vacation_month(monthes.to_i).value1
     end
     day_total = day_total.to_i
     #存在のチェック
@@ -268,8 +272,8 @@ class Vacation < ActiveRecord::Base
 
   # MAX超過分を減じる
   def self.reduse_max_over(user, vacation)
-    day_max = Configuration.get_day_max
-    life_plan_day_max = Configuration.get_life_plan_day_max
+    day_max = SysConfig.get_day_max
+    life_plan_day_max = SysConfig.get_life_plan_day_max
 
     if vacation.day_total > day_max
       # 有給休暇消費分の消しこみ
@@ -289,7 +293,7 @@ class Vacation < ActiveRecord::Base
 
   # 有給今期迄を計算する
   def Vacation.calculate_cutoff_day_total(user, vacation, process_date)
-    before_year_count = Configuration.get_before_year_count.to_i - 1
+    before_year_count = SysConfig.get_before_year_count.to_i - 1
     before_date = process_date - before_year_count.year
 
     annual = AnnualVacation.find(:first, :conditions => ["deleted = 0 and life_plan_flg = 0 and year = ? and user_id = ?", before_date.year, user.id])
@@ -316,7 +320,7 @@ class Vacation < ActiveRecord::Base
     vacation = user.vacation
 #    vacation = Vacation.find(:first, :conditions => ["deleted = 0 and user_id = ?", base_application.user_id])
     next_month = base_application.monthly_working.base_month.next_month
-    before_month_count = Configuration.get_before_month_count
+    before_month_count = SysConfig.get_before_month_count
     logger.info "Start month: #{next_month.start_date}"
 
     # 申請却下用に、vacationの各値を保持する

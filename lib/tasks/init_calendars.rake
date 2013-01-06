@@ -9,7 +9,7 @@ namespace :app do
   def check_period(st, ed)
     raise "Error: START > END" if st > ed
     return if BaseDate.count == 0
-    m = BaseDate.find_by_sql("select max(calendar_date) as max_date, min(calendar_date) as min_date from calendars")
+    m = BaseDate.find_by_sql("select max(calendar_date) as max_date, min(calendar_date) as min_date from base_dates")
     return unless m[0].max_date
     raise "Error: Calendar_date was be serialize.(now existing #{m[0].min_date} #{m[0].max_date})" unless (m[0].max_date.to_date+1 == st or m[0].min_date.to_date-1 == ed)
   end
@@ -19,7 +19,7 @@ namespace :app do
   #
   def update_holidays(st, ed)
    require "rexml/document"
-   holiday_file = File.join([RAILS_ROOT,'config','holidays.xml'])
+   holiday_file = File.join([Rails.root,'config','holidays.xml'])
    doc = nil
    File.open(holiday_file, 'r') do |file|
      doc = REXML::Document.new file.read
@@ -67,7 +67,7 @@ namespace :app do
   desc 'Generate base months usage: rake app:basemonthgen START=2000/1 MCNT=3'
   task :basemonthgen => :environment do
     check_basemonthgen_args
-    month_start_date = Configuration.get_month_start_date.value1
+    month_start_date = SysConfig.get_month_start_date.value1
     start_date = (ENV['START'] + "/" + month_start_date).to_date
     end_date = start_date.next_month - 1
     ActiveRecord::Base::transaction() do

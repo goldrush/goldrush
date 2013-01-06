@@ -12,7 +12,7 @@ class RouteExpenseDetailController < ApplicationController
 
   def list
     @user = User.find(params[:id], :conditions => "deleted = 0 ")
-    @route_expense_detail_pages, @route_expense_details = paginate(:route_expense_details, :per_page => Configuration.get_per_page_count, :include => [ :route_expense ], :conditions => ["route_expenses.user_id = ? and route_expenses.deleted = 0 and route_expense_details.deleted = 0", params[:id]]) 
+    @route_expense_detail_pages, @route_expense_details = paginate(:route_expense_details, :per_page => SysConfig.get_per_page_count, :include => [ :route_expense ], :conditions => ["route_expenses.user_id = ? and route_expenses.deleted = 0 and route_expense_details.deleted = 0", params[:id]]) 
   end
 
   def show

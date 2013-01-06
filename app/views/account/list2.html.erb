@@ -3,7 +3,7 @@
 　<%= check_box_tag 'all_display_checkbox', '1', @all_display %>全て
   <%= submit_tag '表示', :name => 'display_button' %>
 <% end %>
-<%= put_paginates(@employee_pages, 'index_paginate', @employee_pages.item_count) %>
+<%= _paginate(@employees) %>
 
 <table class="list_table">
   <tr>
@@ -28,5 +28,5 @@
 </table>
 <br />
 
-<%= put_paginates(@employee_pages, 'index_paginate', @employee_pages.item_count) %>
+<%= paginate(@employees) %>
 

@@ -92,9 +92,9 @@ class DailyWorking < ActiveRecord::Base
           self.hour_total += ((self.user.employee.regular_working_hour * 60 * 60 / 2).to_i)
       end
     end
-    x = self.out_time - hourminstr_to_sec(Configuration.get_regular_over_time_taxi.value1)
+    x = self.out_time - hourminstr_to_sec(SysConfig.get_regular_over_time_taxi.value1)
     self.over_time = (x < 0 ? 0 : x)
-    self.over_time_meel_flg = (self.out_time > hourminstr_to_sec(Configuration.get_regular_over_time_meel.value1) ? 1 : 0)
+    self.over_time_meel_flg = (self.out_time > hourminstr_to_sec(SysConfig.get_regular_over_time_meel.value1) ? 1 : 0)
   end
 
   def clear_working_hour
@@ -274,7 +274,7 @@ RAILS_DEFAULT_LOGGER.info("[VACATION USED TOTAL] action: calc_holiday_hour_date!
   # 最大退勤時間を越えているか?
   def over_time?
     return false unless self.out_time
-    self.out_time > hourminstr_to_sec(Configuration.get_configuration('max_out_time','regular').value1)
+    self.out_time > hourminstr_to_sec(SysConfig.get_configuration('max_out_time','regular').value1)
   end
 
   # 遅刻かどうか判定
@@ -300,8 +300,8 @@ RAILS_DEFAULT_LOGGER.info("[VACATION USED TOTAL] action: calc_holiday_hour_date!
   # 遅刻かどうか計算
   def calc_come_lately?
     return false unless self.in_time
-    defact = hourminstr_to_sec(Configuration.get_regular_in_time_defact.value1)
-    pm = hourminstr_to_sec(Configuration.get_regular_in_time_pm.value1)
+    defact = hourminstr_to_sec(SysConfig.get_regular_in_time_defact.value1)
+    pm = hourminstr_to_sec(SysConfig.get_regular_in_time_pm.value1)
     ele_time = hourminstr_to_sec("11:00")
     atype = self.working_type
     #(self.delayed_cancel_flg == 0) and ((atype == 'all_day_working' and self.in_time > defact) or (atype == 'only_AM_working' and self.in_time > defact) or (atype == 'only_PM_working' and self.in_time > pm))
@@ -317,8 +317,8 @@ RAILS_DEFAULT_LOGGER.info("[VACATION USED TOTAL] action: calc_holiday_hour_date!
   # 早退かどうか計算
   def calc_leave_early?
     return false unless self.out_time
-    early_am = hourminstr_to_sec(Configuration.get_regular_out_time_early_am.value1)
-    early_full = hourminstr_to_sec(Configuration.get_regular_out_time_early_full.value1)
+    early_am = hourminstr_to_sec(SysConfig.get_regular_out_time_early_am.value1)
+    early_full = hourminstr_to_sec(SysConfig.get_regular_out_time_early_full.value1)
     ele_time = hourminstr_to_sec("15:00")
     atype = self.working_type
     (atype == 'all_day_working' and self.out_time < early_full) or (atype == 'only_AM_working' and self.out_time < early_am) or (atype == 'only_PM_working' and self.out_time < early_full)
@@ -333,14 +333,14 @@ RAILS_DEFAULT_LOGGER.info("[VACATION USED TOTAL] action: calc_holiday_hour_date!
   # TAXI可の残業かどうか計算
   def calc_over_time_taxi?
     return false unless self.out_time
-    taxi = hourminstr_to_sec(Configuration.get_regular_over_time_taxi.value1)
+    taxi = hourminstr_to_sec(SysConfig.get_regular_over_time_taxi.value1)
     (self.can_over_time? and self.out_time > taxi)
   end
 
   # 残業食事代可の残業かどうか計算
   def calc_over_time_meel?
     return false unless self.out_time
-    meel = hourminstr_to_sec(Configuration.get_regular_over_time_meel.value1)
+    meel = hourminstr_to_sec(SysConfig.get_regular_over_time_meel.value1)
     (self.can_over_time? and self.out_time > meel)
   end
 
@@ -359,9 +359,9 @@ RAILS_DEFAULT_LOGGER.info("[VACATION USED TOTAL] action: calc_holiday_hour_date!
 
   def init_default_value
     if self.action_type == 'blank'
-      conf_regular_in_time_regular = Configuration.get_regular_in_time_regular
-      conf_regular_out_time_regular = Configuration.get_regular_out_time_regular
-      conf_rest_hour = Configuration.get_rest_hour_regular
+      conf_regular_in_time_regular = SysConfig.get_regular_in_time_regular
+      conf_regular_out_time_regular = SysConfig.get_regular_out_time_regular
+      conf_rest_hour = SysConfig.get_rest_hour_regular
 
       self.working_type = (self.holiday? ? 'on_holiday_working' : 'all_day_working')
       self.in_time = hourminstr_to_sec(conf_regular_in_time_regular.value1)

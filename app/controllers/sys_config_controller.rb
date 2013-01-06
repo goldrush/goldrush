@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-class ConfigurationController < ApplicationController
+class SysConfigController < ApplicationController
 
   def index
     list
@@ -17,17 +17,17 @@ class ConfigurationController < ApplicationController
   end
 
   def show
-    @configuration = Configuration.find(params[:id], :conditions => "deleted = 0 ")
+    @configuration = SysConfig.find(params[:id], :conditions => "deleted = 0 ")
   end
 
   def new
-    @configuration = Configuration.new
+    @configuration = SysConfig.new
   end
 
   def create
-    @configuration = Configuration.new(params[:configuration])
+    @configuration = SysConfig.new(params[:configuration])
     if @configuration.save
-      flash[:notice] = 'Configuration was successfully created.'
+      flash[:notice] = 'SysConfig was successfully created.'
       redirect_to :action => 'list'
     else
       render :action => 'new'
@@ -35,16 +35,16 @@ class ConfigurationController < ApplicationController
   end
 
   def edit
-    @configuration = Configuration.find(params[:id], :conditions => "deleted = 0 ")
+    @configuration = SysConfig.find(params[:id], :conditions => "deleted = 0 ")
   end
 
   def edit_sv
   end
 
   def update
-    @configuration = Configuration.find(params[:id], :conditions => "deleted = 0 ")
+    @configuration = SysConfig.find(params[:id], :conditions => "deleted = 0 ")
     if @configuration.update_attributes(params[:configuration])
-      flash[:notice] = 'Configuration was successfully updated.'
+      flash[:notice] = 'SysConfig was successfully updated.'
       redirect_to :action => 'show', :id => @configuration
     else
       render :action => 'edit'
@@ -52,8 +52,8 @@ class ConfigurationController < ApplicationController
   end
 
   def destroy
-    #Configuration.find(params[:id]).destroy
-    configuration = Configuration.find(params[:id], :conditions => "deleted = 0 ")
+    #SysConfig.find(params[:id]).destroy
+    configuration = SysConfig.find(params[:id], :conditions => "deleted = 0 ")
     configuration.deleted = 9
     configuration.save!
     redirect_to :action => 'list'

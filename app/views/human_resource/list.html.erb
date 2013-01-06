@@ -1,6 +1,6 @@
 <h1><%=getLongName('table_name','human_resources')%>一覧</h1>
 
-<%= put_paginates(@human_resource_pages, 'paginate', @human_resource_pages.item_count) %>
+<%= paginate(@human_resources) %>
 
 <table class="list_table">
   <tr>
@@ -31,7 +31,7 @@
 <% end %>
 </table>
 
-<%= put_paginates(@human_resource_pages, 'paginate', @human_resource_pages.item_count) %>
+<%= paginate(@human_resources) %>
 
 <br />
 <% if !popup? %>

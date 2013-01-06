@@ -28,7 +28,7 @@
 <br />
 <% end %>
 
-<%= put_paginates(@business_partner_pages, 'paginate', @business_partner_pages.item_count) %>
+<%= paginate(@business_partners) %>
 
 <table class="list_table">
   <tr>
@@ -63,7 +63,7 @@
   </tr>
 <% end %>
 </table>
-<%= put_paginates(@business_partner_pages, 'paginate', @business_partner_pages.item_count) %>
+<%= paginate(@business_partners) %>
 
 <br />
 <%= link_to (getLongName('table_name','business_partners')+'/'+getLongName('table_name','bp_pics')+'の新規作成'), :action => 'new', :flg => params[:flg], :back_to => request.env['REQUEST_URI'] %>

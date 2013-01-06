@@ -1,7 +1,7 @@
 <h1><%=getLongName('table_name','analysis_templates')%>一覧</h1>
 
 <% if @analysis_template_pages %>
-  <%= put_paginates(@analysis_template_pages, 'paginate', @analysis_template_pages.item_count) %>
+	<%= paginate(@analysis_templates) %>
 <% end %>
 
 <% if params[:mode] && params[:import_mail_id] %>
@@ -41,7 +41,7 @@
 </table>
 
 <% if @analysis_template_pages %>
-  <%= put_paginates(@analysis_template_pages, 'paginate', @analysis_template_pages.item_count) %>
+	<%= paginate(@analysis_templates) %>
 <% end %>
 
 <br />

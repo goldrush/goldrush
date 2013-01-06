@@ -9,7 +9,7 @@
   
 <br/>
 <br/>
-<%= put_paginates(@employee_pages, 'index_paginate', @employee_pages.item_count) %>
+<%= paginate(@employees) %>
 
 <table class="list_table">
   <tr>
@@ -76,7 +76,7 @@
 </table>
 <br />
 
-<%= put_paginates(@employee_pages, 'index_paginate', @employee_pages.item_count) %>
+<%= paginate(@employees) %>
 
 <br />
 <br />

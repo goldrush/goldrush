@@ -17,7 +17,7 @@ class ApprovalAuthorityController < ApplicationController
   end
 
   def set_data
-    @user_employee_pages, @user_employees = paginate(:users, :per_page => Configuration.get_per_page_count, :include => [ :employee ], :conditions => ["users.deleted = 0 and employees.deleted = 0 and employees.resignation_date IS NULL"], :order => 'users.id')
+    @user_employee_pages, @user_employees = paginate(:users, :per_page => SysConfig.get_per_page_count, :include => [ :employee ], :conditions => ["users.deleted = 0 and employees.deleted = 0 and employees.resignation_date IS NULL"], :order => 'users.id')
     @user_approvers = User.find(:all, :include => [ :employee ], :conditions => ["users.deleted = 0 and employees.deleted = 0 and employees.approver_flg = ?", 1], :order => 'users.id')
     render :action => 'list'
   end

@@ -49,7 +49,7 @@
 <br />
 <% end %>
 
-<%= put_paginates(@bp_member_pages, 'paginate', @bp_member_pages.item_count) %>
+<%= paginate(@bp_members) %>
 
 <table class="list_table">
   <tr>
@@ -94,7 +94,7 @@
 <% end %>
 </table>
 
-<%= put_paginates(@bp_member_pages, 'paginate', @bp_member_pages.item_count) %>
+<%= paginate(@bp_members) %>
 
 <br />
 

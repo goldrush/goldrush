@@ -150,7 +150,7 @@ class MonthlyWorkingController < ApplicationController
     #BaseMonth.init_data
     start_date = nil
     end_date = nil
-    month_start_date = Configuration.get_month_start_date.value1
+    month_start_date = SysConfig.get_month_start_date.value1
     ActiveRecord::Base::transaction() do
       base_month = BaseMonth.find(:first, :conditions => ["last_flg = ? and deleted = 0", 1])
       if base_month
@@ -355,7 +355,7 @@ class MonthlyWorkingController < ApplicationController
     count = 0
     target_year = params[:reinit_year]
     target_month = params[:reinit_month]
-    conf_month_start_date = Configuration.get_month_start_date
+    conf_month_start_date = SysConfig.get_month_start_date
     target_day = conf_month_start_date.value1 if conf_month_start_date
     target_date = Date.new(target_year.to_i, target_month.to_i, target_day.to_i)
     target_base_month = BaseMonth.get_base_month_by_date(target_date)

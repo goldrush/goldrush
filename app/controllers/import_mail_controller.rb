@@ -9,8 +9,8 @@ class ImportMailController < ApplicationController
 
 
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
-  verify :method => :post, :only => [ :destroy, :create, :update ],
-         :redirect_to => { :action => :list }
+#  verify :method => :post, :only => [ :destroy, :create, :update ],
+#         :redirect_to => { :action => :list }
          
   def set_conditions
     session[:import_mail_search] = {
@@ -23,7 +23,7 @@ class ImportMailController < ApplicationController
 
   def make_conditions
     param = []
-    include = []
+    incl = []
     sql = "import_mails.deleted = 0"
     # TODO デフォルトで不要フラグ立ってないもの？
     order_by = ""
@@ -44,7 +44,7 @@ class ImportMailController < ApplicationController
       sql += " and registed = 1"
     end
 
-    return {:conditions => param.unshift(sql), :include => include, :per_page => current_user.per_page, :order => "id desc"}
+    return [param.unshift(sql), incl]
   end
 
   def list
@@ -56,8 +56,8 @@ class ImportMailController < ApplicationController
         session[:import_mail_search] = {}
       end
     end
-    cond = make_conditions
-    @import_mail_pages, @import_mails = paginate(:import_mails, cond)
+    cond, incl = make_conditions
+    @import_mails = ImportMail.includes(incl).where(cond).page(params[:page]).per(current_user.per_page).order("id desc")
   end
 
   def set_order

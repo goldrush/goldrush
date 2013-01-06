@@ -58,7 +58,7 @@ module UserAuthenticate
 
   def check_history
     return if password.blank?
-    n = Configuration.find(:first, :conditions => ["config_section = ? and config_key = ?",'password_config','remember_count']).value1.to_i
+    n = SysConfig.find(:first, :conditions => ["config_section = ? and config_key = ?",'password_config','remember_count']).value1.to_i
     PasswordHistory.find(:all, :conditions => ["login = ?", login], :limit => n, :order => "id desc").each{|x|
       return true if x.crypted_password == self.class.salted_password(x.salt, self.class.hashed(password))
     }

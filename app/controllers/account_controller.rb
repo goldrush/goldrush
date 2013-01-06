@@ -1,28 +1,28 @@
 # -*- encoding: utf-8 -*-
 class AccountController < ApplicationController
-  skip_before_filter :login_required, :only => [:login, :activate, :activate_recv_mail, :mailsend, :forgot_password]
-  before_filter :personnel_department_required, :only => [:list, :view, :destroy, :signup]
+#  skip_before_filter :login_required, :only => [:login, :activate, :activate_recv_mail, :mailsend, :forgot_password]
+#  before_filter :personnel_department_required, :only => [:list, :view, :destroy, :signup]
+
+  def personnel_department_required
+    unless logged_in? && current_user.personnel_department? || current_user.accounting?
+#      redirect_to :controller => '/'
+      return false
+    end
+    return true
+  end
   
   # ユーザの作成と変更を見張ってメールを送信する observer
 #  observer :user_observer if ENV['ENABLE_MAIL_ACTIVATE']
   # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
+#  include AuthenticatedSystem
   # If you want "remember me" functionality, add this before_filter to Application Controller
-  before_filter :login_from_cookie, :only => [:login]
+#  before_filter :login_from_cookie, :only => [:login]
 
   # say something nice, you goof!  something sweet.
   def index
     redirect_to(:action => 'signup') unless logged_in? || User.count > 0
   end
   
-  def personnel_department_required
-    unless logged_in? && current_user.personnel_department? || current_user.accounting?
-      redirect_to :controller => '/'
-      return false
-    end
-    return true
-  end
-
   def login
     @menu_hide = 1
     @page_title = '[ログイン]'
@@ -161,7 +161,7 @@ class AccountController < ApplicationController
     @user.email = @user.login
 
     @employee = Employee.new
-    conf_hour_total = Configuration.get_hour_total_full
+    conf_hour_total = SysConfig.get_hour_total_full
     @employee.regular_working_hour = conf_hour_total.value1.split(':')[0]
     @calendar = true
     @departments = Department.find(:all, :order => "display_order") 
@@ -285,7 +285,7 @@ class AccountController < ApplicationController
 
   def show
     @user = User.find(params[:id], :conditions => "deleted = 0 ")
-    @route_expense_detail_pages, @route_expense_details = paginate(:route_expense_details, :per_page => Configuration.get_per_page_count, :include => [ :route_expense ], :conditions => ["route_expenses.user_id = ? and route_expenses.deleted = 0 and route_expense_details.deleted = 0", params[:id]]) 
+    @route_expense_detail_pages, @route_expense_details = paginate(:route_expense_details, :per_page => SysConfig.get_per_page_count, :include => [ :route_expense ], :conditions => ["route_expenses.user_id = ? and route_expenses.deleted = 0 and route_expense_details.deleted = 0", params[:id]]) 
   end
 
   def edit
@@ -329,9 +329,6 @@ class AccountController < ApplicationController
 
     cond = make_conditions
     @employee_pages, @employees = paginate(:employees, cond)
-    #@user_pages, @users = paginate(:users, :per_page => 50, :include => [ :employee], :conditions => ["users.deleted = 0 and employees.deleted = 0 and employees.resignation_date is null"], :order => "users.id")
-    #@employee_pages, @employees = paginate(:employees, :per_page => 50, :include => [ :user, :department ], :conditions => ["users.deleted = 0 and employees.deleted = 0 and employees.resignation_date is null"], :order => "users.id")
-    #@employee_pages, @employees = paginate(:employees, :per_page => 50, :include => [ :user, :department ], :conditions => ["users.deleted = 0 and employees.deleted = 0"], :order => "users.id")
   end
 
   def list2
@@ -370,8 +367,8 @@ class AccountController < ApplicationController
       toBirthday = Date.new(tmp.year, tmp.month, 1) - 1.day
       fromBirthday = Date.new(tmp2.year, tmp2.month, 1) - 12.month
 
-  def mailsend
-  end
+#  def mailsend
+#  end
       
     end
     
@@ -465,5 +462,14 @@ class AccountController < ApplicationController
   rescue ActionController::MissingFile
     flash[:notice] = '職務経歴書が見つかりませんでした。'
     redirect_to :action => 'show', :id => user
+  end
+
+private
+  def xpersonnel_department_required
+    unless logged_in? && current_user.personnel_department? || current_user.accounting?
+      redirect_to :controller => '/'
+      return false
+    end
+    return true
   end
 end

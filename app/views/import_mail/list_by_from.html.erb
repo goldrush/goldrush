@@ -12,7 +12,7 @@
 <br />
 <% end %>
 
-<%= put_paginates(@import_mail_pages, 'paginate', @import_mail_pages.item_count) %>
+<%= paginate(@import_mails) %>
 
 <table class="list_table">
   <tr>
@@ -46,7 +46,7 @@
 <% end %>
 </table>
 
-<%= put_paginates(@import_mail_pages, 'paginate', @import_mail_pages.item_count) %>
+<%= paginate(@import_mails) %>
 
 <br />
 

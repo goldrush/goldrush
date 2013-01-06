@@ -45,7 +45,7 @@ class BaseApplicationController < ApplicationController
       cond.unshift(sql)
       @base_application_pages, @base_applications = paginate(:base_applications,
         :include => [:payment_per_month, :payment_per_case, :expense_application],
-        :per_page => Configuration.get_per_page_count,
+        :per_page => SysConfig.get_per_page_count,
         :conditions => cond,
         :order => 'base_applications.application_date desc, base_applications.id desc')
     when 'closed'
@@ -56,7 +56,7 @@ class BaseApplicationController < ApplicationController
       cond.unshift(sql)
       @base_application_pages, @base_applications = paginate(:base_applications,
         :include => [:payment_per_month, :payment_per_case],
-        :per_page => Configuration.get_per_page_count,
+        :per_page => SysConfig.get_per_page_count,
         :conditions => cond,
         :order => 'base_applications.application_date desc, base_applications.id desc')
     when 'paied'
@@ -66,7 +66,7 @@ class BaseApplicationController < ApplicationController
       cond.unshift(sql)
       @base_application_pages, @base_applications = paginate(:base_applications,
         :include => [:expense_application],
-        :per_page => Configuration.get_per_page_count,
+        :per_page => SysConfig.get_per_page_count,
         :conditions => cond,
         :order => 'base_applications.application_date desc, base_applications.id desc')
     else
@@ -76,7 +76,7 @@ class BaseApplicationController < ApplicationController
       sql, cond = set_date_conditions(sql, cond)
       cond.unshift(sql)
       @base_application_pages, @base_applications = paginate(:base_applications,
-        :per_page => Configuration.get_per_page_count,
+        :per_page => SysConfig.get_per_page_count,
         :conditions => cond,
         :order => 'application_date desc, id desc')
     end
@@ -131,7 +131,7 @@ class BaseApplicationController < ApplicationController
       cond.unshift(sql)
       
       @base_application_pages, @base_applications = paginate(:base_applications,
-      :per_page => Configuration.get_per_page_count,
+      :per_page => SysConfig.get_per_page_count,
       :include => [:expense_application],
       :conditions => cond,
       :order => 'base_applications.application_date desc')
@@ -156,7 +156,7 @@ class BaseApplicationController < ApplicationController
       cond.unshift(sql)
       
       @base_application_pages, @base_applications = paginate(:base_applications,
-      :per_page => Configuration.get_per_page_count,
+      :per_page => SysConfig.get_per_page_count,
       :include => incl,
       :conditions => cond,
       :order => 'base_applications.application_date desc')
@@ -226,7 +226,7 @@ class BaseApplicationController < ApplicationController
       cond.unshift(sql)
       
       @base_application_pages, @base_applications = paginate(:base_applications,
-        :per_page => Configuration.get_per_page_count,
+        :per_page => SysConfig.get_per_page_count,
         :include => incl,
         :conditions => cond,
         :order => 'base_applications.application_date desc')
@@ -251,7 +251,7 @@ class BaseApplicationController < ApplicationController
       cond.unshift(sql)
       
       @base_application_pages, @base_applications = paginate(:base_applications,
-        :per_page => Configuration.get_per_page_count,
+        :per_page => SysConfig.get_per_page_count,
         :include => incl,
         :conditions => cond,
         :order => 'base_applications.application_date desc')

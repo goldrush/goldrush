@@ -35,7 +35,7 @@
 
 
 
-<%= put_paginates(@business_pages, 'paginate', @business_pages.item_count) %>
+<%= paginate(@businesses) %>
 
 <table class="list_table">
   <tr>
@@ -71,7 +71,7 @@
 <% end %>
 </table>
 
-<%= put_paginates(@business_pages, 'paginate', @business_pages.item_count) %>
+<%= paginate(@businesses) %>
 
 <br />
 

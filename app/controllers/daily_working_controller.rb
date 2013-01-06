@@ -111,7 +111,7 @@ class DailyWorkingController < ApplicationController
     end
     # 最大退勤時間のチェック
     if @daily_working.over_time?
-      flash[:notice] = "最大退勤時間を越えています。#{Configuration.get_configuration('max_out_time','regular').value1}以降は翌日の登録にしてください"
+      flash[:notice] = "最大退勤時間を越えています。#{SysConfig.get_configuration('max_out_time','regular').value1}以降は翌日の登録にしてください"
       return render(:action => 'edit')
     end
 

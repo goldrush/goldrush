@@ -1,6 +1,6 @@
 <h1><%=getLongName('table_name','biz_offers')%>一覧</h1>
 
-<%= put_paginates(@biz_offer_pages, 'paginate', @biz_offer_pages.item_count) %>
+<%= paginate(@biz_offers) %>
 
 <table class="list_table">
   <tr>
@@ -28,7 +28,7 @@
 <% end %>
 </table>
 
-<%= put_paginates(@biz_offer_pages, 'paginate', @biz_offer_pages.item_count) %>
+<%= paginate(@biz_offers) %>
 
 <br />
 

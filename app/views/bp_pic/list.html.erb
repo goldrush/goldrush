@@ -1,6 +1,6 @@
 <h1><%= @business_partner.blank? ? getLongName('table_name','bp_pics') : "#{@business_partner.business_partner_name}担当" %>一覧</h1>
 
-<%= put_paginates(@bp_pic_pages, 'paginate', @bp_pic_pages.item_count) %>
+<%= paginate(@bp_pics) %>
 
 <table class="list_table">
   <tr>
@@ -36,7 +36,7 @@
 <% end %>
 </table>
 
-<%= put_paginates(@bp_pic_pages, 'paginate', @bp_pic_pages.item_count) %>
+<%= paginate(@bp_pics) %>
 
 <br />
 

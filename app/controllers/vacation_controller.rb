@@ -13,20 +13,20 @@ class VacationController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @vacation_pages, @vacations = paginate :vacations, :per_page => Configuration.get_per_page_count, :conditions => "deleted = 0 "
+    @vacation_pages, @vacations = paginate :vacations, :per_page => SysConfig.get_per_page_count, :conditions => "deleted = 0 "
   end
 
   def list_sv
     @calendar = true
-    @start_date = Configuration.get_summer_vacation_start_date.value1
-    @end_date = Configuration.get_summer_vacation_end_date.value1
+    @start_date = SysConfig.get_summer_vacation_start_date.value1
+    @end_date = SysConfig.get_summer_vacation_end_date.value1
 
-    @vacation_pages, @vacations = paginate(:vacations, :per_page => Configuration.get_per_page_count, :conditions => "deleted = 0 ", :order => 'id')
-    @user_pages, @users = paginate(:users, :include => [:employee], :per_page => Configuration.get_per_page_count, :conditions => "users.deleted = 0 ", :order => 'employees.insurance_code')
+    @vacation_pages, @vacations = paginate(:vacations, :per_page => SysConfig.get_per_page_count, :conditions => "deleted = 0 ", :order => 'id')
+    @user_pages, @users = paginate(:users, :include => [:employee], :per_page => SysConfig.get_per_page_count, :conditions => "users.deleted = 0 ", :order => 'employees.insurance_code')
   end
 
   def annual_vacation
-    @calculate_vacation_year = Configuration.get_calculate_vacation_year
+    @calculate_vacation_year = SysConfig.get_calculate_vacation_year
     cur_year = Date.today.year
     @arr_year = [
               [cur_year - 2, cur_year - 2],
@@ -38,12 +38,12 @@ class VacationController < ApplicationController
   end
 
   def calculate_vacation
-    @calculate_vacation_year = Configuration.get_calculate_vacation_year
+    @calculate_vacation_year = SysConfig.get_calculate_vacation_year
     @calculate_vacation_year.value1 = params[:calculate_vacation]
     set_user_column @calculate_vacation_year
     @calculate_vacation_year.save!
 
-    year = Configuration.get_calculate_vacation_year.value1
+    year = SysConfig.get_calculate_vacation_year.value1
     Vacation.calculate_vacations(year)
 
     redirect_to :action => 'annual_vacation'
@@ -105,8 +105,8 @@ RAILS_DEFAULT_LOGGER.info("[VACATION USED TOTAL] action: vacation/update, at: #{
     rescue
       raise ValidationAbort.new('日付が不正です')
     end
-    @summer_vacation_start_date = Configuration.get_summer_vacation_start_date
-    @summer_vacation_end_date = Configuration.get_summer_vacation_end_date
+    @summer_vacation_start_date = SysConfig.get_summer_vacation_start_date
+    @summer_vacation_end_date = SysConfig.get_summer_vacation_end_date
 
     ActiveRecord::Base.transaction do
       # 夏期休暇開始日を設定
@@ -136,8 +136,8 @@ RAILS_DEFAULT_LOGGER.info("[VACATION USED TOTAL] action: vacation/update, at: #{
     redirect_to :action => 'list_sv'
 #  rescue ActiveRecord::RecordInvalid
 #    @calendar = true
-#    @start_date = Configuration.get_summer_vacation_start_date.value1
-#    @end_date = Configuration.get_summer_vacation_end_date.value1
+#    @start_date = SysConfig.get_summer_vacation_start_date.value1
+#    @end_date = SysConfig.get_summer_vacation_end_date.value1
 #    render :action => 'list_sv'
   end
 

@@ -11,3 +11,80 @@
  *= require_self
  *= require_tree .
  */
+div.search_form {
+}
+div.search_form table {
+  padding-right: 2px;
+  padding-left: 2px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+div.search_form table td {
+  padding-left: 4px;
+}
+
+table.list_table {
+  font-size: 15px;
+  margin-top: 2em;
+  border-collapse: collapse;
+  border-spacing: 0px;
+  width: 97%;
+}
+table.list_table td {
+  border: #000000 1px solid;
+}
+table.list_table th {
+  border: #000000 1px solid;
+  background-color: #F0BB8C
+}
+
+table.result_table {
+  margin-top: 5px;
+  border-collapse: collapse;
+  border-spacing: 0px;
+  width: 97%;
+}
+table.result_table td {
+  border: #000000 1px solid;
+}
+table.result_table th {
+  border: #000000 1px solid;
+  background-color: #F0BB8C
+}
+
+table.show_table {
+  margin-top: 2em;
+  border-collapse: collapse;
+  border-spacing: 0px;
+  width: 97%;
+}
+table.show_table td {
+  border: #808080 1px solid;
+}
+table.show_table th {
+  text-align: left;
+  width: 25%;
+  border: #808080 1px solid;
+  background-color: #F0BB8C
+}
+
+table.input_table {
+  margin-top: 2em;
+  border-collapse: collapse;
+  border-spacing: 0px;
+  width: 97%;
+}
+table.input_table td {
+  border: #808080 1px solid;
+  
+}
+table.input_table th {
+  text-align: right;
+  width: 25%;
+  border: #808080 1px solid;
+  background-color: #F0BB8C
+}
+
+
