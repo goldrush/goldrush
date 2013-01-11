@@ -65,94 +65,120 @@ class EmployeeController < ApplicationController
     @employee = Employee.find(params[:id], :conditions => "deleted = 0 ")
   end
 
-  def new
-    @calendar = true
-    @employee = Employee.new
-    @users = User.find(:all, :conditions => "deleted = 0 ", :order => "id") 
-    @departments = Department.find(:all, :conditions => "deleted = 0 ", :order => "display_order") 
+  def store_upload_file
+    file_dir = File.join(Rails.root,'tmp','attach')
+    if params[:upload]
+      if params[:upload]['file1'] != ""
+        file1 = params[:upload]['file1']
+        ext = File.extname(file1.original_filename.to_s).downcase
+        raise ValidationAbort.new("写真は、拡張子がjpgのファイルでなければなりません") if ext != '.jpg'
+        filename1 = "employee_#{@employee.id.to_s}_1" + ext
+        @employee.attached_file1 = filename1
+        File.open(File.join(file_dir, filename1), "wb"){ |f| f.write(file1.read) }
+      end
+      if params[:upload]['file2'] != ""
+        file2 = params[:upload]['file2']
+        ext = File.extname(file2.original_filename.to_s).downcase
+        raise ValidationAbort.new("写真は、拡張子がpdfのファイルでなければなりません") if ext != '.pdf'
+        filename2 = "employee_#{@employee.id.to_s}_2" + ext
+        @employee.attached_file2 = filename2
+        File.open(File.join(file_dir, filename2), "wb"){ |f| f.write(file2.read) }
+      end
+      if params[:upload]['file3'] != ""
+        file3 = params[:upload]['file3']
+        ext = File.extname(file3.original_filename.to_s).downcase
+        raise ValidationAbort.new("写真は、拡張子がpdfのファイルでなければなりません") if ext != '.pdf'
+        filename3 = "employee_#{@employee.id.to_s}_3" + ext
+        @employee.attached_file3 = filename3
+        File.open(File.join(file_dir, filename3), "wb"){ |f| f.write(file3.read) }
+      end
+      if params[:upload]['file4'] != ""
+        file4 = params[:upload]['file4']
+        ext = File.extname(file4.original_filename.to_s).downcase
+        raise ValidationAbort.new("写真は、拡張子がpdfのファイルでなければなりません") if ext != '.pdf'
+        filename4 = "employee_#{@employee.id.to_s}_4" + ext
+        @employee.attached_file4 = filename4
+        File.open(File.join(file_dir, filename4), "wb"){ |f| f.write(file4.read) }
+      end
+    end
   end
 
-  def create
-    parseTimes(params)
-    @employee = Employee.new(params[:employee])
-    #upload file
-    if params[:upload]['file1'] != ""
-      file1 = params[:upload]['file1']
-      xxx = rand(1000000).to_s
-      filename1 = "employee_#{@employee.user_id}_#{xxx}" + "." + (file1.original_filename.to_s).split('.')[1]
-      @employee.attached_file1 = filename1
-      File.open("public/images/#{filename1}", "wb"){ |f| f.write(file1.read) }
+  def new
+    @page_title = '[アカウント新規作成]'
+    @user = User.find(params[:id])
+    if @user.employee
+      raise Exception.new("Employee is exists.")
     end
-    #if params[:upload]['file3'] != ""
-    #  file3 = params[:upload]['file3']
-    #  xxx = rand(1000000).to_s
-    #  filename3 = "employee_#{@employee.user_id}_#{xxx}" + "." + (file3.original_filename.to_s).split('.')[1]
-    #  @employee.attached_file3 = filename3
-    #  File.open("public/images/#{filename3}", "wb"){ |f| f.write(file3.read) }
-    #end
+
+    @employee = Employee.new
+    conf_hour_total = SysConfig.get_hour_total_full
+    @employee.regular_working_hour = conf_hour_total.value1.split(':')[0]
+    @calendar = true
+    @departments = Department.find(:all, :order => "display_order") 
     
-    if @employee.save
-      flash[:notice] = 'Employee was successfully created.'
-      redirect_to :action => 'list'
-    else
-      render :action => 'new'
+    return unless request.post?
+    ActiveRecord::Base.transaction do
+      parseTimes(params)
+      @employee = Employee.new(params[:employee])
+
+      @employee.employee_code = @employee.insurance_code.to_i + 9800
+
+      @employee.user_id = @user.id
+      @employee.save!
+
+      # アップロードファイルの保存
+      store_upload_file
+
+      # 初期有給休暇を作成
+      Vacation.create_init_vacation(@user, @employee.entry_date.to_date)
     end
-    
+
+    #交通費登録へ
+    redirect_to(:controller => 'route_expense_detail', :action => 'new', :id => @user, :back_to => back_to)
+    flash[:notice] = _("Thanks for signing up!")
+  rescue ValidationAbort
+    flash[:err] = $!.to_s
+    render :action => 'new'
+  rescue ActiveRecord::RecordInvalid
+    render :action => 'new'
   end
 
   def edit
     @calendar = true
-    @employee = Employee.find(params[:id], :conditions => "deleted = 0 ")
+    @page_title = '[アカウント情報変更]'
+    @user = User.find(params[:id], :conditions => "deleted = 0 ")
+    @employee = @user.employee
+    @departments = Department.find(:all, :order => "display_order") 
     
-    @users = User.find(:all, :conditions => "deleted = 0 ", :order => "id") 
-    @departments = Department.find(:all, :order => "display_order")
+    if request.post?
+      parseTimes(params)
+      @employee.attributes = params[:employee]
+
+      # アップロードファイルの保存
+      store_upload_file
+
+      @employee.employee_code = @employee.insurance_code.to_i + 9800
+      old_employee = Employee.find(@user.employee.id)
+
+      @employee.save!
+
+      request.env['HTTPS'] = nil unless params[:https]
+      if params[:back_to].blank?
+        redirect_to(:controller => 'employee', :action => 'list')
+      else
+        redirect_to params[:back_to]
+      end
+      flash[:notice] = _("Update your infomation.")
+    end
+  rescue ValidationAbort
+    flash[:warning] = $!
+  rescue ActiveRecord::RecordInvalid
   end
   
   def edit_bank
     @employee = Employee.find(params[:id], :conditions => "deleted = 0 ")
   end
 
-  def update
-    parseTimes(params)
-    @employee = Employee.find(params[:id], :conditions => "deleted = 0 ")
-    
-    #copy employee object
-    #@employee_new = @employee.clone
-    #@employee_new.attributes = params[:employee] 
-    
-    @employee.attributes = params[:employee] 
-    
-    #upload file
-    if params[:upload]['file1'] != ""
-      file1 = params[:upload]['file1']
-      xxx = rand(1000000).to_s
-      filename1 = "employee_#{@employee.user_id}_#{xxx}" + "." + (file1.original_filename.to_s).split('.')[1]
-      @employee.attached_file1 = filename1
-      #@employee_new.attached_file1 = filename1
-      File.open("public/images/#{filename1}", "wb"){ |f| f.write(file1.read) }
-    end
-    #if params[:upload]['file3'] != ""
-    #  file3 = params[:upload]['file3']
-    # xxx = rand(1000000).to_s
-    #  filename3 = "employee_#{@employee.user_id}_#{xxx}" + "." + (file3.original_filename.to_s).split('.')[1]
-    #  @employee.attached_file3 = filename3
-    #  File.open("public/images/#{filename3}", "wb"){ |f| f.write(file3.read) }
-    #end
-    
-    #update active flg
-    #@employee.active_flg = 0
-    #@employee_new.active_flg = 1
-    #if @employee.save && @employee_new.save
-    
-    if @employee.save
-      flash[:notice] = 'Employee was successfully updated.'
-      redirect_to :action => 'show', :id => @employee
-      #redirect_to :action => 'show', :id => @employee_new
-    else
-      render :action => 'edit'
-    end
-  end
-  
   def update_bank
     @employee = Employee.find(params[:id], :conditions => "deleted = 0 ")
     @employee.attributes = params[:employee] 

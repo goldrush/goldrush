@@ -4,7 +4,7 @@
 <h1>休暇申請新規作成</h1>
 <% end %>
 
-<% form_tag :action => 'create', :mode => params[:mode] do %>
+<%= form_tag :action => 'create', :mode => params[:mode] do %>
   <%= render :partial => 'form' %>
   <%= submit_tag "登録", :onClick => "return validateDate($('#holiday_application_start_date').val()) && validateDate($('#holiday_application_end_date').val());" %>
 <% end %>

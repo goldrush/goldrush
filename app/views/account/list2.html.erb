@@ -1,9 +1,9 @@
 <h1>社員勤務表・週報一覧</h1>
-<% form_tag do %>
+<%= form_tag do %>
 　<%= check_box_tag 'all_display_checkbox', '1', @all_display %>全て
   <%= submit_tag '表示', :name => 'display_button' %>
 <% end %>
-<%= _paginate(@employees) %>
+<%= paginate(@employees) %>
 
 <table class="list_table">
   <tr>

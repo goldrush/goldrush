@@ -48,7 +48,7 @@ class AccountController < ApplicationController
   end
 
   def store_upload_file
-    file_dir = File.join(RAILS_ROOT,'tmp','attach')
+    file_dir = File.join(Rails.root,'tmp','attach')
     if params[:upload]
       if params[:upload]['file1'] != ""
         file1 = params[:upload]['file1']
@@ -427,7 +427,7 @@ class AccountController < ApplicationController
   def open_file_picture
     user = User.find(params[:id], :conditions => "deleted = 0 ") 
     filename = user.employee.attached_file1.to_s
-    file_dir = File.join(RAILS_ROOT,'tmp','attach')
+    file_dir = File.join(Rails.root,'tmp','attach')
     send_file File.join(file_dir,filename), :type => 'image/jpeg', :disposition => 'inline', :filename => filename
   rescue ActionController::MissingFile
     flash[:notice] = '写真が見つかりませんでした。'
@@ -437,7 +437,7 @@ class AccountController < ApplicationController
   def open_file_history1
     user = User.find(params[:id], :conditions => "deleted = 0 ") 
     filename = user.employee.attached_file2.to_s
-    file_dir = File.join(RAILS_ROOT,'tmp','attach')
+    file_dir = File.join(Rails.root,'tmp','attach')
     send_file File.join(file_dir,filename), :type => 'application/pdf', :disposition => 'inline', :filename => filename
   rescue ActionController::MissingFile
     flash[:notice] = '職務経歴書が見つかりませんでした。'
@@ -447,7 +447,7 @@ class AccountController < ApplicationController
   def open_file_history2
     user = User.find(params[:id], :conditions => "deleted = 0 ") 
     filename = user.employee.attached_file3.to_s
-    file_dir = File.join(RAILS_ROOT,'tmp','attach')
+    file_dir = File.join(Rails.root,'tmp','attach')
     send_file File.join(file_dir,filename), :type => 'application/pdf', :disposition => 'inline', :filename => filename
   rescue ActionController::MissingFile
     flash[:notice] = '職務経歴書が見つかりませんでした。'
@@ -457,7 +457,7 @@ class AccountController < ApplicationController
   def open_file_history3
     user = User.find(params[:id], :conditions => "deleted = 0 ") 
     filename = user.employee.attached_file4.to_s
-    file_dir = File.join(RAILS_ROOT,'tmp','attach')
+    file_dir = File.join(Rails.root,'tmp','attach')
     send_file File.join(file_dir,filename), :type => 'application/pdf', :disposition => 'inline', :filename => filename
   rescue ActionController::MissingFile
     flash[:notice] = '職務経歴書が見つかりませんでした。'

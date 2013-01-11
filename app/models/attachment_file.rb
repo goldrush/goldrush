@@ -13,7 +13,7 @@ class AttachmentFile < ActiveRecord::Base
       # 取れてない場合はUTF-8コードなのにisoだって言い張ってる困ったチャンだと思われる。
       # UTF-8にしちゃう。
       File.open("ext_test.txt", "wb"){ |f| f.write filename}
-      ext = File.extname(NKF.nkf('-W', file_name)).downcase
+      ext = File.extname(NKF.nkf('-w', file_name)).downcase
     end
     
     if !['.txt', '.jpg', '.gif', '.png', '.doc', '.docx', '.xls', '.xlsx', '.pdf'].include?(ext)
@@ -42,7 +42,7 @@ class AttachmentFile < ActiveRecord::Base
 
 # 保管フォルダ指定
   def file_dir
-    @file_dir ||= File.join(RAILS_ROOT, 'files')
+    @file_dir ||= File.join(Rails.root, 'files')
   end
 
 

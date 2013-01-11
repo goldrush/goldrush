@@ -1,6 +1,6 @@
 <h1><%=getLongName('table_name','analysis_templates')%>編集</h1>
 
-<% form_tag :action => 'update', :id => @analysis_template, :back_to => params[:back_to] do %>
+<%= form_tag :action => 'update', :id => @analysis_template, :back_to => params[:back_to] do %>
 
   <% if @analysis_template.analysis_template_type == 'biz_offer' %>
     <h2>解析テンプレートヘッダ</h2>

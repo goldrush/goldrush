@@ -17,7 +17,7 @@
   <%= render :partial => 'attachment_file/list' %>
 <% end %>
 
-<% form_tag({:controller => 'attachment_file', :action => 'create', :parent_table => 'bp_members', :parent_id => @bp_member, :back_to => request.env['REQUEST_URI']}, :multipart => true) do %>
+<%= form_tag({:controller => 'attachment_file', :action => 'create', :parent_table => 'bp_members', :parent_id => @bp_member, :back_to => request.env['REQUEST_URI']}, :multipart => true) do %>
   <div align=right>
   <table>
     <tr>

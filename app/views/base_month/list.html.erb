@@ -3,10 +3,7 @@
 <%= link_to '基準月データ初期', { :controller => :monthly_working, :action => 'init_base_month', :back_to => request.env['REQUEST_URI']}, :confirm => '基準月データを初期化します。よろしいですか?', :method => :post %>
 <br/>
 <br/>
-<div class="pagenate">
-<%= @base_month_pages.current.previous ? link_to('前のページ', { :page => @base_month_pages.current.previous }) : '前のページ' %>
-<%= @base_month_pages.current.next ? link_to('次のページ', { :page => @base_month_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@base_months) %>
 
 <table class="list_table">
   <tr>
@@ -43,10 +40,7 @@
 
 
 <br/>
-<div class="pagenate">
-<%= @base_month_pages.current.previous ? link_to('前のページ', { :page => @base_month_pages.current.previous }) : '前のページ' %>
-<%= @base_month_pages.current.next ? link_to('次のページ', { :page => @base_month_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@base_months) %>
 
 <br />
 

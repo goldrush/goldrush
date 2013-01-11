@@ -1,5 +1,5 @@
 <table class="show_table">
-<%- for column in Configuration.columns -%>
+<%- for column in SysConfig.columns -%>
   <%- if system_column?(column.name) then next end -%>
 <tr>
   <th><%= getLongName('configurations', column.name) %></th><td><%=h @configuration.send(column.name) %></td>

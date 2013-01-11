@@ -2,15 +2,15 @@
 
 <% @check_errors.each do |check_err| %>
   <% if ['come_lately_app',"leave_early_app","over_time_app"].include?(check_err) %>
-    <% url = url_for(:controller => :other_application, :action => :popup_new, :working_option_type => check_err, :daily_working_id => @daily_working.id, :in_time => @daily_working.in_time, :out_time => @daily_working.out_time, :back_to => request.env['REQUEST_URI']) %>
+	  <% url = url_for(:controller => :other_application, :action => :new, :popup => 1, :working_option_type => check_err, :daily_working_id => @daily_working.id, :in_time => @daily_working.in_time, :out_time => @daily_working.out_time, :back_to => request.env['REQUEST_URI']) %>
     <%= link_to "#{getLongType('working_option_type', check_err)}作成", "#", :onclick=> "disp('#{url}');return false;" %>
   <% else %>
-    <% url = url_for(:controller => :holiday_application, :action => :popup_new, :working_type => check_err, :daily_working_id => @daily_working.id, :in_time => @daily_working.in_time, :out_time => @daily_working.out_time, :back_to => request.env['REQUEST_URI']) %>
+	  <% url = url_for(:controller => :holiday_application, :action => :new, :popup => 1, :working_type => check_err, :daily_working_id => @daily_working.id, :in_time => @daily_working.in_time, :out_time => @daily_working.out_time, :back_to => request.env['REQUEST_URI']) %>
     <%= link_to "#{getLongType('working_type', check_err)}申請作成", "#", :onclick=> "disp('#{url}');return false;" %>
   <% end %>
 <% end %>
 
-<% form_tag :action => 'update', :id => @daily_working, :back_to => params[:back_to] do %>
+<%= form_tag :action => 'update', :id => @daily_working, :back_to => params[:back_to] do %>
   <%= render :partial => 'form' %>
   <% unless @daily_working.monthly_working_applicated? %>
     <%= submit_tag '更新', :onclick => "return validateTime($('daily_working_in_time').val()) && validateTime($('daily_working_out_time').val()) && validateTime($('daily_working_rest_hour').val());" %>

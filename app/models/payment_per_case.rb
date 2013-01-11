@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+require 'application_util'
 class PaymentPerCase < ActiveRecord::Base
   include AutoTypeName
   include ApplicationUtil

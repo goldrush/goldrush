@@ -1,15 +1,3 @@
-<script type="text/javascript">
-<!--
-  var cal = new JKL.Calendar("calDisplay","","date_from");
-  var cal2 = new JKL.Calendar("cal2Display","","date_to");
-  
-  var flgCal = true;
-  var flgCal2 = true;
-  
-  
-//-->
-</script>
-    
 <p><b>社員検索</b></p>
 <table border='0' cellpadding='0'>
   <tr>
@@ -29,12 +17,10 @@
     <td><%= select_tag 'employee[department_id]', options_for_select(@departments.collect{|x| [x.department_name, x.id]}.unshift([]), params[:employee] ? params[:employee][:department_id] : '') %></td>
     <td font size=12px align="right">退社日：</td>
     <td>
-<!-- <input type="text" id="date_from" name="date_from" size="15" value="<%= params[:date_from] ? params[:date_from] : '' %>" onClick="cal.write();" onChange="cal.getFormValue(); cal.hide();" onblur="if (flgCal) {cal.hide();}"> -->
 <%= date_field_tag 'date_from' %>
 　～　</td>
     <td>
     <%= date_field_tag 'date_to' %>
-<!-- <input type="text" id="date_to" name="date_to" size="15" value="<%= params[:date_to] ? params[:date_to] : '' %>" onClick="cal2.write();" onChange="cal2.getFormValue(); cal2.hide();" onblur="if (flgCal2) {cal2.hide();}"> -->
 </td>
   </tr>
   <tr>

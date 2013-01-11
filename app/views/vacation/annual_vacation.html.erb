@@ -1,5 +1,5 @@
 <h1>年次処理設定</h1>
-<% form_tag :action => 'calculate_vacation' do %>
+<%= form_tag :action => 'calculate_vacation' do %>
   <p>前回年次バッチ実行日時：
     <%=h @calculate_vacation_year.value1 %>年度　
     <%=h @calculate_vacation_year.updated_at %>

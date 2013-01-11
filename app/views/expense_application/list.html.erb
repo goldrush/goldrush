@@ -1,9 +1,6 @@
 <h1><%=getLongName('table_name','expense_applications')%>一覧</h1>
 
-<div class="pagenate">
-<%= @expense_application_pages.current.previous ? link_to('前のページ', { :page => @expense_application_pages.current.previous }) : '前のページ' %>
-<%= @expense_application_pages.current.next ? link_to('次のページ', { :page => @expense_application_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@expense_applications) %>
 
 <table class="list_table">
   <tr>

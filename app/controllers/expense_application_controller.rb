@@ -12,7 +12,7 @@ class ExpenseApplicationController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @expense_application_pages, @expense_applications = paginate (:expense_applications, :per_page => 30, :conditions => ["deleted = 0 and user_id = ?", current_user.id], :order => "application_date DESC")
+    @expense_application_pages, @expense_applications = paginate(:expense_applications, :per_page => 30, :conditions => ["deleted = 0 and user_id = ?", current_user.id], :order => "application_date DESC")
   end
 
 
@@ -317,7 +317,7 @@ class ExpenseApplicationController < ApplicationController
   def open_file
     expense_application = ExpenseApplication.find_by_attached_material(params[:id] + '.' + params[:format], :conditions => "deleted = 0 ") 
     filename = expense_application.attached_material
-    file_dir = File.join(RAILS_ROOT,'tmp','expense')
+    file_dir = File.join(Rails.root,'tmp','expense')
     send_file File.join(file_dir, filename), :type => 'application/octet-stream', :disposition => 'inline', :filename => expense_application.attached_material_name
   rescue ActionController::MissingFile
     flash[:notice] = 'ファイルが見つかりませんでした。'
@@ -335,8 +335,8 @@ class ExpenseApplicationController < ApplicationController
       flash[:err] = 'EXCELダウンロードのパラメータが不正です(id)'
       return redirect_to(:action => '/')
     end
-    java_dir = File.join(RAILS_ROOT, 'java')
-    tmp_dir = File.join(RAILS_ROOT, 'tmp', 'excel')
+    java_dir = File.join(Rails.root, 'java')
+    tmp_dir = File.join(Rails.root, 'tmp', 'excel')
     xxx = rand(1000000).to_s
     filename = "expense_#{mode}_#{id}_#{Time.now.strftime('%Y%m%d%H%M%S')}.xls"
     tmp_filename = filename + "." + xxx
@@ -361,7 +361,7 @@ class ExpenseApplicationController < ApplicationController
 
 private
   def proc_attach
-    file_dir = File.join(RAILS_ROOT,'tmp','expense')
+    file_dir = File.join(Rails.root,'tmp','expense')
     if !(@file_field.blank?)
       file = @file_field
       ext = File.extname(file.original_filename.to_s).downcase

@@ -5,17 +5,14 @@
     tabs << link_and_if(controller.action_name != key, val, :controller => :monthly_working, :action => key)
   end
 %>
-<%= tabs.join(" | ") %>
+<%= raw tabs.join(" | ") %>
 <br/>
 <hr> 
 
-<div class="pagenate">
-<%= @user_pages.current.previous ? link_to('前のページ', { :page => @user_pages.current.previous }) : '前のページ' %>
-<%= @user_pages.current.next ? link_to('次のページ', { :page => @user_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@users) %>
 
 <% if working_time_sheet? %>
-<% form_tag :action => 'clear_monthly_working', :back_to => request.env['REQUEST_URI'] do %>
+<%= form_tag :action => 'clear_monthly_working', :back_to => request.env['REQUEST_URI'] do %>
   <p>
     再初期化を行いたい作業月を選択して下さい
     </br>
@@ -91,9 +88,6 @@
 </table>
 
 <br>
-<div class="pagenate">
-<%= @user_pages.current.previous ? link_to('前のページ', { :page => @user_pages.current.previous }) : '前のページ' %>
-<%= @user_pages.current.next ? link_to('次のページ', { :page => @user_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@users) %>
 
 

@@ -1,6 +1,6 @@
 <h1><%=getLongName('table_name','import_mails')%>一覧</h1>
 
-<% form_tag do %>
+<%= form_tag do %>
 <table>
     <tr>
       <td><%= radio_button_tag "order", "count", session[:import_mail_order][:order] == "count" %></td><td>メール件数</td>

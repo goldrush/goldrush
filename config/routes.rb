@@ -1,5 +1,7 @@
 # -*- encoding: utf-8 -*-
 GoldRush::Application.routes.draw do
+  resources :users
+
   devise_for :auth, :class_name => User
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -51,6 +53,7 @@ GoldRush::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   root :to => 'home#index'
+ # root :to => 'api#import_mail'
 #  root :to => 'application_approval#user_list"'
 
   # See how all your routes lay out with "rake routes"

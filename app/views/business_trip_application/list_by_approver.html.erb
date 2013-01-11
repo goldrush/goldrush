@@ -10,10 +10,7 @@
 <br>   
 <hr> 
 
-<div class="pagenate">
-<%= @business_trip_application_pages.current.previous ? link_to('前のページ', { :page => @business_trip_application_pages.current.previous }) : '前のページ' %>
-<%= @business_trip_application_pages.current.next ? link_to('次のページ', { :page => @business_trip_application_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@business_trip_applications) %>
 
 <table class="list_table">
   <tr>
@@ -72,9 +69,6 @@
 <% end %>
 </table>
 <br>
-<div class="pagenate">
-<%= @business_trip_application_pages.current.previous ? link_to('前のページ', { :page => @business_trip_application_pages.current.previous }) : '前のページ' %>
-<%= @business_trip_application_pages.current.next ? link_to('次のページ', { :page => @business_trip_application_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@business_trip_applications) %>
 
 

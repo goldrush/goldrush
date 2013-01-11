@@ -1,6 +1,5 @@
 # -*- encoding: utf-8 -*-
 class HomeController < ApplicationController
-  before_filter :authenticate_auth!
 
   def index
 #    @calendar = true

@@ -1,9 +1,6 @@
 <h1><%=getLongName('table_name','employee_histories')%>一覧</h1>
 <p>社員名: <%=h @employee.employee_name %></p>
-<div class="pagenate">
-<%= @employee_history_pages.current.previous ? link_to('前のページ', { :page => @employee_history_pages.current.previous }) : '前のページ' %>
-<%= @employee_history_pages.current.next ? link_to('次のページ', { :page => @employee_history_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@employee_histories) %>
 
 <table class="list_table">
   <tr >
@@ -37,10 +34,7 @@
 </table>
 
 <br/>
-<div class="pagenate">
-<%= @employee_history_pages.current.previous ? link_to('前のページ', { :page => @employee_history_pages.current.previous }) : '前のページ' %>
-<%= @employee_history_pages.current.next ? link_to('次のページ', { :page => @employee_history_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@employee_histories) %>
 
 <br />
 

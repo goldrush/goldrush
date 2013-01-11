@@ -1,6 +1,6 @@
 <h1><%=getLongName('table_name','business_trip_applications')%>新規作成</h1>
 
-<% form_tag :action => 'create', :back_to => request.env['REQUEST_URI'] do %>
+<%= form_tag :action => 'create', :back_to => request.env['REQUEST_URI'] do %>
   <%= render :partial => 'form' %>
   <%= submit_tag "登録" %>
 <% end %>

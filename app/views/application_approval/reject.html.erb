@@ -1,7 +1,7 @@
 <h1>却下コメント</h1>
 <%= error_messages_for 'comment' %>
 
-<% form_tag :action => 'reject', :id => params[:id], :application_type => params[:application_type], :approval_status_type => params[:approval_status_type], :back_to => params[:back_to] do %>
+<%= form_tag :action => 'reject', :id => params[:id], :application_type => params[:application_type], :approval_status_type => params[:approval_status_type], :back_to => params[:back_to] do %>
   <table class="input_table">
     <tr>
       <th><%=getLongName('comments','content')%></th>

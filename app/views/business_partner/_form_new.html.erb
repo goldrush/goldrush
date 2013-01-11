@@ -2,7 +2,7 @@
 
 <h2>取引先</h2>
 
-<input type=button value='登録済の取引先を選択' onClick="disp_wide('<%=url_for :controller => 'business_partner', :action => 'popup_list', :flg => 'mail' %>');return false;" />
+<input type=button value='登録済の取引先を選択' onClick="disp_wide('<%=url_for :controller => 'business_partner', :action => 'list', :popup =>1, :flg => 'mail' %>');return false;" />
 <input type=button value='取引先情報クリア' onClick="clearBp();return false;" />
 
 <!--[form:business_partner]-->

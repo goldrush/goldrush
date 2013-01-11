@@ -1,6 +1,6 @@
 <h1><%=getLongName('table_name','configurations')%>編集</h1>
 
-<% form_tag :action => 'update', :id => @configuration do %>
+<%= form_tag :action => 'update', :id => @configuration do %>
 
 <%= error_messages_for 'configuration' %>
 
@@ -8,15 +8,15 @@
   <table class="show_table">
     <tr >
       <th align="center" style="width: 20%;">夏期休暇日数</th> 
-      <td style="width: 80%;"><%= text_field 'configuration', 'Configuration.get_summer_vacation_day_total.value1' %>日間</td>
+      <td style="width: 80%;"><%= text_field 'configuration', 'SysConfig.get_summer_vacation_day_total.value1' %>日間</td>
     </tr>
     <tr>
       <th style="width: 15%;">夏期休暇取得開始日</th> 
-      <td style="width: 15%;"><%= text_field 'configuration', 'Configuration.get_summer_vacation_day_total.value1' %></td>
+      <td style="width: 15%;"><%= text_field 'configuration', 'SysConfig.get_summer_vacation_day_total.value1' %></td>
     </tr>
     <tr>
       <th style="width: 15%;">夏期休暇取得終了日</th> 
-      <td style="width: 15%;"><%= text_field 'configuration', 'Configuration.get_summer_vacation_day_total.value1' %></td>
+      <td style="width: 15%;"><%= text_field 'configuration', 'SysConfig.get_summer_vacation_day_total.value1' %></td>
     </tr>
   </table>
 

@@ -5,7 +5,7 @@
 <p>
   <label for="business_partner_name">取引先</label><br />
   <%= text_field_tag 'business_partner_name', @analysis_template.business_partner.blank? ? "" : @analysis_template.business_partner.business_partner_name, :readOnly => true, :style => "background-color: silver;", :size => 30 %>
-  <input type=button value='...' onClick="disp_wide('<%=url_for :controller => 'business_partner', :action => 'popup_list', :flg => 'upper_or_down' %>');return false;" />
+  <input type=button value='...' onClick="disp_wide('<%=url_for :controller => 'business_partner', :action => 'list', :popup => 1, :flg => 'upper_or_down' %>');return false;" />
   <input type=button value='クリア' onClick="clearBp();return false;" />
 </p>
 <%= hidden_field 'analysis_template', 'business_partner_id' %>
@@ -24,7 +24,7 @@
 <script type="text/javascript">
 <!--
 function openBpPicList() {
-    disp_wide('<%=url_for :controller => 'bp_pic', :action => 'popup_list' %>' + '/' + document.getElementById("analysis_template_business_partner_id").value)
+    disp_wide('<%=url_for :controller => 'bp_pic', :action => 'list', :popup =>1 %>' + '/' + document.getElementById("analysis_template_business_partner_id").value)
 }
 
 document.setBp = function(bp) {

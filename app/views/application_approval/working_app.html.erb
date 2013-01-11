@@ -17,14 +17,11 @@
 <br>
 <hr>
 
-<% form_tag :action => 'do_search' do %>
+<%= form_tag :action => 'do_search' do %>
   <%= render :partial => 'form_search' %>  
 <% end %>
 
-<div class="pagenate">
-<%= @application_approval_pages.current.previous ? link_to('前のページ', { :page => @application_approval_pages.current.previous, :edit_type => @edit_type }) : '前のページ' %>
-<%= @application_approval_pages.current.next ? link_to('次のページ', { :page => @application_approval_pages.current.next, :edit_type => @edit_type }) : '次のページ' %> 
-</div>
+<%= paginate(@application_approvals) %>
 
 <table class="list_table">
   <tr>
@@ -61,7 +58,7 @@
     <% approvalColor = "#ffffff" %>
   <% end %>
   <tr style="background-color: <%= approvalColor %>;">
-    <td align="center"><%=h params[:page]? ((params[:page].to_i-1) * Configuration.get_per_page_count).to_i+idx+1 : idx+1 %></td>
+    <td align="center"><%=h params[:page]? ((params[:page].to_i-1) * SysConfig.get_per_page_count).to_i+idx+1 : idx+1 %></td>
     
     <% if application_approval.application_type == 'holiday_app' %>
       <td style="width: 20%;"><%=h application_approval.holiday_application.user.employee.employee_name %></td>
@@ -168,10 +165,7 @@
 </table>
 <br>
 
-<div class="pagenate">
-<%= @application_approval_pages.current.previous ? link_to('前のページ', { :page => @application_approval_pages.current.previous }) : '前のページ' %>
-<%= @application_approval_pages.current.next ? link_to('次のページ', { :page => @application_approval_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@application_approvals) %>
 
 <br />
 

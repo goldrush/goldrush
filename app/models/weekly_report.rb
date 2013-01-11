@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+require 'application_util'
 class WeeklyReport < ActiveRecord::Base
   include ApplicationUtil
 

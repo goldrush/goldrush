@@ -1,13 +1,10 @@
 <h1>全ての申請一覧</h1>
 
-<% form_tag :action => 'do_search' do %>
+<%= form_tag :action => 'do_search' do %>
   <%= render :partial => 'form_search' %>  
 <% end %>
 
-<div class="pagenate">
-<%= @base_application_pages.current.previous ? link_to('前のページ', { :page => @base_application_pages.current.previous}) : '前のページ' %>
-<%= @base_application_pages.current.next ? link_to('次のページ', { :page => @base_application_pages.current.next}) : '次のページ' %> 
-</div>
+<%= paginate(@base_applications) %>
 
 <table class="list_table">
   <tr>
@@ -22,7 +19,7 @@
 
 <% @base_applications.each_index do |idx| base_application = @base_applications[idx] %>
   <tr >
-    <td align="center"><%=h params[:page]? ((params[:page].to_i-1) * Configuration.get_per_page_count).to_i+idx+1 : idx+1 %></td>
+    <td align="center"><%=h params[:page]? ((params[:page].to_i-1) * SysConfig.get_per_page_count).to_i+idx+1 : idx+1 %></td>
     <td style="width: 20%;"><%=h base_application.user.employee.employee_name %></td>
 
     <% if base_application.application_type == 'holiday_app' %>
@@ -78,10 +75,7 @@
 </table>
 <br>
 
-<div class="pagenate">
-<%= @base_application_pages.current.previous ? link_to('前のページ', { :page => @base_application_pages.current.previous }) : '前のページ' %>
-<%= @base_application_pages.current.next ? link_to('次のページ', { :page => @base_application_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@base_applications) %>
 
 <br />
 

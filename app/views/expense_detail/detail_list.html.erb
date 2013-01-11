@@ -1,12 +1,5 @@
 <h1><%=getLongName('table_name','expense_details')%>一覧</h1>
 
-<!--
-<div class="pagenate">
-<%= @expense_detail_pages.current.previous ? link_to('前のページ', { :page => @expense_detail_pages.current.previous }) : '前のページ' %>
-<%= @expense_detail_pages.current.next ? link_to('次のページ', { :page => @expense_detail_pages.current.next }) : '次のページ' %> 
-</div>
--->
-
 <table class="list_table">
   <tr>
     <th width="25"></th>
@@ -31,18 +24,6 @@
     <td align="center"><%=h expense_detail.account_item %></td>
     <td><%=h expense_detail.content %></td>
     <td align="right"><%=h expense_detail.amount.to_i %></td>
-
-<!--
-  <% for column in ExpenseDetail.columns %>
-    <% if system_column?(column.name) then next end %>
-    <td><%=h expense_detail.send(column.name) %></td>
-  <% end %>
-    <td>
-      <%= link_to '表示', :action => 'show', :id => expense_detail %>, 
-      <%= link_to '変更', :action => 'edit', :id => expense_detail %>, 
-      <%= link_to '削除', { :action => 'destroy', :id => expense_detail }, :confirm => 'この情報を削除します。よろしいですか?', :method => :post %>
-    </td>
--->
   </tr>
 <% end %>
   <tr style="background-color:#DCDCDC">
@@ -50,13 +31,6 @@
     <td align="right"><%=h total.to_i %></td>
   </tr>
 </table>
-
-<!--
-<div class="pagenate">
-<%= @expense_detail_pages.current.previous ? link_to('前のページ', { :page => @expense_detail_pages.current.previous }) : '前のページ' %>
-<%= @expense_detail_pages.current.next ? link_to('次のページ', { :page => @expense_detail_pages.current.next }) : '次のページ' %> 
-</div>
--->
 
 <br />
 

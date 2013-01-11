@@ -4,10 +4,7 @@
 <%= link_to '住所・電話番号一覧', :action => 'address_list' %>
 <br/>
 <br/>
-<div class="pagenate">
-<%= @employee_pages.current.previous ? link_to('前のページ', { :page => @employee_pages.current.previous }) : '前のページ' %>
-<%= @employee_pages.current.next ? link_to('次のページ', { :page => @employee_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@employees) %>
 
 <table class="list_table">
   <tr >
@@ -68,10 +65,7 @@
 </table>
 <br>
 
-<div class="pagenate">
-<%= @employee_pages.current.previous ? link_to('前のページ', { :page => @employee_pages.current.previous }) : '前のページ' %>
-<%= @employee_pages.current.next ? link_to('次のページ', { :page => @employee_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@employees) %>
 
 <br />
 

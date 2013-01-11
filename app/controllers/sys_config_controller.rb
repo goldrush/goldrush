@@ -13,7 +13,7 @@ class SysConfigController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @configuration_pages, @configurations = paginate :configurations, :per_page => 100, :conditions => "deleted = 0 ", :order => "id"
+    @configuration_pages, @configurations = paginate :sys_configs, :per_page => 100, :conditions => "deleted = 0 ", :order => "id"
   end
 
   def show

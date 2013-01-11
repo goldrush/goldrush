@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Login:</b>
+  <%= @user.login %>
+</p>
+
+<p>
+  <b>Nickname:</b>
+  <%= @user.nickname %>
+</p>
+
+<p>
+  <b>Access level type:</b>
+  <%= @user.access_level_type %>
+</p>
+
+<p>
+  <b>Per page:</b>
+  <%= @user.per_page %>
+</p>
+
+<p>
+  <b>Sign in count:</b>
+  <%= @user.sign_in_count %>
+</p>
+
+<p>
+  <b>Current sign in at:</b>
+  <%= @user.current_sign_in_at %>
+</p>
+
+<p>
+  <b>Last sign in at:</b>
+  <%= @user.last_sign_in_at %>
+</p>
+
+<p>
+  <b>Current sign in ip:</b>
+  <%= @user.current_sign_in_ip %>
+</p>
+
+<p>
+  <b>Last sign in ip:</b>
+  <%= @user.last_sign_in_ip %>
+</p>
+
+<p>
+  <b>Locked at:</b>
+  <%= @user.locked_at %>
+</p>
+
+<p>
+  <b>Employee</b>
+  <%= @user.employee ? 'Exists' : 'None' %>
+</p>
+
+<% if @user.employee.blank? %>
+<%= link_to 'New Employee', :controller => :employee, :action => :new, :id => @user %> |
+<% end %>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

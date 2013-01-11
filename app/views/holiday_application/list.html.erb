@@ -7,14 +7,11 @@
 <br>    
 <hr> 
 
-<% form_tag :action => 'do_search' do %>
+<%= form_tag :action => 'do_search' do %>
   <%= render :partial => 'form_search' %>  
 <% end %>
 
-<div class="pagenate">
-<%= @holiday_application_pages.current.previous ? link_to('前のページ', { :page => @holiday_application_pages.current.previous }) : '前のページ' %>
-<%= @holiday_application_pages.current.next ? link_to('次のページ', { :page => @holiday_application_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@holiday_applications) %>
 <br>
 
 <table border="0">
@@ -87,10 +84,7 @@
 </table>
 <br>
 
-<div class="pagenate">
-<%= @holiday_application_pages.current.previous ? link_to('前のページ', { :page => @holiday_application_pages.current.previous }) : '前のページ' %>
-<%= @holiday_application_pages.current.next ? link_to('次のページ', { :page => @holiday_application_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@holiday_applications) %>
 
 <br />
 <% if false %>

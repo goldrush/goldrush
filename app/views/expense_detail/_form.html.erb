@@ -79,7 +79,7 @@ function clear_row(index){
       <div id="ucalDisplay<%=i%>" onmouseover="uflgCal<%=i%> = false;" onmouseout="uflgCal<%=i%> = true;" ></div>
     </td>
     <td><%= text_field_tag "uexpense_detail#{i}[book_no]", expense_detail.book_no, :size => '10', :class => "input_book_no" %></td>
-    <td><%= text_field_tag "uexpense_detail#{i}[account_item]", expense_detail.account_item, :size => '8', :class => "input_account_item" %><input type="button" value=".." onclick="disp('<%=url_for :action => 'popup_titles', :tag_prefix => "expense_detail#{i}"%>');"></td>
+    <td><%= text_field_tag "uexpense_detail#{i}[account_item]", expense_detail.account_item, :size => '8', :class => "input_account_item" %><input type="button" value=".." onclick="disp('<%=url_for :action => 'titles', :popup => 1, :tag_prefix => "expense_detail#{i}"%>');"></td>
     <td><%= text_field_tag "uexpense_detail#{i}[content]", expense_detail.content, :size => '35', :class => "input_content" %></td>
     <td><%= currency_field_tag "uexpense_detail#{i}[amount]", expense_detail.amount.to_i, :size => '8', :class => "input_amount" %></td>
     <% if current_user.employee.credit_card_flg == 1 %>
@@ -98,7 +98,7 @@ function clear_row(index){
       <div id="calDisplay<%=i%>" onmouseover="flgCal<%=i%> = false;" onmouseout="flgCal<%=i%> = true;" ></div>
     </td>
     <td><%= text_field_tag "expense_detail#{i}[book_no]", expense_detail.book_no, :size => '10', :class => "input_book_no" %></td>
-    <td><%= text_field_tag "expense_detail#{i}[account_item]", expense_detail.account_item, :size => '8', :class => "input_account_item" %><input type="button" value=".." onclick="disp('<%=url_for :action => 'popup_titles', :tag_prefix => "expense_detail#{i}"%>');"></td>
+    <td><%= text_field_tag "expense_detail#{i}[account_item]", expense_detail.account_item, :size => '8', :class => "input_account_item" %><input type="button" value=".." onclick="disp('<%=url_for :action => 'titles', :popup => 1, :tag_prefix => "expense_detail#{i}"%>');"></td>
     <td><%= text_field_tag "expense_detail#{i}[content]", expense_detail.content, :size => '35', :class => "input_content" %></td>
     <td><%= currency_field_tag "expense_detail#{i}[amount]", (expense_detail.amount && expense_detail.amount.to_i), :size => '8', :class => "input_amount" %></td>
     <% if current_user.employee.credit_card_flg == 1 %>

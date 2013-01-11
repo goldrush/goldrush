@@ -1,8 +1,8 @@
 <h1>取り込みメール詳細</h1>
 
-<%= link_to "照会作成", {:controller => 'analysis_template', :action => 'list', :mode => 'biz_offer', :import_mail_id => @import_mail}, :popup => ['new_window', 'height=800,width=900', 'scrollbars=yes'] %> | 
-<%= link_to "所属作成", {:controller => 'analysis_template', :action => 'list', :mode => 'bp_member', :import_mail_id => @import_mail}, :popup => ['new_window', 'height=800,width=900', 'scrollbars=yes'] %> | 
-<%= link_to "取引先作成", {:controller => 'business_partner', :action => 'new', :import_mail_id => @import_mail}, :popup => ['new_window', 'height=800,width=900', 'scrollbars=yes'] %>
+<%= link_to "照会作成", {:controller => 'analysis_template', :action => 'list', :popup => 1, :mode => 'biz_offer', :import_mail_id => @import_mail}, :popup => ['new_window', 'height=800,width=900', 'scrollbars=yes'] %> | 
+<%= link_to "所属作成", {:controller => 'analysis_template', :action => 'list', :popup => 1, :mode => 'bp_member', :import_mail_id => @import_mail}, :popup => ['new_window', 'height=800,width=900', 'scrollbars=yes'] %> | 
+<%= link_to "取引先作成", {:controller => 'business_partner', :action => 'new', :popup => 1, :import_mail_id => @import_mail}, :popup => ['new_window', 'height=800,width=900', 'scrollbars=yes'] %>
 
 <table class="show_table">
 

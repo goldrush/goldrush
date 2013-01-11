@@ -1,9 +1,6 @@
 <h1><%=getLongName('table_name','payment_per_cases')%>一覧</h1>
 
-<div class="pagenate">
-<%= @payment_per_case_pages.current.previous ? link_to('前のページ', { :page => @payment_per_case_pages.current.previous }) : '前のページ' %>
-<%= @payment_per_case_pages.current.next ? link_to('次のページ', { :page => @payment_per_case_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@payment_per_cases) %>
 
 <table class="list_table">
   <tr>
@@ -29,10 +26,7 @@
 <% end %>
 </table>
 
-<div class="pagenate">
-<%= @payment_per_case_pages.current.previous ? link_to('前のページ', { :page => @payment_per_case_pages.current.previous }) : '前のページ' %>
-<%= @payment_per_case_pages.current.next ? link_to('次のページ', { :page => @payment_per_case_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@payment_per_cases) %>
 
 <br />
 

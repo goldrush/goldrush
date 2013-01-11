@@ -1,13 +1,10 @@
 <h1>勤怠申請一覧</h1>
 
-<% form_tag :action => 'do_search', :mode => params[:mode], :by_approver => params[:by_approver] do %>
+<%= form_tag :action => 'do_search', :mode => params[:mode], :by_approver => params[:by_approver] do %>
   <%= render :partial => 'form_search' %>  
 <% end %>
 
-<div class="pagenate">
-<%= @base_application_pages.current.previous ? link_to('前のページ', { :page => @base_application_pages.current.previous, :mode => 'all_working'}) : '前のページ' %>
-<%= @base_application_pages.current.next ? link_to('次のページ', { :page => @base_application_pages.current.next, :mode => 'all_working'}) : '次のページ' %>
-</div>
+<%= paginate(@base_applications) %>
 
 <table class="list_table">
   <tr>
@@ -25,7 +22,7 @@
     <% next if base_application.application_type == 'weekly_report_app' && !base_application.weekly_report %>
 
   <tr >
-    <td align="center"><%=h params[:page]? ((params[:page].to_i-1) * Configuration.get_per_page_count).to_i+idx+1 : idx+1 %></td>
+    <td align="center"><%=h params[:page]? ((params[:page].to_i-1) * SysConfig.get_per_page_count).to_i+idx+1 : idx+1 %></td>
     <td style="width: 15%;"><%=h base_application.user.employee.employee_name %></td>
 
     <% if base_application.application_type == 'holiday_app' %>
@@ -39,7 +36,7 @@
         <%= link_to '表示', :controller => 'holiday_application', :action => 'show', :id => holiday_application, :back_to => request.env['REQUEST_URI'] %>
         <% unless holiday_application.monthly_working_applicated? %>
           <%= !base_application.self_data?(current_user.id) || base_application.canceled? ? '' : link_to('編集', :controller => 'holiday_application', :action => 'edit', :id => holiday_application, :back_to => request.env['REQUEST_URI']) %>
-          <%= ApplicationApproval.application_approver?(holiday_application, current_user.id) ? link_to_change_approval_status(ApplicationApproval.application_approval(holiday_application, current_user.id)).compact.join(" ") : '' %>
+          <%= raw ApplicationApproval.application_approver?(holiday_application, current_user.id) ? link_to_change_approval_status(ApplicationApproval.application_approval(holiday_application, current_user.id)).compact.join(" ") : '' %>
         <% end %>
       </td>
 
@@ -54,7 +51,7 @@
         <%= link_to '表示', :controller => 'business_trip_application', :action => 'show', :id => business_trip_application, :back_to => request.env['REQUEST_URI'] %>
         <% unless business_trip_application.monthly_working_applicated? %>
           <%= !base_application.self_data?(current_user.id) || base_application.canceled? ? '' : link_to('編集', :controller => 'business_trip_application', :action => 'edit', :id => business_trip_application, :back_to => request.env['REQUEST_URI']) %>
-          <%= ApplicationApproval.application_approver?(business_trip_application, current_user.id) || business_trip_application.sales_person_id == current_user.id ? link_to_change_approval_status(ApplicationApproval.application_approval(business_trip_application, current_user.id)).compact.join(" ") : '' %>
+          <%= raw ApplicationApproval.application_approver?(business_trip_application, current_user.id) || business_trip_application.sales_person_id == current_user.id ? link_to_change_approval_status(ApplicationApproval.application_approval(business_trip_application, current_user.id)).compact.join(" ") : '' %>
         <% end %>
       </td>
 
@@ -69,7 +66,7 @@
         <%= link_to '表示', :controller => 'other_application', :action => 'show', :id => other_application, :back_to => request.env['REQUEST_URI'] %>
         <% unless other_application.monthly_working_applicated? %>
           <%= !base_application.self_data?(current_user.id) || base_application.canceled? ? '' : link_to('編集', :controller => 'other_application', :action => 'edit', :id => other_application, :back_to => request.env['REQUEST_URI']) %>
-          <%= ApplicationApproval.application_approver?(other_application, current_user.id) ? link_to_change_approval_status(ApplicationApproval.application_approval(other_application, current_user.id)).compact.join(" ") : '' %>
+          <%= raw ApplicationApproval.application_approver?(other_application, current_user.id) ? link_to_change_approval_status(ApplicationApproval.application_approval(other_application, current_user.id)).compact.join(" ") : '' %>
         <% end %>
       </td>
 
@@ -100,9 +97,6 @@
 </table>
 <br />
 
-<div class="pagenate">
-<%= @base_application_pages.current.previous ? link_to('前のページ', { :page => @base_application_pages.current.previous, :mode => 'all_working' }) : '前のページ' %>
-<%= @base_application_pages.current.next ? link_to('次のページ', { :page => @base_application_pages.current.next, :mode => 'all_working' }) : '次のページ' %>
-</div>
+<%= paginate(@base_applications) %>
 
 <br />

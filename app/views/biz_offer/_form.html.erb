@@ -14,7 +14,7 @@
   <p>
     <label for="business_partner_name">上流取引先</label><br />
     <%= text_field_tag 'business_partner_name', @biz_offer.business_partner.blank? ? "" : @biz_offer.business_partner.business_partner_name, :readOnly => true, :style => "background-color: silver;", :size => 30 %>
-    <input type=button value='...' onClick="disp_wide('<%=url_for :controller => 'business_partner', :action => 'popup_list', :flg => 'upper' %>');return false;" />
+    <input type=button value='...' onClick="disp_wide('<%=url_for :controller => 'business_partner', :action => 'list', :popup =>1, :flg => 'upper' %>');return false;" />
     <input type=button value='クリア' onClick="clearBp();return false;" />
   </p>
   <%= hidden_field 'biz_offer', 'business_partner_id' %>
@@ -44,7 +44,7 @@
   <p>
     <label for="biz_offer_contact_pic_name">窓口担当</label><br />
     <%= text_field_tag 'contact_pic_name', @biz_offer.contact_pic.blank? ? "" : @biz_offer.contact_pic.employee.employee_name, :readOnly => true, :style => "background-color: silver;", :size => 30 %>
-    <input type=button value='...' onClick="disp_wide('<%=url_for :controller => 'user', :action => 'popup_list', :mode => 'contact' %>');return false;" />
+    <input type=button value='...' onClick="disp_wide('<%=url_for :controller => 'user', :action => 'list', :popup =>1, :mode => 'contact' %>');return false;" />
     <input type=button value='クリア' onClick="clearContactUser();return false;" />
   </p>
   <%= hidden_field 'biz_offer', 'contact_pic_id' %>
@@ -52,7 +52,7 @@
   <p>
     <label for="biz_offer_sales_pic_name">営業担当</label><br />
     <%= text_field_tag 'sales_pic_name', @biz_offer.sales_pic.blank? ? "" : @biz_offer.sales_pic.employee.employee_name, :readOnly => true, :style => "background-color: silver;", :size => 30 %>
-    <input type=button value='...' onClick="disp_wide('<%=url_for :controller => 'user', :action => 'popup_list', :mode => 'sales' %>');return false;" />
+    <input type=button value='...' onClick="disp_wide('<%=url_for :controller => 'user', :action => 'list', :popup =>1, :mode => 'sales' %>');return false;" />
     <input type=button value='クリア' onClick="clearSalesUser();return false;" />
   </p>
   <%= hidden_field 'biz_offer', 'sales_pic_id' %>
@@ -84,7 +84,7 @@
 <script type="text/javascript">
 <!--
 function openBpPicList() {
-    disp_wide('<%=url_for :controller => 'bp_pic', :action => 'popup_list' %>' + '/' + document.getElementById("biz_offer_business_partner_id").value)
+    disp_wide('<%=url_for :controller => 'bp_pic', :action => 'list', :popup =>1 %>' + '/' + document.getElementById("biz_offer_business_partner_id").value)
 }
 
 document.setBp = function(bp) {

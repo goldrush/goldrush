@@ -1,28 +1,38 @@
-<script type="text/javascript">
-<!--
-  var cal = new JKL.Calendar("calDisplay","","employee[birthday_date]");
-  var cal2 = new JKL.Calendar("calDisplay2","","employee[entry_date]");
-  var cal3 = new JKL.Calendar("calDisplay3","","employee[resignation_date]");
-  var cal4 = new JKL.Calendar("calDisplay4","","employee[active_date]");
-  var cal5 = new JKL.Calendar("calDisplay5","","employee[inactive_date]");
-  
-  var flgCal = true;
-  var flgCal2 = true;
-  var flgCal3 = true;
-  var flgCal4 = true;
-  var flgCal5 = true;
-  
-//-->
-</script>
-
-<%= error_messages_for 'employee' %>
-
+<%= error_messages_for :employee %>
+<!--[form:user]-->
 
 <table class="input_table">
-<caption style="font-size:14px"><b>個人情報</b></caption>
+  <caption style="font-size:14px"><b>ログイン情報</b></caption>
+
+  <tr>
+    <th><%=_("User|Login")%>(*)</th>
+    <td><%= @user.login %></td>
+  </tr>
+
+</table>
+<br />
+
+<table class="input_table">
+<caption style="font-size:14px"><b>社員情報</b></caption>
 <tr>
-  <th>ユーザー</th>
-  <td><%= collection_select 'employee', 'user_id', @users, 'id', 'login' %></td>
+  <th><%=getLongName('employees','insurance_code')%>(*)</th>
+  <td><%= text_field 'employee', 'insurance_code'  %></td>
+</tr>
+<tr>
+  <th><%=getLongName('employees','employee_name')%>(*)</th>
+  <td><%= text_field 'employee', 'employee_name'  %></td>
+</tr>
+<tr>
+  <th><%=getLongName('employees','employee_kana_name')%>(*)</th>
+  <td><%= text_field 'employee', 'employee_kana_name'  %></td>
+</tr>
+<tr>
+  <th>社員氏名略名</th>
+  <td><%= text_field 'employee', 'employee_short_name'  %></td>
+</tr>
+<tr>
+  <th>承認者権限</th>
+  <td><%= check_box 'employee', 'approver_flg' %></td>
 </tr>
 <tr>
   <th>部署</th>
@@ -33,19 +43,63 @@
   <td><%= text_field 'employee', 'position'  %></td>
 </tr>
 <tr>
-  <th><%=getLongName('employees','insurance_code')%></th>
-  <td><%= text_field 'employee', 'insurance_code'  %></td>
+  <th><%=getLongName('employees','entry_date')%>(*)</th>
+  <td>
+  <input type="text" id="employee_entry_date" name="employee[entry_date]" value="<%=h @employee.entry_date.to_date if @employee.entry_date != nil %>" size="15" onClick="cal1.write();" onChange="cal1.getFormValue(); cal1.hide();" onblur="if (flgCal1) {cal1.hide();}">
+  </br>
+  <div id="calDisplay1" onmouseover="flgCal1 = false;" onmouseout="flgCal1 = true;" ></div>
+  </td>
 </tr>
 <tr>
-  <th><%=getLongName('employees','employee_name')%></th>
-  <td><%= text_field 'employee', 'employee_name'  %></td>
+  <th><%=getLongName('employees','resignation_date')%></th>
+  <td>
+  <input type="text" id="employee_resignation_date" name="employee[resignation_date]" value="<%=h @employee.resignation_date.to_date if @employee.resignation_date != nil %>" size="15" onClick="cal2.write();" onChange="cal2.getFormValue(); cal2.hide();" onblur="if (flgCal2) {cal2.hide();}">
+  </br>
+  <div id="calDisplay2" onmouseover="flgCal2 = false;" onmouseout="flgCal2 = true;" ></div>
+  </td>
 </tr>
 <tr>
-  <th><%=getLongName('employees','employee_kana_name')%></th>
-  <td><%= text_field 'employee', 'employee_kana_name'  %></td>
+  <th><%=getLongName('employees','resignation_reason')%></th>
+  <td><%= text_area 'employee', 'resignation_reason', {:size => '50x3'}  %></td>
 </tr>
 <tr>
-  <th><%=getLongName('employees','birthday_date')%></th>
+  <th>所定労働時間</th>
+  <td><%= text_field 'employee', 'regular_working_hour', :size => '10' %>時間</td>
+</tr>
+<tr>
+  <th>休職日数</th>
+  <td><%= text_field 'employee', 'leave_day', :size => '10' %>日数</td>
+</tr>
+<tr>
+  <th>職務経歴書1</th>
+  <td>
+  <%= file_field 'upload', 'file2' %>
+  </td>
+</tr>
+<tr>
+  <th>職務経歴書2</th>
+  <td>
+  <%= file_field 'upload', 'file3' %>
+  </td>
+</tr>
+<tr>
+  <th>職務経歴書3</th>
+  <td>
+  <%= file_field 'upload', 'file4' %>
+  </td>
+</tr>
+  <tr>
+    <th>会社クレジットカード所有</th>
+    <td><%= check_box 'employee', 'credit_card_flg' %></td>
+  </tr>
+</table>
+<br />
+
+
+<table class="input_table">
+<caption style="font-size:14px"><b>個人情報</b></caption>
+<tr>
+  <th><%=getLongName('employees','birthday_date')%>(*)</th>
   <td>
   <input type="text" id="employee_birthday_date" name="employee[birthday_date]" value="<%=h @employee.birthday_date.to_date if @employee.birthday_date != nil %>" size="15" >
   </td>
@@ -53,29 +107,33 @@
 <tr>
   <th><%=getLongName('employees','sex_type')%></th>
   <td>
-  <%= radio_button("employee", "sex_type", 0, :checked => 'checked') %>女性
-  <%= radio_button("employee", "sex_type", 1 ) %>男性
+  <%= select 'employee', 'sex_type', $TYPE_CONDITIONS['sex_type'] %>
   </td>
 </tr>
 <tr>
-  <th><%=getLongName('employees','email')%></th>
-  <td><%= text_field 'employee', 'email'  %></td>
-</tr>
-<tr>
   <th><%=getLongName('employees','zip1')%></th>
-  <td><%= text_field 'employee', 'zip1'  %></td>
+  <td><%= text_field 'employee', 'zip1', {:id => 'employee_zip1'} %></td>
 </tr>
 <tr>
   <th><%=getLongName('employees','address1')%></th>
-  <td><%= text_field 'employee', 'address1', {:size => '80'}  %></td>
+  <td>
+	  <%= text_field 'employee', 'address1_1', {:id => 'employee_address1_1', :size => '80'} %>(<%=getLongName('employees','address1_1')%>)</br>
+	  <%= text_field 'employee', 'address1_2', {:id => 'employee_address1_2', :size => '80'} %>(<%=getLongName('employees','address1_2')%>)</br>
+	  <%= text_field 'employee', 'address1_3', {:id => 'employee_address1_3', :size => '80'} %>(<%=getLongName('employees','address1_3')%>)</br>
+	  <%= text_field 'employee', 'address1_4', {:id => 'employee_address1_4', :size => '80'} %>(<%=getLongName('employees','address1_4')%>)</br>
+  </td>
 </tr>
 <tr>
   <th><%=getLongName('employees','tel1')%></th>
   <td><%= text_field 'employee', 'tel1'  %></td>
 </tr>
 <tr>
-  <th><%=getLongName('employees','fax')%></th>
+  <th>FAX</th>
   <td><%= text_field 'employee', 'fax'  %></td>
+</tr>
+<tr>
+  <th><%=getLongName('employees','email')%></th>
+  <td><%= text_field 'employee', 'email'  %></td>
 </tr>
 <tr>
   <th><%=getLongName('employees','mobile')%></th>
@@ -86,46 +144,44 @@
   <td><%= text_field 'employee', 'mobile_email'  %></td>
 </tr>
 <tr>
+  <th><%=getLongName('employees','zip3')%></th>
+  <td><%= text_field 'employee', 'zip3', :id => 'employee_zip3' %></td>
+</tr>
+<tr>
+  <th><%=getLongName('employees','address3')%></th>
+  <td>
+	  <%= text_field 'employee', 'address3_1', {:size => '80', :id => 'employee_address3_1'}  %>(<%=getLongName('employees','address3_1')%>)<br/>
+	  <%= text_field 'employee', 'address3_2', {:size => '80', :id => 'employee_address3_2'}  %>(<%=getLongName('employees','address3_2')%>)<br/>
+	  <%= text_field 'employee', 'address3_3', {:size => '80', :id => 'employee_address3_3'}  %>(<%=getLongName('employees','address3_3')%>)<br/>
+	  <%= text_field 'employee', 'address3_4', {:size => '80', :id => 'employee_address3_4'}  %>(<%=getLongName('employees','address3_4')%>)<br/>
+    <input type="button" value = "住所コピー" onclick="return copyAddress('employee_address1','employee_address3');">
+  </td>
+</tr>
+<tr>
+  <th><%=getLongName('employees','tel3')%></th>
+  <td><%= text_field 'employee', 'tel3'  %></td>
+</tr>
+<tr>
   <th><%=getLongName('employees','name2')%></th>
   <td><%= text_field 'employee', 'name2'  %></td>
 </tr>
 <tr>
   <th><%=getLongName('employees','zip2')%></th>
-  <td><%= text_field 'employee', 'zip2'  %></td>
+  <td><%= text_field 'employee', 'zip2', :id => 'employee_zip2' %></td>
 </tr>
 <tr>
   <th><%=getLongName('employees','address2')%></th>
-  <td><%= text_field 'employee', 'address2', {:size => '80'}  %></td>
+  <td>
+	  <%= text_field 'employee', 'address2_1', {:size => '80', :id => 'employee_address2_1'}  %>(<%=getLongName('employees','address2_1')%>)<br/>
+	  <%= text_field 'employee', 'address2_2', {:size => '80', :id => 'employee_address2_2'}  %>(<%=getLongName('employees','address2_2')%>)<br/>
+	  <%= text_field 'employee', 'address2_3', {:size => '80', :id => 'employee_address2_3'}  %>(<%=getLongName('employees','address2_3')%>)<br/>
+	  <%= text_field 'employee', 'address2_4', {:size => '80', :id => 'employee_address2_4'}  %>(<%=getLongName('employees','address2_4')%>)<br/>
+    <input type="button" value = "住所コピー" onclick="return copyAddress('employee_address1','employee_address2');">
+  </td>
 </tr>
 <tr>
   <th><%=getLongName('employees','tel2')%></th>
   <td><%= text_field 'employee', 'tel2'  %></td>
-</tr>
-<tr>
-  <th><%=getLongName('employees','zip3')%></th>
-  <td><%= text_field 'employee', 'zip3'  %></td>
-</tr>
-<tr>
-  <th><%=getLongName('employees','address3')%></th>
-  <td><%= text_field 'employee', 'address3', {:size => '80'}  %></td>
-</tr>
-<tr>
-  <th><%=getLongName('employees','entry_date')%></th>
-  <td>
-  <input type="text" id="employee_entry_date" name="employee[entry_date]" value="<%=h @employee.entry_date.to_date if @employee.entry_date != nil %>" size="15" onClick="cal2.write();" onChange="cal2.getFormValue(); cal2.hide();" onblur="if (flgCal2) {cal2.hide();}">
-  <div id="calDisplay2" onmouseover="flgCal2 = false;" onmouseout="flgCal2 = true;" ></div>
-  </td>
-</tr>
-<tr>
-  <th><%=getLongName('employees','resignation_date')%></th>
-  <td>
-  <input type="text" id="employee_resignation_date" name="employee[resignation_date]" value="<%=h @employee.resignation_date.to_date if @employee.resignation_date != nil %>" size="15" onClick="cal3.write();" onChange="cal3.getFormValue(); cal3.hide();" onblur="if (flgCal3) {cal3.hide();}">
-  <div id="calDisplay3" onmouseover="flgCal3 = false;" onmouseout="flgCal3 = true;" ></div>
-  </td>
-</tr>
-<tr>
-  <th><%=getLongName('employees','resignation_reason')%></th>
-  <td><%= text_field 'employee', 'resignation_reason', {:size => '80'}  %></td>
 </tr>
 <tr>
   <th>写真</th>
@@ -133,49 +189,9 @@
   <%= file_field 'upload', 'file1' %>
   </td>
 </tr>
-
-<tr>
-  <th>職務経歴</th>
-  <td>
-  <%= file_field 'upload', 'file2' %>
-  </td>
-</tr>
-<% if false %>
-<tr>
-  <th>添付ファイル２</th>
-  <td>
-  <%= file_field 'upload', 'file3' %>
-  </td>
-</tr>
-<% end %>
-<tr>
-  <th><%=getLongName('employees','active_date')%></th>
-  <td>
-  <input type="text" id="employee_active_date" name="employee[active_date]" value="<%=h @employee.active_date.to_date if @employee.active_date != nil %>" size="15" onClick="cal4.write();" onChange="cal4.getFormValue(); cal4.hide();" onblur="if (flgCal4) {cal4.hide();}">
-  <div id="calDisplay4" onmouseover="flgCal4 = false;" onmouseout="flgCal4 = true;" ></div>
-  </td>
-</tr>
-<tr>
-  <th><%=getLongName('employees','inactive_date')%></th>
-  <td>
-  <input type="text" id="employee_inactive_date" name="employee[inactive_date]" value="<%=h @employee.inactive_date.to_date if @employee.inactive_date != nil %>" size="15" onClick="cal5.write();" onChange="cal5.getFormValue(); cal5.hide();" onblur="if (flgCal5) {cal5.hide();}">
-  <div id="calDisplay5" onmouseover="flgCal5 = false;" onmouseout="flgCal5 = true;" ></div>
-  </td>
-</tr>
-<tr>
-  <th><%=getLongName('employees','memo')%></th>
-  <td><%= text_area 'employee', 'memo', :size => '60x10'  %></td>
-</tr>
-<%- if controller.action_name.match(/edit.*/) -%>
-<tr>
-  <th><%=getLongName('employees','active_flg')%></th>
-  <td><%= check_box 'employee', 'active_flg' %></td>
-</tr>
-<%- end -%>
 </table>
-<br />
 
-<% if false %>
+<br/>
 <table class="input_table">
 <caption style="font-size:14px"><b>銀行情報</b></caption>
 <tr>
@@ -203,7 +219,6 @@
 </table>
 <br />
 
-<% end %>
+<div id="address_div" style = "display: none;"></div>
 
-<p><%= hidden_field 'employee', 'lock_version'  %></p>
-
+<!--[eoform:user]-->

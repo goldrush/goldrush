@@ -9,17 +9,7 @@
   <link rel="icon" href="<%=image_path 'favicon.png'%>" type="image/vnd.microsoft.icon">
   <%= stylesheet_link_tag 'application', :media => 'screen,aural' %>
   <%#= stylesheet_link_tag 'print', :media => 'print' %>
-  <%= stylesheet_link_tag "bootstrap" %>
-  <%= stylesheet_link_tag "bootstrap-responsive" %>
-  <%= stylesheet_link_tag "datepicker.css" %>
   <%= javascript_include_tag "application" %>
-  <%#= javascript_include_tag "prototype" %>
-  <%#= javascript_include_tag "jquery-1.8.2.min.js" %>
-  <%= javascript_include_tag "jquery-ui.min.js" %>
-  <%= javascript_include_tag "bootstrap" %>
-  <%#= @effects ? (javascript_include_tag "effects") : '' %>
-  <%#= @calendar ? (javascript_include_tag "jkl-calendar") : '' %>
-  <%= javascript_include_tag "mylib" %>
 </head>
 
 <body>
@@ -126,10 +116,11 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">マスター管理<b class="caret"></b></a>
             <ul class="dropdown-menu">
+              <li><%= link_to 'ユーザー', users_path %></li>
               <li><%= link_to '部署', :controller => :department, :action => :list %></li>
               <li><%= link_to '祝日設定', :controller => :base_date, :action => :list %></li>
               <li><%= link_to '承認権限設定', :controller => :approval_authority, :action => :report_xxx %></li>
-              <li><%= link_to 'システム設定', :controller => :configuration, :action => :list %></li> 
+              <li><%= link_to 'システム設定', :controller => :sys_config, :action => :list %></li> 
             </ul>
           </li>
           <% end %>

@@ -5,10 +5,7 @@
 <br>
 <hr>
 
-<div class="pagenate">
-<%= @user_employee_pages.current.previous ? link_to('前のページ', { :page => @user_employee_pages.current.previous}) : '前のページ' %>
-<%= @user_employee_pages.current.next ? link_to('次のページ', { :page => @user_employee_pages.current.next}) : '次のページ' %>
-</div>
+<%= paginate(@user_employees) %>
 
 <table class="list_table">
   <caption style="font-size:14px">
@@ -45,9 +42,6 @@
 </table>
 <br>
 
-<div class="pagenate">
-<%= @user_employee_pages.current.previous ? link_to('前のページ', {:page => @user_employee_pages.current.previous}) : '前のページ' %>
-<%= @user_employee_pages.current.next ? link_to('次のページ', {:page => @user_employee_pages.current.next}) : '次のページ' %>
-</div>
+<%= paginate(@user_employees) %>
 <br />
 

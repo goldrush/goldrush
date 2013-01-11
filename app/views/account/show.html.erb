@@ -196,7 +196,7 @@
 
 </table>
 <br/>
-<%= link_to '社員情報の編集', :action => 'update', :id => @user %>
+<%= back_to_link '社員情報の編集', :controller => :employee, :action => :edit, :id => @user %>
 <br/>
 <h2><%=getLongName('table_name','route_expenses')%></h2>
 <table class="list_table">

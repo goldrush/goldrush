@@ -15,7 +15,7 @@
   end
 %>
 <% if !@read_only %>
-  <%= links.compact.join(" | ") %>
+  <%= raw links.compact.join(" | ") %>
 <% end %>
 <%= render(:partial => 'base_application/approval', :locals => {:application => application}) %>
 

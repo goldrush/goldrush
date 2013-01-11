@@ -106,7 +106,7 @@ class BusinessPartnerController < ApplicationController
         cond = make_popup_conditions(0,0,1,1)
       else
         # ありえないけど念のため
-        cond = make_conditions
+        cond, incl = make_conditions
       end
     else
       if request.post?
@@ -152,6 +152,7 @@ class BusinessPartnerController < ApplicationController
 
   def create
     @bp_pic = BpPic.new(params[:bp_pic])
+    mail_flg = false
     ActiveRecord::Base.transaction do
       
       if !(params[:business_partner][:id]).blank?

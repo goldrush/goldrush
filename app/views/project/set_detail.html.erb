@@ -1,6 +1,6 @@
 <h1>プロジェクトの明細入力</h1>
 
-<% form_tag :id => params[:id], :base_month => params[:base_month], :user => params[:user], :back_to => params[:back_to] do %>
+<%= form_tag :id => params[:id], :base_month => params[:base_month], :user => params[:user], :back_to => params[:back_to] do %>
   <%= error_messages_for 'personal_sale' %>
 
   <p><label for="personal_sale_id"><%= getLongName('personal_sales', 'id') %></label><br/>

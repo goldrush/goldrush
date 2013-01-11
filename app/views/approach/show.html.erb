@@ -136,7 +136,7 @@
 <p></p>
 
 
-<% form_tag do %>
+<%= form_tag do %>
   <% if @approach.approach_status_type == 'approaching' %>
     <h3>提案ステータス変更ボタン</h3>
     <%= submit_tag '　　提案成功　　', :name => 'approach_success', :onclick=>"return #{confirm_javascript_function("次は面談を作成してくださいね。")}" %> 
@@ -150,7 +150,7 @@
   <p></p>
 <% end %>
 
-<% form_tag do %>
+<%= form_tag do %>
   <% if @contract %>
     <!-- 契約詳細 -->
     <h2><%=getLongName('table_name','contracts')%>情報</h2>
@@ -168,7 +168,7 @@
 
 
 <% if @approach.approach_status_type == 'result_waiting' %>
-  <% form_tag do %>
+  <%= form_tag do %>
   <% if @contract.blank? %>
     <h3>面談ステータス変更ボタン(対象は最新の面談)</h3>
     <% if @approach.last_interview.blank? || @approach.last_interview.interview_status_type == 'finished' %>
@@ -213,7 +213,7 @@
   <%= render :partial => 'attachment_file/list' %>
 <% end %>
 
-<% form_tag({:controller => 'attachment_file', :action => 'create', :parent_table => 'approaches', :parent_id => @approach, :back_to => request.env['REQUEST_URI']}, :multipart => true) do %>
+<%= form_tag({:controller => 'attachment_file', :action => 'create', :parent_table => 'approaches', :parent_id => @approach, :back_to => request.env['REQUEST_URI']}, :multipart => true) do %>
   <div align=right>
   <table>
     <tr>

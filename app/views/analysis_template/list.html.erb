@@ -1,8 +1,6 @@
 <h1><%=getLongName('table_name','analysis_templates')%>一覧</h1>
 
-<% if @analysis_template_pages %>
-	<%= paginate(@analysis_templates) %>
-<% end %>
+<%= @analysis_template_pages ? paginate(@analysis_templates) : '' %>
 
 <% if params[:mode] && params[:import_mail_id] %>
   <% if !params[:target_id] %>
@@ -40,9 +38,7 @@
 <% end %>
 </table>
 
-<% if @analysis_template_pages %>
-	<%= paginate(@analysis_templates) %>
-<% end %>
+<%= @analysis_template_pages ? paginate(@analysis_templates) : '' %>
 
 <br />
 

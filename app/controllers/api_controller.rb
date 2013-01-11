@@ -1,7 +1,8 @@
 # -*- encoding: utf-8 -*-
-class ApiController < ApplicationController
-  skip_before_filter :login_required
+require 'pop3_client'
 
+class ApiController < ApplicationController
+  skip_before_filter :authenticate_auth!
   before_filter :api_auth_required, :except => [:error]
 
   def api_auth_required

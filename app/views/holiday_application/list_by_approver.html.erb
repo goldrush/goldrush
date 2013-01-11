@@ -9,10 +9,7 @@
 <% end %>
 <br>   
 <hr> 
-<div class="pagenate">
-<%= @holiday_application_pages.current.previous ? link_to('前のページ', { :page => @holiday_application_pages.current.previous }) : '前のページ' %>
-<%= @holiday_application_pages.current.next ? link_to('次のページ', { :page => @holiday_application_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@holiday_applications) %>
 
 
 <table class="list_table">
@@ -59,10 +56,7 @@
 </table>
 <br>
 
-<div class="pagenate">
-<%= @holiday_application_pages.current.previous ? link_to('前のページ', { :page => @holiday_application_pages.current.previous }) : '前のページ' %>
-<%= @holiday_application_pages.current.next ? link_to('次のページ', { :page => @holiday_application_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@holiday_applications) %>
 
 <br />
 

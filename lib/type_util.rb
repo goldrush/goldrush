@@ -71,19 +71,19 @@ module TypeUtil
   end
 
   def TypeUtil.getLongType(section, key, unknown = "Unknown type")
-    return unknown if key.blank?
+    return unknown + "(#{key})" if key.blank?
     type = TypeUtil.getTypeObject(section, key)
-    type.blank? ? unknown : type.long_name
+    type.blank? ? unknown + "(#{key})" : type.long_name
   end
 
   # 区分略称を取得
   def getShortType(section, key)
     return '' if key.blank?
     if $TYPES[section.to_s].nil?
-      "Unknown type"
+      "Unknown type(#{key})"
     else
       type = $TYPES[section.to_s][key.to_s]
-      type.nil? ? "Unknown type" : type.short_name
+      type.nil? ? "Unknown type(#{key})" : type.short_name
     end
   end
 
@@ -91,10 +91,10 @@ module TypeUtil
   def getOtherType(section, key)
     return '' if key.blank?
     if $TYPES[section.to_s].nil?
-      "Unknown type"
+      "Unknown type(#{key})"
     else
       type = $TYPES[section.to_s][key.to_s]
-      type.nil? ? "Unknown type" : type.other_name
+      type.nil? ? "Unknown type(#{key})" : type.other_name
     end
   end
 

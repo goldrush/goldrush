@@ -1,9 +1,6 @@
 <h1><%=getLongName('table_name','route_expenses')%>一覧</h1>
 
-<div class="pagenate">
-<%= @route_expense_pages.current.previous ? link_to('前のページ', { :page => @route_expense_pages.current.previous }) : '前のページ' %>
-<%= @route_expense_pages.current.next ? link_to('次のページ', { :page => @route_expense_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@route_expenses) %>
 
 <table class="list_table">
   <tr>
@@ -30,10 +27,7 @@
 </table>
 
 <br/>
-<div class="pagenate">
-<%= @route_expense_pages.current.previous ? link_to('前のページ', { :page => @route_expense_pages.current.previous }) : '前のページ' %>
-<%= @route_expense_pages.current.next ? link_to('次のページ', { :page => @route_expense_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@route_expenses) %>
 
 <br />
 

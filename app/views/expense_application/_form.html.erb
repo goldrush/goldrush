@@ -45,7 +45,7 @@
           <input type="button" id="calc_button" value="計算" onclick="return calcTax($('#expense_application_payment_amount'),$('#expense_application_withholding_tax'),$('#expense_application_other_expenses'),$('expense_application_approximate_amount'));"></td>
     <% elsif field[:prop] == 'payment_no' %>
       <td><%= send(field[:field], 'expense_application', field[:prop], field[:option]) %>
-          <input type="button" value="..." onclick="disp('<%=url_for :action => 'popup_payments'%>');"></td>
+	      <input type="button" value="..." onclick="disp('<%=url_for :action => 'payments', :popup => 1%>');"></td>
     <% elsif field[:field] == 'file_field' %>
       <td><%= send(field[:field], 'expense_application', field[:prop], field[:option]) %><%= @expense_application.send(field[:prop]).blank? ? '' : " (#{h(@expense_application.send(field[:prop] + '_name'))})" %></td>
     <% else %>

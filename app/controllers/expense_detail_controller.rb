@@ -531,8 +531,8 @@ class ExpenseDetailController < ApplicationController
       flash[:err] = 'EXCELダウンロードのパラメータが不正です(id)'
       return redirect_to(:action => '/')
     end
-    java_dir = File.join(RAILS_ROOT, 'java')
-    tmp_dir = File.join(RAILS_ROOT, 'tmp', 'excel')
+    java_dir = File.join(Rails.root, 'java')
+    tmp_dir = File.join(Rails.root, 'tmp', 'excel')
     xxx = rand(1000000).to_s
     filename = "expense_#{mode}_#{id}_#{Time.now.strftime('%Y%m%d%H%M%S')}.xls"
     tmp_filename = filename + "." + xxx

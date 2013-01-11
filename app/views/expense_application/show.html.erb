@@ -39,7 +39,7 @@
 <%= link_to '戻る', params[:back_to] != nil ? params[:back_to] : {:action => 'list'} %>
 <% end %>
 
-<% form_tag :action => 'fix_payment', :id => @expense_application, :back_to => request.env['REQUEST_URI'] do %>
+<%= form_tag :action => 'fix_payment', :id => @expense_application, :back_to => request.env['REQUEST_URI'] do %>
 <% # 仮払／謝礼申請で、ログインユーザが経理ユーザで、経理担当者だったら %>
 <% if (@expense_application.temporary_app? or @expense_application.fee_expense_app?) && current_user.accounting? %>
   <% if @expense_application.paymented? %>

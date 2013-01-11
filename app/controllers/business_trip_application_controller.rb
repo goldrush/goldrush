@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+require 'sales_person_logic'
 class BusinessTripApplicationController < ApplicationController
   include SalesPersonLogic
 
@@ -140,12 +141,6 @@ class BusinessTripApplicationController < ApplicationController
       @business_trip_application.base_application_id = base_application.id
       set_user_column @business_trip_application
       @business_trip_application.save!
-=begin # 出張申請に経費申請はいらない
-      #経費申請も作成する
-      expense_application = ExpenseApplication.new
-      expense_application.set_business_trip_application(@business_trip_application)
-      expense_application.save!
-=end
       #申請に承認者を設定
       count = 0
       for approval_authority in approval_authorities
@@ -196,12 +191,6 @@ class BusinessTripApplicationController < ApplicationController
     end
 
     ActiveRecord::Base.transaction do
-=begin # 出張申請に経費申請はいらない
-      #経費申請も作成する
-      expense_application = ExpenseApplication.new
-      expense_application.set_business_trip_application(@business_trip_application)
-      expense_application.save!
-=end
       #automatically day total of business trip
       daily_workings = @business_trip_application.get_all_daily_workings
       @business_trip_application.day_total = daily_workings.size

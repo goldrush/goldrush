@@ -5,14 +5,11 @@
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <% envname = ActiveRecord::Base.configurations[RAILS_ENV]['envname'] %>
-  <title>経費勤怠管理 THE GUARDIAN<%=envname.blank? ? '' : " #{envname}環境"%></title>
+  <title>THE GoldRush Project<%=envname.blank? ? '' : " #{envname}環境"%></title>
   <link rel="icon" href="<%=image_path 'favicon.png'%>" type="image/vnd.microsoft.icon">
   <%= stylesheet_link_tag 'application', :media => 'screen,aural' %>
-  <%= stylesheet_link_tag 'print', :media => 'print' %>
-  <%= javascript_include_tag "prototype" %>
-  <%= @effects ? (javascript_include_tag "effects") : '' %>
-  <%= @calendar ? (javascript_include_tag "jkl-calendar") : '' %>
-  <%= javascript_include_tag "mylib" %>
+  <%#= stylesheet_link_tag 'print', :media => 'print' %>
+  <%= javascript_include_tag "application" %>
 </head>
 <body>
 <div id="popup_main_box" style="margin-left: 2em; min-height: 440;">
@@ -23,7 +20,9 @@
       <div style="color: red"><%= flash[:warning] %></div>
     <%- end -%>
     </div>
-    <%= @content_for_layout %>
+    <div id="contents_box">
+      <%= yield %>
+    </div>
 </div>
 <div style="clear:both;"/>
 </div>

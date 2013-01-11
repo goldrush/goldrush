@@ -50,3 +50,5 @@ gem 'ruby_parser', :require => false, :group => :development
 
 gem 'kaminari'
 
+gem 'mail'
+

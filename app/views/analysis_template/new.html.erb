@@ -1,6 +1,6 @@
 <h1><%=getLongName('table_name','analysis_templates')%>新規作成</h1>
 
-<% form_tag :action => 'create', :mode => params[:mode] do %>
+<%= form_tag :action => 'create', :mode => params[:mode] do %>
 
   <% if params[:mode] == 'biz_offer' %>
     <h2>解析テンプレートヘッダ</h2>

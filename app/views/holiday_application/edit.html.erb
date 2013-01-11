@@ -4,7 +4,7 @@
 <h1><%=getLongName('table_name','holiday_applications')%>編集</h1>
 <% end %>
 
-<% form_tag :action => 'update', :id => @holiday_application do %>
+<%= form_tag :action => 'update', :id => @holiday_application do %>
   <%= render :partial => 'form' %>
   <%= submit_tag '更新' %>
 <% end %>

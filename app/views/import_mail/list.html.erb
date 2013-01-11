@@ -1,6 +1,6 @@
 <h1><%=getLongName('table_name','import_mails')%>一覧</h1>
 
-<% form_tag do %>
+<%= form_tag do %>
 <table>
     <tr>
       <td style="text-align: right">フラグ:</td>
@@ -75,7 +75,7 @@
 
 <br />
 
-<%= link_to (getLongName('table_name','import_mails')+'の新規作成'), :action => 'new' %>
+<%= link_to '取り込み', {:controller => :api, :action => :import_mail} %>
 
 
 

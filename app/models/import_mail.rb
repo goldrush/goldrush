@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+require 'nkf'
 class ImportMail < ActiveRecord::Base
 
   belongs_to :business_partner
@@ -12,14 +13,18 @@ class ImportMail < ActiveRecord::Base
         import_mail = ImportMail.new
         
         import_mail.in_reply_to = m.in_reply_to[0] if m.in_reply_to
-        import_mail.received_at = m.date
-        import_mail.mail_subject = NKF.nkf('-w -J', m.subject)
-        import_mail.mail_from = m.from[0]
+        import_mail.received_at = m.date.blank? ? Time.now : m.date
+	begin
+          import_mail.mail_subject = m.subject.blank? ? 'unknown subject' : m.subject #NKF.nkf('-w -J', m.subject)
+        rescue Encoding::UndefinedConversionError => e
+          import_mail.mail_subject = NKF.nkf('-w', m.header['Subject'].value)
+	end
+        import_mail.mail_from = m.from[0].to_s
         import_mail.set_bp
-        import_mail.mail_sender_name = NKF.nkf('-w -J', m.from_addrs[0].to_s)
-        import_mail.mail_to = m.to.join(",") if m.to
-        import_mail.mail_cc = m.cc.join(",") if m.cc
-        import_mail.mail_bcc = m.bcc.join(",") if m.bcc
+        import_mail.mail_sender_name = m.header["From"].to_s#m.from_addrs[0].to_s #NKF.nkf('-w -J', m.from_addrs[0].to_s)
+        import_mail.mail_to = m.header["To"].to_s#m.to.join(",") if m.to
+        import_mail.mail_cc = m.header["Cc"].to_s#m.cc.join(",") if m.cc
+        import_mail.mail_bcc = m.header["Bcc"].to_s#m.bcc.join(",") if m.bcc
         import_mail.message_source = src
         import_mail.message_id = m.message_id
 
@@ -34,7 +39,7 @@ class ImportMail < ActiveRecord::Base
           # パートに分かれている(=返信元メールや添付ファイルが存在している)場合
           m.parts.each do |part|
             puts">>>>>>>>>>>>>>>>>>>>>>>>>>> content_type : #{part.content_type}"
-            if part.content_type == 'multipart/alternative'
+            if part.content_type.include?('multipart/alternative')
               puts">>>>>>>>>>>>>>>>>>>>>>>>>>> ALTERNATIVE MODE"
               # multipart/alternativeの場合、メール本文の含まれるパートなので、さらにその中のパートを調べる。
               part.parts.each do |ppart|
@@ -52,19 +57,19 @@ class ImportMail < ActiveRecord::Base
                 # 最初のbodyの値をエンコードして代入する
                 import_mail.mail_body = get_encode_body(m, part.parts[0].body)
               end # import_mail.mail_body.blank?
-            elsif !part.disposition_param('filename').blank?
+            elsif !part.filename.blank?
               # filenameがある = 添付ファイルなのでパス
               puts">>>>>>>>>>>>>>>>>>>>>>>>> REGIST ATTEMPT FILE"
               
               
               #---------- 添付ファイル ここから ----------
-              upfile = part.body
-              part.base64_decode
-              file_name = part.disposition_param('filename')
+              upfile = part.body.decoded
+              #part.base64_decode
+              file_name = part.filename.to_s
               
-#              if(file_name =~ /=\?ISO-2022-JP\?B\?/)
-                file_name = NKF.nkf('-w -J', file_name)
-                puts">>>>>>>>>>>>>>>>>>>>>>>>>>> decoded_file_name : #{file_name}"
+#              if file_name.include?("=?ISO-2022-JP?B?")
+#                file_name = NKF.nkf('-w -J', file_name)
+#                puts">>>>>>>>>>>>>>>>>>>>>>>>>>> decoded_file_name : #{file_name}"
 #              end
               
               attachment_file = AttachmentFile.new
@@ -96,7 +101,7 @@ class ImportMail < ActiveRecord::Base
               
               puts">>>>>>>>>>>>>>>>>>>>>>>>> REGIST ATTEMPT FILE"
               
-            elsif part.content_type == 'text/plain'
+            elsif part.content_type.include?('text/plain')
               # 添付ファイルでなくtext/plainの場合、メール本文。
               # 上書きされる可能性あり？
               puts">>>>>>>>>>>>>>>>>>>>>>>>> REGIST MAIL BODY(text/plain)"
@@ -170,7 +175,7 @@ private
       return body
     else
       # そのほかは
-      return NKF.nkf('-w', body)
+      return NKF.nkf('-w', body.to_s)
     end
   end
 

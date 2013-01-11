@@ -1,10 +1,11 @@
 # -*- encoding: utf-8 -*-
-#require "tlsmail"
+require "net/pop"
+require "mail"
 
 class MainReplyError < StandardError
 end
 
-class Pop3Client < Iso2022jpMailer
+class Pop3Client
 
   # ---------------------------------------------------------------------------
   # メールをポップする処理
@@ -22,13 +23,13 @@ class Pop3Client < Iso2022jpMailer
                       settings[:password]){|pop|
         pop.each_mail{ |mail|
           str = mail.pop
-          block.call(TMail::Mail.parse(str), str)
+          block.call(Mail.new(str), str)
         }
       }
     rescue
       error_str = "Pop Error.. #{$!.inspect}\n\n#{$!.backtrace.join("\n")}"
 #      error_str = "Pop Error.. #{$!.backtrace.join(\n)}"
-      logger.error error_str
+      puts error_str
       SystemLog.error('pop_mail', 'Mail pop error', error_str, 'pop_mail')
     end
   end

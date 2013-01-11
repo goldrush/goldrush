@@ -1,9 +1,6 @@
 <h1><%=getLongName('table_name','weekly_report_details')%>一覧</h1>
 
-<div class="pagenate">
-<%= @weekly_report_detail_pages.current.previous ? link_to('前のページ', { :page => @weekly_report_detail_pages.current.previous }) : '前のページ' %>
-<%= @weekly_report_detail_pages.current.next ? link_to('次のページ', { :page => @weekly_report_detail_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@weekly_report_details) %>
 
 <table class="list_table">
   <tr>
@@ -29,10 +26,7 @@
 <% end %>
 </table>
 
-<div class="pagenate">
-<%= @weekly_report_detail_pages.current.previous ? link_to('前のページ', { :page => @weekly_report_detail_pages.current.previous }) : '前のページ' %>
-<%= @weekly_report_detail_pages.current.next ? link_to('次のページ', { :page => @weekly_report_detail_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@weekly_report_details) %>
 
 <br />
 

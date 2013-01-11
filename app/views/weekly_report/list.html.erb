@@ -56,7 +56,7 @@
         <% next if other_application.working_option_type != "over_time_app" %>
         <% links << link_to("#{other_application.working_option_type_short_name} #{other_application.base_application.approval_status_type_short_name}", :controller => 'other_application', :action => 'show', :id => other_application, :back_to => request.env['REQUEST_URI']) %>
       <% end %>
-      <td align="center" style="width: 6%;"><%= links.join("<br/>") %></td>
+      <td align="center" style="width: 6%;"><%= raw links.join("<br/>") %></td>
       <td style="width: 30%;" ><div style="padding: 0;margin: 0;overflow: hidden;width: 100%; height: 1.1em;"><%=h daily_working.summary %></div></td>
       <td align="center" style="width: 7%;"><%=h daily_working.hour_total_format %></td>
     </tr>
@@ -97,7 +97,7 @@
     links << link_to_change_approval_status(ApplicationApproval.application_approval(application, current_user.id)) 
   end
 %>
-<%= links.compact.join(" | ") %>
+<%= raw links.compact.join(" | ") %>
 
 <% end %>
 <br/>
@@ -140,7 +140,7 @@
   <% links << link_to_change_approval_status(ApplicationApproval.application_approval(weekly_report, current_user.id)) %>
 <% end %>
 <% links << "<a href='#0'>トップへ</a>" %>
-<%= links.compact.join(" | ") %>
+<%= raw links.compact.join(" | ") %>
 <br/>
 <% if weekly_report.base_application %>
 <table class="list_table">

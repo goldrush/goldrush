@@ -1,9 +1,6 @@
 <h1><%=getLongName('table_name','daily_workings')%>一覧</h1>
 
-<div class="pagenate">
-<%= @daily_working_pages.current.previous ? link_to('前のページ', { :page => @daily_working_pages.current.previous }) : '前のページ' %>
-<%= @daily_working_pages.current.next ? link_to('次のページ', { :page => @daily_working_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@daily_workings) %>
 
 <table class="list_table">
   <tr>
@@ -29,10 +26,7 @@
 <% end %>
 </table>
 
-<div class="pagenate">
-<%= @daily_working_pages.current.previous ? link_to('前のページ', { :page => @daily_working_pages.current.previous }) : '前のページ' %>
-<%= @daily_working_pages.current.next ? link_to('次のページ', { :page => @daily_working_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@daily_workings) %>
 
 <br />
 

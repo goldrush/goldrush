@@ -1,13 +1,10 @@
 <h1><%=getLongName('table_name','configurations')%>一覧</h1>
 
-<div class="pagenate">
-<%= @configuration_pages.current.previous ? link_to('前のページ', { :page => @configuration_pages.current.previous }) : '前のページ' %>
-<%= @configuration_pages.current.next ? link_to('次のページ', { :page => @configuration_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@configurations) %>
 
 <table class="list_table">
   <tr>
-  <% for column in Configuration.columns %>
+  <% for column in SysConfig.columns %>
     <% if system_column?(column.name) then next end %>
     <th><%=getShortName('configurations', column.name)%></th>
   <% end %>
@@ -16,7 +13,7 @@
   
 <% for configuration in @configurations %>
   <tr>
-  <% for column in Configuration.columns %>
+  <% for column in SysConfig.columns %>
     <% if system_column?(column.name) then next end %>
     <td><%=h configuration.send(column.name) %></td>
   <% end %>
@@ -29,10 +26,7 @@
 <% end %>
 </table>
 
-<div class="pagenate">
-<%= @configuration_pages.current.previous ? link_to('前のページ', { :page => @configuration_pages.current.previous }) : '前のページ' %>
-<%= @configuration_pages.current.next ? link_to('次のページ', { :page => @configuration_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@configurations) %>
 
 <br />
 

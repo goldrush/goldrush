@@ -1,9 +1,6 @@
 <h1><%=getLongName('table_name','comments')%>一覧</h1>
 
-<div class="pagenate">
-<%= @comment_pages.current.previous ? link_to('前のページ', { :page => @comment_pages.current.previous }) : '前のページ' %>
-<%= @comment_pages.current.next ? link_to('次のページ', { :page => @comment_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@comments) %>
 
 <table class="list_table">
   <tr>
@@ -29,10 +26,7 @@
 <% end %>
 </table>
 
-<div class="pagenate">
-<%= @comment_pages.current.previous ? link_to('前のページ', { :page => @comment_pages.current.previous }) : '前のページ' %>
-<%= @comment_pages.current.next ? link_to('次のページ', { :page => @comment_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@comments) %>
 
 <br />
 

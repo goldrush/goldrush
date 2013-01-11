@@ -22,7 +22,7 @@
 
 <br />
 <br />
-<% form_tag :action => 'add_member', :id => @project, :back_to => params[:back_to] do %>
+<%= form_tag :action => 'add_member', :id => @project, :back_to => params[:back_to] do %>
   <%= select 'project_member', 'user_id', @pic_select_items %>
   <%= submit_tag "プロジェクトに追加" %>
 <% end %>

@@ -1,6 +1,6 @@
 <h1>社員経費情報一覧</h1>
 
-<% form_tag :action => 'do_accounting_search' do %>
+<%= form_tag :action => 'do_accounting_search' do %>
 <table border='0' cellpadding='0' width="100%" >
 <tr>
   <td style="width: 35%;" align="right">期間：</td>
@@ -26,11 +26,8 @@
 <p><input name="edit_type" type="hidden" value="<%= params[:edit_type] %>" /></p>
 <% end %>
 
-<div class="pagenate">
-<%= @base_application_pages.current.previous ? link_to('前のページ', { :page => @base_application_pages.current.previous}) : '前のページ' %>
-<%= @base_application_pages.current.next ? link_to('次のページ', { :page => @base_application_pages.current.next}) : '次のページ' %> 
-</div>
-<% form_tag({:action => :payment, :back_to => request.env['REQUEST_URI']}, :id => 'list_form') do %>
+<%= paginate(@base_applications) %>
+<%= form_tag({:action => :payment, :back_to => request.env['REQUEST_URI']}, :id => 'list_form') do %>
 <table class="list_table">
   <tr>
     <th style="width: 6%;">保険No</th>

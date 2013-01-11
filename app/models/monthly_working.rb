@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+require 'application_util'
 class MonthlyWorking < ActiveRecord::Base
   include AutoTypeName
   include DateTimeUtil
@@ -92,7 +93,7 @@ class MonthlyWorking < ActiveRecord::Base
   end
   
   def real_working_hour_format
-    calHourMinuteFormatJa(self.real_working_second_count)
+    DateTimeUtil.calHourMinuteFormatJa(self.real_working_second_count)
   end
   
   def get_labor_working_hour_count
@@ -113,7 +114,7 @@ class MonthlyWorking < ActiveRecord::Base
   end
   
   def format_hour_minute(sec)
-    return calHourMinuteFormat(sec)
+    return DateTimeUtil.calHourMinuteFormat(sec)
   end
   
   def total_latearly_count

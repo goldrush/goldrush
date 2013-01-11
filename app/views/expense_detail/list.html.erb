@@ -2,7 +2,7 @@
 <div class="pagenate">
 <%= @base_month.last_month ? link_to('前の月', {:action => :list, :id => @base_month.last_month.id, :user_id => params[:user_id]}) : '前の月' %>
 <%= @base_month.next_month ? link_to('次の月', {:action => :list, :id => @base_month.next_month.id, :user_id => params[:user_id]}) : '次の月' %>
-<%- url = url_for(:controller => :monthly_working, :action => :popup_list, :id => @base_month.id, :user_id => params[:user_id]) -%>
+<%- url = url_for(:controller => :monthly_working, :action => :list, :popup => 1, :id => @base_month.id, :user_id => params[:user_id]) -%>
 <%= link_to('勤務表', "#", :onClick => "disp_wide('#{url}');return false;") %>
 </div>
 
@@ -17,14 +17,14 @@
      links << link_and_if(!(controller.action_name == 'case_list' && params[:id].to_i == payment_per_case.id), "都度(#{payment_per_case.expense_paid_date.strftime('%Y/%m/%d')})", :action => :case_list, :id => payment_per_case.id, :user_id => params[:user_id])
    end
 -%>
-<%= links.join(" | ") %>
+<%= raw links.join(" | ") %>
 <br><br>
 <% if (@payment_per_month.self_data?(current_user.id) || current_user.accounting?) && (@payment_per_month.cutoff_status_type == 'open') %>
 <%= link_to (getLongName('table_name','expense_details')+'の入力画面'), {:action => 'new', :id => @base_month.id, :user_id => params[:user_id]} %>
 <br />
 <% end %>
 
-<% form_tag :action => :payment, :id => @base_month.id, :user_id => params[:user_id], :back_to => request.env['REQUEST_URI'] do %>
+<%= form_tag :action => :payment, :id => @base_month.id, :user_id => params[:user_id], :back_to => request.env['REQUEST_URI'] do %>
 <%= render :partial => 'table' %>
 <br />
 <div style="width: 100%">
@@ -55,7 +55,7 @@
     <br/>
     <%= link_to('取消', {:controller => :base_application, :action => 'cancel', :id => @payment_per_case.base_application.id, :back_to => url_for(:id => @base_month.id, :action => :list, :user_id => params[:user_id])}, {:confirm => "この申請をキャンセルします。よろしいですか？", :method => :post}) if @payment_per_case.base_application.can_cancel? && current_user.accounting? %>
     <% if current_user.accounting? %>
-      <% form_tag({:action => 'cutoff_case', :id => @payment_per_case, :back_to => request.env['REQUEST_URI']}, :id => 'form2') do %>
+      <%= form_tag({:action => 'cutoff_case', :id => @payment_per_case, :back_to => request.env['REQUEST_URI']}, :id => 'form2') do %>
       <% if @payment_per_case.cutoff? %>
           状態: [精算済] <%= submit_tag('精算済を解除', {:name => 'release', :confirm => "この申請の申請済みを解除します。よろしいですか?"}) %>
         <% else %>
@@ -67,7 +67,7 @@
     <br/>
     <%= link_to('取消', {:controller => :base_application, :action => 'cancel', :id => @payment_per_month.base_application.id, :back_to => request.env['REQUEST_URI']}, {:confirm => "この申請をキャンセルします。よろしいですか？", :method => :post}) if @payment_per_month.base_application.can_cancel? && current_user.accounting? %>
     <% if current_user.accounting? %>
-      <% form_tag({:action => 'cutoff_month', :id => @payment_per_month, :back_to => request.env['REQUEST_URI']}, :id => 'form2') do %>
+      <%= form_tag({:action => 'cutoff_month', :id => @payment_per_month, :back_to => request.env['REQUEST_URI']}, :id => 'form2') do %>
       <% if @payment_per_month.cutoff? %>
           状態: [精算済] <%= submit_tag('精算済を解除', {:name => 'release', :confirm => "この申請の申請済みを解除します。よろしいですか?"}) %>
         <% else %>

@@ -1,6 +1,6 @@
 <h1><%=getLongName('table_name','business_trip_applications')%>編集</h1>
 
-<% form_tag :action => 'update', :id => @business_trip_application do %>
+<%= form_tag :action => 'update', :id => @business_trip_application do %>
   <%= render :partial => 'form' %>
   <%= submit_tag '更新' %>
 <% end %>

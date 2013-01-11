@@ -1,9 +1,6 @@
 <h1>祝日一覧</h1>
 
-<div class="pagenate">
-<%= @base_date_pages.current.previous ? link_to('前のページ', { :page => @base_date_pages.current.previous }) : '前のページ' %>
-<%= @base_date_pages.current.next ? link_to('次のページ', { :page => @base_date_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@base_dates) %>
 
 <table class="list_table">
   <tr>
@@ -28,10 +25,7 @@
 <% end %>
 </table>
 
-<div class="pagenate">
-<%= @base_date_pages.current.previous ? link_to('前のページ', { :page => @base_date_pages.current.previous }) : '前のページ' %>
-<%= @base_date_pages.current.next ? link_to('次のページ', { :page => @base_date_pages.current.next }) : '次のページ' %> 
-</div>
+<%= paginate(@base_dates) %>
 
 <br />
 
