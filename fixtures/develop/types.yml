@@ -2950,3 +2950,183 @@ types_164:
   created_user: "initial"
   updated_user: "initial"
   deleted: 0
+types_165:
+  id: 168
+  type_section: "mail_group_type"
+  type_key: "human_resource"
+  long_name: "人材"
+  short_name: "人材"
+  other_name: "人材"
+  type_description: ""
+  type_description_text: ""
+  display_order1: 1
+  display_order2: 1
+  logic_bind_type: "bind"
+  created_at: <%= Time.now.to_s(:db) %>
+  updated_at: <%= Time.now.to_s(:db) %>
+  lock_version: 0
+  created_user: "initial"
+  updated_user: "initial"
+  deleted: 0
+types_166:
+  id: 169
+  type_section: "mail_group_type"
+  type_key: "business"
+  long_name: "案件"
+  short_name: "案件"
+  other_name: "案件"
+  type_description: ""
+  type_description_text: ""
+  display_order1: 2
+  display_order2: 2
+  logic_bind_type: "bind"
+  created_at: <%= Time.now.to_s(:db) %>
+  updated_at: <%= Time.now.to_s(:db) %>
+  lock_version: 0
+  created_user: "initial"
+  updated_user: "initial"
+  deleted: 0
+types_167:
+  id: 170
+  type_section: "mail_group_type"
+  type_key: "custom"
+  long_name: "カスタム"
+  short_name: "個別"
+  other_name: "カスタム"
+  type_description: ""
+  type_description_text: ""
+  display_order1: 3
+  display_order2: 3
+  logic_bind_type: "bind"
+  created_at: <%= Time.now.to_s(:db) %>
+  updated_at: <%= Time.now.to_s(:db) %>
+  lock_version: 0
+  created_user: "initial"
+  updated_user: "initial"
+  deleted: 0
+types_168:
+  id: 171
+  type_section: "mail_status_type"
+  type_key: "unsend"
+  long_name: "未送信"
+  short_name: "未送"
+  other_name: "未送信"
+  type_description: ""
+  type_description_text: ""
+  display_order1: 1
+  display_order2: 1
+  logic_bind_type: "bind"
+  created_at: <%= Time.now.to_s(:db) %>
+  updated_at: <%= Time.now.to_s(:db) %>
+  lock_version: 0
+  created_user: "initial"
+  updated_user: "initial"
+  deleted: 0
+types_169:
+  id: 172
+  type_section: "mail_status_type"
+  type_key: "send"
+  long_name: "送信済"
+  short_name: "送済"
+  other_name: "送信済"
+  type_description: ""
+  type_description_text: ""
+  display_order1: 2
+  display_order2: 2
+  logic_bind_type: "bind"
+  created_at: <%= Time.now.to_s(:db) %>
+  updated_at: <%= Time.now.to_s(:db) %>
+  lock_version: 0
+  created_user: "initial"
+  updated_user: "initial"
+  deleted: 0
+types_170:
+  id: 173
+  type_section: "mail_status_type"
+  type_key: "canceled"
+  long_name: "キャンセル"
+  short_name: "取消"
+  other_name: "キャンセル"
+  type_description: ""
+  type_description_text: ""
+  display_order1: 3
+  display_order2: 3
+  logic_bind_type: "bind"
+  created_at: <%= Time.now.to_s(:db) %>
+  updated_at: <%= Time.now.to_s(:db) %>
+  lock_version: 0
+  created_user: "initial"
+  updated_user: "initial"
+  deleted: 0
+types_171:
+  id: 174
+  type_section: "mail_target_status_type"
+  type_key: "ready"
+  long_name: "準備中"
+  short_name: "準備"
+  other_name: "準備中"
+  type_description: ""
+  type_description_text: ""
+  display_order1: 1
+  display_order2: 1
+  logic_bind_type: "bind"
+  created_at: <%= Time.now.to_s(:db) %>
+  updated_at: <%= Time.now.to_s(:db) %>
+  lock_version: 0
+  created_user: "initial"
+  updated_user: "initial"
+  deleted: 0
+types_172:
+  id: 175
+  type_section: "mail_target_status_type"
+  type_key: "running"
+  long_name: "処理中"
+  short_name: "処理"
+  other_name: "処理中"
+  type_description: ""
+  type_description_text: ""
+  display_order1: 2
+  display_order2: 2
+  logic_bind_type: "bind"
+  created_at: <%= Time.now.to_s(:db) %>
+  updated_at: <%= Time.now.to_s(:db) %>
+  lock_version: 0
+  created_user: "initial"
+  updated_user: "initial"
+  deleted: 0
+types_173:
+  id: 176
+  type_section: "mail_target_status_type"
+  type_key: "finished"
+  long_name: "完了"
+  short_name: "完了"
+  other_name: "完了"
+  type_description: ""
+  type_description_text: ""
+  display_order1: 3
+  display_order2: 3
+  logic_bind_type: "bind"
+  created_at: <%= Time.now.to_s(:db) %>
+  updated_at: <%= Time.now.to_s(:db) %>
+  lock_version: 0
+  created_user: "initial"
+  updated_user: "initial"
+  deleted: 0
+types_174:
+  id: 177
+  type_section: "mail_error_type"
+  type_key: "bounce"
+  long_name: "拒否"
+  short_name: "拒否"
+  other_name: "拒否"
+  type_description: ""
+  type_description_text: ""
+  display_order1: 1
+  display_order2: 1
+  logic_bind_type: "bind"
+  created_at: <%= Time.now.to_s(:db) %>
+  updated_at: <%= Time.now.to_s(:db) %>
+  lock_version: 0
+  created_user: "initial"
+  updated_user: "initial"
+  deleted: 0

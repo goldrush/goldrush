@@ -23,7 +23,7 @@ class BusinessPartner < ActiveRecord::Base
     self.sales_code + " " + business_partner_name
   end
 
-  def BusinessPartner.immport_from_csv(filename, prodmode=false)
+  def BusinessPartner.import_from_csv(filename, prodmode=false)
     ActiveRecord::Base.transaction do
     require 'csv'
     companies = {}

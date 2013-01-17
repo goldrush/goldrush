@@ -1,264 +1,374 @@
 users_1:
   id: 1
   owner_id: 
-  external_user_id: 
-  login: "system"
-  crypted_password: "942220702dcb9ead921d4f00f1719497275d540b"
-  email: "system"
-  salt: "cf4c43024819f78835c6005234af7fadba4fb5bb"
-  remember_token: ""
-  remember_token_expires_at: 
-  activation_code: ""
-  activate_send_at: 
-  activated_at: 
-  fullname: "system"
-  shortname: "system"
-  nickname: ""
+  login: "system@aaa.com"
+  fullname: ""
+  shortname: ""
+  nickname: "システム"
   access_level_type: "super"
   per_page: 50
+  email: "system@aaa.com"
+  encrypted_password: "$2a$10$ojHlby3zaA6ux5w8/1QINO9ALaPwYboB1eYxSXq4G6ZAaVmaTvadi"
+  reset_password_token: "NULL"
+  reset_password_sent_at: NULL
+  remember_created_at: NULL
+  sign_in_count: 0
+  current_sign_in_at: 
+  last_sign_in_at: 
+  current_sign_in_ip: ""
+  last_sign_in_ip: ""
+  confirmation_token: ""
+  confirmed_at: 
+  confirmation_sent_at: 
+  unconfirmed_email: ""
+  failed_attempts: 0
+  unlock_token: ""
+  locked_at: 
+  authentication_token: ""
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 users_2:
   id: 2
   owner_id: 
-  external_user_id: 
-  login: "infront"
-  crypted_password: "942220702dcb9ead921d4f00f1719497275d540b"
-  email: "infront"
-  salt: "cf4c43024819f78835c6005234af7fadba4fb5bb"
-  remember_token: ""
-  remember_token_expires_at: 
-  activation_code: ""
-  activate_send_at: 
-  activated_at: 
-  fullname: "infront"
-  shortname: "infront"
-  nickname: ""
-  access_level_type: "super"
+  login: "user1@aaa.com"
+  fullname: ""
+  shortname: ""
+  nickname: "USER1"
+  access_level_type: "normal"
   per_page: 50
+  email: "user1@aaa.com"
+  encrypted_password: "$2a$10$ojHlby3zaA6ux5w8/1QINO9ALaPwYboB1eYxSXq4G6ZAaVmaTvadi"
+  reset_password_token: "NULL"
+  reset_password_sent_at: NULL
+  remember_created_at: NULL
+  sign_in_count: 0
+  current_sign_in_at: 
+  last_sign_in_at: 
+  current_sign_in_ip: ""
+  last_sign_in_ip: ""
+  confirmation_token: ""
+  confirmed_at: 
+  confirmation_sent_at: 
+  unconfirmed_email: ""
+  failed_attempts: 0
+  unlock_token: ""
+  locked_at: 
+  authentication_token: ""
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 users_3:
   id: 3
-  owner_id:  
-  external_user_id:  
-  login: "admin1"
-  crypted_password: "129db9d909b70d576b95a504de16738190b5631b"
-  email: "admin1"
-  salt: "e50ed5a157a655b648596ee29c5202039a6d1090"
-  remember_token: " "
-  remember_token_expires_at:  
-  activation_code: " "
-  activate_send_at:  
-  activated_at:  
-  fullname: " "
-  shortname: " "
-  nickname: " "
-  access_level_type: "super"
+  owner_id: 
+  login: "user2@aaa.com"
+  fullname: ""
+  shortname: ""
+  nickname: "USER2"
+  access_level_type: "normal"
   per_page: 50
+  email: "user2@aaa.com"
+  encrypted_password: "$2a$10$ojHlby3zaA6ux5w8/1QINO9ALaPwYboB1eYxSXq4G6ZAaVmaTvadi"
+  reset_password_token: "NULL"
+  reset_password_sent_at: NULL
+  remember_created_at: NULL
+  sign_in_count: 0
+  current_sign_in_at: 
+  last_sign_in_at: 
+  current_sign_in_ip: ""
+  last_sign_in_ip: ""
+  confirmation_token: ""
+  confirmed_at: 
+  confirmation_sent_at: 
+  unconfirmed_email: ""
+  failed_attempts: 0
+  unlock_token: ""
+  locked_at: 
+  authentication_token: ""
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 users_4:
   id: 4
-  owner_id:  
-  external_user_id:  
-  login: "takenari"
-  crypted_password: "223255a167393850e7fd49e00d131fab325ea9ef"
-  email: "takenari"
-  salt: "c778b6791beee962ef4743d651281dc13316b9a2"
-  remember_token: " "
-  remember_token_expires_at:  
-  activation_code: " "
-  activate_send_at:  
-  activated_at:  
-  fullname: " "
-  shortname: " "
-  nickname: " "
+  owner_id: 
+  login: "user3@aaa.com"
+  fullname: ""
+  shortname: ""
+  nickname: "USER3"
   access_level_type: "normal"
   per_page: 50
+  email: "user3@aaa.com"
+  encrypted_password: "$2a$10$ojHlby3zaA6ux5w8/1QINO9ALaPwYboB1eYxSXq4G6ZAaVmaTvadi"
+  reset_password_token: "NULL"
+  reset_password_sent_at: NULL
+  remember_created_at: NULL
+  sign_in_count: 0
+  current_sign_in_at: 
+  last_sign_in_at: 
+  current_sign_in_ip: ""
+  last_sign_in_ip: ""
+  confirmation_token: ""
+  confirmed_at: 
+  confirmation_sent_at: 
+  unconfirmed_email: ""
+  failed_attempts: 0
+  unlock_token: ""
+  locked_at: 
+  authentication_token: ""
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 users_5:
   id: 5
-  owner_id:  
-  external_user_id:  
-  login: "sharingss"
-  crypted_password: "a23eeb9447cfac895052b104c476e4213974e0f9"
-  email: "sharingss"
-  salt: "6adc73dcb4ae4427d5196a05c627533453927cd4"
-  remember_token: " "
-  remember_token_expires_at:  
-  activation_code: " "
-  activate_send_at:  
-  activated_at:  
-  fullname: " "
-  shortname: " "
-  nickname: " "
-  access_level_type: "super"
+  owner_id: 
+  login: "user4@aaa.com"
+  fullname: ""
+  shortname: ""
+  nickname: "USER4"
+  access_level_type: "normal"
   per_page: 50
+  email: "user4@aaa.com"
+  encrypted_password: "$2a$10$ojHlby3zaA6ux5w8/1QINO9ALaPwYboB1eYxSXq4G6ZAaVmaTvadi"
+  reset_password_token: "NULL"
+  reset_password_sent_at: NULL
+  remember_created_at: NULL
+  sign_in_count: 0
+  current_sign_in_at: 
+  last_sign_in_at: 
+  current_sign_in_ip: ""
+  last_sign_in_ip: ""
+  confirmation_token: ""
+  confirmed_at: 
+  confirmation_sent_at: 
+  unconfirmed_email: ""
+  failed_attempts: 0
+  unlock_token: ""
+  locked_at: 
+  authentication_token: ""
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 users_6:
   id: 6
-  owner_id:  
-  external_user_id:  
-  login: "yoshida-h"
-  crypted_password: "6b5242910a38bb863607bbcfd78cc1c2f312e2c7"
-  email: "yoshida-h"
-  salt: "2d5542cd818b24a79a588bf931021ee86e6c3d48"
-  remember_token: " "
-  remember_token_expires_at:  
-  activation_code: " "
-  activate_send_at:  
-  activated_at:  
-  fullname: " "
-  shortname: " "
-  nickname: " "
-  access_level_type: "super"
+  owner_id: 
+  login: "user5@aaa.com"
+  fullname: ""
+  shortname: ""
+  nickname: "USER5"
+  access_level_type: "normal"
   per_page: 50
+  email: "user5@aaa.com"
+  encrypted_password: "$2a$10$ojHlby3zaA6ux5w8/1QINO9ALaPwYboB1eYxSXq4G6ZAaVmaTvadi"
+  reset_password_token: "NULL"
+  reset_password_sent_at: NULL
+  remember_created_at: NULL
+  sign_in_count: 0
+  current_sign_in_at: 
+  last_sign_in_at: 
+  current_sign_in_ip: ""
+  last_sign_in_ip: ""
+  confirmation_token: ""
+  confirmed_at: 
+  confirmation_sent_at: 
+  unconfirmed_email: ""
+  failed_attempts: 0
+  unlock_token: ""
+  locked_at: 
+  authentication_token: ""
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 users_7:
   id: 7
-  owner_id:  
-  external_user_id:  
-  login: "tamaki"
-  crypted_password: "10d882c2a0f81cba7e1d28b8153da76a263ca544"
-  email: "tamaki"
-  salt: "c9deeafcd238cb1d2f5c77bbcdc552975392db2f"
-  remember_token: " "
-  remember_token_expires_at:  
-  activation_code: " "
-  activate_send_at:  
-  activated_at:  
-  fullname: " "
-  shortname: " "
-  nickname: " "
-  access_level_type: "super"
+  owner_id: 
+  login: "user6@aaa.com"
+  fullname: ""
+  shortname: ""
+  nickname: "USER6"
+  access_level_type: "normal"
   per_page: 50
+  email: "user6@aaa.com"
+  encrypted_password: "$2a$10$ojHlby3zaA6ux5w8/1QINO9ALaPwYboB1eYxSXq4G6ZAaVmaTvadi"
+  reset_password_token: "NULL"
+  reset_password_sent_at: NULL
+  remember_created_at: NULL
+  sign_in_count: 0
+  current_sign_in_at: 
+  last_sign_in_at: 
+  current_sign_in_ip: ""
+  last_sign_in_ip: ""
+  confirmation_token: ""
+  confirmed_at: 
+  confirmation_sent_at: 
+  unconfirmed_email: ""
+  failed_attempts: 0
+  unlock_token: ""
+  locked_at: 
+  authentication_token: ""
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 users_8:
   id: 8
-  owner_id:  
-  external_user_id:  
-  login: "ikeda-y"
-  crypted_password: "34c4f39b46cdaee2aa0d585a728c23d7d3bd3ee6"
-  email: "ikeda-y"
-  salt: "9fb30ba6b3123f955df0acb17ce1405e478e69f0"
-  remember_token: ""
-  remember_token_expires_at: 
-  activation_code: " "
-  activate_send_at:  
-  activated_at:  
-  fullname: " "
-  shortname: " "
-  nickname: " "
+  owner_id: 
+  login: "user7@aaa.com"
+  fullname: ""
+  shortname: ""
+  nickname: "USER7"
   access_level_type: "normal"
   per_page: 50
+  email: "user7@aaa.com"
+  encrypted_password: "$2a$10$ojHlby3zaA6ux5w8/1QINO9ALaPwYboB1eYxSXq4G6ZAaVmaTvadi"
+  reset_password_token: "NULL"
+  reset_password_sent_at: NULL
+  remember_created_at: NULL
+  sign_in_count: 0
+  current_sign_in_at: 
+  last_sign_in_at: 
+  current_sign_in_ip: ""
+  last_sign_in_ip: ""
+  confirmation_token: ""
+  confirmed_at: 
+  confirmation_sent_at: 
+  unconfirmed_email: ""
+  failed_attempts: 0
+  unlock_token: ""
+  locked_at: 
+  authentication_token: ""
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 users_9:
   id: 9
-  owner_id:  
-  external_user_id:  
-  login: "boss"
-  crypted_password: "5f7b09e1286acaa92d975723de26962eeaaa25dd"
-  email: "boss"
-  salt: "9464a7fc8584c98146b28b48baa3d75885208537"
-  remember_token: ""
-  remember_token_expires_at: 
-  activation_code: " "
-  activate_send_at:  
-  activated_at:  
-  fullname: " "
-  shortname: " "
-  nickname: " "
+  owner_id: 
+  login: "user8@aaa.com"
+  fullname: ""
+  shortname: ""
+  nickname: "USER8"
   access_level_type: "normal"
   per_page: 50
+  email: "user8@aaa.com"
+  encrypted_password: "$2a$10$ojHlby3zaA6ux5w8/1QINO9ALaPwYboB1eYxSXq4G6ZAaVmaTvadi"
+  reset_password_token: "NULL"
+  reset_password_sent_at: NULL
+  remember_created_at: NULL
+  sign_in_count: 0
+  current_sign_in_at: 
+  last_sign_in_at: 
+  current_sign_in_ip: ""
+  last_sign_in_ip: ""
+  confirmation_token: ""
+  confirmed_at: 
+  confirmation_sent_at: 
+  unconfirmed_email: ""
+  failed_attempts: 0
+  unlock_token: ""
+  locked_at: 
+  authentication_token: ""
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 users_10:
   id: 10
-  owner_id:  
-  external_user_id:  
-  login: "account"
-  crypted_password: "4f76704207c0988213d0c27e88104613a68e79c6"
-  email: "account"
-  salt: "5203790ac02103c647787bf114465adf19f7ee78"
-  remember_token: " "
-  remember_token_expires_at:  
-  activation_code: " "
-  activate_send_at:  
-  activated_at:  
-  fullname: " "
-  shortname: " "
-  nickname: " "
-  access_level_type: "accounting"
+  owner_id: 
+  login: "user9@aaa.com"
+  fullname: ""
+  shortname: ""
+  nickname: "USER9"
+  access_level_type: "normal"
   per_page: 50
+  email: "user9@aaa.com"
+  encrypted_password: "$2a$10$ojHlby3zaA6ux5w8/1QINO9ALaPwYboB1eYxSXq4G6ZAaVmaTvadi"
+  reset_password_token: "NULL"
+  reset_password_sent_at: NULL
+  remember_created_at: NULL
+  sign_in_count: 0
+  current_sign_in_at: 
+  last_sign_in_at: 
+  current_sign_in_ip: ""
+  last_sign_in_ip: ""
+  confirmation_token: ""
+  confirmed_at: 
+  confirmation_sent_at: 
+  unconfirmed_email: ""
+  failed_attempts: 0
+  unlock_token: ""
+  locked_at: 
+  authentication_token: ""
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 users_11:
   id: 11
   owner_id: 
-  external_user_id: 
-  login: "sales1"
-  crypted_password: "efe8ea05082a8cc666b05cb08a7f7601fe26716d"
-  email: "sales1"
-  salt: "85f55af8516ee1d7660dcf3cc353437d17f50c24"
-  remember_token: ""
-  remember_token_expires_at: 
-  activation_code: ""
-  activate_send_at: 
-  activated_at: 
+  login: "user10@aaa.com"
   fullname: ""
   shortname: ""
-  nickname: ""
-  access_level_type: "accounting"
+  nickname: "USER10"
+  access_level_type: "normal"
   per_page: 50
+  email: "user10@aaa.com"
+  encrypted_password: "$2a$10$ojHlby3zaA6ux5w8/1QINO9ALaPwYboB1eYxSXq4G6ZAaVmaTvadi"
+  reset_password_token: "NULL"
+  reset_password_sent_at: NULL
+  remember_created_at: NULL
+  sign_in_count: 0
+  current_sign_in_at: 
+  last_sign_in_at: 
+  current_sign_in_ip: ""
+  last_sign_in_ip: ""
+  confirmation_token: ""
+  confirmed_at: 
+  confirmation_sent_at: 
+  unconfirmed_email: ""
+  failed_attempts: 0
+  unlock_token: ""
+  locked_at: 
+  authentication_token: ""
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
