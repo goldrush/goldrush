@@ -323,6 +323,13 @@ EOS
     link_to(name, options, html_options, &block)
   end
 
+  def form_tag_popup_mode(url_for_options = {}, options = {}, &block)
+    if @popup_mode
+      url_for_options[:popup] = 1
+    end
+    form_tag(url_for_options,options,&block)
+  end
+
   def back_to
     params[:back_to]
   end

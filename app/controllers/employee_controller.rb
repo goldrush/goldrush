@@ -13,7 +13,7 @@ class EmployeeController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @employee_pages, @employees = paginate(:employees, :per_page => 50, :conditions => ["active_flg = ? and deleted = 0", 1])
+    @employee_pages, @employees = paginate(:employees, :per_page => 50, :conditions => "resignation_date is null and deleted = 0")
   end
   
   def address_list

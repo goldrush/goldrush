@@ -1,6 +1,6 @@
 <h1><%=getLongName('table_name','business_partners')%>一覧</h1>
 
-<%= form_tag do %>
+<%= form_tag_popup_mode do %>
 <table>
   <tr>
     <td style="text-align: right">営業コード:</td>
@@ -24,6 +24,7 @@
     </tr>
   <% end %>
 </table>
+<%= hidden_field_tag :flg, params[:flg] %>
 <p><%= submit_tag '　　検索　　', :name => 'search_button' %> <%= submit_tag '　　クリア　　', :name => 'clear_button' %></p>
 <br />
 <% end %>

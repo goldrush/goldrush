@@ -40,8 +40,9 @@
 
 <br />
 
+<% if !popup? %>
 <%= back_to_link (getLongName('table_name','bp_pics')+'を追加'), :action => 'new', :business_partner_id => @business_partner %>
-<% if popup? %>
+<% else %>
 <script type="text/javascript">
 <!--
 function setBpPic(bp_pic_id, bp_pic_name) {

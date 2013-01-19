@@ -5,6 +5,19 @@ class ImportMail < ActiveRecord::Base
   belongs_to :business_partner
   belongs_to :bp_pic
 
+  def ImportMail.tryConv(map, header_key, &block)
+    str = nil
+    begin
+      if block_given?
+        return block.call
+      else
+	return map[header_key].to_s
+      end
+    rescue Encoding::UndefinedConversionError => e
+      return NKF.nkf('-w', map.header[header_key].value)
+    end
+  end
+
   def ImportMail.import
     Pop3Client.pop_mail do |m, src|
       puts">>>>>>>>>>>>>>>>>>>>>>>>>>> MAIL IMPORT START"
@@ -14,17 +27,14 @@ class ImportMail < ActiveRecord::Base
         
         import_mail.in_reply_to = m.in_reply_to[0] if m.in_reply_to
         import_mail.received_at = m.date.blank? ? Time.now : m.date
-	begin
-          import_mail.mail_subject = m.subject.blank? ? 'unknown subject' : m.subject #NKF.nkf('-w -J', m.subject)
-        rescue Encoding::UndefinedConversionError => e
-          import_mail.mail_subject = NKF.nkf('-w', m.header['Subject'].value)
-	end
+	subject = tryConv(m, 'Subject') { m.subject }
+        import_mail.mail_subject = subject.blank? ? 'unknown subject' : subject
         import_mail.mail_from = m.from[0].to_s
         import_mail.set_bp
-        import_mail.mail_sender_name = m.header["From"].to_s#m.from_addrs[0].to_s #NKF.nkf('-w -J', m.from_addrs[0].to_s)
-        import_mail.mail_to = m.header["To"].to_s#m.to.join(",") if m.to
-        import_mail.mail_cc = m.header["Cc"].to_s#m.cc.join(",") if m.cc
-        import_mail.mail_bcc = m.header["Bcc"].to_s#m.bcc.join(",") if m.bcc
+        import_mail.mail_sender_name = tryConv(m,'From')
+        import_mail.mail_to = tryConv(m,'To')
+        import_mail.mail_cc = tryConv(m,'Cc')
+        import_mail.mail_bcc = tryConv(m,'Bcc')
         import_mail.message_source = src
         import_mail.message_id = m.message_id
 
@@ -67,35 +77,8 @@ class ImportMail < ActiveRecord::Base
               #part.base64_decode
               file_name = part.filename.to_s
               
-#              if file_name.include?("=?ISO-2022-JP?B?")
-#                file_name = NKF.nkf('-w -J', file_name)
-#                puts">>>>>>>>>>>>>>>>>>>>>>>>>>> decoded_file_name : #{file_name}"
-#              end
-              
               attachment_file = AttachmentFile.new
               attachment_file.create_by_import(upfile, import_mail.id, file_name)
-              
- #             ActiveRecord::Base.transaction do
- #               attachment_file = AttachmentFile.new
- #               # attachmentFileに項目を入れるメソッド
- #               # 親テーブル名
- #               attachment_file.parent_table_name = "import_mails"
- #               # 親テーブルId
- #               attachment_file.parent_id = 200
- #               # 添付ファイル名（オリジナルのファイル名）
- #               attachment_file.file_name = file_name
- #               # 拡張子
- #               ext = attachment_file.check_and_get_ext(file_name)
- #               attachment_file.extention = ext
- #               
- #               attachment_file.created_user = 'import_mail'
- #               attachment_file.updated_user = 'import_mail'
- #               attachment_file.save!
- #               
- #               # 保存するファイル名
- #               store_file_name = attachment_file.create_store_parent_table_name
- #               attachment_file.store(upfile, store_file_name)
- #             end # transaction
               
               #---------- 添付ファイル ここまで ----------
               
@@ -118,11 +101,9 @@ class ImportMail < ActiveRecord::Base
         end # m.multipart?
         #---------- mail_body ここまで ----------
         
-        
         import_mail.created_user = 'import_mail'
         import_mail.updated_user = 'import_mail'
         import_mail.save!
-        
         
       end # transaction
       puts">>>>>>>>>>>>>>>>>>>>>>>>>>> MAIL IMPORT END"

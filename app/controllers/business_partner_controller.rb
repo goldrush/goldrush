@@ -93,7 +93,8 @@ class BusinessPartnerController < ApplicationController
   def list
     session[:business_partner_search] ||= {}
     incl = []
-    if flg = params[:flg]
+    flg = params[:flg]
+    if !flg.blank?
       if flg == 'eu'
         cond = make_popup_conditions(0,1,0,0)
       elsif flg == 'upper'

@@ -71,7 +71,7 @@
 <script type="text/javascript">
 <!--
 function openEuBpPicList() {
-    disp_wide('<%=url_for :controller => 'bp_pic', :action => 'list', :popup =>1 %>' + '/' + document.getElementById("business_eubp_id").value + '?mode=eu')
+    disp_wide('<%=url_for :controller => 'bp_pic', :action => 'list', :popup =>1 %>' + '&id=' + document.getElementById("business_eubp_id").value + '&mode=eu')
 }
 
 document.setEuBp = function(bp) {
