@@ -162,15 +162,16 @@ class BusinessPartnerController < ApplicationController
         mail_flg = true
       else
         @business_partner = BusinessPartner.new(params[:business_partner])
-        @business_partner.sales_code = SysConfig.get_seq_0('sales_code', 5)
+        @business_partner.tag_text = Tag.normalize_tag(@business_partner.tag_text).join(" ")
       end
 
-      if @business_partner.sales_management_code.blank?
-        @business_partner.sales_management_code = SysConfig.get_seq_0('sales_management_code', 5)
-      end
       @business_partner.business_partner_name = space_trim(params[:business_partner][:business_partner_name])
       set_user_column @business_partner
       @business_partner.save!
+
+      unless mail_flg
+        Tag.create_tags!('business_partners', @business_partner.id, @business_partner.tag_text)
+      end
       
       @bp_pic.business_partner_id = @business_partner.id
       @bp_pic.bp_pic_name = space_trim(params[:bp_pic][:bp_pic_name]).gsub(/　/," ")
@@ -202,11 +203,18 @@ class BusinessPartnerController < ApplicationController
   end
 
   def update
-    @business_partner = BusinessPartner.find(params[:id], :conditions =>["deleted = 0"])
-    @business_partner.attributes = params[:business_partner]
-    @business_partner.business_partner_name = space_trim(params[:business_partner][:business_partner_name])
-    set_user_column @business_partner
-    @business_partner.save!
+    ActiveRecord::Base.transaction do
+      @business_partner = BusinessPartner.find(params[:id], :conditions =>["deleted = 0"])
+      old_tags = @business_partner.tag_text
+      @business_partner.attributes = params[:business_partner]
+      @business_partner.tag_text = Tag.normalize_tag(@business_partner.tag_text).join(" ")
+      if old_tags != @business_partner.tag_text
+        Tag.update_tags!('business_partners', @business_partner.id, @business_partner.tag_text)
+      end
+      @business_partner.business_partner_name = space_trim(params[:business_partner][:business_partner_name])
+      set_user_column @business_partner
+      @business_partner.save!
+    end
     flash[:notice] = 'BusinessPartner was successfully updated.'
     redirect_to :action => 'show', :id => @business_partner
   rescue ActiveRecord::RecordInvalid

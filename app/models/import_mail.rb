@@ -150,9 +150,9 @@ class ImportMail < ActiveRecord::Base
 
 private
   def ImportMail.get_encode_body(mail, body)
-    if mail.transfer_encoding == 'ISO-2022-JP'
+    if mail.content_transfer_encoding == 'ISO-2022-JP'
       return NKF.nkf('-w -J', body)
-    elsif mail.transfer_encoding == 'UTF-8'
+    elsif mail.content_transfer_encoding == 'UTF-8'
       return body
     else
       # ‚»‚Ì‚Ù‚©‚Í

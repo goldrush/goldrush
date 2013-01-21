@@ -61,6 +61,10 @@
 <tr>
   <th><%= getLongName('business_partners', 'memo') %></th><td><%=simple_format h(@business_partner.memo) %></td>
 </tr>
+<tr>
+  <th><%= getLongName('business_partners', 'tag_text') %></th><td><%=h @business_partner.tag_text %></td>
+</tr>
+
 </table>
 <%= back_to_link '編集', :action => 'edit', :id => @business_partner %> |
 <%= link_or_back '戻る', :action => 'list' %>
