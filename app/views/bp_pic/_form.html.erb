@@ -1,25 +1,39 @@
 <%= error_messages_for 'bp_pic' %>
 
 <!--[form:bp_pic]-->
-<p><label for="bp_pic_bp_pic_name"><%=getLongName('bp_pics','bp_pic_name')%></label><br /><%= text_field 'bp_pic', 'bp_pic_name'  %></p>
+<table class="show_table">
+<tr>
+<th><label for="bp_pic_bp_pic_name"><%=getLongName('bp_pics','bp_pic_name')%></label></th><td><%= text_field 'bp_pic', 'bp_pic_name'  %></td>
+</tr>
+<tr>
+<th><label for="bp_pic_bp_pic_short_name"><%=getLongName('bp_pics','bp_pic_short_name')%></label></th><td><%= text_field 'bp_pic', 'bp_pic_short_name'  %></td>
+</tr>
+<tr>
+<th><label for="bp_pic_bp_pic_name_kana"><%=getLongName('bp_pics','bp_pic_name_kana')%></label></th><td><%= text_field 'bp_pic', 'bp_pic_name_kana'  %></td>
+</tr>
+<tr>
+<th><label for="bp_pic_depertment"><%=getLongName('bp_pics','depertment')%></label></th><td><%= text_field 'bp_pic', 'depertment'  %></td>
+</tr>
+<tr>
+<th><label for="bp_pic_position"><%=getLongName('bp_pics','position')%></label></th><td><%= text_field 'bp_pic', 'position'  %></td>
+</tr>
+<tr>
+<th><label for="bp_pic_tel_direct"><%=getLongName('bp_pics','tel_direct')%></label></th><td><%= text_field 'bp_pic', 'tel_direct'  %></td>
+</tr>
+<tr>
+<th><label for="bp_pic_tel_mobile"><%=getLongName('bp_pics','tel_mobile')%></label></th><td><%= text_field 'bp_pic', 'tel_mobile'  %></td>
+</tr>
+<tr>
+<th><label for="bp_pic_email1"><%=getLongName('bp_pics','email1')%></label></th><td><%= text_field 'bp_pic', 'email1'  %></td>
+</tr>
+<tr>
+<th><label for="bp_pic_email2"><%=getLongName('bp_pics','email2')%></label></th><td><%= text_field 'bp_pic', 'email2'  %></td>
+</tr>
+<tr>
+<th><label for="bp_pic_memo"><%=getLongName('bp_pics','memo')%></label></th><td><%= resizable_area 'bp_pic', 'memo'  %></td>
+</tr>
+</table>
 
-<p><label for="bp_pic_bp_pic_short_name"><%=getLongName('bp_pics','bp_pic_short_name')%></label><br /><%= text_field 'bp_pic', 'bp_pic_short_name'  %></p>
-
-<p><label for="bp_pic_bp_pic_name_kana"><%=getLongName('bp_pics','bp_pic_name_kana')%></label><br /><%= text_field 'bp_pic', 'bp_pic_name_kana'  %></p>
-
-<p><label for="bp_pic_depertment"><%=getLongName('bp_pics','depertment')%></label><br /><%= text_field 'bp_pic', 'depertment'  %></p>
-
-<p><label for="bp_pic_position"><%=getLongName('bp_pics','position')%></label><br /><%= text_field 'bp_pic', 'position'  %></p>
-
-<p><label for="bp_pic_tel_direct"><%=getLongName('bp_pics','tel_direct')%></label><br /><%= text_field 'bp_pic', 'tel_direct'  %></p>
-
-<p><label for="bp_pic_tel_mobile"><%=getLongName('bp_pics','tel_mobile')%></label><br /><%= text_field 'bp_pic', 'tel_mobile'  %></p>
-
-<p><label for="bp_pic_email1"><%=getLongName('bp_pics','email1')%></label><br /><%= text_field 'bp_pic', 'email1'  %></p>
-
-<p><label for="bp_pic_email2"><%=getLongName('bp_pics','email2')%></label><br /><%= text_field 'bp_pic', 'email2'  %></p>
-
-<p><label for="bp_pic_memo"><%=getLongName('bp_pics','memo')%></label><br /><%= resizable_area 'bp_pic', 'memo'  %></p>
 <!--[eoform:bp_pic]-->
 <%= hidden_field 'bp_pic', 'lock_version' %>
 <%= hidden_field 'bp_pic', 'business_partner_id' %>

@@ -3,44 +3,56 @@
 
 
 <!--[form:contract_term]-->
-
-<p><label for="contract_term_contract_type"><%=getLongName('contract_terms','contract_type')%></label><br />
-<%= select model_name, 'contract_type', $TYPE_CONDITIONS['contract_type']  %>
-</p>
-
-<p><label for="contract_term_payment"><%=getLongName('contract_terms','payment')%></label><br /><%= text_field model_name, 'payment_view', :size => 6 %>万円</p>
-
-<p><label for="contract_term_time_adjust_flg"><%=getLongName('contract_terms','time_adjust_flg')%></label><br /><%= check_box model_name, 'time_adjust_flg'  %></p>
-
-<p><label for="contract_term_time_adjust_upper"><%=getLongName('contract_terms','time_adjust_upper')%></label><br /><%= text_field model_name, 'time_adjust_upper'  %></p>
-
-<p><label for="contract_term_time_adjust_limit"><%=getLongName('contract_terms','time_adjust_limit')%></label><br /><%= text_field model_name, 'time_adjust_limit'  %></p>
-
-<p><label for="contract_term_time_adjust_under"><%=getLongName('contract_terms','time_adjust_under')%></label><br /><%= text_field model_name, 'time_adjust_under'  %></p>
-
-<p><label for="contract_term_time_adjust_type"><%=getLongName('contract_terms','time_adjust_type')%></label><br />
-<%= select model_name, 'time_adjust_type', [[]] + $TYPE_CONDITIONS['time_adjust_type']  %>
-</p>
-
-<p><label for="contract_term_over_time_payment"><%=getLongName('contract_terms','over_time_payment')%></label><br /><%= text_field model_name, 'over_time_payment'  %></p>
-
-<p><label for="contract_term_under_time_penalty"><%=getLongName('contract_terms','under_time_penalty')%></label><br /><%= text_field model_name, 'under_time_penalty'  %></p>
-
-<p><label for="contract_term_cutoff_date"><%=getLongName('contract_terms','cutoff_date')%></label><br /><%= text_field model_name, 'cutoff_date'  %></p>
-
-<p><label for="contract_term_time_adjust_type"><%=getLongName('contract_terms','payment_sight_type')%></label><br />
-<%= select model_name, 'payment_sight_type', [[]] + $TYPE_CONDITIONS['payment_sight_type']  %>
-</p>
-
-<p><label for="contract_term_contract_end_date"><%=getLongName('contract_terms','contract_end_date')%></label><br /><%= date_field model_name, 'contract_end_date'  %></p>
-
-<p><label for="contract_term_contract_renewal_unit"><%=getLongName('contract_terms','contract_renewal_unit')%></label><br /><%= text_field model_name, 'contract_renewal_unit'  %></p>
-
-<p><label for="contract_term_contract_renewal_terms"><%=getLongName('contract_terms','contract_renewal_terms')%></label><br /><%= resizable_area model_name, 'contract_renewal_terms'  %></p>
-
-<p><label for="contract_term_other_terms"><%=getLongName('contract_terms','other_terms')%></label><br /><%= resizable_area model_name, 'other_terms'  %></p>
-
-<p><label for="contract_term_memo"><%=getLongName('contract_terms','memo')%></label><br /><%= resizable_area model_name, 'memo'  %></p>
+<table class="show_table">
+<tr>
+<th><label for="contract_term_contract_type"><%=getLongName('contract_terms','contract_type')%></label></th><td><%= select model_name, 'contract_type', $TYPE_CONDITIONS['contract_type']  %></td>
+</tr>
+<tr>
+<th><label for="contract_term_payment"><%=getLongName('contract_terms','payment')%></label></th><td><%= text_field model_name, 'payment_view', :size => 6 %>万円</td>
+</tr>
+<tr>
+<th><label for="contract_term_time_adjust_flg"><%=getLongName('contract_terms','time_adjust_flg')%></label></th><td><%= check_box model_name, 'time_adjust_flg'  %></td>
+</tr>
+<tr>
+<th><label for="contract_term_time_adjust_upper"><%=getLongName('contract_terms','time_adjust_upper')%></label></th><td><%= text_field model_name, 'time_adjust_upper'  %></td>
+</tr>
+<tr>
+<th><label for="contract_term_time_adjust_limit"><%=getLongName('contract_terms','time_adjust_limit')%></label></th><td><%= text_field model_name, 'time_adjust_limit'  %></td>
+</tr>
+<tr>
+<th><label for="contract_term_time_adjust_under"><%=getLongName('contract_terms','time_adjust_under')%></label></th><td><%= text_field model_name, 'time_adjust_under'  %></td>
+</tr>
+<tr>
+<th><label for="contract_term_time_adjust_type"><%=getLongName('contract_terms','time_adjust_type')%></label></th><td><%= select model_name, 'time_adjust_type', [[]] + $TYPE_CONDITIONS['time_adjust_type']  %></td>
+</tr>
+<tr>
+<th><label for="contract_term_over_time_payment"><%=getLongName('contract_terms','over_time_payment')%></label></th><td><%= text_field model_name, 'over_time_payment'  %></td>
+</tr>
+<tr>
+<th><label for="contract_term_under_time_penalty"><%=getLongName('contract_terms','under_time_penalty')%></label></th><td><%= text_field model_name, 'under_time_penalty'  %></td>
+</tr>
+<tr>
+<th><label for="contract_term_cutoff_date"><%=getLongName('contract_terms','cutoff_date')%></label></th><td><%= text_field model_name, 'cutoff_date'  %></td>
+</tr>
+<tr>
+<th><label for="contract_term_time_adjust_type"><%=getLongName('contract_terms','payment_sight_type')%></label></th><td><%= select model_name, 'payment_sight_type', [[]] + $TYPE_CONDITIONS['payment_sight_type']  %></td>
+</tr>
+<tr>
+<th><label for="contract_term_contract_end_date"><%=getLongName('contract_terms','contract_end_date')%></label></th><td><%= date_field model_name, 'contract_end_date'  %></td>
+</tr>
+<tr>
+<th><label for="contract_term_contract_renewal_unit"><%=getLongName('contract_terms','contract_renewal_unit')%></label></th><td><%= text_field model_name, 'contract_renewal_unit'  %></td>
+</tr>
+<tr>
+<th><label for="contract_term_contract_renewal_terms"><%=getLongName('contract_terms','contract_renewal_terms')%></label></th><td><%= resizable_area model_name, 'contract_renewal_terms'  %></td>
+</tr>
+<tr>
+<th><label for="contract_term_other_terms"><%=getLongName('contract_terms','other_terms')%></label></th><td><%= resizable_area model_name, 'other_terms'  %></td>
+</tr>
+<tr>
+<th><label for="contract_term_memo"><%=getLongName('contract_terms','memo')%></label></th><td><%= resizable_area model_name, 'memo'  %></td>
+</tr>
+</table>
 
 <!--[eoform:contract_term]-->
 

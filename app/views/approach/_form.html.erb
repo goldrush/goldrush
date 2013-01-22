@@ -14,39 +14,46 @@
 
 
 <h2><%=getLongName('table_name','bp_members')%>選択</h2>
-<p>
-  <label for="human_resource_name"><%=getLongName('human_resources','human_resource_name')%></label><br />
-  <%= text_field_tag 'human_resource_name', @approach.bp_member.blank? ? "" : (@approach.bp_member.human_resource.human_resource_name.blank? ? @approach.bp_member.human_resource.initial : @approach.bp_member.human_resource.human_resource_name), :readOnly => true, :style => "background-color: silver;", :size => 30 %>
+<table class="show_table">
+<tr>
+<th><label for="human_resource_name"><%=getLongName('human_resources','human_resource_name')%></label></th><td><%= text_field_tag 'human_resource_name', @approach.bp_member.blank? ? "" : (@approach.bp_member.human_resource.human_resource_name.blank? ? @approach.bp_member.human_resource.initial : @approach.bp_member.human_resource.human_resource_name), :readOnly => true, :style => "background-color: silver;", :size => 30 %>
   <input type=button value='...' onClick="disp_wide('<%=url_for :controller => 'bp_member', :action => 'list', :popup =>1 %>');return false;" />
-  <input type=button value='クリア' onClick="clearBpMember();return false;" />
-</p>
-<p>
-  <label for="business_partner_name">下流<%=getLongName('business_partners','business_partner_name')%></label><br />
-  <%= text_field_tag 'business_partner_name', @approach.bp_member.blank? ? "" : @approach.bp_member.business_partner.business_partner_name, :readOnly => true, :style => "background-color: silver;", :size => 30 %>
-</p>
+  <input type=button value='クリア' onClick="clearBpMember();return false;" /></td>
+</tr>
+<tr>
+<th><label for="business_partner_name">下流<%=getLongName('business_partners','business_partner_name')%></label></th><td><%= text_field_tag 'business_partner_name', @approach.bp_member.blank? ? "" : @approach.bp_member.business_partner.business_partner_name, :readOnly => true, :style => "background-color: silver;", :size => 30 %>
+</td>
+</tr>
+</table>
 
 
 <h2><%=getLongName('table_name','approaches')%></h2>
 <!--[form:approach]-->
-<p><label for="approach_approached_at"><%=getLongName('approaches','approached_at')%></label><br />
-<%= date_field 'approach', 'approached_at' %>
+<table class="show_table">
+<tr>
+<th><label for="approach_approached_at"><%=getLongName('approaches','approached_at')%></label></th><td><%= date_field 'approach', 'approached_at' %>
  <%= select_tag 'approached_at_hour', options_for_select((0..23).to_a.map{|x| sprintf("%0.2d", x)}, sprintf("%0.2d", @approached_at_hour.to_i)) %> : 
  <%= select_tag 'approached_at_minute', options_for_select((0..5).to_a.map{|x| sprintf("%0.2d", x * 10)}, sprintf("%0.2d", @approached_at_min.to_i)) %>
-</p>
-
-  <p>
-    <label for="approach_approach_pic_name">提案担当</label><br />
-    <%= text_field_tag 'approach_pic_name', @approach.approach_pic.blank? ? "" : @approach.approach_pic.employee.employee_name, :readOnly => true, :style => "background-color: silver;", :size => 30 %>
+</td>
+</tr>
+<tr>
+<th><label for="approach_approach_pic_name">提案担当</label></th><td><%= text_field_tag 'approach_pic_name', @approach.approach_pic.blank? ? "" : @approach.approach_pic.employee.employee_name, :readOnly => true, :style => "background-color: silver;", :size => 30 %>
     <input type=button value='...' onClick="disp_wide('<%=url_for :controller => 'employee', :action => 'list', :popup =>1, :mode => 'Approach' %>');return false;" />
     <input type=button value='クリア' onClick="clearApproachUser();return false;" />
-  </p>
-  <%= hidden_field 'approach', 'approach_pic_id' %>
-  
-<p><label for="approach_approach_start_date"><%=getLongName('approaches','approach_start_date')%></label><br /><%= date_field 'approach', 'approach_start_date'  %></p>
+    <%= hidden_field 'approach', 'approach_pic_id' %>
+</td>
+</tr>
+<tr>
+<th><label for="approach_approach_start_date"><%=getLongName('approaches','approach_start_date')%></label></th><td><%= date_field 'approach', 'approach_start_date'  %></td>
+</tr>
+<tr>
+<th><label for="approach_can_interview_date"><%=getLongName('approaches','can_interview_date')%></label></th><td><%= date_field 'approach', 'can_interview_date'  %></td>
+</tr>
+<tr>
+<th><label for="approach_memo"><%=getLongName('approaches','memo')%></label></th><td><%= resizable_area 'approach', 'memo'  %></td>
+</tr>
+</table>
 
-<p><label for="approach_can_interview_date"><%=getLongName('approaches','can_interview_date')%></label><br /><%= date_field 'approach', 'can_interview_date'  %></p>
-
-<p><label for="approach_memo"><%=getLongName('approaches','memo')%></label><br /><%= resizable_area 'approach', 'memo'  %></p>
 <!--[eoform:approach]-->
 
 

@@ -1,45 +1,70 @@
 <%= error_messages_for 'human_resource' %>
 
 <!--[form:human_resource]-->
-<p><label for="human_resource_human_resource_name"><%=getLongName('human_resources','human_resource_name')%></label><br /><%= text_field 'human_resource', 'human_resource_name'  %></p>
+<table class="show_table">
+<tr>
+<th><label for="human_resource_human_resource_name"><%=getLongName('human_resources','human_resource_name')%></label></th><td><%= text_field 'human_resource', 'human_resource_name'  %></td>
+</tr>
+<tr>
+<th><label for="human_resource_human_resource_short_name"><%=getLongName('human_resources','human_resource_short_name')%></label></th><td><%= text_field 'human_resource', 'human_resource_short_name'  %></td>
+</tr>
+<tr>
+<th><label for="human_resource_human_resource_name_kana"><%=getLongName('human_resources','human_resource_name_kana')%></label></th><td><%= text_field 'human_resource', 'human_resource_name_kana'  %></td>
+</tr>
+<tr>
+<th><label for="human_resource_initial"><%=getLongName('human_resources','initial')%></label></th><td><%= text_field 'human_resource', 'initial'  %></td>
+</tr>
+<tr>
+<th><label for="human_resource_email"><%=getLongName('human_resources','email')%></label></th><td><%= text_field 'human_resource', 'email'  %></td>
+</tr>
+<tr>
+<th><label for="human_resource_tel1"><%=getLongName('human_resources','tel1')%></label></th><td><%= text_field 'human_resource', 'tel1'  %></td>
+</tr>
+<tr>
+<th><label for="human_resource_tel2"><%=getLongName('human_resources','tel2')%></label></th><td><%= text_field 'human_resource', 'tel2'  %></td>
+</tr>
+</tr>
+<tr>
+<th><label for="human_resource_age"><%=getLongName('human_resources','age')%><%=@human_resource.created_at.blank? ? "" : "（#{@human_resource.created_at}登録）" %></label></th><td><%= text_field 'human_resource', 'age', :size => 10  %></td>
+</tr>
+<tr>
+<th><label for="human_resource_birthday_date"><%=getLongName('human_resources','birthday_date')%></label></th><td><%= date_field 'human_resource', 'birthday_date'  %></td>
+</tr>
+<tr>
+<th><label for="human_resource_sex_type"><%=getLongName('human_resources','sex_type')%></label></th><td><%= select 'human_resource', 'sex_type', [[]] + $TYPE_CONDITIONS['sex_type']  %></td>
+</tr>
+<tr>
+<th><label for="human_resource_nationality"><%=getLongName('human_resources','nationality')%></label></th><td><%= text_field 'human_resource', 'nationality'  %></td>
+</tr>
+<tr>
+<th><label for="human_resource_railroad"><%=getLongName('human_resources','railroad')%></label></th><td><%= text_field 'human_resource', 'railroad'  %></td>
+</tr>
+<tr>
+<th><label for="human_resource_near_station"><%=getLongName('human_resources','near_station')%></label></th><td><%= text_field 'human_resource', 'near_station'  %></td>
+</tr>
+<tr>
+<th><label for="human_resource_max_move_time"><%=getLongName('human_resources','max_move_time')%></label></th><td><%= text_field 'human_resource', 'max_move_time'  %></td>
+</tr>
+<tr>
+<th><label for="human_resource_skill"><%=getLongName('human_resources','skill')%></label></th><td><%= resizable_area 'human_resource', 'skill'  %></td>
+</tr>
+<tr>
+<th><label for="human_resource_qualification"><%=getLongName('human_resources','qualification')%></label></th><td><%= resizable_area 'human_resource', 'qualification'  %></td>
+</tr>
+<tr>
+<th><label for="human_resource_communication_type"><%=getLongName('human_resources','communication_type')%></label></th><td><%= select 'human_resource', 'communication_type', [[]] + $TYPE_CONDITIONS['communication_type']  %></td>
+</tr>
+<tr>
+<th><label for="human_resource_attendance"><%=getLongName('human_resources','attendance')%></label></th><td><%= text_field 'human_resource', 'attendance'  %></td>
+</tr>
+<tr>
+<th><label for="human_resource_human_resource_status_type"><%=getLongName('human_resources','human_resource_status_type')%></label></th><td><%= select 'human_resource', 'human_resource_status_type', $TYPE_CONDITIONS['human_resource_status_type']  %></td>
+</tr>
+<tr>
+<th><label for="human_resource_memo"><%=getLongName('human_resources','memo')%></label></th><td><%= resizable_area 'human_resource', 'memo'  %></td>
+</tr>
 
-<p><label for="human_resource_human_resource_short_name"><%=getLongName('human_resources','human_resource_short_name')%></label><br /><%= text_field 'human_resource', 'human_resource_short_name'  %></p>
-
-<p><label for="human_resource_human_resource_name_kana"><%=getLongName('human_resources','human_resource_name_kana')%></label><br /><%= text_field 'human_resource', 'human_resource_name_kana'  %></p>
-
-<p><label for="human_resource_initial"><%=getLongName('human_resources','initial')%></label><br /><%= text_field 'human_resource', 'initial'  %></p>
-
-<p><label for="human_resource_email"><%=getLongName('human_resources','email')%></label><br /><%= text_field 'human_resource', 'email'  %></p>
-
-<p><label for="human_resource_tel1"><%=getLongName('human_resources','tel1')%></label><br /><%= text_field 'human_resource', 'tel1'  %></p>
-
-<p><label for="human_resource_tel2"><%=getLongName('human_resources','tel2')%></label><br /><%= text_field 'human_resource', 'tel2'  %></p>
-
-<p><label for="human_resource_age"><%=getLongName('human_resources','age')%><%=@human_resource.created_at.blank? ? "" : "（#{@human_resource.created_at}登録）" %></label><br /><%= text_field 'human_resource', 'age', :size => 10  %></p>
-
-<p><label for="human_resource_birthday_date"><%=getLongName('human_resources','birthday_date')%></label><br /><%= date_field 'human_resource', 'birthday_date'  %></p>
-
-<p><label for="human_resource_sex_type"><%=getLongName('human_resources','sex_type')%></label><br /><%= select 'human_resource', 'sex_type', [[]] + $TYPE_CONDITIONS['sex_type']  %></p>
-
-<p><label for="human_resource_nationality"><%=getLongName('human_resources','nationality')%></label><br /><%= text_field 'human_resource', 'nationality'  %></p>
-
-<p><label for="human_resource_railroad"><%=getLongName('human_resources','railroad')%></label><br /><%= text_field 'human_resource', 'railroad'  %></p>
-
-<p><label for="human_resource_near_station"><%=getLongName('human_resources','near_station')%></label><br /><%= text_field 'human_resource', 'near_station'  %></p>
-
-<p><label for="human_resource_max_move_time"><%=getLongName('human_resources','max_move_time')%></label><br /><%= text_field 'human_resource', 'max_move_time'  %></p>
-
-<p><label for="human_resource_skill"><%=getLongName('human_resources','skill')%></label><br /><%= resizable_area 'human_resource', 'skill'  %></p>
-
-<p><label for="human_resource_qualification"><%=getLongName('human_resources','qualification')%></label><br /><%= resizable_area 'human_resource', 'qualification'  %></p>
-
-<p><label for="human_resource_communication_type"><%=getLongName('human_resources','communication_type')%></label><br /><%= select 'human_resource', 'communication_type', [[]] + $TYPE_CONDITIONS['communication_type']  %></p>
-
-<p><label for="human_resource_attendance"><%=getLongName('human_resources','attendance')%></label><br /><%= text_field 'human_resource', 'attendance'  %></p>
-
-<p><label for="human_resource_human_resource_status_type"><%=getLongName('human_resources','human_resource_status_type')%></label><br /><%= select 'human_resource', 'human_resource_status_type', $TYPE_CONDITIONS['human_resource_status_type']  %></p>
-
-<p><label for="human_resource_memo"><%=getLongName('human_resources','memo')%></label><br /><%= resizable_area 'human_resource', 'memo'  %></p>
+</table>
 
 <!--[eoform:human_resource]-->
 

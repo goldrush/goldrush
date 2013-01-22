@@ -1,68 +1,86 @@
 <%= error_messages_for 'business' %>
 
 <!--[form:business]-->
-
-<p>
-  <label for="eubp_name">EU取引先</label><br />
-  <%= text_field_tag 'eubp_name', @business.eubp.blank? ? "" : @business.eubp.business_partner_name, :readOnly => true, :style => "background-color: silver;", :size => 30 %>
+<table class="show_table">
+<tr>
+<th><label for="eubp_name">EU取引先</label></th><td><%= text_field_tag 'eubp_name', @business.eubp.blank? ? "" : @business.eubp.business_partner_name, :readOnly => true, :style => "background-color: silver;", :size => 30 %>
   <input type=button value='...' onClick="disp_wide('<%=url_for :controller => 'business_partner', :action => 'list', :popup =>1, :flg => 'eu' %>');return false;" />
   <input type=button value='クリア' onClick="clearEuBp();return false;" />
-</p>
-<%= hidden_field 'business', 'eubp_id' %>
-
-<p>
-  <label for="eubp_pic_name">EU取引先担当</label><br />
-  <%= text_field_tag 'eubp_pic_name', @business.eubp_pic.blank? ? "" : @business.eubp_pic.bp_pic_name, :readOnly => true, :style => "background-color: silver;", :size => 30 %>
+  <%= hidden_field 'business', 'eubp_id' %></td>
+</tr>
+<tr>
+<th><label for="eubp_pic_name">EU取引先担当</label></th><td><%= text_field_tag 'eubp_pic_name', @business.eubp_pic.blank? ? "" : @business.eubp_pic.bp_pic_name, :readOnly => true, :style => "background-color: silver;", :size => 30 %>
   <input type=button value='...' onClick="openEuBpPicList();return false;" />
   <input type=button value='クリア' onClick="clearEuBpPic();return false;" />
-</p>
-<%= hidden_field 'business', 'eubp_pic_id' %>
-
-<p><label for="business_issue_datetime"><%=getLongName('businesses','issue_datetime')%></label><br />
-<%= date_field 'business', 'issue_datetime' %>
+  <%= hidden_field 'business', 'eubp_pic_id' %></td>
+</tr>
+<tr>
+<th><label for="business_issue_datetime"><%=getLongName('businesses','issue_datetime')%></label></th><td><%= date_field 'business', 'issue_datetime' %>
 <%= select_tag 'issue_datetime_hour', options_for_select((0..23).to_a.map{|x| sprintf("%0.2d", x)}, sprintf("%0.2d", @issue_datetime_hour.to_i)) %> : 
 <%= select_tag 'issue_datetime_minute', options_for_select((0..5).to_a.map{|x| sprintf("%0.2d", x * 10)}, sprintf("%0.2d", @issue_datetime_min.to_i)) %>
-</p>
-
-<p><label for="business_due_date"><%=getLongName('businesses','due_date')%></label><br /><%= date_field 'business', 'due_date'  %></p>
-
-<p><label for="business_term_type"><%=getLongName('businesses','term_type')%></label><br /><%= select 'business', 'term_type', $TYPE_CONDITIONS['term_type']  %></p>
-
-<p><label for="business_business_title"><%=getLongName('businesses','business_title')%></label><br /><%= text_field 'business', 'business_title'  %></p>
-
-<p><label for="business_business_point"><%=getLongName('businesses','business_point')%></label><br /><%= resizable_area 'business', 'business_point'  %></p>
-
-<p><label for="business_business_description"><%=getLongName('businesses','business_description')%></label><br /><%= resizable_area 'business', 'business_description'  %></p>
-
-<p><label for="business_member_change_flg"><%=getLongName('businesses','member_change_flg')%></label><br /><%= check_box 'business', 'member_change_flg'  %></p>
-
-<p><label for="business_place"><%=getLongName('businesses','place')%></label><br /><%= text_field 'business', 'place'  %></p>
-
-<p><label for="business_period"><%=getLongName('businesses','period')%></label><br /><%= text_field 'business', 'period'  %></p>
-
-<p><label for="business_phase"><%=getLongName('businesses','phase')%></label><br /><%= text_field 'business', 'phase'  %></p>
-
-<p><label for="business_need_count"><%=getLongName('businesses','need_count')%></label><br /><%= text_field 'business', 'need_count'  %></p>
-
-<p><label for="business_skill_must"><%=getLongName('businesses','skill_must')%></label><br /><%= resizable_area 'business', 'skill_must'  %></p>
-
-<p><label for="business_skill_want"><%=getLongName('businesses','skill_want')%></label><br /><%= resizable_area 'business', 'skill_want'  %></p>
-
-<p><label for="business_business_hours"><%=getLongName('businesses','business_hours')%></label><br /><%= text_field 'business', 'business_hours'  %></p>
-
-<p><label for="business_assumed_hour"><%=getLongName('businesses','assumed_hour')%></label><br /><%= text_field 'business', 'assumed_hour'  %></p>
-
-<p><label for="business_career_years"><%=getLongName('businesses','career_years')%></label><br /><%= text_field 'business', 'career_years'  %></p>
-
-<p><label for="business_age_limit"><%=getLongName('businesses','age_limit')%></label><br /><%= text_field 'business', 'age_limit'  %></p>
-
-<p><label for="business_nationality_limit"><%=getLongName('businesses','nationality_limit')%></label><br /><%= text_field 'business', 'nationality_limit'  %></p>
-
-<p><label for="business_sex_limit"><%=getLongName('businesses','sex_limit')%></label><br /><%= text_field 'business', 'sex_limit'  %></p>
-
-<p><label for="business_communication"><%=getLongName('businesses','communication')%></label><br /><%= text_field 'business', 'communication'  %></p>
-
-<p><label for="business_memo"><%=getLongName('businesses','memo')%></label><br /><%= resizable_area 'business', 'memo'  %></p>
+</td>
+</tr>
+<tr>
+<th><label for="business_due_date"><%=getLongName('businesses','due_date')%></label></th><td><%= date_field 'business', 'due_date'  %></td>
+</tr>
+<tr>
+<th><label for="business_term_type"><%=getLongName('businesses','term_type')%></label></th><td><%= select 'business', 'term_type', $TYPE_CONDITIONS['term_type']  %></td>
+</tr>
+<tr>
+<th><label for="business_business_title"><%=getLongName('businesses','business_title')%></label></th><td><%= text_field 'business', 'business_title'  %></td>
+</tr>
+<tr>
+<th><label for="business_business_point"><%=getLongName('businesses','business_point')%></label></th><td><%= resizable_area 'business', 'business_point'  %></td>
+</tr>
+<tr>
+<th><label for="business_business_description"><%=getLongName('businesses','business_description')%></label></th><td><%= resizable_area 'business', 'business_description'  %></td>
+</tr>
+<tr>
+<th><label for="business_member_change_flg"><%=getLongName('businesses','member_change_flg')%></label></th><td><%= check_box 'business', 'member_change_flg'  %></td>
+</tr>
+<tr>
+<th><label for="business_place"><%=getLongName('businesses','place')%></label></th><td><%= text_field 'business', 'place'  %></td>
+</tr>
+<tr>
+<th><label for="business_period"><%=getLongName('businesses','period')%></label></th><td><%= text_field 'business', 'period'  %></td>
+</tr>
+<tr>
+<th><label for="business_phase"><%=getLongName('businesses','phase')%></label></th><td><%= text_field 'business', 'phase'  %></td>
+</tr>
+<tr>
+<th><label for="business_need_count"><%=getLongName('businesses','need_count')%></label></th><td><%= text_field 'business', 'need_count'  %></td>
+</tr>
+<tr>
+<th><label for="business_skill_must"><%=getLongName('businesses','skill_must')%></label></th><td><%= resizable_area 'business', 'skill_must'  %></td>
+</tr>
+<tr>
+<th><label for="business_skill_want"><%=getLongName('businesses','skill_want')%></label></th><td><%= resizable_area 'business', 'skill_want'  %></td>
+</tr>
+<tr>
+<th><label for="business_business_hours"><%=getLongName('businesses','business_hours')%></label></th><td><%= text_field 'business', 'business_hours'  %></td>
+</tr>
+<tr>
+<th><label for="business_assumed_hour"><%=getLongName('businesses','assumed_hour')%></label></th><td><%= text_field 'business', 'assumed_hour'  %></td>
+</tr>
+<tr>
+<th><label for="business_career_years"><%=getLongName('businesses','career_years')%></label></th><td><%= text_field 'business', 'career_years'  %></td>
+</tr>
+<tr>
+<th><label for="business_age_limit"><%=getLongName('businesses','age_limit')%></label></th><td><%= text_field 'business', 'age_limit'  %></td>
+</tr>
+<tr>
+<th><label for="business_nationality_limit"><%=getLongName('businesses','nationality_limit')%></label></th><td><%= text_field 'business', 'nationality_limit'  %></td>
+</tr>
+<tr>
+<th><label for="business_sex_limit"><%=getLongName('businesses','sex_limit')%></label></th><td><%= text_field 'business', 'sex_limit'  %></td>
+</tr>
+<tr>
+<th><label for="business_communication"><%=getLongName('businesses','communication')%></label></th><td><%= text_field 'business', 'communication'  %></td>
+</tr>
+<tr>
+<th><label for="business_memo"><%=getLongName('businesses','memo')%></label></th><td><%= resizable_area 'business', 'memo'  %></td>
+</tr>
+</table>
 
 <!--[eoform:business]-->
 <%= hidden_field 'business', 'lock_version' %>

@@ -10,34 +10,42 @@
 <h2>所属</h2>
 <!--[form:bp_member]-->
   <%= hidden_field 'bp_member', 'human_resource_id', :value => @human_resource.id %>
-  <p>
-    <label for="business_partner_name">下流取引先</label><br />
-    <%= text_field_tag 'business_partner_name', @bp_member.business_partner.blank? ? "" : @bp_member.business_partner.business_partner_name, :readOnly => true, :style => "background-color: silver;", :size => 30 %>
+<table class="show_table">
+<tr>
+<th><label for="business_partner_name">下流取引先</label></th><td><%= text_field_tag 'business_partner_name', @bp_member.business_partner.blank? ? "" : @bp_member.business_partner.business_partner_name, :readOnly => true, :style => "background-color: silver;", :size => 30 %>
     <input type=button value='...' onClick="disp_wide('<%=url_for :controller => 'business_partner', :action => 'list', :popup =>1, :flg => 'down' %>');return false;" />
     <input type=button value='クリア' onClick="clearBp();return false;" />
-  </p>
-  <p>
-    <label for="bp_pic_name">下流取引先担当</label><br />
-    <%= text_field_tag 'bp_pic_name', @bp_member.bp_pic.blank? ? "" : @bp_member.bp_pic.bp_pic_name, :readOnly => true, :style => "background-color: silver;", :size => 30 %>
+</td>
+</tr>
+<tr>
+<th><label for="bp_pic_name">下流取引先担当</label></th><td><%= text_field_tag 'bp_pic_name', @bp_member.bp_pic.blank? ? "" : @bp_member.bp_pic.bp_pic_name, :readOnly => true, :style => "background-color: silver;", :size => 30 %>
     <input type=button value='...' onClick="openBpPicList();return false;" />
     <input type=button value='クリア' onClick="clearBpPic();return false;" />
-  </p>
-  <%= hidden_field 'bp_member', 'business_partner_id' %>
-
-<p><label for="bp_member_employment_type"><%=getLongName('bp_members','employment_type')%></label><br /><%= select 'bp_member', 'employment_type', $TYPE_CONDITIONS['employment_type'] %></p>
-
-<p><label for="bp_member_reprint_flg"><%=getLongName('bp_members','reprint_flg')%></label><br /><%= check_box 'bp_member', 'reprint_flg'  %></p>
-
-<p><label for="bp_member_race_condition"><%=getLongName('bp_members','race_condition')%></label><br /><%= text_field 'bp_member', 'race_condition'  %></p>
-
-<p><label for="bp_member_payment_memo"><%=getLongName('bp_members','payment_memo')%></label><br /><%= text_field 'bp_member', 'payment_memo'  %></p>
-
-<p><label for="bp_member_payment_min"><%=getLongName('bp_members','payment_min')%></label><br /><%= text_field 'bp_member', 'payment_min_view', :size => 6 %>万円</p>
-
-<p><label for="bp_member_time_adjust_term"><%=getLongName('bp_members','time_adjust_term')%></label><br /><%= text_field 'bp_member', 'time_adjust_term'  %></p>
-
-<p><label for="bp_member_memo"><%=getLongName('bp_members','memo')%></label><br /><%= resizable_area 'bp_member', 'memo'  %></p>
-
+</td>
+</tr>
+<tr>
+<th><%= hidden_field 'bp_member', 'business_partner_id' %>
+    <label for="bp_member_employment_type"><%=getLongName('bp_members','employment_type')%></label></th><td><%= select 'bp_member', 'employment_type', $TYPE_CONDITIONS['employment_type'] %></td>
+</tr>
+<tr>
+<th><label for="bp_member_reprint_flg"><%=getLongName('bp_members','reprint_flg')%></label></th><td><%= check_box 'bp_member', 'reprint_flg'  %></td>
+</tr>
+<tr>
+<th><label for="bp_member_race_condition"><%=getLongName('bp_members','race_condition')%></label></th><td><%= text_field 'bp_member', 'race_condition'  %></td>
+</tr>
+<tr>
+<th><label for="bp_member_payment_memo"><%=getLongName('bp_members','payment_memo')%></label></th><td><%= text_field 'bp_member', 'payment_memo'  %></td>
+</tr>
+<tr>
+<th><label for="bp_member_payment_min"><%=getLongName('bp_members','payment_min')%></label></th><td><%= text_field 'bp_member', 'payment_min_view', :size => 6 %>万円</td>
+</tr>
+<tr>
+<th><label for="bp_member_time_adjust_term"><%=getLongName('bp_members','time_adjust_term')%></label></th><td><%= text_field 'bp_member', 'time_adjust_term'  %></td>
+</tr>
+<tr>
+<th><label for="bp_member_memo"><%=getLongName('bp_members','memo')%></label></th><td><%= resizable_area 'bp_member', 'memo'  %></td>
+</tr>
+</table>
 <!--[eoform:bp_member]-->
 
 <%= hidden_field 'bp_member', 'lock_version' %>
