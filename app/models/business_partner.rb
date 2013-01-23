@@ -23,6 +23,15 @@ class BusinessPartner < ActiveRecord::Base
     self.sales_code + " " + business_partner_name
   end
 
+  def BusinessPartner.export_to_csv
+    csv_data = []
+    csv_data << "e-mail,Name,ZipCode,Prefecture,Address,Tel,Birthday,Occupation,案件,人材"
+    BpPic.all.each do |x|
+      csv_data << [x.email1, x.bp_pic_name,x.business_partner.business_partner_name, "", "", "", "", "", x.business_partner.down_flg, x.business_partner.upper_flg].join(',')
+    end
+    return csv_data.join("\n")
+  end
+
   def BusinessPartner.import_from_csv(filename, prodmode=false)
     ActiveRecord::Base.transaction do
     require 'csv'

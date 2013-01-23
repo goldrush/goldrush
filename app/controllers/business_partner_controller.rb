@@ -249,5 +249,8 @@ class BusinessPartnerController < ApplicationController
     end
     trimed_bp_name
   end
-  
+
+  def download_csv
+    send_data BusinessPartner.export_to_csv, :filename => "abc.csv", :type => "text/csv"
+  end 
 end

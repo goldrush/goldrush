@@ -67,7 +67,7 @@
 <%= paginate(@business_partners) %>
 
 <br />
-<%= link_to (getLongName('table_name','business_partners')+'/'+getLongName('table_name','bp_pics')+'の新規作成'), :action => 'new', :flg => params[:flg], :back_to => request.env['REQUEST_URI'] %>
+<%= link_to (getLongName('table_name','business_partners')+'/'+getLongName('table_name','bp_pics')+'の新規作成'), :action => 'new', :flg => params[:flg], :back_to => request.env['REQUEST_URI'] %>　<%= link_to "担当者のリストをエクスポート", :action => 'download_csv' %>
 <% if popup? %>
 <script type="text/javascript">
 <!--
