@@ -68,7 +68,7 @@ class EmployeeController < ApplicationController
   def store_upload_file
     file_dir = File.join(Rails.root,'tmp','attach')
     if params[:upload]
-      if params[:upload]['file1'] != ""
+      if !params[:upload]['file1'].blank?
         file1 = params[:upload]['file1']
         ext = File.extname(file1.original_filename.to_s).downcase
         raise ValidationAbort.new("写真は、拡張子がjpgのファイルでなければなりません") if ext != '.jpg'
@@ -76,7 +76,7 @@ class EmployeeController < ApplicationController
         @employee.attached_file1 = filename1
         File.open(File.join(file_dir, filename1), "wb"){ |f| f.write(file1.read) }
       end
-      if params[:upload]['file2'] != ""
+      if !params[:upload]['file2'].blank?
         file2 = params[:upload]['file2']
         ext = File.extname(file2.original_filename.to_s).downcase
         raise ValidationAbort.new("写真は、拡張子がpdfのファイルでなければなりません") if ext != '.pdf'
@@ -84,7 +84,7 @@ class EmployeeController < ApplicationController
         @employee.attached_file2 = filename2
         File.open(File.join(file_dir, filename2), "wb"){ |f| f.write(file2.read) }
       end
-      if params[:upload]['file3'] != ""
+      if !params[:upload]['file3'].blank?
         file3 = params[:upload]['file3']
         ext = File.extname(file3.original_filename.to_s).downcase
         raise ValidationAbort.new("写真は、拡張子がpdfのファイルでなければなりません") if ext != '.pdf'
@@ -92,7 +92,7 @@ class EmployeeController < ApplicationController
         @employee.attached_file3 = filename3
         File.open(File.join(file_dir, filename3), "wb"){ |f| f.write(file3.read) }
       end
-      if params[:upload]['file4'] != ""
+      if !params[:upload]['file4'].blank?
         file4 = params[:upload]['file4']
         ext = File.extname(file4.original_filename.to_s).downcase
         raise ValidationAbort.new("写真は、拡張子がpdfのファイルでなければなりません") if ext != '.pdf'
