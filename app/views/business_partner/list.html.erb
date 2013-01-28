@@ -67,7 +67,16 @@
 <%= paginate(@business_partners) %>
 
 <br />
-<%= link_to (getLongName('table_name','business_partners')+'/'+getLongName('table_name','bp_pics')+'の新規作成'), :action => 'new', :flg => params[:flg], :back_to => request.env['REQUEST_URI'] %>　<%= link_to "担当者のリストをエクスポート", :action => 'download_csv' %>
+<%= link_to (getLongName('table_name','business_partners')+'/'+getLongName('table_name','bp_pics')+'の新規作成'), :action => 'new', :flg => params[:flg], :back_to => request.env['REQUEST_URI'] %>
+<br>
+<br>
+<%= form_tag ({:action => 'download_csv'}) do %>
+  <%= submit_tag '担当者のリストをエクスポート' %>
+<% end %>
+<%= form_tag({:action => 'upload_csv'} , {:multipart => true}) do %>
+  <p>担当者のリストをインポート</p>  
+  <%= file_field_tag 'csv_upload_file' %><%= submit_tag 'インポート' %>
+<% end %>
 <% if popup? %>
 <script type="text/javascript">
 <!--

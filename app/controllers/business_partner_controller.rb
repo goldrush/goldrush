@@ -252,5 +252,13 @@ class BusinessPartnerController < ApplicationController
 
   def download_csv
     send_data BusinessPartner.export_to_csv, :filename => "abc.csv", :type => "text/csv"
-  end 
+  end
+
+  def upload_csv
+    file = params[:csv_upload_file]
+    ext = File.extname(file.original_filename.to_s).downcase
+    raise ValidationAbort.new("インポートするファイルは、拡張子がcsvのファイルでなければなりません") if ext != '.csv'
+    BusinessPartner.import_from_csv_data(file.read)
+    render :text => "<h1>インポート完了</h1>"
+  end
 end
