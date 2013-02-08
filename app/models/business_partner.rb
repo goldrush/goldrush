@@ -26,7 +26,7 @@ class BusinessPartner < ActiveRecord::Base
 
   def BusinessPartner.export_to_csv
     csv_data = []
-    csv_data << "e-mail,Name,ZipCode,Prefecture,Address,Tel,Birthday,Occupation,案件,人材, bp_id, bp_pic_id,担当グループ"
+    csv_data << "e-mail,Name,ZipCode,Prefecture,Address,Tel,Birthday,Occupation,案件,人材, bp_id, bp_pic_id,グループ"
     BpPic.all.each do |x|
       csv_data << [x.email1, x.bp_pic_name,x.business_partner.business_partner_name, "", "", "", "", "", x.business_partner.down_flg, x.business_partner.upper_flg, x.business_partner.id, x.id].join(',')
     end
@@ -36,114 +36,118 @@ class BusinessPartner < ActiveRecord::Base
     File.open(filename, "r"){|file| import_from_csv_data(file, prodmode)}
   end
 
-  def BusinessPartner.import_from_csv_data(readable_data, prodmode=false)
-    ActiveRecord::Base.transaction do
-    require 'csv'
-    companies = {}
-    pics = {}
-    pic_groups = {}
-    BusinessPartner.all.each do |x|
-      companies[x.business_partner_name.upcase] = [x, []]
-    end
-    BpPic.all.each do |y|
-      pics[y.bp_pic_name] = [y]
-    end
-    BpPicGroup.all.each do |z|
-      pic_groups[z.bp_pic_group_name] = [z]
-    end
-    CSV.parse(NKF.nkf("-w", readable_data)).each do |row|
-      next if row[0] == 'e-mail'
-      break if row[0].blank?
-      a,b = row[2].split("　")
-      a.strip!
-      c = row[12]
-      email = if prodmode
-        row[0]
-      else
-        "test+" + row[0].sub("@","_") + "@i.applicative.jp"
-      end
-
-      if row[10]
-        # update
-        if update_business_partner = BusinessPartner.where(:id => row[10].to_i).first
-          update_business_partner.down_flg = row[8].to_i
-          update_business_partner.upper_flg = row[9].to_i
-          update_business_partner.save!
-          companies[a.upcase] = [update_business_partner, []]
+  def BusinessPartner.create_business_partner(companies, email, pic_name, company_name, upper_flg, down_flg)
+    unless companies[company_name.upcase]
+      unless bp = BusinessPartner.where(:business_partner_name => company_name, :deleted => 0).first
+        bp = BusinessPartner.new
+        bp.business_partner_name = company_name
+        bp.business_partner_short_name = company_name
+        bp.business_partner_name_kana = company_name
+        bp.sales_status_type = 'prospect'
+        bp.upper_flg = upper_flg
+        bp.down_flg = down_flg
+        if pic_name.include?('担当者')
+          bp.email = email
         end
-      else
-        unless companies[a.upcase]
-          bp = BusinessPartner.new
-          bp.business_partner_name = a
-          bp.business_partner_short_name = a
-          bp.business_partner_name_kana = a
-          bp.sales_status_type = 'prospect'
-          bp.upper_flg = row[8].to_i
-	  bp.down_flg = row[9].to_i
-	  if row[1].include?('担当者')
-            bp.email = email
-	  end
-	  bp.created_user = 'import'
-	  bp.updated_user = 'import'
-	  bp.save!
-	  companies[a.upcase] = [bp, []]
-        end
+        bp.created_user = 'import'
+        bp.updated_user = 'import'
+        bp.save!
       end
+      companies[company_name.upcase] = [bp, {}]
+    end
+    return companies[company_name.upcase]
+  end
 
-      pic = BpPic.new
-      pic.business_partner_id = companies[a.upcase][0].id
-      name = if row[1] =~ /(.*)様/
-        $1
-      else
-        row[1]
-      end
-      if pics[name]
-        companies[a.upcase][1] << name
-      end
-      unless companies[a.upcase][1].include? name
-        companies[a.upcase][1] << name
-        pic.bp_pic_name = name
-        pic.bp_pic_short_name = name
-        pic.bp_pic_name_kana = name
+  def BusinessPartner.create_bp_pic(companies, email, pic_name, company_name)
+    bp, pics = companies[company_name.upcase]
+    unless pics[pic_name.upcase]
+      unless pic = BpPic.where(:business_partner_id => bp.id,:bp_pic_name => pic_name, :deleted => 0).first
+        pic = BpPic.new
+        pic.business_partner_id = bp.id
+        pic.bp_pic_name = pic_name
+        pic.bp_pic_short_name = pic_name
+        pic.bp_pic_name_kana = pic_name
         pic.email1 = email
         pic.created_user = 'import'
         pic.updated_user = 'import'
         pic.save!
+      end
+      pics[pic_name.upcase] = pic
+    end
+    return pics[pic_name.upcase]
+  end
+
+  def BusinessPartner.import_from_csv_data(readable_data, prodmode=false)
+    ActiveRecord::Base.transaction do
+    require 'csv'
+    companies = {}
+    bp_id_cache = []
+    bp_pic_id_cache = []
+    CSV.parse(NKF.nkf("-w", readable_data)).each do |row|
+      # Read email
+      email,pic_name,com,pref,address,tel,birth,occupa,down_flg,upper_flg,bp_id,bp_pic_id,group = row
+      break if email.blank?
+      next if email == 'e-mail'
+      email = "test+" + email.sub("@","_") + "@i.applicative.jp" if prodmode
+
+      a,b = com.split("　")
+      company_name = a.strip
+
+      if pic_name =~ /(.*)様/
+        pic_name = $1
+      end
+
+      if bp_id.blank?
+        # bp新規登録
+        bp, names = create_business_partner(companies, email, pic_name, company_name, upper_flg, down_flg)
+        bp_id = bp.id
+        bp_id_cache << bp.id
       else
-        if row[11].blank?
-          next
-        else
-          # update
-          if update_bp_pic = BpPic.where(:bp_pic_name => name).first
-            update_bp_pic.email1 = row[0]
-            update_bp_pic.business_partner_id = row[10].to_i
-            update_bp_pic.save!
+        bp_id = bp_id.to_i
+=begin
+        unless bp_id_cache.include? bp_id.to_i
+          bp_id_cache << bp_id.to_i
+          bp = Businesspartner.find(bp_id)
+          unless companies[bp.business_partner_name.upcase]
+            companies[bp.business_partner_name.upcase] = [bp, {}]
           end
         end
+=end
       end
-      unless pic_groups[c]
-        gr = BpPicGroup.new
-        gr.bp_pic_group_name = c
-        gr.created_user = 'import'
-        gr.updated_user = 'import'
-        gr.save!
-        pic_groups[c] = [gr]
-      end
-      db_bp_pic = BpPic.where(:bp_pic_name => name).first
-      db_pic_group = BpPicGroup.where(:bp_pic_group_name => c).first
-      db_bp_pic_group_details = BpPicGroupDetail.where(:bp_pic_group_id => db_pic_group.id)
-      # 担当者存在チェックフラグ
-      bp_pic_flg = false
-      db_bp_pic_group_details.each do |pic|
-        if pic.bp_pic_id == db_bp_pic.id
-          bp_pic_flg = true
+      if bp_pic_id.blank?
+        # bp_pic新規登録
+        pic = create_bp_pic(companies, email, pic_name, company_name)
+        bp_pic_id = pic.id
+        bp_pic_id_cache << pic.id
+      else
+        bp_pic_id = bp_pic_id.to_i
+=begin
+        unless bp_pic_id_cache.include? bp_pic_id.to_i
+          bp_pic_id_cache << bp_pic_id.to_i
+          pic = BpPic.find(bp_pic_id)
+          unless companies[company_name.upcase][pic.bp_pic_name.upcase]
+            companies[company_name.upcase][pic.bp_pic_name.upcase] = pic
+          end
         end
+=end
       end
-      if !bp_pic_flg
-        gr_detail = BpPicGroupDetail.new
-        gr_detail.bp_pic_group_id = db_pic_group.id
-        gr_detail.bp_pic_id = db_bp_pic.id
-        gr_detail.save!
+      # グループ登録
+      unless group.blank?
+        unless bp_pic_group = BpPicGroup.where(:bp_pic_group_name => group).first
+          bp_pic_group = BpPicGroup.new
+          bp_pic_group.bp_pic_group_name = group
+          bp_pic_group.created_user = 'import'
+          bp_pic_group.updated_user = 'import'
+          bp_pic_group.save! 
+        end
+        unless bp_pic_group_detail = BpPicGroupDetail.where(:bp_pic_id => db_pic_group.id).first
+          bp_pic_group_detail = BpPicGroupDetail.new
+          bp_pic_group_detail.bp_pic_group_id = bp_pic_group.id
+          bp_pic_group_detail.bp_pic_id = bp_pic_id
+          bp_pic_group_detail.created_user = 'import'
+          bp_pic_group_detail.updated_user = 'import'
+          bp_pic_group_detail.save! 
+        end
       end
     end
   end

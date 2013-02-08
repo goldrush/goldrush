@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 
+  bp_pic_group_name: MyString
+  memo: MyString
+
+two:
+  id: 
+  bp_pic_group_name: MyString
+  memo: MyString

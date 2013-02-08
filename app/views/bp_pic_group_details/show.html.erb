@@ -1,0 +1,29 @@
+<h1><%= getLongName('table_name','bp_pic_groups')%> 詳細</h1>
+
+<table class="show_table">
+  <tr>
+    <th><%= getLongName('bp_pic_group_details', 'id') %></th>
+    <td><%= @bp_pic_group_detail.id %></td>
+  </tr>
+  <tr>
+    <th><%= getLongName('bp_pic_group_details', 'owner_id') %></th>
+    <td><%= @bp_pic_group_detail.owner_id %></td>
+  </tr>
+  <tr>
+    <th><%= getLongName('bp_pic_group_details', 'bp_pic_group_id') %></th>
+    <td><%= @bp_pic_group_detail.bp_pic_group_id %></td>
+  </tr>
+  <tr>
+    <th><%= getLongName('bp_pic_group_details', 'bp_pic_id') %></th>
+    <td><%= @bp_pic_group_detail.bp_pic_id %></td>
+  </tr>
+  <tr>
+    <th><%= getLongName('bp_pic_group_details', 'memo') %></th>
+    <td><%= @bp_pic_group_detail.memo %></td>
+  </tr>
+</table>
+
+<%= back_to_link '編集', edit_bp_pic_group_detail_path(@bp_pic_group_detail) %> |
+<%= link_to '削除', @bp_pic_group_detail, method: :delete, data: { confirm: '削除します。よろしいですか?' } %> |
+<%= link_or_back '戻る', bp_pic_group_details_path %>
+

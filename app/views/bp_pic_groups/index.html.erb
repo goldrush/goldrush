@@ -1,0 +1,23 @@
+<h1><%= getLongName('table_name','bp_pic_groups')%> 一覧</h1>
+
+<%= paginate(@bp_pic_groups) %>
+
+<table class="list_table">
+  <tr>
+    <th><%= getLongName('bp_pic_groups', 'bp_pic_group_name') %></th>
+    <th><%= getLongName('bp_pic_groups', 'memo') %></th>
+  </tr>
+
+<% @bp_pic_groups.each do |bp_pic_group| %>
+  <tr>
+    <td><%= back_to_link bp_pic_group.bp_pic_group_name, bp_pic_group %></td>
+    <td><%= bp_pic_group.memo %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= paginate(@bp_pic_groups) %>
+
+<%= back_to_link getLongName('table_name','bp_pic_groups') + ' の新規作成', new_bp_pic_group_path %>

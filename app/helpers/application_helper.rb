@@ -339,7 +339,18 @@ EOS
   end
 
   def back_to_link(name, options = {}, html_options = {}, &block)
-    options[:back_to] = request_url
+    if options.class == String
+      x = if options.include?('?')
+        options += "&"
+      else
+        options += "?"
+      end
+      options += x + "back_to=" + URI.encode(request_url, Regexp.new("[^#{URI::PATTERN::ALNUM}]"))
+    elsif options.is_a?(ActiveRecord::Base)
+      options = polymorphic_path(options) + "?back_to=" + URI.encode(request_url, Regexp.new("[^#{URI::PATTERN::ALNUM}]"))
+    else
+      options[:back_to] = request_url
+    end
     link_to(name, options, html_options, &block)
   end
 

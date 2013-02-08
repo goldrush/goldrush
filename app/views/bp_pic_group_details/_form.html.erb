@@ -1,0 +1,41 @@
+<%= form_for(@bp_pic_group_detail) do |f| %>
+<%= hidden_field_tag 'back_to' %>
+<%= f.hidden_field :lock_version %>
+  <% if @bp_pic_group_detail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bp_pic_group_detail.errors.count, "error") %> prohibited this bp_pic_group_detail from being saved:</h2>
+
+      <ul>
+      <% @bp_pic_group_detail.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table class="show_table">
+  <tr>
+    <th><%= f.label :id, getLongName('bp_pic_group_details', 'id') %></th>
+    <td><%= f.text_field :id %></td>
+  </tr>
+  <tr>
+    <th><%= f.label :owner_id, getLongName('bp_pic_group_details', 'owner_id') %></th>
+    <td><%= f.number_field :owner_id %></td>
+  </tr>
+  <tr>
+    <th><%= f.label :bp_pic_group_id, getLongName('bp_pic_group_details', 'bp_pic_group_id') %></th>
+    <td><%= f.number_field :bp_pic_group_id %></td>
+  </tr>
+  <tr>
+    <th><%= f.label :bp_pic_id, getLongName('bp_pic_group_details', 'bp_pic_id') %></th>
+    <td><%= f.number_field :bp_pic_id %></td>
+  </tr>
+  <tr>
+    <th><%= f.label :memo, getLongName('bp_pic_group_details', 'memo') %></th>
+    <td><%= f.text_field :memo %></td>
+  </tr>
+</table>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

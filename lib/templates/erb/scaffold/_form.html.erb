@@ -1,0 +1,27 @@
+<%%= form_for(@<%= singular_table_name %>) do |f| %>
+<%%= hidden_field_tag 'back_to' %>
+<%%= f.hidden_field :lock_version %>
+  <%% if @<%= singular_table_name %>.errors.any? %>
+    <div id="error_explanation">
+      <h2><%%= pluralize(@<%= singular_table_name %>.errors.count, "error") %> prohibited this <%= singular_table_name %> from being saved:</h2>
+
+      <ul>
+      <%% @<%= singular_table_name %>.errors.full_messages.each do |msg| %>
+        <li><%%= msg %></li>
+      <%% end %>
+      </ul>
+    </div>
+  <%% end %>
+
+<table class="show_table">
+<% attributes.each do |attribute| -%>
+  <tr>
+    <th><%%= f.label :<%= attribute.name %>, getLongName('<%= plural_table_name %>', '<%= attribute.name %>') %></th>
+    <td><%%= f.<%= attribute.field_type %> :<%= attribute.name %> %></td>
+  </tr>
+<% end -%>
+</table>
+  <div class="actions">
+    <%%= f.submit %>
+  </div>
+<%% end %>

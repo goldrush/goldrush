@@ -1,0 +1,29 @@
+<%= form_for(@bp_pic_group) do |f| %>
+<%= hidden_field_tag 'back_to' %>
+<%= f.hidden_field :lock_version %>
+  <% if @bp_pic_group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bp_pic_group.errors.count, "error") %> prohibited this bp_pic_group from being saved:</h2>
+
+      <ul>
+      <% @bp_pic_group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table class="show_table">
+  <tr>
+    <th><%= f.label :bp_pic_group_name, getLongName('bp_pic_groups', 'bp_pic_group_name') %></th>
+    <td><%= f.text_field :bp_pic_group_name %></td>
+  </tr>
+  <tr>
+    <th><%= f.label :memo, getLongName('bp_pic_groups', 'memo') %></th>
+    <td><%= f.text_field :memo %></td>
+  </tr>
+</table>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

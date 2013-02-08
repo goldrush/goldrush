@@ -1,0 +1,17 @@
+<h1><%= getLongName('table_name','bp_pic_groups')%> 詳細</h1>
+
+<table class="show_table">
+  <tr>
+    <th><%= getLongName('bp_pic_groups', 'bp_pic_group_name') %></th>
+    <td><%= @bp_pic_group.bp_pic_group_name %></td>
+  </tr>
+  <tr>
+    <th><%= getLongName('bp_pic_groups', 'memo') %></th>
+    <td><%= @bp_pic_group.memo %></td>
+  </tr>
+</table>
+
+<%= back_to_link '編集', edit_bp_pic_group_path(@bp_pic_group) %> |
+<%= link_to '削除', @bp_pic_group, method: :delete, data: { confirm: '削除します。よろしいですか?' } %> |
+<%= link_or_back '戻る', bp_pic_groups_path %>
+

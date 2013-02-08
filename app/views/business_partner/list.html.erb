@@ -35,7 +35,7 @@
   <tr>
     <th><%=getShortName('business_partners', 'sales_code') %></th>
     <th><%=getShortName('business_partners', 'business_partner_code') %></th>
-    <th><%=getShortName('business_partners', 'business_partner_short_name') %></th>
+    <th><%=getShortName('business_partners', 'business_partner_name') %></th>
     <th><%=getShortName('business_partners', 'self_flg') %></th>
     <th><%=getShortName('business_partners', 'eu_flg') %></th>
     <th><%=getShortName('business_partners', 'upper_flg') %></th>
@@ -48,7 +48,7 @@
     <td><%=h business_partner.business_partner_code %></td>
 <% if popup? %>
   <% if params[:flg]=='eu' %>
-    <td><%= link_to h(business_partner.business_partner_short_name), '#', :onClick => "setEuBp(#{business_partner.id},'#{business_partner.business_partner_name}');return false;" %></td>
+    <td><%= link_to h(business_partner.business_partner_name), '#', :onClick => "setEuBp(#{business_partner.id},'#{business_partner.business_partner_name}');return false;" %></td>
   <% elsif params[:flg]=='mail' %>
     <td><%= link_to h(business_partner.business_partner_short_name), '#', :onClick => "setBpFull(#{business_partner.id},'#{business_partner.business_partner_code}','#{business_partner.sales_management_code}','#{business_partner.business_partner_name}','#{business_partner.business_partner_short_name}','#{business_partner.business_partner_name_kana}','#{business_partner.business_partner_name_en}','#{business_partner.sales_status_type}','#{business_partner.ceo_name}','#{business_partner.url}','#{business_partner.zip}','#{business_partner.address1}','#{business_partner.address2}','#{business_partner.tel}','#{business_partner.fax}','#{business_partner.email}','#{business_partner.category}','#{business_partner.self_flg}','#{business_partner.eu_flg}','#{business_partner.upper_flg}','#{business_partner.down_flg}','#{business_partner.memo}');return false;" %></td>
   <% else %>
@@ -75,7 +75,7 @@
 <% end %>
 <%= form_tag({:action => 'upload_csv'} , {:multipart => true}) do %>
   <p>担当者のリストをインポート</p>  
-  <%= file_field_tag 'csv_upload_file' %><%= submit_tag 'インポート' %>
+  <%= file_field_tag 'csv_upload_file' %><%= submit_tag 'インポート', :onclick => "if($('#csv_upload_file').val()==''){alert('ファイルを選択してください');return false;}" %>
 <% end %>
 <% if popup? %>
 <script type="text/javascript">
