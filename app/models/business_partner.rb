@@ -140,7 +140,7 @@ class BusinessPartner < ActiveRecord::Base
           bp_pic_group.updated_user = 'import'
           bp_pic_group.save! 
         end
-        unless bp_pic_group_detail = BpPicGroupDetail.where(:bp_pic_id => bp_pic_group.id).first
+        unless bp_pic_group_detail = BpPicGroupDetail.where(:bp_pic_group_id => :bp_pic_group_id, :bp_pic_id => bp_pic_id).first
           bp_pic_group_detail = BpPicGroupDetail.new
           bp_pic_group_detail.bp_pic_group_id = bp_pic_group.id
           bp_pic_group_detail.bp_pic_id = bp_pic_id

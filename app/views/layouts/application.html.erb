@@ -35,9 +35,9 @@
               <li><%= link_to '所属', :controller => :bp_member %></li>
               <li><%= link_to 'プロジェクト', :controller => :project %></li>
               <li><%= link_to '売り上げ集計', :controller => :project, :action => :summary %></li>
-              <li><%= link_to '取り込みメール（仮）', :controller => :import_mail %></li>
-              <li><%= link_to '解析テンプレート（仮）', :controller => :analysis_template %></li>
-              <li><%= link_to '取引先グループ一覧（仮）', :controller => :bp_pic_groups %></li>
+              <li><%= link_to '取り込みメール', :controller => :import_mail %></li>
+              <li><%= link_to '解析テンプレート', :controller => :analysis_template %></li>
+              <li><%= link_to 'メールグループ', :controller => :bp_pic_groups %></li>
             </ul>
           </li>
           <% if current_user.accounting? %>
