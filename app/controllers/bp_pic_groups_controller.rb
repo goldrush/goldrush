@@ -14,8 +14,16 @@ class BpPicGroupsController < ApplicationController
   # GET /bp_pic_groups/1
   # GET /bp_pic_groups/1.json
   def show
+    @title = params[:group_name]
+    @bp_pic_names = []
     @bp_pic_group = BpPicGroup.find(params[:id])
-
+    @bp_pic_group_details = BpPicGroupDetail.find(:all, :conditions => ["deleted = 0 and bp_pic_group_id = ? ", params[:id]])
+    @bp_pic_group_details.each do |bp_pic_group_detail|
+      bp_pic = BpPic.find(bp_pic_group_detail.bp_pic_id)
+      business_partner = BusinessPartner.find(bp_pic.business_partner_id)
+      @bp_pic_names.push([business_partner.business_partner_name, bp_pic.bp_pic_name, business_partner.id, bp_pic.id])
+    end
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @bp_pic_group }

@@ -125,7 +125,7 @@ class BusinessPartnerController < ApplicationController
 
   def show
     @business_partner = BusinessPartner.find(params[:id])
-    @bp_pics = BpPic.find(:all, :conditions => ["deleted = 0 and business_partner_id = ?", @business_partner])
+    @bp_pics = BpPic.find(:all, :conditions => ["deleted = 0 and business_partner_id = ?", params[:id]])
     @businesses = Business.find(:all, :conditions => ["deleted = 0 and eubp_id = ?", @business_partner], :order => "id desc", :limit => 50)
     @biz_offers = BizOffer.find(:all, :conditions => ["deleted = 0 and business_partner_id = ?", @business_partner], :order => "id desc", :limit => 50)
     @bp_members = BpMember.find(:all, :conditions => ["deleted = 0 and business_partner_id = ?", @business_partner], :order => "id desc", :limit => 50)
