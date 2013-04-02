@@ -3,6 +3,7 @@ employees_1:
   owner_id: 
   user_id: 1
   department_id: 1
+  employee_type: "regular"
   position: "管理者"
   employee_code: "9801"
   insurance_code: "001"
@@ -64,6 +65,7 @@ employees_2:
   owner_id: 
   user_id: 2
   department_id: 1
+  employee_type: "regular"
   position: "社員"
   employee_code: "9802"
   insurance_code: "002"
@@ -125,6 +127,7 @@ employees_3:
   owner_id: 
   user_id: 3
   department_id: 1
+  employee_type: "regular"
   position: "社員"
   employee_code: "9803"
   insurance_code: "003"
@@ -186,6 +189,7 @@ employees_4:
   owner_id: 
   user_id: 4
   department_id: 1
+  employee_type: "regular"
   position: "社員"
   employee_code: "9804"
   insurance_code: "004"
@@ -247,6 +251,7 @@ employees_5:
   owner_id: 
   user_id: 5
   department_id: 1
+  employee_type: "regular"
   position: "社員"
   employee_code: "9805"
   insurance_code: "005"
@@ -308,6 +313,7 @@ employees_6:
   owner_id: 
   user_id: 6
   department_id: 1
+  employee_type: "regular"
   position: "社員"
   employee_code: "9806"
   insurance_code: "006"
@@ -369,6 +375,7 @@ employees_7:
   owner_id: 
   user_id: 7
   department_id: 1
+  employee_type: "regular"
   position: "社員"
   employee_code: "9807"
   insurance_code: "007"
@@ -430,6 +437,7 @@ employees_8:
   owner_id: 
   user_id: 8
   department_id: 1
+  employee_type: "regular"
   position: "社員"
   employee_code: "9808"
   insurance_code: "008"
@@ -491,6 +499,7 @@ employees_9:
   owner_id: 
   user_id: 9
   department_id: 1
+  employee_type: "regular"
   position: "社員"
   employee_code: "9809"
   insurance_code: "009"
@@ -552,6 +561,7 @@ employees_10:
   owner_id: 
   user_id: 10
   department_id: 1
+  employee_type: "regular"
   position: "社員"
   employee_code: "9810"
   insurance_code: "010"
@@ -613,6 +623,7 @@ employees_11:
   owner_id: 
   user_id: 11
   department_id: 1
+  employee_type: "regular"
   position: "社員"
   employee_code: "9811"
   insurance_code: "011"
