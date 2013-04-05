@@ -1,0 +1,52 @@
+<%= form_for(@delivery_mail) do |f| %>
+<%= hidden_field_tag 'back_to' %>
+<%= f.hidden_field :lock_version %>
+  <% if @delivery_mail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@delivery_mail.errors.count, "error") %> prohibited this delivery_mail from being saved:</h2>
+
+      <ul>
+      <% @delivery_mail.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table class="show_table">
+  <tr>
+    <th><%= f.label :subject, getLongName('delivery_mails', 'subject') %></th>
+    <td><%= f.text_field :subject, :onFocus => "xtarget = this;" %></td>
+  </tr>
+  <tr>
+    <th><%= f.label :content, getLongName('delivery_mails', 'content') %></th>
+    <td><a href='javascript:insertAtCursor(xtarget, "%%pb_pic_name%%");'>担当者名</a><br/>
+        <%= f.text_area :content, :size => '60x10', :onFocus => "xtarget = this;" %></td>
+  </tr>
+  <tr>
+    <th><%= f.label :mail_from_name, getLongName('delivery_mails', 'mail_from_name') %></th>
+    <td><%= f.text_field :mail_from_name %></td>
+  </tr>
+  <tr>
+    <th><%= f.label :mail_from, getLongName('delivery_mails', 'mail_from') %></th>
+    <td><%=h current_user.login%></td>
+  </tr>
+  <tr>
+    <th><%= f.label :mail_cc, getLongName('delivery_mails', 'mail_cc') %></th>
+    <td><%= f.text_field :mail_cc %></td>
+  </tr>
+  <tr>
+    <th><%= f.label :mail_bcc, getLongName('delivery_mails', 'mail_bcc') %></th>
+    <td><%= f.text_field :mail_bcc %></td>
+  </tr>
+  <tr>
+    <% options = @select_options %>
+    <th><%= f.label :planned_setting_at, getLongName('delivery_mails', 'planned_setting_at') %></th>
+    <td><%= edit? ? :planned_setting_at : date_field('delivery_mail', 'planned_setting_at') %><%= select_tag "planned_setting_at_time", options_for_select(@select_options) %></td>
+  </tr>
+</table>
+  <div class="actions">
+    <%= hidden_field_tag 'bp_pic_group_id', @delivery_mail.bp_pic_group_id %>
+    <%= f.submit %>
+  </div>
+<% end %>

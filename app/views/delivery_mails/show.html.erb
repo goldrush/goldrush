@@ -1,0 +1,61 @@
+<h1><%= getLongName('table_name','bp_pic_groups')%> 詳細</h1>
+
+<table class="show_table">
+  <tr>
+    <th><%= getLongName('delivery_mails', 'id') %></th>
+    <td><%= @delivery_mail.id %></td>
+  </tr>
+  <tr>
+    <th><%= getLongName('delivery_mails', 'owner_id') %></th>
+    <td><%= @delivery_mail.owner_id %></td>
+  </tr>
+  <tr>
+    <th><%= getLongName('delivery_mails', 'bp_pic_group_id') %></th>
+    <td><%= @delivery_mail.bp_pic_group_id %></td>
+  </tr>
+  <tr>
+    <th><%= getLongName('delivery_mails', 'mail_status_type') %></th>
+    <td><%= @delivery_mail.mail_status_type %></td>
+  </tr>
+  <tr>
+    <th><%= getLongName('delivery_mails', 'subject') %></th>
+    <td><%= @delivery_mail.subject %></td>
+  </tr>
+  <tr>
+    <th><%= getLongName('delivery_mails', 'content') %></th>
+    <td><%= @delivery_mail.content %></td>
+  </tr>
+  <tr>
+    <th><%= getLongName('delivery_mails', 'mail_from_name') %></th>
+    <td><%= @delivery_mail.mail_from_name %></td>
+  </tr>
+  <tr>
+    <th><%= getLongName('delivery_mails', 'mail_from') %></th>
+    <td><%= @delivery_mail.mail_from %></td>
+  </tr>
+  <tr>
+    <th><%= getLongName('delivery_mails', 'mail_cc') %></th>
+    <td><%= @delivery_mail.mail_cc %></td>
+  </tr>
+  <tr>
+    <th><%= getLongName('delivery_mails', 'mail_bcc') %></th>
+    <td><%= @delivery_mail.mail_bcc %></td>
+  </tr>
+  <tr>
+    <th><%= getLongName('delivery_mails', 'planned_setting_at') %></th>
+    <td><%= @delivery_mail.planned_setting_at %></td>
+  </tr>
+  <tr>
+    <th><%= getLongName('delivery_mails', 'mail_send_status_type') %></th>
+    <td><%= @delivery_mail.mail_send_status_type %></td>
+  </tr>
+  <tr>
+    <th><%= getLongName('delivery_mails', 'send_end_at') %></th>
+    <td><%= @delivery_mail.send_end_at %></td>
+  </tr>
+</table>
+
+<%= back_to_link '編集', edit_delivery_mail_path(@delivery_mail) %> |
+<%= link_to '削除', @delivery_mail, method: :delete, data: { confirm: '削除します。よろしいですか?' } %> |
+<%= link_or_back '戻る', delivery_mails_path %>
+

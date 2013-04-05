@@ -1,0 +1,39 @@
+<h1><%= getLongName('table_name','delivery_mails')%> 一覧</h1>
+
+<%= paginate(@delivery_mails) %>
+
+<table class="list_table">
+  <tr>
+    <th><%= getLongName('delivery_mails', 'mail_status_type') %></th>
+    <th><%= getLongName('delivery_mails', 'subject') %></th>
+    <th><%= getLongName('delivery_mails', 'content') %></th>
+    <th><%= getLongName('delivery_mails', 'mail_from_name') %></th>
+    <th><%= getLongName('delivery_mails', 'mail_from') %></th>
+    <th><%= getLongName('delivery_mails', 'mail_cc') %></th>
+    <th><%= getLongName('delivery_mails', 'mail_bcc') %></th>
+    <th><%= getLongName('delivery_mails', 'planned_setting_at') %></th>
+    <th><%= getLongName('delivery_mails', 'mail_send_status_type') %></th>
+    <th><%= getLongName('delivery_mails', 'send_end_at') %></th>
+  </tr>
+
+<% @delivery_mails.each do |delivery_mail| %>
+  <tr>
+    <td><%= delivery_mail.mail_status_type %></td>
+    <td><%= delivery_mail.subject %></td>
+    <td><%= delivery_mail.content %></td>
+    <td><%= delivery_mail.mail_from_name %></td>
+    <td><%= delivery_mail.mail_from %></td>
+    <td><%= delivery_mail.mail_cc %></td>
+    <td><%= delivery_mail.mail_bcc %></td>
+    <td><%= delivery_mail.planned_setting_at %></td>
+    <td><%= delivery_mail.mail_send_status_type %></td>
+    <td><%= delivery_mail.send_end_at %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= paginate(@delivery_mails) %>
+
+<%= back_to_link getLongName('table_name','delivery_mails') + ' の新規作成', new_delivery_mail_path %>

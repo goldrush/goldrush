@@ -1,3 +1,24 @@
+function insertAtCursor(objText, value) 
+{
+  if (document.selection) 
+  {
+    objText.focus();
+    sel = document.selection.createRange();
+    sel.text = value;
+  }
+  else if (objText.selectionStart || objText.selectionStart == '0') 
+  {
+    var curPos = objText.selectionStart;
+    var firstPart = objText.value.substring(0, curPos);
+    var secondPart = objText.value.substring(curPos, objText.value.length);
+    objText.value = firstPart + value + secondPart;
+  }
+  else 
+  {
+    objText.value += value;
+  }    
+}
+
 function disableSubmit(form) {
   var elements = form.elements;
     for (var i = 0; i < elements.length; i++) {

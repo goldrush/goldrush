@@ -14,16 +14,11 @@ class BpPicGroupsController < ApplicationController
   # GET /bp_pic_groups/1
   # GET /bp_pic_groups/1.json
   def show
-    @title = params[:group_name]
-    @bp_pic_names = []
-    @bp_pic_group = BpPicGroup.find(params[:id])
-    @bp_pic_group_details = BpPicGroupDetail.find(:all, :conditions => ["deleted = 0 and bp_pic_group_id = ? ", params[:id]])
-    @bp_pic_group_details.each do |bp_pic_group_detail|
-      bp_pic = BpPic.find(bp_pic_group_detail.bp_pic_id)
-      business_partner = BusinessPartner.find(bp_pic.business_partner_id)
-      @bp_pic_names.push([business_partner.business_partner_name, bp_pic.bp_pic_name, business_partner.id, bp_pic.id])
-    end
+    @delivery_mail_id = params[:delivery_mail_id]
+    @called_by_delivery_mail_create = !@delivery_mail_id.blank?  # ƒ[ƒ‹ì¬‰æ–Ê‚©‚ç‚Ì‘JˆÚ‚©‚Ç‚¤‚©
     
+    @bp_pic_group = BpPicGroup.find(params[:id])
+        
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @bp_pic_group }
@@ -44,6 +39,10 @@ class BpPicGroupsController < ApplicationController
   # GET /bp_pic_groups/1/edit
   def edit
     @bp_pic_group = BpPicGroup.find(params[:id])
+    respond_to do |format|
+      format.html  add_detail.html.erb
+      format.json { render json: @bp_pic_group }
+    end
   end
 
   # POST /bp_pic_groups
@@ -53,6 +52,7 @@ class BpPicGroupsController < ApplicationController
 
     respond_to do |format|
       begin
+        set_user_column(@bp_pic_group)
         @bp_pic_group.save!
         format.html { redirect_to @bp_pic_group, notice: 'Bp pic group was successfully created.' }
         format.json { render json: @bp_pic_group, status: :created, location: @bp_pic_group }
@@ -79,7 +79,7 @@ class BpPicGroupsController < ApplicationController
       end
     end
   end
-
+  
   # DELETE /bp_pic_groups/1
   # DELETE /bp_pic_groups/1.json
   def destroy

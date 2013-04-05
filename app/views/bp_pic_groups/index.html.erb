@@ -6,12 +6,13 @@
   <tr>
     <th><%= getLongName('bp_pic_groups', 'bp_pic_group_name') %></th>
     <th><%= getLongName('bp_pic_groups', 'memo') %></th>
+    <th>メール作成</th>
   </tr>
-
 <% @bp_pic_groups.each do |bp_pic_group| %>
   <tr>
     <td><%= back_to_link bp_pic_group.bp_pic_group_name, bp_pic_group %></td>
     <td><%= bp_pic_group.memo %></td>
+    <td><%= link_to "メール作成", {:controller => :delivery_mails , :action => :new, :id => bp_pic_group.id }, :method => :get %>
   </tr>
 <% end %>
 </table>
@@ -21,3 +22,4 @@
 <%= paginate(@bp_pic_groups) %>
 
 <%= back_to_link getLongName('table_name','bp_pic_groups') + ' の新規作成', new_bp_pic_group_path %>
+</script>
