@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+require 'iso2022jp_mailer'
 class UserNotifier < Iso2022jpMailer
   def signup_notification(user)
     setup_email(user)
