@@ -25,11 +25,13 @@
   </tr>
   <tr>
     <th><%= f.label :mail_from_name, getLongName('delivery_mails', 'mail_from_name') %></th>
-    <td><%= f.text_field :mail_from_name %></td>
+    <td><%=h @delivery_mail.mail_from_name %></td>
+    <%= hidden_field_tag 'mail_from_name', @delivery_mail.mail_from_name %>
   </tr>
   <tr>
     <th><%= f.label :mail_from, getLongName('delivery_mails', 'mail_from') %></th>
-    <td><%=h current_user.login%></td>
+    <td><%=h @delivery_mail.mail_from %></td>
+    <%= hidden_field_tag 'mail_from', @delivery_mail.mail_from %>
   </tr>
   <tr>
     <th><%= f.label :mail_cc, getLongName('delivery_mails', 'mail_cc') %></th>

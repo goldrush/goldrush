@@ -1,0 +1,10 @@
+<h1><%= getLongName('table_name','bp_pic_groups')%> 明細登録</h1>
+
+<%= form_tag(url_for(:action => :create_details), :method => :post) do %>
+  <%= text_area_tag 'bp_pic_ids', nil, :size => "50x20" %>
+  <%= hidden_field_tag 'bp_pic_group_id', @bp_pic_group_id %>
+  <%= hidden_field_tag 'delivery_mail_id', @delivery_mail_id || "" %>
+  <%= submit_tag "登録" %>
+<% end %>
+
+<%= link_or_back '戻る', bp_pic_groups_path %>

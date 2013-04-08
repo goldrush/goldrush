@@ -1,10 +1,10 @@
 <h1><%= getLongName('table_name','delivery_mails')%> 一覧</h1>
 
-<%= paginate(@delivery_mails) %>
+  <%= paginate(@delivery_mails) %>
 
 <table class="list_table">
   <tr>
-    <th><%= getLongName('delivery_mails', 'mail_status_type') %></th>
+    <th>ステータス</th>
     <th><%= getLongName('delivery_mails', 'subject') %></th>
     <th><%= getLongName('delivery_mails', 'content') %></th>
     <th><%= getLongName('delivery_mails', 'mail_from_name') %></th>
@@ -12,13 +12,21 @@
     <th><%= getLongName('delivery_mails', 'mail_cc') %></th>
     <th><%= getLongName('delivery_mails', 'mail_bcc') %></th>
     <th><%= getLongName('delivery_mails', 'planned_setting_at') %></th>
-    <th><%= getLongName('delivery_mails', 'mail_send_status_type') %></th>
     <th><%= getLongName('delivery_mails', 'send_end_at') %></th>
+    <th>予約取り消し</th>
   </tr>
 
 <% @delivery_mails.each do |delivery_mail| %>
   <tr>
-    <td><%= delivery_mail.mail_status_type %></td>
+    <td>
+      <% if delivery_mail.mail_status_type == 'unsend' %>
+        未送信
+      <% elsif delivery_mail.mail_status_type == 'send' %>
+        送信済
+      <% elsif delivery_mail.mail_status_type == 'canceled' %>
+        キャンセル
+      <% end %>
+    </td>
     <td><%= delivery_mail.subject %></td>
     <td><%= delivery_mail.content %></td>
     <td><%= delivery_mail.mail_from_name %></td>
@@ -26,14 +34,17 @@
     <td><%= delivery_mail.mail_cc %></td>
     <td><%= delivery_mail.mail_bcc %></td>
     <td><%= delivery_mail.planned_setting_at %></td>
-    <td><%= delivery_mail.mail_send_status_type %></td>
     <td><%= delivery_mail.send_end_at %></td>
+    <td>
+      <% if delivery_mail.mail_status_type == 'unsend' %>
+        <%= link_to 'キャンセル', { :action => :cancel, :id => delivery_mail.id}, :method => :get %>
+      <% end %>
+    </td>
   </tr>
 <% end %>
 </table>
+  <%= paginate(@delivery_mails) %>
 
 <br />
-
-<%= paginate(@delivery_mails) %>
 
 <%= back_to_link getLongName('table_name','delivery_mails') + ' の新規作成', new_delivery_mail_path %>

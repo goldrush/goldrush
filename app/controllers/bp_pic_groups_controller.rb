@@ -80,6 +80,56 @@ class BpPicGroupsController < ApplicationController
     end
   end
   
+  # GET /bp_pic_groups/new_details/1
+  # GET /bp_pic_groups/new_details/1.json
+  def new_details
+  
+    @bp_pic_group_id = params[:id]
+    @delivery_mail_id = params[:delivery_mail_id]
+    
+    respond_to do |format|
+      format.html # new_details.html.erb
+    end
+  
+  end
+  
+  # POST /bp_pic_groups/create_details
+  # POST /bp_pic_groups/create_details.json
+  def create_details
+  
+    @bp_pic_ids = params[:bp_pic_ids].split(/\s*|[^0-9]*/).uniq
+    @bp_pic_group_id = params[:bp_pic_group_id]
+    @delivery_mail_id = params[:delivery_mail_id]
+
+    respond_to do |format|
+      begin
+        @bp_pic_ids.each do |bp_pic_id|
+          bp_pic_group_detail = BpPicGroupDetail.new()
+          bp_pic_group_detail.bp_pic_group_id = @bp_pic_group_id
+          bp_pic_group_detail.bp_pic_id = bp_pic_id
+          set_user_column(bp_pic_group_detail)
+          bp_pic_group_detail.save!
+        end
+        format.html { redirect_to :action => :show, :id => @bp_pic_group_id, :delivery_mail_id => @delivery_mail_id, notice: 'Bp pic group details were successfully created.' }
+      rescue ActiveRecord::RecordInvalid
+        format.html { render action: "new_details" }
+        format.json { render json: @bp_pic_group.errors, status: :unprocessable_entity }
+      end
+    end
+  
+  end
+  
+  def bp_pic_delete
+  
+    bp_pic_detail = BpPicGroupDetail.find(:first, :conditions => ["bp_pic_group_id = ? and bp_pic_id = ?", params[:bp_pic_group_id], params[:id]])
+    bp_pic_detail.deleted = 9
+    bp_pic_detail.deleted_at = Time.now
+    set_user_column bp_pic_detail
+    bp_pic_detail.save!
+    
+    redirect_to :action => :show, :id => params[:bp_pic_group_id]
+  end
+  
   # DELETE /bp_pic_groups/1
   # DELETE /bp_pic_groups/1.json
   def destroy

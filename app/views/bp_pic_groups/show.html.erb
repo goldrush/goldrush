@@ -1,28 +1,31 @@
 <h1><%= @bp_pic_group.bp_pic_group_name %> 詳細</h1>
 
+  <%= link_to "明細追加", :controller => :bp_pic_groups, :action => :new_details, :id => @bp_pic_group.id, :delivery_mail_id => @delivery_mail_id %>
   <%= form_tag(url_for(:controller => :delivery_mails, :action => :add_details), :method => :post) do %>
   <table class="show_table">
     <tr>
-<% if @called_by_delivery_mail_create %>
+      <% if @called_by_delivery_mail_create %>
       <th></th>
-<% end %>
+      <% end %>
       <th><%= getLongName('business_partners', 'business_partner_name') %></th>
       <th><%= getLongName('bp_pics', 'bp_pic_name') %></th>
+      <th>削除</th>
     </tr>
     <% @bp_pic_group.bp_pic_group_details.each do |detail| %>
     <tr>
-<% if @called_by_delivery_mail_create %>
+      <% if @called_by_delivery_mail_create %>
       <td><%= check_box_tag 'bp_pic_ids[]', detail.bp_pic_id, true %></td>
-<% end %>
+      <% end %>
       <td><%= link_to detail.bp_pic.business_partner.business_partner_name, :controller => :business_partner, :action => :show, :id => detail.bp_pic.business_partner_id %></td>
       <td><%= link_to detail.bp_pic.bp_pic_name, :controller => :bp_pic, :action => :show, :id => detail.bp_pic_id %></td>
+      <td><%= link_to '削除', {:controller => :bp_pic_groups, :action => :bp_pic_delete, :id => detail.bp_pic_id, :bp_pic_group_id => params[:id]}, :method => :get %></td>
     </tr>
     <% end %>
   </table>
-<% if @called_by_delivery_mail_create %>
+  <% if @called_by_delivery_mail_create %>
   <%= hidden_field_tag 'delivery_mail_id', @delivery_mail_id %>
   <%= submit_tag "メール作成" %>
-<% end %>
+  <% end %>
   <% end %>
 
 <%= back_to_link '編集', edit_bp_pic_group_path(@bp_pic_group) %> |
