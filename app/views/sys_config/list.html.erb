@@ -1,33 +1,33 @@
-<h1><%=getLongName('table_name','configurations')%>一覧</h1>
+<h1><%=getLongName('table_name','sys_configs')%>一覧</h1>
 
-<%= paginate(@configurations) %>
+<%= paginate(@sys_configs) %>
 
 <table class="list_table">
   <tr>
   <% for column in SysConfig.columns %>
     <% if system_column?(column.name) then next end %>
-    <th><%=getShortName('configurations', column.name)%></th>
+    <th><%=getShortName('sys_configs', column.name)%></th>
   <% end %>
     <th></th>
   </tr>
   
-<% for configuration in @configurations %>
+<% for sys_config in @sys_configs %>
   <tr>
   <% for column in SysConfig.columns %>
     <% if system_column?(column.name) then next end %>
-    <td><%=h configuration.send(column.name) %></td>
+    <td><%=h sys_config.send(column.name) %></td>
   <% end %>
     <td>
-      <%= link_to '表示', :action => 'show', :id => configuration %>, 
-      <%= link_to '変更', :action => 'edit', :id => configuration %>, 
-      <%= link_to '削除', { :action => 'destroy', :id => configuration }, :confirm => 'この情報を削除します。よろしいですか?', :method => :post %>
+      <%= link_to '表示', :action => 'show', :id => sys_config %>, 
+      <%= link_to '変更', :action => 'edit', :id => sys_config %>, 
+      <%= link_to '削除', { :action => 'destroy', :id => sys_config }, :confirm => 'この情報を削除します。よろしいですか?', :method => :post %>
     </td>
   </tr>
 <% end %>
 </table>
 
-<%= paginate(@configurations) %>
+<%= paginate(@sys_configs) %>
 
 <br />
 
-<%= link_to (getLongName('table_name','configurations')+'の新規作成'), :action => 'new' %>
+<%= link_to (getLongName('table_name','sys_configs')+'の新規作成'), :action => 'new' %>

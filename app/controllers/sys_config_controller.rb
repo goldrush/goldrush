@@ -13,20 +13,20 @@ class SysConfigController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @configuration_pages, @configurations = paginate :sys_configs, :per_page => 100, :conditions => "deleted = 0 ", :order => "id"
+    @sys_config_pages, @sys_configs = paginate :sys_configs, :per_page => 100, :conditions => "deleted = 0 ", :order => "id"
   end
 
   def show
-    @configuration = SysConfig.find(params[:id], :conditions => "deleted = 0 ")
+    @sys_config = SysConfig.find(params[:id], :conditions => "deleted = 0 ")
   end
 
   def new
-    @configuration = SysConfig.new
+    @sys_config = SysConfig.new
   end
 
   def create
-    @configuration = SysConfig.new(params[:configuration])
-    if @configuration.save
+    @sys_config = SysConfig.new(params[:sys_config])
+    if @sys_config.save
       flash[:notice] = 'SysConfig was successfully created.'
       redirect_to :action => 'list'
     else
@@ -35,17 +35,17 @@ class SysConfigController < ApplicationController
   end
 
   def edit
-    @configuration = SysConfig.find(params[:id], :conditions => "deleted = 0 ")
+    @sys_config = SysConfig.find(params[:id], :conditions => "deleted = 0 ")
   end
 
   def edit_sv
   end
 
   def update
-    @configuration = SysConfig.find(params[:id], :conditions => "deleted = 0 ")
-    if @configuration.update_attributes(params[:configuration])
+    @sys_config = SysConfig.find(params[:id], :conditions => "deleted = 0 ")
+    if @sys_config.update_attributes(params[:sys_config])
       flash[:notice] = 'SysConfig was successfully updated.'
-      redirect_to :action => 'show', :id => @configuration
+      redirect_to :action => 'show', :id => @sys_config
     else
       render :action => 'edit'
     end
@@ -53,9 +53,9 @@ class SysConfigController < ApplicationController
 
   def destroy
     #SysConfig.find(params[:id]).destroy
-    configuration = SysConfig.find(params[:id], :conditions => "deleted = 0 ")
-    configuration.deleted = 9
-    configuration.save!
+    sys_config = SysConfig.find(params[:id], :conditions => "deleted = 0 ")
+    sys_config.deleted = 9
+    sys_config.save!
     redirect_to :action => 'list'
   end
 end

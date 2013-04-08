@@ -2,7 +2,7 @@
 <%- for column in SysConfig.columns -%>
   <%- if system_column?(column.name) then next end -%>
 <tr>
-  <th><%= getLongName('configurations', column.name) %></th><td><%=h @configuration.send(column.name) %></td>
+  <th><%= getLongName('sys_configs', column.name) %></th><td><%=h @configuration.send(column.name) %></td>
 </tr>
 <% end %>
 </table>

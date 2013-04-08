@@ -1,23 +1,23 @@
-<%= error_messages_for 'configuration' %>
+<%= error_messages_for 'sys_config' %>
 
-<p><label for="configuration_id"><%= getLongName('configurations', 'id') %></label><br/>
-<%= @configuration.id || 'none' %></p>
+<p><label for="sys_config_id"><%= getLongName('sys_configs', 'id') %></label><br/>
+<%= @sys_config.id || 'none' %></p>
 
-<!--[form:configuration]-->
-<p><label for="configuration_config_section"><%=getLongName('configurations','config_section')%></label><br /><%= text_field 'configuration', 'config_section'  %></p>
-<p><label for="configuration_config_key"><%=getLongName('configurations','config_key')%></label><br /><%= text_field 'configuration', 'config_key'  %></p>
-<p><label for="configuration_value1"><%=getLongName('configurations','value1')%></label><br /><%= text_field 'configuration', 'value1'  %></p>
-<p><label for="configuration_value2"><%=getLongName('configurations','value2')%></label><br /><%= text_field 'configuration', 'value2'  %></p>
-<p><label for="configuration_value3"><%=getLongName('configurations','value3')%></label><br /><%= text_field 'configuration', 'value3'  %></p>
+<!--[form:sys_config]-->
+<p><label for="sys_config_config_section"><%=getLongName('sys_configs','config_section')%></label><br /><%= text_field 'sys_config', 'config_section'  %></p>
+<p><label for="sys_config_config_key"><%=getLongName('sys_configs','config_key')%></label><br /><%= text_field 'sys_config', 'config_key'  %></p>
+<p><label for="sys_config_value1"><%=getLongName('sys_configs','value1')%></label><br /><%= text_field 'sys_config', 'value1'  %></p>
+<p><label for="sys_config_value2"><%=getLongName('sys_configs','value2')%></label><br /><%= text_field 'sys_config', 'value2'  %></p>
+<p><label for="sys_config_value3"><%=getLongName('sys_configs','value3')%></label><br /><%= text_field 'sys_config', 'value3'  %></p>
 <!--
-<p><label for="configuration_created_at"><%=getLongName('configurations','created_at')%></label><br /><%= datetime_select 'configuration', 'created_at'  %></p>
-<p><label for="configuration_updated_at"><%=getLongName('configurations','updated_at')%></label><br /><%= datetime_select 'configuration', 'updated_at'  %></p>
-<p><label for="configuration_lock_version"><%=getLongName('configurations','lock_version')%></label><br /><%= text_field 'configuration', 'lock_version'  %></p>
-<p><label for="configuration_created_user"><%=getLongName('configurations','created_user')%></label><br /><%= text_field 'configuration', 'created_user'  %></p>
-<p><label for="configuration_updated_user"><%=getLongName('configurations','updated_user')%></label><br /><%= text_field 'configuration', 'updated_user'  %></p>
-<p><label for="configuration_deleted"><%=getLongName('configurations','deleted')%></label><br /><%= text_field 'configuration', 'deleted'  %></p>
+<p><label for="sys_config_created_at"><%=getLongName('sys_configs','created_at')%></label><br /><%= datetime_select 'sys_config', 'created_at'  %></p>
+<p><label for="sys_config_updated_at"><%=getLongName('sys_configs','updated_at')%></label><br /><%= datetime_select 'sys_config', 'updated_at'  %></p>
+<p><label for="sys_config_lock_version"><%=getLongName('sys_configs','lock_version')%></label><br /><%= text_field 'sys_config', 'lock_version'  %></p>
+<p><label for="sys_config_created_user"><%=getLongName('sys_configs','created_user')%></label><br /><%= text_field 'sys_config', 'created_user'  %></p>
+<p><label for="sys_config_updated_user"><%=getLongName('sys_configs','updated_user')%></label><br /><%= text_field 'sys_config', 'updated_user'  %></p>
+<p><label for="sys_config_deleted"><%=getLongName('sys_configs','deleted')%></label><br /><%= text_field 'sys_config', 'deleted'  %></p>
 -->
-<p><%= hidden_field 'configuration', 'lock_version'  %></p>
-<!--[eoform:configuration]-->
+<p><%= hidden_field 'sys_config', 'lock_version'  %></p>
+<!--[eoform:sys_config]-->
 
 
