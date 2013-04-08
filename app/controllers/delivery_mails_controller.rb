@@ -32,6 +32,9 @@ class DeliveryMailsController < ApplicationController
     @delivery_mail = DeliveryMail.new
     @delivery_mail.bp_pic_group_id = params[:id]
 
+    @delivery_mail.mail_from = SysConfig.get_value("delivery_mails", "mail_from")
+    @delivery_mail.mail_from_name = SysConfig.get_value("delivery_mails", "mail_from_name")
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @delivery_mail }
