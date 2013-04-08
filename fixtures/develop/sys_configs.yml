@@ -726,3 +726,31 @@ sys_configs_52:
   created_user: "initial"
   updated_user: "initial"
   deleted: 0
+sys_configs_53:
+  id: 53
+  config_section: "delivery_mails"
+  config_key: "mail_from"
+  value1: "ses@dev.applicative.jp"
+  value2: ""
+  value3: ""
+  config_description_text: ""
+  created_at: <%= Time.now.to_s(:db) %>
+  updated_at: <%= Time.now.to_s(:db) %>
+  lock_version: 0
+  created_user: "initial"
+  updated_user: "initial"
+  deleted: 0
+sys_configs_54:
+  id: 54
+  config_section: "delivery_mails"
+  config_key: "mail_from_name"
+  value1: "アプリカティブ案件情報"
+  value2: ""
+  value3: ""
+  config_description_text: ""
+  created_at: <%= Time.now.to_s(:db) %>
+  updated_at: <%= Time.now.to_s(:db) %>
+  lock_version: 0
+  created_user: "initial"
+  updated_user: "initial"
+  deleted: 0
