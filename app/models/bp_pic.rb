@@ -2,6 +2,7 @@
 class BpPic < ActiveRecord::Base
 
   belongs_to :business_partner
+  has_one :delivery_mail_target
   has_many :businesses
   has_many :bp_members
    

@@ -1,5 +1,6 @@
-<h1><%= getLongName('table_name','bp_pic_groups')%> 詳細</h1>
+<h1><%= getLongName('table_name','delivery_mails')%> 詳細</h1>
 
+<!-- 配信メール詳細  -->
 <table class="show_table">
   <tr>
     <th><%= getLongName('delivery_mails', 'id') %></th>
@@ -52,6 +53,45 @@
   <tr>
     <th><%= getLongName('delivery_mails', 'send_end_at') %></th>
     <td><%= @delivery_mail.send_end_at %></td>
+  </tr>
+</table>
+
+<!-- 配信メール対象一覧  -->
+<h1><%= getLongName('table_name','delivery_mail_targets')%> 一覧</h1>
+<table class="show_table">
+  <tr>
+    <th><%= getLongName('business_partners', 'business_partner_name') %></th>
+    <th><%= getLongName('bp_pics', 'bp_pic_name') %></th>
+    <% if @delivery_mail.mail_status_type == 'unsend' %>
+      <th></th>
+    <% end %>
+  </tr>
+  <tr>
+    <% @delivery_mail.delivery_mail_targets.each do |delivery_mail_target| %>
+      <tr>
+        <td><%=
+          link_to delivery_mail_target.bp_pic.business_partner.business_partner_name,
+            :controller => :business_partner,
+            :action => :show,
+            :id => delivery_mail_target.bp_pic.business_partner_id
+        %></td>
+        <td><%=
+          link_to delivery_mail_target.bp_pic.bp_pic_name,
+            :controller => :bp_pic,
+            :action => :show,
+            :id => delivery_mail_target.bp_pic_id
+        %></td>
+        <% if @delivery_mail.mail_status_type == 'unsend' %>
+          <td><%=
+            link_to "削除",
+              :controller => :delivery_mail_targets,
+              :action => :destroy,
+              :id => delivery_mail_target.id,
+              :method => :delete
+          %></td>
+        <% end %>
+      </tr>
+    <% end %>
   </tr>
 </table>
 
