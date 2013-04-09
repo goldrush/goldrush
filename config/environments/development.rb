@@ -37,19 +37,36 @@ GoldRush::Application.configure do
   config.assets.debug = true
 end
 
-ActionMailer::Base.delivery_method = :smtp
+# ActionMailer::Base.delivery_method = :smtp
+# ActionMailer::Base.perform_deliveries = true
+# ActionMailer::Base.raise_delivery_errors = true
+# ActionMailer::Base.smtp_settings = {
+#   :enable_starttls_auto => true,  
+#   :address            => 'smtp.gmail.com',
+#   :port               => 587,
+#   :domain             => 'gmail.com',
+#   :authentication     => :plain,
+#   :user_name          => 'ses_dev2@i.applicative.jp',
+#   :password           => 'applicative**ses',
+#   :enable_tls => 1,
+#   :pop_port => "995",
+#   :pop_server => 'pop.gmail.com',
+# }
+
+# test
+ActionMailer::Base.delivery_method = :test
 ActionMailer::Base.perform_deliveries = true
 ActionMailer::Base.raise_delivery_errors = true
 ActionMailer::Base.smtp_settings = {
   :enable_starttls_auto => true,  
-  :address            => 'smtp.gmail.com',
-  :port               => 587,
-  :domain             => 'gmail.com',
+  :address            => 'smtp.test.com',
+  :port               => 3000,
+  :domain             => 'test.com',
   :authentication     => :plain,
-  :user_name          => 'ses_dev2@i.applicative.jp',
+  :user_name          => 'test@i.test.jp',
   :password           => 'applicative**ses',
   :enable_tls => 1,
   :pop_port => "995",
-  :pop_server => 'pop.gmail.com',
+  :pop_server => 'pop.test.com',
 }
 
