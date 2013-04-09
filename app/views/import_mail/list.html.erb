@@ -5,68 +5,32 @@
     <tr>
       <td style="text-align: right">フラグ:</td>
       <td>
-        <%= check_box_tag 'biz_offer_flg', 1, session[:import_mail_search][:biz_offer_flg].to_i == 1 %> 照会
-        <%= check_box_tag 'bp_member_flg', 1, session[:import_mail_search][:bp_member_flg].to_i == 1 %> 所属
+        <%= check_box_tag 'biz_offer_flg', 1, session[:import_mail_search][:biz_offer_flg].to_i == 1 %> 案件
+        <%= check_box_tag 'bp_member_flg', 1, session[:import_mail_search][:bp_member_flg].to_i == 1 %> 人材
         <%= check_box_tag 'unwanted', 1, session[:import_mail_search][:unwanted].to_i == 1 %> 不要
         <%= check_box_tag 'registed', 1, session[:import_mail_search][:registed].to_i == 1 %> 登録済み
       </td>
     </tr>
 </table>
-<p><%= submit_tag '　　検索　　', :name => 'search_button' %> <%= submit_tag '　　クリア　　', :name => 'clear_button' %></p>
-<br />
+<br/>
+<%= submit_tag '　　検索　　', :name => 'search_button' %> <%= submit_tag '　　クリア　　', :name => 'clear_button' %>
 <% end %>
-
-<p>
-  <%= back_to_link 'from別メール一覧へ', :action => 'list_by_from' %>
-</p>
 
 <%= paginate(@import_mails) %>
 
 <table class="list_table">
   <tr>
-    <th><%=getShortName('import_mails', 'id') %></th>
-    <th><%=getShortName('import_mails', 'mail_subject') %></th>
-    <th><%=getShortName('import_mails', 'mail_sender_name') %></th>
-    <th><%=getShortName('import_mails', 'received_at') %></th>
-    <th>添付ファイル</th>
-    <th>振り分け</th>
+    <th colspan=6>取り込みメール一覧</th>
   </tr>
   
 <% for import_mail in @import_mails %>
   <tr <%= "bgcolor = #999999" if !import_mail.wanted? %> id="tr_<%= import_mail.id %>">
     <td><%=h import_mail.id %></td>
-    <td><%= link_to h(import_mail.mail_subject), :action => :show, :id => import_mail, :back_to => request_url %></td>
-    <td><%=h import_mail.mail_sender_name %></td>
-    <td><%=h import_mail.received_at %></td>
+    <td><div style="overflow: hidden;height:1.5em;"><%=link_to_if !import_mail.business_partner_id.blank?, import_mail.mail_sender_name, :controller => :business_partner, :action => :show, :id => import_mail.business_partner_id %></div></td>
+    <td><div style="overflow: hidden;height:1.5em;"><%= link_to h(import_mail.mail_subject), :action => :show, :id => import_mail, :back_to => request_url %></div></td>
+    <td><%=h _time(import_mail.received_at) %></td>
     <td align=center><%=h import_mail.attachment? ? "○" : "" %></td>
-    <td>
-      <%= submit_tag '照会', :name => 'biz_offer', 
-        :onclick => "{changeFlg(#{import_mail.id}, 'biz_offer', '#{url_for(:controller => :import_mail, :action => :change_flg)}');}" %><br/>
-      <!-- <span id="biz_offer_flg_<%= import_mail.id %>"><%= import_mail.biz_offer_flg %></span><br/> -->
-      <% image_path_str = "flg#{import_mail.biz_offer_flg}.png"%>
-      <img id="biz_offer_flg_img_<%= import_mail.id %>" 
-           src="<%= image_path image_path_str %>"
-           onmousedown="this.src='<%= image_path "push.png" %>';"
-           onclick="{changeFlg(<%= import_mail.id %>, 'biz_offer', '<%= url_for(:controller => :import_mail, :action => :change_flg) %>');}" /><br/>
-
-      <%= submit_tag '所属', :name => 'bp_member', 
-        :onclick => "{changeFlg(#{import_mail.id}, 'bp_member', '#{url_for(:controller => :import_mail, :action => :change_flg)}');}" %>
-      <!-- <span id="bp_member_flg_<%= import_mail.id %>"><%= import_mail.bp_member_flg %></span><br/> -->
-      <% image_path_str = "flg#{import_mail.bp_member_flg}.png"%>
-      <img id="bp_member_flg_img_<%= import_mail.id %>" 
-           src="<%= image_path image_path_str %>"
-           onmousedown="this.src='<%= image_path "push.png" %>';"
-           onclick="{changeFlg(<%= import_mail.id %>, 'bp_member', '<%= url_for(:controller => :import_mail, :action => :change_flg) %>');}" /><br/>
-      
-      <%= submit_tag '不要', :name => 'unwanted', 
-        :onclick => "{changeFlg(#{import_mail.id}, 'unwanted', '#{url_for(:controller => :import_mail, :action => :change_flg)}');}" %>
-      <!-- <span id="unwanted_<%= import_mail.id %>"><%= import_mail.unwanted %></span><br/> -->
-      <% image_path_str = "flg#{import_mail.unwanted}.png"%>
-      <img id="unwanted_img_<%= import_mail.id %>" 
-           src="<%= image_path image_path_str %>"
-           onmousedown="this.src='<%= image_path "push.png" %>';"
-           onclick="{changeFlg(<%= import_mail.id %>, 'unwanted', '<%= url_for(:controller => :import_mail, :action => :change_flg) %>');}" /><br/>
-    </td>
+    <td style="width: 7em;text-align:center"><%=flg_links(import_mail)%></td>
   </tr>
 <% end %>
 </table>
@@ -83,62 +47,31 @@
 
 <script type="text/javascript">
 <!--
+var font_styles = ["normal","bold"];
+var color_styles = ["","black"];
+var ajax_url = '<%= url_for(:controller => :import_mail, :action => :change_flg) %>';
 
-var biz_offer_flg_img_arr = new Array(
-"<%=image_path "biz_offer_flg0.png" %>",
-"<%=image_path "biz_offer_flg1.png" %>"
-);
+function changeFlg(import_mail_id, type){
+  jQuery.ajax({
+    url: ajax_url + '?import_mail_id=' + import_mail_id + '&type=' + type,
+    success: function(data, dataType){
+        var str =data.split(",");
 
-var bp_member_flg_img_arr = new Array(
-"<%=image_path "bp_member_flg0.png" %>",
-"<%=image_path "bp_member_flg1.png" %>"
-);
+        $("#biz_offer_icon_" + import_mail_id)[0].style.fontWeight = font_styles[str[0]];
+        $("#bp_member_icon_" + import_mail_id)[0].style.fontWeight = font_styles[str[1]];
+        $("#unwanted_icon_" + import_mail_id)[0].style.fontWeight = font_styles[str[2]];
 
-var unwanted_img_arr = new Array(
-"<%=image_path "unwanted0.png" %>",
-"<%=image_path "unwanted1.png" %>"
-);
-
-function changeFlg(import_mail_id, type, ajax_url){
-/*  new Ajax.Request(
-    ajax_url + '?import_mail_id=' + import_mail_id + '&type=' + type, {
-      onSuccess: function(httpObj){
-        var str = httpObj.responseText.split(",");
-//        $("biz_offer_flg_" + import_mail_id).innerHTML = str[0];
-//        $("bp_member_flg_" + import_mail_id).innerHTML = str[1];
-//        $("unwanted_" + import_mail_id).innerHTML = str[2];
-        
-        $("#biz_offer_flg_img_" + import_mail_id).src = biz_offer_flg_img_arr[str[0]];
-        $("#bp_member_flg_img_" + import_mail_id).src = bp_member_flg_img_arr[str[1]];
-        $("#unwanted_img_" + import_mail_id).src = unwanted_img_arr[str[2]];
-        
-        if (str[2] == 1) {
-          $("#tr_" + import_mail_id).style.backgroundColor = '#999999';
-        } else {
-          $("#tr_" + import_mail_id).style.backgroundColor = '#ffffff';
-        }
-        
-      }
-    }
-  ); */
-
-    jQuery.ajax({url: ajax_url + '?import_mail_id=' + import_mail_id + '&type=' + type,
-      success: function(httpObj){
-        var str = httpObj.responseText.split(",");
-
-        $("#biz_offer_flg_img_" + import_mail_id).src = biz_offer_flg_img_arr[str[0]];
-        $("#bp_member_flg_img_" + import_mail_id).src = bp_member_flg_img_arr[str[1]];
-        $("#unwanted_img_" + import_mail_id).src = unwanted_img_arr[str[2]];
+        $("#biz_offer_icon_" + import_mail_id)[0].style.color = color_styles[str[0]];
+        $("#bp_member_icon_" + import_mail_id)[0].style.color = color_styles[str[1]];
+        $("#unwanted_icon_" + import_mail_id)[0].style.color = color_styles[str[2]];
 
         if (str[2] == 1) {
-          $("#tr_" + import_mail_id).style.backgroundColor = '#999999';
+          $("#tr_" + import_mail_id)[0].style.backgroundColor = '#999999';
         } else {
-          $("#tr_" + import_mail_id).style.backgroundColor = '#ffffff';
+          $("#tr_" + import_mail_id)[0].style.backgroundColor = '#ffffff';
         }
-
     }
   });
-
   return false;
 }
 

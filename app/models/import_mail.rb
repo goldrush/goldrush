@@ -22,11 +22,16 @@ class ImportMail < ActiveRecord::Base
     ActiveRecord::Base::transaction do
       import_mail = ImportMail.new
       
-      import_mail.in_reply_to = m.in_reply_to[0] if m.in_reply_to
+      import_mail.in_reply_to = m.in_reply_to if m.in_reply_to
       import_mail.received_at = m.date.blank? ? Time.now : m.date
       subject = tryConv(m, 'Subject') { m.subject }
       import_mail.mail_subject = subject.blank? ? 'unknown subject' : subject
       import_mail.mail_from = m.from != nil ? m.from[0].to_s : "unknown"
+puts ">>>>>>>>>" + import_mail.mail_from
+      unless SysConfig.email_prodmode?
+        import_mail.mail_from = StringUtil.to_test_address(import_mail.mail_from)
+      end
+puts ">>>>>>>>>" + import_mail.mail_from
       import_mail.set_bp
       import_mail.mail_sender_name = tryConv(m,'From')
       import_mail.mail_to = tryConv(m,'To')

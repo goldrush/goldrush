@@ -85,7 +85,10 @@ class ImportMailController < ApplicationController
     else
       order = "count(*) desc"
     end
-    @import_mail_pages, @import_mails = paginate :import_mails, :select => "*, count(*) count, max(business_partner_id) bizp_id, max(bp_pic_id) bpic_id, max(received_at) recv_at", :conditions => "deleted = 0", :group => "mail_from", :order => order , :per_page => current_user.per_page
+    @import_mail_pages, @import_mails = paginate :import_mails, :select => "*, count(*) count, max(business_partner_id) bizp_id, max(bp_pic_id) bpic_id, max(received_at) recv_at",
+                                                                :conditions => "deleted = 0", :group => "mail_from",
+                                                                :order => order,
+                                                                :per_page => current_user.per_page
   end
 
   def show

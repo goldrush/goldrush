@@ -262,8 +262,7 @@ class BusinessPartnerController < ApplicationController
     end
     ext = File.extname(file.original_filename.to_s).downcase
     raise ValidationAbort.new("インポートするファイルは、拡張子がcsvのファイルでなければなりません") if ext != '.csv'
-    prodmode = SysConfig.get_config("business_partners", "prodmode")
-    BusinessPartner.import_from_csv_data(file.read, prodmode)
+    BusinessPartner.import_from_csv_data(file.read, SysConfig.email_prodmode?)
     flash[:notice] = 'インポートが完了しました'
     redirect_to(back_to || {:action => :list})
   end

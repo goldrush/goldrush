@@ -195,5 +195,8 @@ class SysConfig < ActiveRecord::Base
   def self.get_color_approval_status_type_reject
     get_configuration('color_approval_status_type', 'reject')
   end
-  
+
+  def self.email_prodmode?
+    get_config("business_partners", "prodmode")
+  end
 end

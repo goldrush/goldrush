@@ -58,4 +58,8 @@ module StringUtil
       return full_name, ""
     end
   end
+  
+  def StringUtil.to_test_address(email)
+    "test+" + email.sub("@","_") + "@i.applicative.jp"
+  end
 end

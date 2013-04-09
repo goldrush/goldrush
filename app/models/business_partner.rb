@@ -88,7 +88,7 @@ class BusinessPartner < ActiveRecord::Base
       email,pic_name,com,pref,address,tel,birth,occupa,down_flg,upper_flg,bp_id,bp_pic_id,group = row
       break if email.blank?
       next if email == 'e-mail'
-      email = "test+" + email.sub("@","_") + "@i.applicative.jp" unless prodmode
+      email = StringUtil.to_test_address(email) unless prodmode
 
       a,b = com.split("　")
       company_name = a.strip

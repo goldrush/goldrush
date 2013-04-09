@@ -7,6 +7,21 @@ module ApplicationHelper
   include NameUtil
   include TypeUtil
 
+  def _time(time)
+    if time.blank?
+      ""
+    elsif [ActiveSupport::TimeWithZone, Time, Date].include?(time.class)
+      t = time.to_time.getlocal
+      if t.today?
+        t.strftime("%H:%M")
+      else
+        t.strftime("%Y/%m")
+      end
+    else
+      time
+    end
+  end
+
   def logged_in?
     auth_signed_in?
   end
