@@ -97,20 +97,34 @@ class BpPicGroupsController < ApplicationController
   # POST /bp_pic_groups/create_details.json
   def create_details
   
-    @bp_pic_ids = params[:bp_pic_ids].split(/\s*|[^0-9]*/).uniq
+    @bp_pic_ids = params[:bp_pic_ids].split.uniq
     @bp_pic_group_id = params[:bp_pic_group_id]
     @delivery_mail_id = params[:delivery_mail_id]
 
+    errids = []
     respond_to do |format|
       begin
         @bp_pic_ids.each do |bp_pic_id|
+          # validate
+          unless bp_pic = BpPic.find(:first, :conditions => {:id => bp_pic_id})
+            errids << bp_pic_id
+          end
+
+          # add detail
           bp_pic_group_detail = BpPicGroupDetail.new()
           bp_pic_group_detail.bp_pic_group_id = @bp_pic_group_id
           bp_pic_group_detail.bp_pic_id = bp_pic_id
           set_user_column(bp_pic_group_detail)
           bp_pic_group_detail.save!
         end
-        format.html { redirect_to :action => :show, :id => @bp_pic_group_id, :delivery_mail_id => @delivery_mail_id, notice: 'Bp pic group details were successfully created.' }
+
+        if errids.empty?
+          format.html { redirect_to :action => :show, :id => @bp_pic_group_id, :delivery_mail_id => @delivery_mail_id, notice: 'Bp pic group details were successfully created.' }
+        else
+          flash[:errids] = errids
+          format.html { redirect_to :action => :new_details, :id => @bp_pic_group_id, :delivery_mail_id => @delivery_mail_id, notice: 'Bp pic group details were successfully created. but erros (' + errids.join(",") + ')' }
+        end
+
       rescue ActiveRecord::RecordInvalid
         format.html { render action: "new_details" }
         format.json { render json: @bp_pic_group.errors, status: :unprocessable_entity }
