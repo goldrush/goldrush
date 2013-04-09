@@ -46,7 +46,6 @@ class RemarksController < ApplicationController
     @remark = Remark.new(params[:remark])
     @remark.remark_key = params[:remark_key]
     @remark.remark_target_id = params[:remark_target_id]
-    @remark.rating = params[:remark_rating][:rating]
 
     respond_to do |format|
       begin
