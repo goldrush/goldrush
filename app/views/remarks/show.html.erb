@@ -1,0 +1,40 @@
+<h1><%= getLongName('table_name','bp_pic_groups')%> 詳細</h1>
+
+<table class="show_table">
+
+  <tr>
+    <th><%= getLongName('remarks', 'id') %></th>
+    <td><%= @remark.id %></td>
+  </tr>
+
+  <tr>
+    <th><%= getLongName('remarks', 'owner_id') %></th>
+    <td><%= @remark.owner_id %></td>
+  </tr>
+
+  <tr>
+    <th><%= getLongName('remarks', 'remark_key') %></th>
+    <td><%= @remark.remark_key %></td>
+  </tr>
+
+  <tr>
+    <th><%= getLongName('remarks', 'remark_target_id') %></th>
+    <td><%= @remark.remark_target_id %></td>
+  </tr>
+
+  <tr>
+    <th><%= getLongName('remarks', 'remark_content') %></th>
+    <td><%= @remark.remark_content %></td>
+  </tr>
+
+  <tr>
+    <th><%= getLongName('remarks', 'rating') %></th>
+    <td><%= @remark.rating %></td>
+  </tr>
+
+</table>
+
+<%= back_to_link '編集', edit_remark_path(@remark) %> |
+<%= link_to '削除', @remark, method: :delete, data: { confirm: '削除します。よろしいですか?' } %> |
+<%= link_or_back '戻る', remarks_path %>
+

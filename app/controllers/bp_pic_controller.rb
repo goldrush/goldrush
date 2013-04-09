@@ -22,6 +22,7 @@ class BpPicController < ApplicationController
 
   def show
     @bp_pic = BpPic.find(params[:id])
+    @remarks = Remark.find(:all, :conditions => ["deleted = 0 and remark_key = ? and remark_target_id = ?", 'bp_pic', params[:id]])
   end
 
   def new

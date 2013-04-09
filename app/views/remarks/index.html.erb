@@ -1,0 +1,57 @@
+<h1><%= getLongName('table_name','remarks')%> 一覧</h1>
+
+<%= paginate(@remarks) %>
+
+<table class="list_table">
+  <tr>
+
+    <th><%= getLongName('remarks', 'id') %></th>
+
+    <th><%= getLongName('remarks', 'owner_id') %></th>
+
+    <th><%= getLongName('remarks', 'remark_key') %></th>
+
+    <th><%= getLongName('remarks', 'remark_target_id') %></th>
+
+    <th><%= getLongName('remarks', 'remark_content') %></th>
+
+    <th><%= getLongName('remarks', 'rating') %></th>
+
+  </tr>
+
+<% @remarks.each do |remark| %>
+  <tr>
+
+
+    <td><%= back_to_link remark.id, remark %></td>
+
+
+
+    <td><%= remark.owner_id %></td>
+
+
+
+    <td><%= remark.remark_key %></td>
+
+
+
+    <td><%= remark.remark_target_id %></td>
+
+
+
+    <td><%= remark.remark_content %></td>
+
+
+
+    <td><%= remark.rating %></td>
+
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= paginate(@remarks) %>
+
+<%= back_to_link getLongName('table_name','remarks') + ' の新規作成', new_remark_path %>

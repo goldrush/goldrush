@@ -1,0 +1,41 @@
+<%= form_for(@remark) do |f| %>
+<%= hidden_field_tag 'back_to' %>
+<%= f.hidden_field :lock_version %>
+  <% if @remark.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@remark.errors.count, "error") %> prohibited this remark from being saved:</h2>
+
+      <ul>
+      <% @remark.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table class="show_table">
+
+  <tr>
+    <th><%= f.label :remark_content, 'コメント' %></th>
+    <td><%= f.text_area :remark_content %></td>
+  </tr>
+
+  <tr>
+    <th><%= f.label :rating, 'レーティング' %></th>
+        <td>
+          <%= radio_button 'remark_rating', 'rating', '1', {:class => 'star'} %>
+          <%= radio_button 'remark_rating', 'rating', '2', {:class => 'star'} %>
+          <%= radio_button 'remark_rating', 'rating', '3', {:class => 'star'} %>
+          <%= radio_button 'remark_rating', 'rating', '4', {:class => 'star'} %>
+          <%= radio_button 'remark_rating', 'rating', '5', {:class => 'star'} %>
+        </td>
+  </tr>
+  
+  <%= hidden_field_tag 'remark_target_id', params[:id] %>
+  <%= hidden_field_tag 'remark_key', params[:remark_key] %>
+
+</table>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

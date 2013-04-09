@@ -32,3 +32,19 @@
 </table>
 <%= back_to_link '編集', :action => 'edit', :id => @bp_pic %> |
 <%= link_or_back '戻る', :action => 'list' %>
+
+<h3>コメント一覧</h3>
+<%= link_to 'コメント追加', {:controller => :remarks, :action => :new, :id => params[:id], :remark_key => 'bp_pic'}, :method => :get %>
+
+<table class="show_table">
+  <tr>
+    <th>コメント</th>
+    <th>レート</th>
+  </tr>
+  <% @remarks.each do |remark| %>
+    <tr>
+      <td><%= label_tag 'remark_content', remark.remark_content %></td>
+      <td><%= label_tag 'rating', remark.rating %></td>
+    </tr>
+  <% end %>
+</table>
