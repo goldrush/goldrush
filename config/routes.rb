@@ -1,6 +1,9 @@
 # -*- encoding: utf-8 -*-
 GoldRush::Application.routes.draw do
 
+  resources :remarks
+
+
   resources :bp_pic_group_details
 
   resources :bp_pic_groups
