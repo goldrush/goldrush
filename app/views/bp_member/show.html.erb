@@ -31,6 +31,6 @@
   </div>
 <% end %>
 
-<%= render :partial => 'business_partner/form_remark' %>
+<%= render :partial => 'remarks/list', :locals => {:remark_key => "bp_members", :remark_target_id => @bp_member} %>
 
 

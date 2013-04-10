@@ -58,7 +58,7 @@ class DeliveryMailsController < ApplicationController
       begin
         set_user_column(@delivery_mail)
         @delivery_mail.save!
-        format.html { redirect_to :controller => 'bp_pic_groups', :action => 'show', :id => @delivery_mail.bp_pic_group_id, :delivery_mail_id => @delivery_mail.id, notice: 'Delivery mail was successfully created.' }
+        format.html { redirect_to url_for(:controller => 'bp_pic_groups', :action => 'show', :id => @delivery_mail.bp_pic_group_id, :delivery_mail_id => @delivery_mail.id), notice: 'Delivery mail was successfully created.' }
         format.json { render json: @delivery_mail, status: :created, location: @delivery_mail }
       rescue ActiveRecord::RecordInvalid
         format.html { render action: "new" }
@@ -99,7 +99,7 @@ class DeliveryMailsController < ApplicationController
         set_user_column(@delivery_mail_target)
         @delivery_mail_target.save!
       end
-      format.html { redirect_to :action => 'show', :id => @delivery_mail_id, notice: 'Delivery mail targets were successfully created.' }
+      format.html { redirect_to url_for(:action => 'show', :id => @delivery_mail_id), notice: 'Delivery mail targets were successfully created.' }
 #        format.json { render json: @delivery_mail_target, status: :created, location: @delivery_mail_target }
     end
   end
