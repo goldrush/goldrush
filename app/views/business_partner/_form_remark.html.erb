@@ -1,5 +1,5 @@
 <h3>コメント一覧</h3>
-<%= link_to 'コメント追加', {:controller => :remarks, :action => :new, :id => @r_id, :remark_key => @r_key, :render_id => params[:id]}, :method => :get %>
+<%= back_to_link 'コメント追加', :controller => :remarks, :action => :new, :remark_target_id => remark_target_id, :remark_key => remark_key %>
 
 <% @remarks.each do |remark| %>
   <table class="show_table">
@@ -9,7 +9,7 @@
     </tr>
     <tr>
       <th>作成日時</th>
-      <td><%= label_tag 'create_name', remark.created_at %></td>
+      <td><%= label_tag 'create_name', _time_long(remark.created_at) %></td>
     </tr>
     <tr>
       <th>レート</th>

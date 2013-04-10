@@ -28,6 +28,8 @@ class RemarksController < ApplicationController
   # GET /remarks/new.json
   def new
     @remark = Remark.new
+    @remark.remark_target_id = params[:remark_target_id]
+    @remark.remark_key = params[:remark_key]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,18 +46,12 @@ class RemarksController < ApplicationController
   # POST /remarks.json
   def create
     @remark = Remark.new(params[:remark])
-    @remark.remark_key = params[:remark_key]
-    @remark.remark_target_id = params[:remark_target_id]
 
     respond_to do |format|
       begin
-       set_user_column @remark
-       unless @remark.remark_content.empty?
+        set_user_column @remark
         @remark.save!
-        format.html { redirect_to url_for(:controller => params[:remark_key], :action => 'show', :id => params[:render_id]), notice: 'Remark was successfully created.' }
-       else
-        format.html { redirect_to url_for(:controller => params[:remark_key], :action => 'show', :id => params[:render_id]), notice: 'unprocessable entity' }
-       end
+        format.html { redirect_to back_to, notice: 'Remark was successfully created.' }
         format.json { render json: @remark, status: :created, location: @remark }
       rescue ActiveRecord::RecordInvalid
         format.html { render action: "new" }
@@ -72,7 +68,7 @@ class RemarksController < ApplicationController
     respond_to do |format|
       begin
         @remark.update_attributes!(params[:remark])
-        format.html { redirect_to @remark, notice: 'Remark was successfully updated.' }
+        format.html { redirect_to back_to, notice: 'Remark was successfully updated.' }
         format.json { head :no_content }
       rescue ActiveRecord::RecordInvalid
         format.html { render action: "edit" }
