@@ -2,8 +2,8 @@ bp_pics_1:
   id: 1
   owner_id: 3
   business_partner_id: 1
-  bp_pic_name: "1_hoge"
-  bp_pic_short_name: "1_short"
+  bp_pic_name: "1dayo-"
+  bp_pic_short_name: "1_hoge"
   bp_pic_name_kana: "1_kana"
   depertment:
   position:
@@ -25,7 +25,7 @@ bp_pics_2:
   id: 2
   owner_id: 3
   business_partner_id: 1
-  bp_pic_name: "2_hoge"
+  bp_pic_name: "2get"
   bp_pic_short_name: "2_short"
   bp_pic_name_kana: "2_kana"
   depertment:

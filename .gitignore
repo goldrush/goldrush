@@ -21,3 +21,5 @@
 *~
 .*.swp
 
+# Local setting files.
+/config/database.yml

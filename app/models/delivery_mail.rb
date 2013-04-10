@@ -9,7 +9,7 @@ class DeliveryMail < ActiveRecord::Base
     self.mail_send_status_type ||= 'ready'
   end
   
-  def DeliveryMail.send_mails(id, destination_list)
+  def DeliveryMail.send_mails(id, bp_pic_list)
 	  	fetch_key = "mailer: " + Time.now.to_s + " " + rand().to_s
 	  	
 	  	begin
@@ -19,17 +19,18 @@ class DeliveryMail < ActiveRecord::Base
 			  update_all(:mail_send_status_type => 'running', :updated_user => fetch_key)
 			
 			mails = DeliveryMail.where("id=? and mail_send_status_type=? and updated_user=?", id, "running", fetch_key)	
-	  		if mails.length == 1 && destination_list.length >= 1
+	  		if mails.length == 1 && bp_pic_list.length >= 1
+	  			
 		  		# 配列に包まれたオブジェクトを取り出す
 	  			mail = mails.shift
-	  			destination_list.each {|d|
+	  			bp_pic_list.each {|b|
 	  				Mailer.del_mail_send(
-	  					d,
+	  					b.email1,
 	  					mail.mail_cc,
 	  					mail.mail_bcc,
 	  					mail.mail_from,
 	  					mail.subject,
-	  					mail.content
+	  					mail.content.gsub(/%%bp_pic_name%%/, b.bp_pic_name)
 					).deliver
 	  			}
 	  			
