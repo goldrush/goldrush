@@ -17,7 +17,7 @@ class DeliveryMail < ActiveRecord::Base
 			  where("id=? and mail_send_status_type=? and mail_status_type=? and planned_setting_at<=?",
 				  	id, "ready", "unsend", Time.now.to_s(:db)).
 			  update_all(:mail_send_status_type => 'running', :updated_user => fetch_key)
-			p destination_list.length.to_s
+			
 			mails = DeliveryMail.where("id=? and mail_send_status_type=? and updated_user=?", id, "running", fetch_key)	
 	  		if mails.length == 1 && destination_list.length >= 1
 		  		# 配列に包まれたオブジェクトを取り出す

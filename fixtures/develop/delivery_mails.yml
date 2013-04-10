@@ -4,7 +4,7 @@ delivery_mails_1:
   bp_pic_group_id: 5
   mail_status_type: "unsend"
   subject: "hello"
-  content: "world"
+  content: "world #{bp_pic_id}"
   mail_from_name: "hoge_1"
   mail_from: "hoge_1"
   mail_cc: "hoge_1_cc"
