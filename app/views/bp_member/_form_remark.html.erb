@@ -1,0 +1,30 @@
+<h3>コメント一覧</h3>
+<%= link_to 'コメント追加', {:controller => :remarks, :action => :new, :id => params[:id], :remark_key => 'bp_member'}, :method => :get %>
+
+<% @remarks.each do |remark| %>
+  <table class="show_table">
+    <tr>
+      <th>作成者</th>
+      <td><%= remark.get_created_user.employee.employee_name %></td>
+    </tr>
+    <tr>
+      <th>作成日時</th>
+      <td><%= label_tag 'create_name', remark.created_at %></td>
+    </tr>
+    <tr>
+      <th>レート</th>
+      <td>
+        <% for i in 1..5 %>
+          <% if remark.rating >= i %>
+            <%= image_tag("star_yellow.png") %>
+          <% else %>
+            <%= image_tag("star_gray.png") %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan=2><%= simple_format remark.remark_content %></td>
+    </tr>
+  </table>
+<% end %>
