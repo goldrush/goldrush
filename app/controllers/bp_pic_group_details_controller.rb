@@ -75,12 +75,17 @@ class BpPicGroupDetailsController < ApplicationController
   # DELETE /bp_pic_group_details/1
   # DELETE /bp_pic_group_details/1.json
   def destroy
+    
     @bp_pic_group_detail = BpPicGroupDetail.find(params[:id])
-    @bp_pic_group_detail.destroy
-
+    @bp_pic_group_detail.deleted = 9
+    @bp_pic_group_detail.deleted_at = Time.now
+    set_user_column @bp_pic_group_detail
+    @bp_pic_group_detail.save!
+    
     respond_to do |format|
-      format.html { redirect_to bp_pic_group_details_url }
-      format.json { head :no_content }
+      format.html { redirect_to url_for(:controller => :bp_pic_groups, :action => :show, :id => @bp_pic_group_detail.bp_pic_group_id), notice: 'Bp pic group detail was successfully deleted.' }
     end
+
   end
+
 end

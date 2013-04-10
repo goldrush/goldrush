@@ -15,7 +15,7 @@ class BpPicGroupsController < ApplicationController
   # GET /bp_pic_groups/1.json
   def show
     @delivery_mail_id = params[:delivery_mail_id]
-    @called_by_delivery_mail_create = !@delivery_mail_id.blank?  # ƒ[ƒ‹ì¬‰æ–Ê‚©‚ç‚Ì‘JˆÚ‚©‚Ç‚¤‚©
+    @called_by_delivery_mail_create = !@delivery_mail_id.blank?  # ãƒ¡ãƒ¼ãƒ«ä½œæˆç”»é¢ã‹ã‚‰ã®é·ç§»ã‹ã©ã†ã‹
     
     @bp_pic_group = BpPicGroup.find(params[:id])
         
@@ -104,10 +104,14 @@ class BpPicGroupsController < ApplicationController
     errids = []
     respond_to do |format|
       begin
+        bp_pic_group_details = BpPicGroupDetail.where(:bp_pic_group_id => @bp_pic_group_id)
         @bp_pic_ids.each do |bp_pic_id|
           # validate
-          unless bp_pic = BpPic.find(:first, :conditions => {:id => bp_pic_id})
+          if bp_pic_id =~ /\D+/ or
+            BpPic.find(:first, :conditions => {:id => bp_pic_id}).nil? or
+            bp_pic_group_details.any?{|detail| detail.bp_pic_id == bp_pic_id.to_i}
             errids << bp_pic_id
+            next
           end
 
           # add detail
@@ -119,29 +123,16 @@ class BpPicGroupsController < ApplicationController
         end
 
         if errids.empty?
-          format.html { redirect_to :action => :show, :id => @bp_pic_group_id, :delivery_mail_id => @delivery_mail_id, notice: 'Bp pic group details were successfully created.' }
+          format.html { redirect_to url_for(:action => :show, :id => @bp_pic_group_id, :delivery_mail_id => @delivery_mail_id), notice: 'Bp pic group details were successfully created.' }
         else
-          flash[:errids] = errids
-          format.html { redirect_to :action => :new_details, :id => @bp_pic_group_id, :delivery_mail_id => @delivery_mail_id, notice: 'Bp pic group details were successfully created. but erros (' + errids.join(",") + ')' }
+          format.html { redirect_to url_for(:action => :show, :id => @bp_pic_group_id, :delivery_mail_id => @delivery_mail_id), notice: 'Bp pic group details were successfully created. but erros (' + errids.join(", ") + ').' }
         end
-
       rescue ActiveRecord::RecordInvalid
         format.html { render action: "new_details" }
         format.json { render json: @bp_pic_group.errors, status: :unprocessable_entity }
       end
     end
   
-  end
-  
-  def bp_pic_delete
-  
-    bp_pic_detail = BpPicGroupDetail.find(:first, :conditions => ["bp_pic_group_id = ? and bp_pic_id = ?", params[:bp_pic_group_id], params[:id]])
-    bp_pic_detail.deleted = 9
-    bp_pic_detail.deleted_at = Time.now
-    set_user_column bp_pic_detail
-    bp_pic_detail.save!
-    
-    redirect_to :action => :show, :id => params[:bp_pic_group_id]
   end
   
   # DELETE /bp_pic_groups/1

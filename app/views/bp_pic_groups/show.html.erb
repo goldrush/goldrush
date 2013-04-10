@@ -22,7 +22,7 @@
             <td><%= link_to detail.bp_pic.business_partner.business_partner_name, :controller => :business_partner, :action => :show, :id => detail.bp_pic.business_partner_id %></td>
             <td><%= link_to detail.bp_pic.bp_pic_name, :controller => :bp_pic, :action => :show, :id => detail.bp_pic_id %></td>
             <% unless @called_by_delivery_mail_create %>
-              <td><%= link_to '削除', {:controller => :bp_pic_groups, :action => :bp_pic_delete, :id => detail.bp_pic_id, :bp_pic_group_id => params[:id]}, :method => :get %></td>
+              <td><%= link_to '削除', {:controller => :bp_pic_group_details, :action => :destroy, :id => detail.id, :authenticity_token => form_authenticity_token}, :method => :delete %></td>
             <% end %>
           </tr>
         <% end %>

@@ -84,10 +84,11 @@
         <% if @delivery_mail.mail_status_type == 'unsend' %>
           <td><%=
             link_to "削除",
-              :controller => :delivery_mail_targets,
-              :action => :delete,
-              :id => delivery_mail_target.id,
-              :method => :delete
+              url_for(:controller => :delivery_mail_targets,
+                :action => :destroy,
+                :id => delivery_mail_target.id,
+                :authenticity_token => form_authenticity_token),
+                :method => :delete
           %></td>
         <% end %>
       </tr>
