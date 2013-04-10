@@ -19,3 +19,5 @@
 <%= render :partial => 'approach/list' %>
 <% end %>
 <%= link_to (getLongName('table_name','approaches')+'の新規作成'), :controller => :approach, :action => 'new', :biz_offer_id => @biz_offer %>
+
+<%= render :partial => 'form_remark' %>

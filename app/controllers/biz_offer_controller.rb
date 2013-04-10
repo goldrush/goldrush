@@ -18,6 +18,7 @@ class BizOfferController < ApplicationController
     @biz_offer = BizOffer.find(params[:id])
     @business = @biz_offer.business
     @approach_pages, @approaches = paginate :approaches, :conditions =>["deleted = 0 and biz_offer_id = ?", @biz_offer.id], :per_page => current_user.per_page
+    @remarks = Remark.find(:all, :conditions => ["deleted = 0 and remark_key = ? and remark_target_id = ?", 'biz_offer', params[:id]])
   end
 
   def new
