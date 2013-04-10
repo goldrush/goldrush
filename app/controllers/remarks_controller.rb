@@ -50,8 +50,12 @@ class RemarksController < ApplicationController
     respond_to do |format|
       begin
        set_user_column @remark
+       unless @remark.remark_content.empty?
         @remark.save!
-        format.html { redirect_to :controller => params[:remark_key], :action => 'show', :id => params[:remark_target_id], notice: 'Remark was successfully created.' }
+        format.html { redirect_to url_for(:controller => params[:remark_key], :action => 'show', :id => params[:render_id]), notice: 'Remark was successfully created.' }
+       else
+        format.html { redirect_to url_for(:controller => params[:remark_key], :action => 'show', :id => params[:render_id]), notice: 'unprocessable entity' }
+       end
         format.json { render json: @remark, status: :created, location: @remark }
       rescue ActiveRecord::RecordInvalid
         format.html { render action: "new" }

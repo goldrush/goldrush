@@ -1,5 +1,5 @@
 <h3>コメント一覧</h3>
-<%= link_to 'コメント追加', {:controller => :remarks, :action => :new, :id => params[:id], :remark_key => 'business_partner'}, :method => :get %>
+<%= link_to 'コメント追加', {:controller => :remarks, :action => :new, :id => @r_id, :remark_key => @r_key, :render_id => params[:id]}, :method => :get %>
 
 <% @remarks.each do |remark| %>
   <table class="show_table">

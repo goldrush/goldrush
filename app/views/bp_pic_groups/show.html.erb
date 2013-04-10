@@ -9,7 +9,9 @@
         <% end %>
         <th><%= getLongName('business_partners', 'business_partner_name') %></th>
         <th><%= getLongName('bp_pics', 'bp_pic_name') %></th>
-        <th>削除</th>
+        <% unless @called_by_delivery_mail_create %>
+          <th>削除</th>
+        <% end %>
       </tr>
       <% @bp_pic_group.bp_pic_group_details.each do |detail| %>
         <% if (not detail.bp_pic.nil?) and (not detail.bp_pic.business_partner.nil?) %>
@@ -19,7 +21,9 @@
             <% end %>
             <td><%= link_to detail.bp_pic.business_partner.business_partner_name, :controller => :business_partner, :action => :show, :id => detail.bp_pic.business_partner_id %></td>
             <td><%= link_to detail.bp_pic.bp_pic_name, :controller => :bp_pic, :action => :show, :id => detail.bp_pic_id %></td>
-            <td><%= link_to '削除', {:controller => :bp_pic_groups, :action => :bp_pic_delete, :id => detail.bp_pic_id, :bp_pic_group_id => params[:id]}, :method => :get %></td>
+            <% unless @called_by_delivery_mail_create %>
+              <td><%= link_to '削除', {:controller => :bp_pic_groups, :action => :bp_pic_delete, :id => detail.bp_pic_id, :bp_pic_group_id => params[:id]}, :method => :get %></td>
+            <% end %>
           </tr>
         <% end %>
       <% end %>

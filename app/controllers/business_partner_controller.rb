@@ -130,6 +130,8 @@ class BusinessPartnerController < ApplicationController
     @biz_offers = BizOffer.find(:all, :conditions => ["deleted = 0 and business_partner_id = ?", @business_partner], :order => "id desc", :limit => 50)
     @bp_members = BpMember.find(:all, :conditions => ["deleted = 0 and business_partner_id = ?", @business_partner], :order => "id desc", :limit => 50)
     @remarks = Remark.find(:all, :conditions => ["deleted = 0 and remark_key = ? and remark_target_id = ?", 'business_partner', params[:id]])
+    @r_id = params[:id]
+    @r_key = 'business_partner'
   end
 
   def new
