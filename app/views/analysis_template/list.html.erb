@@ -4,7 +4,7 @@
 
 <% if params[:mode] && params[:import_mail_id] %>
   <% if !params[:target_id] %>
-    <%= back_to_link "解析を行わずに作成する", :controller => params[:mode], :action => 'new', :import_mail_id => params[:import_mail_id] %>
+    <%= back_to_link_popup_mode "解析を行わずに作成する", :controller => params[:mode], :action => 'new', :import_mail_id => params[:import_mail_id] %>
   <% end %>
 <% end %>
 
@@ -24,12 +24,12 @@
   <tr>
     <% if params[:mode] && params[:import_mail_id] %>
       <% if params[:target_id] %>
-        <td align=center><%= back_to_link "選択", :controller => params[:mode], :action => 'edit', :id => params[:target_id], :template_id => analysis_template, :import_mail_id => params[:import_mail_id] %></td>
+        <td align=center><%= back_to_link_popup_mode "選択", :controller => params[:mode], :action => 'edit', :id => params[:target_id], :template_id => analysis_template, :import_mail_id => params[:import_mail_id] %></td>
       <% else %>
-        <td align=center><%= back_to_link "選択", :controller => params[:mode], :action => 'new', :template_id => analysis_template, :import_mail_id => params[:import_mail_id] %></td>
+        <td align=center><%= back_to_link_popup_mode "選択", :controller => params[:mode], :action => 'new', :template_id => analysis_template, :import_mail_id => params[:import_mail_id] %></td>
       <% end %>
     <% end %>
-    <td><%= back_to_link h(analysis_template.analysis_template_name), :action => "show", :id => analysis_template %></td>
+    <td><%= back_to_link_popup_mode h(analysis_template.analysis_template_name), :action => "show", :id => analysis_template %></td>
     <td><%= h analysis_template.business_partner.blank? ? "" : analysis_template.business_partner.business_partner_name %></td>
     <td><%= h analysis_template.bp_pic.blank? ? "" : analysis_template.bp_pic.bp_pic_short_name %></td>
     <td><%= h analysis_template.analysis_template_type_name %></td>
@@ -42,5 +42,5 @@
 
 <br />
 
-<%= link_to ('照会用'+getLongName('table_name','analysis_templates')+'の新規作成'), :action => 'new', :mode => 'biz_offer' %> | 
-<%= link_to ('所属用'+getLongName('table_name','analysis_templates')+'の新規作成'), :action => 'new', :mode => 'bp_member' %>
+<%= back_to_link_popup_mode ('照会用'+getLongName('table_name','analysis_templates')+'の新規作成'), :action => 'new', :mode => 'biz_offer', :import_mail_id => params[:import_mail_id] %> | 
+<%= back_to_link_popup_mode ('所属用'+getLongName('table_name','analysis_templates')+'の新規作成'), :action => 'new', :mode => 'bp_member', :import_mail_id => params[:import_mail_id] %>

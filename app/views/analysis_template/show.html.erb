@@ -4,6 +4,10 @@
   <td><%=h @analysis_template.analysis_template_name %></td>
 </tr>
 <tr>
+  <th><%= getLongName('analysis_templates', 'analysis_template_type') %></th>
+  <td><%=h @analysis_template.analysis_template_type_name %></td>
+</tr>
+<tr>
   <th><%= getLongName('business_partners', 'business_partner_name') %></th>
   <td><%=h @analysis_template.business_partner.business_partner_name if @analysis_template.business_partner %></td>
 </tr>
@@ -17,14 +21,14 @@
 </tr>
 
 </table>
-<%= back_to_link '編集', :action => 'edit', :id => @analysis_template %> |
+<%= back_to_link_popup_mode '編集', :action => 'edit', :id => @analysis_template %> |
 <%= link_or_back '戻る', :action => 'list' %>
 <p></p>
 
 <!-- 解析項目 -->
 <h2><%=getLongName('table_name','analysis_template_items')%>情報</h2>
 <%= render :partial => 'analysis_template_item/list' %>
-<%= link_to (getLongName('table_name','analysis_template_items')+'の追加'), :controller => :analysis_template_item, :action => 'new', :analysis_template => @analysis_template %>
+<%= back_to_link_popup_mode (getLongName('table_name','analysis_template_items')+'の追加'), :controller => :analysis_template_item, :action => 'new', :id => @analysis_template %>
 
 
 

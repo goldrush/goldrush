@@ -15,7 +15,7 @@ module ImportMailHelper
     flg.to_i == 1 ? "font-weight: bold" : nil
   end
   def _c(flg)
-    flg.to_i == 1 ? "color: black" : nil
+    flg.to_i == 1 ? "color: blue" : nil
   end
   
 end

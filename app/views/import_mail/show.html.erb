@@ -1,10 +1,21 @@
 <h1>取り込みメール詳細</h1>
 
-<%= link_to "照会作成", {:controller => 'analysis_template', :action => 'list', :popup => 1, :mode => 'biz_offer', :import_mail_id => @import_mail}, :popup => ['new_window', 'height=800,width=900', 'scrollbars=yes'] %> | 
-<%= link_to "所属作成", {:controller => 'analysis_template', :action => 'list', :popup => 1, :mode => 'bp_member', :import_mail_id => @import_mail}, :popup => ['new_window', 'height=800,width=900', 'scrollbars=yes'] %> | 
-<%= link_to "取引先作成", {:controller => 'business_partner', :action => 'new', :popup => 1, :import_mail_id => @import_mail}, :popup => ['new_window', 'height=800,width=900', 'scrollbars=yes'] %>
+<%= link_to "案件照会作成", "#", :onclick => "disp_wide('#{url_for(:controller => 'analysis_template', :action => 'list', :popup => 1, :mode => 'biz_offer', :import_mail_id => @import_mail)}');return false" %> | 
+<%= link_to "人材所属作成", "#", :onclick => "disp_wide('#{url_for(:controller => 'analysis_template', :action => 'list', :popup => 1, :mode => 'bp_member', :import_mail_id => @import_mail)}');return false" %> | 
+<%= link_to "取引先作成", "#", :onclick => "disp_wide('#{url_for(:controller => 'business_partner', :action => 'new', :popup => 1, :import_mail_id => @import_mail)}');return false" %> | 
 
 <table class="show_table">
+<% if @import_mail.business_partner %>
+<tr>
+  <th><%= getLongName('import_mails', 'business_partner_id') %></th><td><%=link_to @import_mail.business_partner.business_partner_name, :controller => :business_partner, :action => :show, :id => @import_mail.business_partner_id %></td>
+</tr>
+<% end %>
+
+<% if @import_mail.bp_pic %>
+<tr>
+  <th><%= getLongName('import_mails', 'bp_pic_id') %></th><td><%=link_to @import_mail.bp_pic.bp_pic_name, :controller => :bp_pic, :action => :show, :id => @import_mail.bp_pic_id %></td>
+</tr>
+<% end %>
 
 <tr>
   <th><%= getLongName('import_mails', 'mail_sender_name') %></th><td><%=h @import_mail.mail_sender_name %></td>
@@ -23,7 +34,7 @@
 </tr>
 
 <tr>
-  <th><%= getLongName('import_mails', 'received_at') %></th><td><%=h @import_mail.received_at %></td>
+  <th><%= getLongName('import_mails', 'received_at') %></th><td><%=h _time_long(@import_mail.received_at) %></td>
 </tr>
 
 <tr>

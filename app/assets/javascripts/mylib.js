@@ -79,12 +79,13 @@ function ufnum(x) {
   return x.replace(/,/g,"");
 }
 
-function disp(url){
-  window.open(url, url.replace(/[^a-zA-Z]/g, ""), "width=620,height=480,resizable=yes,scrollbars=yes");
+function disp(url, opt){
+  if(opt === undefined) opt = "width=620,height=480,resizable=yes,scrollbars=yes";
+  window.open(url, url.replace(/[^a-zA-Z]/g, ""), opt);
 }
 
 function disp_wide(url){
-  window.open(url, url.replace(/[^a-zA-Z]/g, ""), "width=820,height=480,resizable=yes,scrollbars=yes");
+  disp(url, "width=820,height=480,resizable=yes,scrollbars=yes");
 }
 
 function popup_close() {

@@ -2,46 +2,37 @@
 
 <table class="list_table">
   <tr>
-    <th>（隠し）</th>
-    <th>対象項目名<br>登録名</th>
+    <th>対象項目名</th>
+    <th>登録名</th>
     <th>パターン</th>
-    <th>改行<br>無視</th>
-    <th>前処理コード</th>
-    <th>後処理コード</th>
-    <th>メモ</th>
+    <th></th>
   </tr>
   
   <tr>
-    <th colspan=7>案件</th>
+    <th colspan=4>案件</th>
   </tr>
   
   <% @business_column_names.each do |column_name| %>
     <tr>
-      <td><%= column_name[0] %></td>
-      <td><%= column_name[1] %><br><%= text_field 'analysis_template_item_business_'+column_name[0], 'analysis_template_item_name', :size => 15, :value => column_name[1] %></td>
-      <td><%= text_field 'analysis_template_item_business_'+column_name[0], 'pattern', :size => 15 %></td>
-      <td><%= check_box 'analysis_template_item_business_'+column_name[0], 'ignore_flg' %></td>
-      <td><%= text_area 'analysis_template_item_business_'+column_name[0], 'before_set_code', :size => '20x3' %></td>
-      <td><%= text_area 'analysis_template_item_business_'+column_name[0], 'after_set_code', :size => '20x3' %></td>
-      <td><%= text_area 'analysis_template_item_business_'+column_name[0], 'memo', :size => '20x3' %></td>
+      <td><%= column_name[1] %>(<%= column_name[0] %>)</td>
+      <td><%= text_field 'analysis_template_item_business_'+column_name[0], 'analysis_template_item_name', :value => column_name[1] %></td>
+      <td><%= text_field 'analysis_template_item_business_'+column_name[0], 'pattern' %></td>
+      <td><%= check_box 'analysis_template_item_business_'+column_name[0], 'ignore_flg', :title => "改行無視フラグ" %></td>
     </tr>
     <%= hidden_field 'analysis_template_item_business_'+column_name[0], 'target_column_name' %>
   <% end %>
 
   
   <tr>
-    <th colspan=7>照会</th>
+    <th colspan=4>照会</th>
   </tr>
   
   <% @biz_offer_column_names.each do |column_name| %>
     <tr>
-      <td><%= column_name[0] %></td>
-      <td><%= column_name[1] %><br><%= text_field 'analysis_template_item_biz_offer_'+column_name[0], 'analysis_template_item_name', :size => 15, :value => column_name[1] %></td>
-      <td><%= text_field 'analysis_template_item_biz_offer_'+column_name[0], 'pattern', :size => 15 %></td>
-      <td><%= check_box 'analysis_template_item_biz_offer_'+column_name[0], 'ignore_flg' %></td>
-      <td><%= text_area 'analysis_template_item_biz_offer_'+column_name[0], 'before_set_code', :size => '20x3' %></td>
-      <td><%= text_area 'analysis_template_item_biz_offer_'+column_name[0], 'after_set_code', :size => '20x3' %></td>
-      <td><%= text_area 'analysis_template_item_biz_offer_'+column_name[0], 'memo', :size => '20x3' %></td>
+      <td><%= column_name[1] %>(<%= column_name[0] %>)</td>
+      <td><%= text_field 'analysis_template_item_biz_offer_'+column_name[0], 'analysis_template_item_name', :value => column_name[1] %></td>
+      <td><%= text_field 'analysis_template_item_biz_offer_'+column_name[0], 'pattern' %></td>
+      <td><%= check_box 'analysis_template_item_biz_offer_'+column_name[0], 'ignore_flg', :title => "改行無視フラグ" %></td>
     </tr>
     <%= hidden_field 'analysis_template_item_biz_offer_'+column_name[0], 'target_column_name' %>
   <% end %>

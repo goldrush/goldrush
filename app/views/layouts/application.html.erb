@@ -19,7 +19,7 @@
   <div class="navbar-inner">
       <%=link_to "Gold Rush", "/", :class => :brand %>
         <ul class="nav">
-        <% if logged_in? %>
+        <% if logged_in? && !popup? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">プロジェクト管理<b class="caret"></b></a>
             <ul class="dropdown-menu">

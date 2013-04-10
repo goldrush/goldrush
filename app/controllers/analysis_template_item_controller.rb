@@ -22,7 +22,7 @@ class AnalysisTemplateItemController < ApplicationController
 
   def new
     @analysis_template_item = AnalysisTemplateItem.new
-    @analysis_template = params[:analysis_template]
+    @analysis_template_item.analysis_template_id = params[:id]
   end
 
   def create
@@ -30,7 +30,7 @@ class AnalysisTemplateItemController < ApplicationController
     set_user_column @analysis_template_item
     @analysis_template_item.save!
     flash[:notice] = 'AnalysisTemplateItem was successfully created.'
-    redirect_to :controller => 'analysis_template', :action => 'show', :id => @analysis_template_item.analysis_template_id
+    redirect_to(back_to || {:controller => 'analysis_template', :action => 'show', :id => @analysis_template_item.analysis_template_id})
   rescue ActiveRecord::RecordInvalid
     render :action => 'new'
   end
@@ -45,7 +45,7 @@ class AnalysisTemplateItemController < ApplicationController
     set_user_column @analysis_template_item
     @analysis_template_item.save!
     flash[:notice] = 'AnalysisTemplateItem was successfully updated.'
-    redirect_to :controller => 'analysis_template', :action => 'show', :id => @analysis_template_item.analysis_template_id
+    redirect_to(back_to || {:controller => 'analysis_template', :action => 'show', :id => @analysis_template_item.analysis_template_id})
   rescue ActiveRecord::RecordInvalid
     render :action => 'edit'
   end

@@ -11,6 +11,14 @@ class SysConfig < ActiveRecord::Base
   
   @@cache = nil
 
+  # カラム名を受け取ってそれがシステムカラムなのかを返す
+  def SysConfig.system_columns
+    ['created_at','updated_at','lock_version','created_user','updated_user','deleted_at','deleted']
+  end
+  def SysConfig.system_column?(column)
+    system_columns.include?(column)
+  end
+
   def SysConfig.get_config(section, key)
     find(:first, :conditions => ["deleted = 0 and config_section = ? and config_key = ?", section, key])
   end

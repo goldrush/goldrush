@@ -28,27 +28,27 @@ class BizOfferController < ApplicationController
     now = Time.now
     
     @biz_offer = BizOffer.new
-    @biz_offer.biz_offered_at = now.to_date
+    @biz_offer.biz_offered_at = now
     @biz_offered_at_hour = now.hour
     @biz_offered_at_min = (now.min / 10) * 10
     if params[:business_id]
-      # 案件を照会に追加する場合（案件は存在している）
+      # 照会を案件に追加する場合（案件は存在している）
       @business = Business.find(params[:business_id])
       @issue_datetime_hour = @business.issue_datetime.hour
       @issue_datetime_min = (@business.issue_datetime.min / 10) * 10
     else
       @business = Business.new
-      @business.issue_datetime = now.to_date
+      @business.issue_datetime = now
       @issue_datetime_hour = now.hour
       @issue_datetime_min = (now.min / 10) * 10
     end
-# メール取り込みからの遷移
-    if params[:import_mail_id] && params[:template_id]
-      @biz_offer.import_mail_id = params[:import_mail_id]
+    # メール取り込みからの遷移
+    if params[:import_mail_id]# && params[:template_id]
       import_mail = ImportMail.find(params[:import_mail_id])
+      @biz_offer.import_mail = import_mail
       @biz_offer.business_partner_id = import_mail.business_partner_id
       @biz_offer.bp_pic_id = import_mail.bp_pic_id
-      AnalysisTemplate.analyze(params[:template_id], import_mail, [@biz_offer, @business])
+      AnalysisTemplate.analyze(params[:template_id], import_mail, [@biz_offer, @business]) unless params[:template_id].blank?
     end
   end
 

@@ -1,26 +1,10 @@
 <h1><%=getLongName('table_name','analysis_templates')%>編集</h1>
 
-<%= form_tag :action => 'update', :id => @analysis_template, :back_to => params[:back_to] do %>
-
-  <% if @analysis_template.analysis_template_type == 'biz_offer' %>
-    <h2>解析テンプレートヘッダ</h2>
-  <% end %>
-
+<%= form_tag :action => 'update', :id => @analysis_template do %>
   <!--[form:analysis_template]-->
     <%= render :partial => 'form' %>
   <!--[eoform:analysis_template]-->
-  
-  <% if @analysis_template.analysis_template_type == 'biz_offer' %>
-    <h2>照会用解析テンプレート項目</h2>
-    <!--[form:analysis_template_item]-->
-      <%= render :partial => 'analysis_template_item/form_biz_offer' %>
-    <!--[eoform:analysis_template_item]-->
-  <% elsif @analysis_template.analysis_template_type == 'bp_member' %>
-    <h2>所属用解析テンプレート項目</h2>
-    <!--[form:analysis_template_item]-->
-      <%= render :partial => 'analysis_template_item/form_bp_member' %>
-    <!--[eoform:analysis_template_item]-->
-  <% end %>
+
   <%= submit_tag '更新' %>
 <% end %>
 

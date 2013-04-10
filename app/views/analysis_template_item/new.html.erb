@@ -5,4 +5,4 @@
   <%= submit_tag "登録" %>
 <% end %>
 
-<%= link_to '戻る', :controller => 'analysis_template', :action => 'show', :id => params[:analysis_template] %>
+<%= link_or_back '戻る', :controller => 'analysis_template', :action => 'show', :id => params[:analysis_template] %>

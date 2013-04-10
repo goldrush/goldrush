@@ -2,21 +2,16 @@
 
 <%= form_tag :action => 'create', :mode => params[:mode] do %>
 
-  <% if params[:mode] == 'biz_offer' %>
-    <h2>解析テンプレートヘッダ</h2>
-  <% end %>
 
   <!--[form:analysis_template]-->
     <%= render :partial => 'form' %>
   <!--[eoform:analysis_template]-->
   
   <% if params[:mode] == 'biz_offer' %>
-    <h2>照会用解析テンプレート項目</h2>
     <!--[form:analysis_template_item]-->
       <%= render :partial => 'analysis_template_item/form_biz_offer' %>
     <!--[eoform:analysis_template_item]-->
   <% elsif params[:mode] == 'bp_member' %>
-    <h2>所属用解析テンプレート項目</h2>
     <!--[form:analysis_template_item]-->
       <%= render :partial => 'analysis_template_item/form_bp_member' %>
     <!--[eoform:analysis_template_item]-->

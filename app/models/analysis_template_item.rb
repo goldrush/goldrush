@@ -2,6 +2,8 @@
 class AnalysisTemplateItem < ActiveRecord::Base
 
   belongs_to :analysis_template
+
+  validates_presence_of :analysis_template_item_name, :pattern, :target_table_name, :target_column_name
   
   def AnalysisTemplateItem.get_target_column_names(target_table_name)
     case target_table_name

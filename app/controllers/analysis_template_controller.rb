@@ -13,35 +13,16 @@ class AnalysisTemplateController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @test_name = getLongName('businesses','due_date')
     if params[:mode] && params[:import_mail_id]
-      order_by = ""
-      if import_mail = ImportMail.find(params[:import_mail_id])
-        order_by << "bp_pic_id = #{import_mail.bp_pic_id} desc, " if !import_mail.bp_pic_id.blank?
-        order_by << "business_partner_id = #{import_mail.business_partner_id} desc, " if !import_mail.business_partner_id.blank?
+      order_by = []
+      if import_mail = ImportMail.find(:first, :conditions => ["id = ?", params[:import_mail_id]])
+        order_by << "bp_pic_id = #{import_mail.bp_pic_id} desc" if !import_mail.bp_pic_id.blank?
+        order_by << "business_partner_id = #{import_mail.business_partner_id} desc" if !import_mail.business_partner_id.blank?
       end
       order_by << "id desc"
-      @analysis_templates = AnalysisTemplate.find(:all, :order => order_by)
-#      .sort do |x, y|
-##  n = m = 0
-##  n = 1000 * 1000 * 1000 if x.’S“–id == at_item.’S“–id
-##  m = 1000 * 1000 * 1000 if y.’S“–id == at_item.’S“–id
-##  n += 100 * 1000 * 1000 if x.Žæˆøæid == at_item.Žæˆøæid
-##  m += 100 * 1000 * 1000 if y.Žæˆøæid == at_item.Žæˆøæid
-##  n += x.id
-##  m += y.id
-##  return n - m
-##end
-#        if x.’S“–id == at_item.’S“–id && y.’S“–id != at_item.’S“–id
-#          return 1
-#        elsif x.Žæˆøæid == at_item.Žæˆøæid && y.Žæˆøæid != at_item.Žæˆøæid
-#          return 1
-#        else
-#          return x.id - y.id
-#        end
-#      end
+      @analysis_templates = AnalysisTemplate.find(:all, :order => order_by.join(","))
     else
-      @analysis_template_pages, @analysis_templates = paginate :analysis_templates, :conditions =>["deleted = 0"], :per_page => current_user.per_page
+      @analysis_template_pages, @analysis_templates = paginate :analysis_templates, :conditions => "deleted = 0", :per_page => current_user.per_page
     end
   end
 
@@ -52,6 +33,13 @@ class AnalysisTemplateController < ApplicationController
 
   def new
     @analysis_template = AnalysisTemplate.new
+    @analysis_template.analysis_template_type = params[:mode]
+    unless params[:import_mail_id].blank?
+      import_mail = ImportMail.find(params[:import_mail_id])
+      @analysis_template.business_partner = import_mail.business_partner
+      @analysis_template.bp_pic = import_mail.bp_pic
+    end
+    
     if params[:mode] == "biz_offer"
       @business_column_names = get_column_names("business")
       @biz_offer_column_names = get_column_names("biz_offer")
@@ -64,6 +52,7 @@ class AnalysisTemplateController < ApplicationController
   def create
     ActiveRecord::Base.transaction do
       @analysis_template = AnalysisTemplate.new(params[:analysis_template])
+      @analysis_template.analysis_template_type = params[:mode]
       set_user_column @analysis_template
       @analysis_template.save!
       
@@ -78,9 +67,16 @@ class AnalysisTemplateController < ApplicationController
     end # transaction
     
     flash[:notice] = 'AnalysisTemplate was successfully created.'
-    redirect_to :action => 'list'
+    redirect_to(params[:back_to] || {:action => 'list'})
   rescue ActiveRecord::RecordInvalid
-    render :action => 'new', :mode => params[:mode]
+    if params[:mode] == "biz_offer"
+      @business_column_names = get_column_names("business")
+      @biz_offer_column_names = get_column_names("biz_offer")
+    elsif params[:mode] == "bp_member"
+      @human_resource_column_names = get_column_names("human_resource")
+      @bp_member_column_names = get_column_names("bp_member")
+    end
+    render :action => 'new'
   end
 
   def edit

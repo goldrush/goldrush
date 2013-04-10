@@ -1,19 +1,39 @@
 <%= error_messages_for 'analysis_template_item' %>
 
-<p><label for="analysis_template_item_analysis_template_item_name"><%=getLongName('analysis_template_items','analysis_template_item_name')%></label><br /><%= text_field 'analysis_template_item', 'analysis_template_item_name'  %></p>
-
-<p><label for="analysis_template_item_pattern"><%=getLongName('analysis_template_items','pattern')%></label><br /><%= text_field 'analysis_template_item', 'pattern'  %></p>
-
-<p><label for="analysis_template_item_ignore_flg"><%=getLongName('analysis_template_items','ignore_flg')%></label><br /><%= check_box 'analysis_template_item', 'ignore_flg'  %></p>
-
-<p><label for="analysis_template_item_target_table_name"><%=getLongName('analysis_template_items','target_table_name')%></label><br /><%= text_field 'analysis_template_item', 'target_table_name'  %></p>
-
-<p><label for="analysis_template_item_target_column_name"><%=getLongName('analysis_template_items','target_column_name')%></label><br /><%= text_field 'analysis_template_item', 'target_column_name'  %></p>
-
-<p><label for="analysis_template_item_before_set_code"><%=getLongName('analysis_template_items','before_set_code')%></label><br /><%= resizable_area 'analysis_template_item', 'before_set_code'  %></p>
-
-<p><label for="analysis_template_item_after_set_code"><%=getLongName('analysis_template_items','after_set_code')%></label><br /><%= resizable_area 'analysis_template_item', 'after_set_code'  %></p>
-
-<p><label for="analysis_template_item_memo"><%=getLongName('analysis_template_items','memo')%></label><br /><%= resizable_area 'analysis_template_item', 'memo'  %></p>
-
-<%= hidden_field 'analysis_template_item', 'analysis_template_id', :value => params[:analysis_template] %>
+<table class="show_table">
+<tr>
+  <th><label for="analysis_template_item_analysis_template_item_name"><%=getLongName('analysis_template_items','analysis_template_item_name')%></label></th>
+  <td><%= text_field 'analysis_template_item', 'analysis_template_item_name'  %></td>
+</tr>
+<tr>
+  <th><label for="analysis_template_item_pattern"><%=getLongName('analysis_template_items','pattern')%></label></th>
+  <td><%= text_field 'analysis_template_item', 'pattern'  %></td>
+</tr>
+<tr>
+  <th><label for="analysis_template_item_ignore_flg"><%=getLongName('analysis_template_items','ignore_flg')%></label></th>
+  <td><%= check_box 'analysis_template_item', 'ignore_flg'  %></td>
+</tr>
+<tr>
+  <th><label for="analysis_template_item_target_table_name"><%=getLongName('analysis_template_items','target_table_name')%></label></th>
+  <td><%= text_field 'analysis_template_item', 'target_table_name'  %></td>
+</tr>
+<tr>
+  <th><label for="analysis_template_item_target_column_name"><%=getLongName('analysis_template_items','target_column_name')%></label></th>
+  <td><%= text_field 'analysis_template_item', 'target_column_name'  %></td>
+</tr>
+<tr>
+  <th><label for="analysis_template_item_before_set_code"><%=getLongName('analysis_template_items','before_set_code')%></label></th>
+  <td><%= resizable_area 'analysis_template_item', 'before_set_code'  %></td>
+</tr>
+<tr>
+  <th><label for="analysis_template_item_after_set_code"><%=getLongName('analysis_template_items','after_set_code')%></label></th>
+  <td><%= resizable_area 'analysis_template_item', 'after_set_code'  %></td>
+</tr>
+<tr>
+  <th><label for="analysis_template_item_memo"><%=getLongName('analysis_template_items','memo')%></label></th>
+  <td><%= resizable_area 'analysis_template_item', 'memo'  %></td>
+</tr>
+</table>
+<%= hidden_field 'analysis_template_item', 'analysis_template_id' %>
+<%= hidden_field 'analysis_template_item', 'lock_version' %>
+<%= hidden_field_tag 'back_to', back_to %>
