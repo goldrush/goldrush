@@ -67,8 +67,7 @@ class AttachmentFileController < ApplicationController
 
   def download
     attachment_file = AttachmentFile.find(params[:id], :conditions =>["deleted = 0"])
-    store_file_name = attachment_file.create_store_parent_table_name
-    send_file("files/#{store_file_name}")
+    send_file(attachment_file.file_path)
   end
 
 end

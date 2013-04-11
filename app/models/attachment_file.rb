@@ -4,8 +4,7 @@ class AttachmentFile < ActiveRecord::Base
 
   belongs_to :parent, :class_name => 'BpMember'
 
-
-# 拡張子チェックと取得
+  # 拡張子チェックと取得
   def check_and_get_ext(filename)
     ext = File.extname(filename.to_s).downcase
     
@@ -23,8 +22,61 @@ class AttachmentFile < ActiveRecord::Base
     ext
   end
 
-# 保管
-  def store(upfile, store_file_name)
+  # 保管フォルダ指定
+  def AttachmentFile.file_dir
+    'files'
+  end
+
+  # idの下二けたをディレクトリ名とする
+  def detail_dir
+    File.join(AttachmentFile.file_dir, sprintf("%.2d", self.id % 100))
+  end
+
+  # 経歴書の保存ファイル名生成
+  def create_store_parent_table_name
+    # 「親テーブル名_親テーブルId_添付ファイルId.拡張子」
+    "#{self.parent_table_name}_#{self.parent_id}_#{self.id}#{self.extention}"
+  end
+
+
+  def create_by_import(upfile, parent_id, file_name, parent_table_name = "import_mails")
+    ActiveRecord::Base::transaction do
+      # attachmentFileに項目を入れるメソッド
+      # 親テーブル名
+      self.parent_table_name = parent_table_name
+      # 親テーブルId
+      self.parent_id = parent_id
+      # 添付ファイル名（オリジナルのファイル名）
+      if file_name =~ /"(.*)"/
+        file_name = $1
+      end
+      self.file_name = file_name
+      # 拡張子
+      ext = self.check_and_get_ext(file_name)
+      self.extention = ext
+      self.file_path = 'temp'
+      
+      self.created_user = 'import_mail'
+      self.updated_user = 'import_mail'
+      self.save!
+      
+      self.file_path = File.join(detail_dir, create_store_parent_table_name)
+      self.save!
+      
+      make_store_dir
+      
+      do_store(upfile, self.file_path)
+    end
+  end
+
+#private
+  def make_store_dir
+    Dir.mkdir AttachmentFile.file_dir unless File.exist? AttachmentFile.file_dir
+    Dir.mkdir detail_dir unless File.exist? detail_dir
+  end
+  
+  # 保管
+  def do_store(upfile, store_file_name)
     if upfile.respond_to? 'read'
       store_file(upfile, store_file_name)
     else
@@ -40,49 +92,8 @@ class AttachmentFile < ActiveRecord::Base
     store_internal(upfile, store_file_name){|x| x }
   end
 
-# 保管フォルダ指定
-  def file_dir
-    @file_dir ||= File.join(Rails.root, 'files')
-  end
-
-
-# 経歴書の保存ファイル名生成
-  def create_store_parent_table_name
-    # 「親テーブル名_親テーブルId_添付ファイルId.拡張子」
-    store_file_name = "#{self.parent_table_name}_#{self.parent_id}_#{self.id}#{self.extention}"
-  end
-
-
-  def create_by_import(upfile, parent_id, file_name)
-    ActiveRecord::Base::transaction do
-      # attachmentFileに項目を入れるメソッド
-      # 親テーブル名
-      self.parent_table_name = "import_mails"
-      # 親テーブルId
-      self.parent_id = parent_id
-      # 添付ファイル名（オリジナルのファイル名）
-      if file_name =~ /"(.*)"/
-        file_name = $1
-      end
-      self.file_name = file_name
-      # 拡張子
-      ext = self.check_and_get_ext(file_name)
-      self.extention = ext
-      
-      self.created_user = 'import_mail'
-      self.updated_user = 'import_mail'
-      self.save!
-      
-      # 保存するファイル名
-      store_file_name = self.create_store_parent_table_name
-      self.store(upfile, store_file_name)
-    end
-  end
-
-private
   def store_internal(upfile, store_file_name, &block)
-    Dir.mkdir file_dir unless File.exist? file_dir
-    File.open(File.join(file_dir, store_file_name), "wb"){ |f| f.write(block.call(upfile)) }
+    File.open(store_file_name, "wb"){ |f| f.write(block.call(upfile)) }
   end
 
 end

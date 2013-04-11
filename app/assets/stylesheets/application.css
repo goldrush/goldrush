@@ -14,8 +14,8 @@
 
 table td input[type="text"] {
   width:80%;
-  margin: 0;
-  padding: 0;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
 }
 
 div#main_box {
