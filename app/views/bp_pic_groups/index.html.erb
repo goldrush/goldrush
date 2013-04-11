@@ -9,7 +9,7 @@
     <th>メール一覧</th>
     <th>メール作成</th>
   </tr>
-<% @bp_pic_groups.each do |bp_pic_group| %>
+<% @bp_pic_groups.select{|group| group.deleted == 0}.each do |bp_pic_group| %>
   <tr>
     <td><%= back_to_link bp_pic_group.bp_pic_group_name, bp_pic_group %></td>
     <td><%= bp_pic_group.memo %></td>
