@@ -17,7 +17,7 @@
   </tr>
 
 <% @delivery_mails.each do |delivery_mail| %>
-  <tr>
+  <tr <%= "bgcolor = #999999" unless delivery_mail.mail_status_type == 'unsend' %> id="tr_<%= delivery_mail.id %>">
     <td>
       <% if delivery_mail.mail_status_type == 'unsend' %>
         未送信
@@ -33,11 +33,11 @@
     <td><%= delivery_mail.mail_from %></td>
     <td><%= delivery_mail.mail_cc %></td>
     <td><%= delivery_mail.mail_bcc %></td>
-    <td><%= delivery_mail.planned_setting_at %></td>
+    <td><%= _time(delivery_mail.planned_setting_at) %></td>
     <td><%= delivery_mail.send_end_at %></td>
     <td>
       <% if delivery_mail.mail_status_type == 'unsend' %>
-        <%= link_to 'キャンセル', { :action => :cancel, :id => delivery_mail.id}, :method => :get %>
+        <%= link_to 'キャンセル', { :action => :cancel, :id => delivery_mail.id, :delivery_mails_id => params[:id]}, :method => :get %>
       <% end %>
     </td>
   </tr>

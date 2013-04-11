@@ -96,7 +96,7 @@
   </tr>
 </table>
 
-<%= back_to_link '編集', edit_delivery_mail_path(@delivery_mail) %> |
+<%= back_to_link '編集', {:action => :edit, :id => @delivery_mail} %> |
 <%= link_to '削除', @delivery_mail, method: :delete, data: { confirm: '削除します。よろしいですか?' } %> |
 <%= link_or_back '戻る', delivery_mails_path %>
 

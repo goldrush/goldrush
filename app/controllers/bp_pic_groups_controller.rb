@@ -40,7 +40,7 @@ class BpPicGroupsController < ApplicationController
   def edit
     @bp_pic_group = BpPicGroup.find(params[:id])
     respond_to do |format|
-      format.html  add_detail.html.erb
+      format.html  # edit.html.erb
       format.json { render json: @bp_pic_group }
     end
   end

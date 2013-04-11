@@ -44,6 +44,10 @@ class DeliveryMailsController < ApplicationController
   # GET /delivery_mails/1/edit
   def edit
     @delivery_mail = DeliveryMail.find(params[:id])
+    respond_to do |format|
+      format.html # edit.html.erb
+      format.json { render json: @delivery_mail }
+    end
   end
 
   # POST /delivery_mails
@@ -110,7 +114,7 @@ class DeliveryMailsController < ApplicationController
     set_user_column @delevery_mail
     @delevery_mail.save!
     
-    redirect_to :action => :index, :id => @delevery_mail.id
+    redirect_to :action => :index, :id => params[:delivery_mails_id]
     
   end
 

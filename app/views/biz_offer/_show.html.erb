@@ -12,7 +12,7 @@
   <th><%= getLongName('biz_offers', 'biz_offer_status_type') %></th><td><%=h @biz_offer.biz_offer_status_type %></td>
 </tr>
 <tr>
-  <th><%= getLongName('biz_offers', 'biz_offered_at') %></th><td><%=h @biz_offer.biz_offered_at %></td>
+  <th><%= getLongName('biz_offers', 'biz_offered_at') %></th><td><%=h _time_long(@biz_offer.biz_offered_at) %></td>
 </tr>
 <tr>
   <th><%= getLongName('biz_offers', 'due_date') %></th><td><%=h @biz_offer.due_date %></td>

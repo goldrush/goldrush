@@ -12,7 +12,7 @@
   <th><%= getLongName('businesses', 'business_status_type') %></th><td><%=h @business.business_status_type %></td>
 </tr>
 <tr>
-  <th><%= getLongName('businesses', 'issue_datetime') %></th><td><%=h @business.issue_datetime %></td>
+  <th><%= getLongName('businesses', 'issue_datetime') %></th><td><%=h _time_long(@business.issue_datetime) %></td>
 </tr>
 <tr>
   <th><%= getLongName('businesses', 'due_date') %></th><td><%=h @business.due_date %></td>
