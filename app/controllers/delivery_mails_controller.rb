@@ -43,6 +43,11 @@ class DeliveryMailsController < ApplicationController
 
   # GET /delivery_mails/1/edit
   def edit
+    @select_options = []
+    for num in 0..23
+      @select_options.push([num, num])
+    end
+
     @delivery_mail = DeliveryMail.find(params[:id])
     respond_to do |format|
       format.html # edit.html.erb
@@ -107,15 +112,18 @@ class DeliveryMailsController < ApplicationController
 #        format.json { render json: @delivery_mail_target, status: :created, location: @delivery_mail_target }
     end
   end
-  
+   
+  # PUT /delivery_mails/cancel/1
+  # PUT /delivery_mails/cancel/1.json
   def cancel
     @delevery_mail = DeliveryMail.find(params[:id])
     @delevery_mail.mail_status_type = 'canceled'
     set_user_column @delevery_mail
     @delevery_mail.save!
     
-    redirect_to :action => :index, :id => params[:delivery_mails_id]
-    
+    respond_to do |format|
+      format.html { redirect_to back_to, notice: 'Delivery mail was successfully canceled.'  }
+    end
   end
 
 

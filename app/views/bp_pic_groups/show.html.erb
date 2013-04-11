@@ -1,6 +1,6 @@
 <h1><%= @bp_pic_group.bp_pic_group_name %> 詳細</h1>
 
-  <%= link_to "明細追加", :controller => :bp_pic_groups, :action => :new_details, :id => @bp_pic_group.id, :delivery_mail_id => @delivery_mail_id %>
+  <%= back_to_link "取引先担当の新規追加", :action => :new_details, :id => @bp_pic_group.id, :delivery_mail_id => @delivery_mail_id %>
   <%= form_tag(url_for(:controller => :delivery_mails, :action => :add_details), :method => :post) do %>
     <table class="show_table">
       <tr>
@@ -19,10 +19,10 @@
             <% if @called_by_delivery_mail_create %>
               <td><%= check_box_tag 'bp_pic_ids[]', detail.bp_pic_id, true %></td>
             <% end %>
-            <td><%= link_to detail.bp_pic.business_partner.business_partner_name, :controller => :business_partner, :action => :show, :id => detail.bp_pic.business_partner_id %></td>
-            <td><%= link_to detail.bp_pic.bp_pic_name, :controller => :bp_pic, :action => :show, :id => detail.bp_pic_id %></td>
+            <td><%= back_to_link detail.bp_pic.business_partner.business_partner_name, :controller => :business_partner, :action => :show, :id => detail.bp_pic.business_partner_id %></td>
+            <td><%= back_to_link detail.bp_pic.bp_pic_name, :controller => :bp_pic, :action => :show, :id => detail.bp_pic_id %></td>
             <% unless @called_by_delivery_mail_create %>
-              <td><%= link_to '削除', {:controller => :bp_pic_group_details, :action => :destroy, :id => detail.id, :authenticity_token => form_authenticity_token}, :method => :delete %></td>
+              <td><%= back_to_link '削除', {:controller => :bp_pic_group_details, :action => :destroy, :id => detail.id, :authenticity_token => form_authenticity_token}, :method => :delete %></td>
             <% end %>
           </tr>
         <% end %>

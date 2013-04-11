@@ -54,7 +54,7 @@ class BpPicGroupsController < ApplicationController
       begin
         set_user_column(@bp_pic_group)
         @bp_pic_group.save!
-        format.html { redirect_to @bp_pic_group, notice: 'Bp pic group was successfully created.' }
+        format.html { redirect_to back_to, notice: 'Bp pic group was successfully created.' }
         format.json { render json: @bp_pic_group, status: :created, location: @bp_pic_group }
       rescue ActiveRecord::RecordInvalid
         format.html { render action: "new" }
@@ -123,9 +123,9 @@ class BpPicGroupsController < ApplicationController
         end
 
         if errids.empty?
-          format.html { redirect_to url_for(:action => :show, :id => @bp_pic_group_id, :delivery_mail_id => @delivery_mail_id), notice: 'Bp pic group details were successfully created.' }
+          format.html { redirect_to back_to, notice: 'Bp pic group details were successfully created.' }
         else
-          format.html { redirect_to url_for(:action => :show, :id => @bp_pic_group_id, :delivery_mail_id => @delivery_mail_id), notice: 'Bp pic group details were successfully created. but erros (' + errids.join(", ") + ').' }
+          format.html { redirect_to back_to, notice: 'Bp pic group details were successfully created. but erros (' + errids.join(", ") + ').' }
         end
       rescue ActiveRecord::RecordInvalid
         format.html { render action: "new_details" }
@@ -146,7 +146,7 @@ class BpPicGroupsController < ApplicationController
     bp_pic_group.save!
 
     respond_to do |format|
-      format.html { redirect_to bp_pic_groups_url }
+      format.html { redirect_to bp_pic_groups_path }
     end
     
   end

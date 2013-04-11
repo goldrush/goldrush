@@ -37,7 +37,7 @@
     <td><%= delivery_mail.send_end_at %></td>
     <td>
       <% if delivery_mail.mail_status_type == 'unsend' %>
-        <%= link_to 'キャンセル', { :action => :cancel, :id => delivery_mail.id, :delivery_mails_id => params[:id]}, :method => :get %>
+        <%= back_to_link 'キャンセル', { :action => :cancel, :id => delivery_mail.id, :authenticity_token => form_authenticity_token }, :method => :put %>
       <% end %>
     </td>
   </tr>
@@ -47,4 +47,5 @@
 
 <br />
 
-<%= back_to_link getLongName('table_name','delivery_mails') + ' の新規作成', {:controller => :delivery_mails , :action => :new, :id => params[:id] }, :method => :get %>
+<%= back_to_link getLongName('table_name','delivery_mails') + ' の新規作成', {:controller => :delivery_mails , :action => :new, :id => params[:id] }, :method => :get %> |
+<%= link_or_back '戻る' %>

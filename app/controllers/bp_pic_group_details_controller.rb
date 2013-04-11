@@ -46,7 +46,7 @@ class BpPicGroupDetailsController < ApplicationController
     respond_to do |format|
       begin
         @bp_pic_group_detail.save!
-        format.html { redirect_to @bp_pic_group_detail, notice: 'Bp pic group detail was successfully created.' }
+        format.html { redirect_to back_to, notice: 'Bp pic group detail was successfully created.' }
         format.json { render json: @bp_pic_group_detail, status: :created, location: @bp_pic_group_detail }
       rescue ActiveRecord::RecordInvalid
         format.html { render action: "new" }
@@ -83,7 +83,7 @@ class BpPicGroupDetailsController < ApplicationController
     @bp_pic_group_detail.save!
     
     respond_to do |format|
-      format.html { redirect_to url_for(:controller => :bp_pic_groups, :action => :show, :id => @bp_pic_group_detail.bp_pic_group_id), notice: 'Bp pic group detail was successfully deleted.' }
+      format.html { redirect_to back_to, notice: 'Bp pic group detail was successfully deleted.' }
     end
 
   end
