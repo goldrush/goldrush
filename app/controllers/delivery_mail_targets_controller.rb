@@ -14,7 +14,7 @@ class DeliveryMailTargetsController < ApplicationController
     @delivery_mail_target.save!
 
     respond_to do |format|
-      format.html { redirect_to url_for(:controller => :delivery_mails, :action => :show, :id => @delivery_mail_target.delivery_mail_id), notice: 'Delivery mail target was successfully deleted.' }
+      format.html { redirect_to url_for(:controller => 'business_partner', :action => :show, :id => @delivery_mail_target.delivery_mail_id), notice: 'Delivery mail target was successfully deleted.' }
     end
   end
   

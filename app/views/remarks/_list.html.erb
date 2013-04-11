@@ -27,4 +27,7 @@
       <td colspan=2><%= simple_format remark.remark_content %></td>
     </tr>
   </table>
+  <% if remark.created_user == current_user.login %>
+    <%= back_to_link '編集', :controller => :remarks, :action => :edit, :id => remark.id  %> | <%= link_to '削除',url_for(:controller => :remarks, :action => :destroy, :authenticity_token => form_authenticity_token, :id => remark.id, :back => remark_key, :bk_id => params[:id]), :method => :delete %>
+  <% end %>
 <% end %>

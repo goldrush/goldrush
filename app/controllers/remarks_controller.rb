@@ -64,6 +64,8 @@ class RemarksController < ApplicationController
   # PUT /remarks/1.json
   def update
     @remark = Remark.find(params[:id])
+    set_user_column @remark
+    @remark.save!
 
     respond_to do |format|
       begin
@@ -81,11 +83,13 @@ class RemarksController < ApplicationController
   # DELETE /remarks/1.json
   def destroy
     @remark = Remark.find(params[:id])
-    @remark.destroy
+    @remark.deleted = 9
+    @remark.deleted_at = Time.now
+    set_user_column @remark
+    @remark.save!
 
     respond_to do |format|
-      format.html { redirect_to remarks_url }
-      format.json { head :no_content }
+      format.html { redirect_to url_for(:controller => params[:back].chop, :action => 'show', :id => params[:bk_id]), notice: 'Deleted Remark content' }
     end
   end
 end

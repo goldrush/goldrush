@@ -1,5 +1,7 @@
-<h1><%= getLongName('table_name','bp_pic_groups')%> の編集</h1>
+<h1>コメントの編集</h1>
 
-<%= render 'form' %>
+<%= form_tag :action => :update, :id => params[:id] do %>
+  <%= render 'form' %>
+<% end %>
 
 <%= link_or_back '戻る', remarks_path %>
