@@ -43,6 +43,9 @@ puts ">>>>>>>>>" + import_mail.mail_from
       # attempt_fileのため(import_mail_idが必要)に一旦登録
       import_mail.save!
       
+      # 添付ファイルがなければ案件、あれば人材と割り切る
+      import_mail.biz_offer_flg = 1
+      import_mail.bp_member_flg = 0
       #---------- mail_body ここから ----------
       if m.multipart?
         puts">>>>>>>>>>>>>>>>>>>>>>>>>>> MULTIPART MODE"
@@ -77,6 +80,8 @@ puts ">>>>>>>>>" + import_mail.mail_from
             
             attachment_file = AttachmentFile.new
             attachment_file.create_by_import(upfile, import_mail.id, file_name)
+            import_mail.biz_offer_flg = 0
+            import_mail.bp_member_flg = 1
               
             #---------- 添付ファイル ここまで ----------
             

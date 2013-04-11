@@ -28,6 +28,10 @@ class ImportMailController < ApplicationController
     # TODO デフォルトで不要フラグ立ってないもの？
     order_by = ""
 
+    if params[:id]
+      sql += " and business_partner_id = #{params[:id]}"
+    end
+
     if !(self_flg = session[:import_mail_search][:biz_offer_flg]).blank?
       sql += " and biz_offer_flg = 1"
     end

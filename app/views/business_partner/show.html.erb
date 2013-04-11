@@ -1,5 +1,6 @@
 <h1><%= @business_partner.business_partner_code_name %>詳細</h1>
 
+<%= link_to "取引先のメール一覧", :controller => :import_mail, :action => :list, :id => @business_partner %>
 <table class="show_table">
 <tr>
   <th><%= getLongName('business_partners', 'business_partner_code') %></th><td><%=h @business_partner.business_partner_code %></td>
