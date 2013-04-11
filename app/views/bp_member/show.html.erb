@@ -18,7 +18,7 @@
 <% end %>
 
 <%= form_tag({:controller => 'attachment_file', :action => 'create', :parent_table => 'bp_members', :parent_id => @bp_member, :back_to => request.env['REQUEST_URI']}, :multipart => true) do %>
-  <div align=right>
+  <div>
   <table>
     <tr>
       <td rowspan=2>経歴書のアップロード </td>
