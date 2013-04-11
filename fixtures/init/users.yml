@@ -1,216 +1,34 @@
 users_1:
   id: 1
   owner_id: 
-  external_user_id: 
-  login: "system"
-  crypted_password: "d4eb7146e49a1dc3e8d44dc57f39cb7eaf8a0688"
-  email: "system"
-  salt: "6adc73dcb4ae4427d5196a05c627533453927cd4"
-  remember_token: ""
-  remember_token_expires_at: 
-  activation_code: ""
-  activate_send_at: 
-  activated_at: 
-  fullname: "system"
-  shortname: "system"
-  nickname: ""
-  access_level_type: "super"
-  per_page: 50
-  created_at: <%= Time.now.to_s(:db) %>
-  updated_at: <%= Time.now.to_s(:db) %>
-  lock_version: 0
-  created_user: "initial"
-  updated_user: "initial"
-  deleted: 0
-users_2:
-  id: 2
-  owner_id: 
-  external_user_id: 
-  login: "sharingss"
-  crypted_password: "d4eb7146e49a1dc3e8d44dc57f39cb7eaf8a0688"
-  email: "sharingss"
-  salt: "6adc73dcb4ae4427d5196a05c627533453927cd4"
-  remember_token: ""
-  remember_token_expires_at: 
-  activation_code: ""
-  activate_send_at: 
-  activated_at: 
-  fullname: "sharingss"
-  shortname: "sharingss"
-  nickname: ""
-  access_level_type: "super"
-  per_page: 50
-  created_at: <%= Time.now.to_s(:db) %>
-  updated_at: <%= Time.now.to_s(:db) %>
-  lock_version: 0
-  created_user: "initial"
-  updated_user: "initial"
-  deleted: 0
-users_3:
-  id: 3
-  owner_id:  
-  external_user_id:  
-  login: "tamaki-t"
-  crypted_password: "d4eb7146e49a1dc3e8d44dc57f39cb7eaf8a0688"
-  email: "tamaki-t"
-  salt: "6adc73dcb4ae4427d5196a05c627533453927cd4"
-  remember_token: " "
-  remember_token_expires_at:  
-  activation_code: " "
-  activate_send_at:  
-  activated_at:  
-  fullname: " "
-  shortname: " "
-  nickname: " "
-  access_level_type: "super"
-  per_page: 50
-  created_at: <%= Time.now.to_s(:db) %>
-  updated_at: <%= Time.now.to_s(:db) %>
-  lock_version: 0
-  created_user: "initial"
-  updated_user: "initial"
-  deleted: 0
-users_4:
-  id: 4
-  owner_id:  
-  external_user_id:  
-  login: "takenari-t"
-  crypted_password: "d4eb7146e49a1dc3e8d44dc57f39cb7eaf8a0688"
-  email: "takenari-t"
-  salt: "6adc73dcb4ae4427d5196a05c627533453927cd4"
-  remember_token: " "
-  remember_token_expires_at:  
-  activation_code: " "
-  activate_send_at:  
-  activated_at:  
-  fullname: " "
-  shortname: " "
-  nickname: " "
-  access_level_type: "normal"
-  per_page: 50
-  created_at: <%= Time.now.to_s(:db) %>
-  updated_at: <%= Time.now.to_s(:db) %>
-  lock_version: 0
-  created_user: "initial"
-  updated_user: "initial"
-  deleted: 0
-users_5:
-  id: 5
-  owner_id: 
-  external_user_id: 
-  login: "takizawa-h"
-  crypted_password: "d4eb7146e49a1dc3e8d44dc57f39cb7eaf8a0688"
-  email: "takizawa-h"
-  salt: "6adc73dcb4ae4427d5196a05c627533453927cd4"
-  remember_token: ""
-  remember_token_expires_at: 
-  activation_code: ""
-  activate_send_at: 
-  activated_at: 
+  login: "system@aaa.com"
   fullname: ""
   shortname: ""
-  nickname: ""
-  access_level_type: "normal"
-  per_page: 50
-  created_at: <%= Time.now.to_s(:db) %>
-  updated_at: <%= Time.now.to_s(:db) %>
-  lock_version: 0
-  created_user: "initial"
-  updated_user: "initial"
-  deleted: 0
-users_6:
-  id: 6
-  owner_id:  
-  external_user_id:  
-  login: "furukawa-t"
-  crypted_password: "d4eb7146e49a1dc3e8d44dc57f39cb7eaf8a0688"
-  email: "furukawa-t"
-  salt: "6adc73dcb4ae4427d5196a05c627533453927cd4"
-  remember_token: " "
-  remember_token_expires_at:  
-  activation_code: " "
-  activate_send_at:  
-  activated_at:  
-  fullname: " "
-  shortname: " "
-  nickname: " "
+  nickname: "システム"
   access_level_type: "super"
   per_page: 50
+  email: "system@aaa.com"
+  encrypted_password: "$2a$10$ojHlby3zaA6ux5w8/1QINO9ALaPwYboB1eYxSXq4G6ZAaVmaTvadi"
+  reset_password_token: "NULL"
+  reset_password_sent_at: NULL
+  remember_created_at: NULL
+  sign_in_count: 0
+  current_sign_in_at: 
+  last_sign_in_at: 
+  current_sign_in_ip: ""
+  last_sign_in_ip: ""
+  confirmation_token: ""
+  confirmed_at: 
+  confirmation_sent_at: 
+  unconfirmed_email: ""
+  failed_attempts: 0
+  unlock_token: ""
+  locked_at: 
+  authentication_token: ""
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
-  deleted: 0
-users_7:
-  id: 7
-  owner_id: 
-  external_user_id: 
-  login: "amemiya-m"
-  crypted_password: "d4eb7146e49a1dc3e8d44dc57f39cb7eaf8a0688"
-  email: "amemiya-m"
-  salt: "6adc73dcb4ae4427d5196a05c627533453927cd4"
-  remember_token: ""
-  remember_token_expires_at: 
-  activation_code: ""
-  activate_send_at: 
-  activated_at: 
-  fullname: ""
-  shortname: ""
-  nickname: ""
-  access_level_type: "normal"
-  per_page: 50
-  created_at: <%= Time.now.to_s(:db) %>
-  updated_at: <%= Time.now.to_s(:db) %>
-  lock_version: 0
-  created_user: "initial"
-  updated_user: "initial"
-  deleted: 0
-users_8:
-  id: 8
-  owner_id:  
-  external_user_id:  
-  login: "aoki-k"
-  crypted_password: "d4eb7146e49a1dc3e8d44dc57f39cb7eaf8a0688"
-  email: "aoki-k"
-  salt: "6adc73dcb4ae4427d5196a05c627533453927cd4"
-  remember_token: " "
-  remember_token_expires_at:  
-  activation_code: " "
-  activate_send_at:  
-  activated_at:  
-  fullname: " "
-  shortname: " "
-  nickname: " "
-  access_level_type: "normal"
-  per_page: 50
-  created_at: <%= Time.now.to_s(:db) %>
-  updated_at: <%= Time.now.to_s(:db) %>
-  lock_version: 0
-  created_user: "initial"
-  updated_user: "initial"
-  deleted: 0
-users_9:
-  id: 9
-  owner_id:  
-  external_user_id:  
-  login: "onohara-m"
-  crypted_password: "d4eb7146e49a1dc3e8d44dc57f39cb7eaf8a0688"
-  email: "onohara-m"
-  salt: "6adc73dcb4ae4427d5196a05c627533453927cd4"
-  remember_token: " "
-  remember_token_expires_at:  
-  activation_code: " "
-  activate_send_at:  
-  activated_at:  
-  fullname: " "
-  shortname: " "
-  nickname: " "
-  access_level_type: "normal"
-  per_page: 50
-  created_at: <%= Time.now.to_s(:db) %>
-  updated_at: <%= Time.now.to_s(:db) %>
-  lock_version: 0
-  created_user: "initial"
-  updated_user: "initial"
+  deleted_at: 
   deleted: 0

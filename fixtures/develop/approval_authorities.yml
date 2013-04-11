@@ -10,6 +10,7 @@ approval_authorities_1:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_2:
   id: 2
@@ -23,6 +24,7 @@ approval_authorities_2:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_3:
   id: 3
@@ -36,6 +38,7 @@ approval_authorities_3:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_4:
   id: 4
@@ -49,6 +52,7 @@ approval_authorities_4:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_5:
   id: 5
@@ -62,6 +66,7 @@ approval_authorities_5:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_6:
   id: 6
@@ -75,6 +80,7 @@ approval_authorities_6:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_7:
   id: 7
@@ -88,6 +94,7 @@ approval_authorities_7:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_8:
   id: 8
@@ -101,6 +108,7 @@ approval_authorities_8:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_9:
   id: 9
@@ -114,6 +122,7 @@ approval_authorities_9:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_10:
   id: 10
@@ -127,6 +136,7 @@ approval_authorities_10:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_11:
   id: 11
@@ -140,6 +150,7 @@ approval_authorities_11:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_12:
   id: 12
@@ -153,6 +164,7 @@ approval_authorities_12:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_13:
   id: 13
@@ -166,6 +178,7 @@ approval_authorities_13:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_14:
   id: 14
@@ -179,6 +192,7 @@ approval_authorities_14:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_15:
   id: 15
@@ -192,6 +206,7 @@ approval_authorities_15:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_16:
   id: 16
@@ -205,6 +220,7 @@ approval_authorities_16:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_17:
   id: 17
@@ -218,6 +234,7 @@ approval_authorities_17:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_18:
   id: 18
@@ -231,6 +248,7 @@ approval_authorities_18:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_19:
   id: 19
@@ -244,6 +262,7 @@ approval_authorities_19:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_20:
   id: 20
@@ -257,6 +276,7 @@ approval_authorities_20:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_21:
   id: 21
@@ -270,6 +290,7 @@ approval_authorities_21:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_22:
   id: 22
@@ -283,6 +304,7 @@ approval_authorities_22:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_23:
   id: 23
@@ -296,6 +318,7 @@ approval_authorities_23:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_24:
   id: 24
@@ -309,6 +332,7 @@ approval_authorities_24:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_25:
   id: 25
@@ -322,6 +346,7 @@ approval_authorities_25:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_26:
   id: 26
@@ -335,6 +360,7 @@ approval_authorities_26:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_27:
   id: 27
@@ -348,6 +374,7 @@ approval_authorities_27:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_28:
   id: 28
@@ -361,6 +388,7 @@ approval_authorities_28:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_29:
   id: 29
@@ -374,6 +402,7 @@ approval_authorities_29:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_30:
   id: 30
@@ -387,6 +416,7 @@ approval_authorities_30:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_31:
   id: 31
@@ -400,6 +430,7 @@ approval_authorities_31:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_32:
   id: 32
@@ -413,6 +444,7 @@ approval_authorities_32:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_33:
   id: 33
@@ -426,6 +458,7 @@ approval_authorities_33:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_34:
   id: 34
@@ -439,6 +472,7 @@ approval_authorities_34:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_35:
   id: 35
@@ -452,6 +486,7 @@ approval_authorities_35:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_36:
   id: 36
@@ -465,6 +500,7 @@ approval_authorities_36:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_37:
   id: 37
@@ -478,6 +514,7 @@ approval_authorities_37:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_38:
   id: 38
@@ -491,6 +528,7 @@ approval_authorities_38:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_39:
   id: 39
@@ -504,6 +542,7 @@ approval_authorities_39:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_40:
   id: 40
@@ -517,6 +556,7 @@ approval_authorities_40:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_41:
   id: 41
@@ -530,6 +570,7 @@ approval_authorities_41:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_42:
   id: 42
@@ -543,6 +584,7 @@ approval_authorities_42:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_43:
   id: 43
@@ -556,6 +598,7 @@ approval_authorities_43:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_44:
   id: 44
@@ -569,6 +612,7 @@ approval_authorities_44:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_45:
   id: 45
@@ -582,6 +626,7 @@ approval_authorities_45:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_46:
   id: 46
@@ -595,6 +640,7 @@ approval_authorities_46:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_47:
   id: 47
@@ -608,6 +654,7 @@ approval_authorities_47:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_48:
   id: 48
@@ -621,6 +668,7 @@ approval_authorities_48:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_49:
   id: 49
@@ -634,6 +682,7 @@ approval_authorities_49:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_50:
   id: 50
@@ -647,6 +696,7 @@ approval_authorities_50:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_51:
   id: 51
@@ -660,6 +710,7 @@ approval_authorities_51:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_52:
   id: 52
@@ -673,6 +724,7 @@ approval_authorities_52:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_53:
   id: 53
@@ -686,6 +738,7 @@ approval_authorities_53:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_54:
   id: 54
@@ -699,6 +752,7 @@ approval_authorities_54:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_55:
   id: 55
@@ -712,6 +766,7 @@ approval_authorities_55:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_56:
   id: 56
@@ -725,6 +780,7 @@ approval_authorities_56:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_57:
   id: 57
@@ -738,6 +794,7 @@ approval_authorities_57:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_58:
   id: 58
@@ -751,6 +808,7 @@ approval_authorities_58:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_59:
   id: 59
@@ -764,6 +822,7 @@ approval_authorities_59:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_60:
   id: 60
@@ -777,6 +836,7 @@ approval_authorities_60:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_61:
   id: 61
@@ -790,6 +850,7 @@ approval_authorities_61:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_62:
   id: 62
@@ -803,6 +864,7 @@ approval_authorities_62:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_63:
   id: 63
@@ -816,6 +878,7 @@ approval_authorities_63:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_64:
   id: 64
@@ -829,6 +892,7 @@ approval_authorities_64:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_65:
   id: 65
@@ -842,6 +906,7 @@ approval_authorities_65:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_66:
   id: 66
@@ -855,6 +920,7 @@ approval_authorities_66:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_67:
   id: 67
@@ -868,6 +934,7 @@ approval_authorities_67:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_68:
   id: 68
@@ -881,6 +948,7 @@ approval_authorities_68:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_69:
   id: 69
@@ -894,6 +962,7 @@ approval_authorities_69:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_70:
   id: 70
@@ -907,6 +976,7 @@ approval_authorities_70:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_71:
   id: 71
@@ -920,6 +990,7 @@ approval_authorities_71:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_72:
   id: 72
@@ -933,6 +1004,7 @@ approval_authorities_72:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_73:
   id: 73
@@ -946,6 +1018,7 @@ approval_authorities_73:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_74:
   id: 74
@@ -959,6 +1032,7 @@ approval_authorities_74:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_75:
   id: 75
@@ -972,6 +1046,7 @@ approval_authorities_75:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_76:
   id: 76
@@ -985,6 +1060,7 @@ approval_authorities_76:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_77:
   id: 77
@@ -998,6 +1074,7 @@ approval_authorities_77:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_78:
   id: 78
@@ -1011,6 +1088,7 @@ approval_authorities_78:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_79:
   id: 79
@@ -1024,6 +1102,7 @@ approval_authorities_79:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_80:
   id: 80
@@ -1037,6 +1116,7 @@ approval_authorities_80:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_81:
   id: 81
@@ -1050,6 +1130,7 @@ approval_authorities_81:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_82:
   id: 82
@@ -1063,6 +1144,7 @@ approval_authorities_82:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_83:
   id: 83
@@ -1076,6 +1158,7 @@ approval_authorities_83:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_84:
   id: 84
@@ -1089,6 +1172,7 @@ approval_authorities_84:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_85:
   id: 85
@@ -1102,6 +1186,7 @@ approval_authorities_85:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_86:
   id: 86
@@ -1115,6 +1200,7 @@ approval_authorities_86:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_87:
   id: 87
@@ -1128,6 +1214,7 @@ approval_authorities_87:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_88:
   id: 88
@@ -1141,6 +1228,7 @@ approval_authorities_88:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_89:
   id: 89
@@ -1154,6 +1242,7 @@ approval_authorities_89:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_90:
   id: 90
@@ -1167,6 +1256,7 @@ approval_authorities_90:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_91:
   id: 91
@@ -1180,6 +1270,7 @@ approval_authorities_91:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_92:
   id: 92
@@ -1193,6 +1284,7 @@ approval_authorities_92:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_93:
   id: 93
@@ -1206,6 +1298,7 @@ approval_authorities_93:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_94:
   id: 94
@@ -1219,6 +1312,7 @@ approval_authorities_94:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_95:
   id: 95
@@ -1232,6 +1326,7 @@ approval_authorities_95:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 approval_authorities_96:
   id: 96
@@ -1245,4 +1340,5 @@ approval_authorities_96:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0

@@ -1,5 +1,6 @@
 sys_configs_1:
   id: 1
+  owner_id: 
   config_section: "per_page_count"
   config_key: "default"
   value1: "50"
@@ -11,9 +12,11 @@ sys_configs_1:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_2:
   id: 2
+  owner_id: 
   config_section: "vacation_half_year"
   config_key: "00"
   value1: ""
@@ -25,9 +28,11 @@ sys_configs_2:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_3:
   id: 3
+  owner_id: 
   config_section: "vacation_half_year"
   config_key: "01"
   value1: "10"
@@ -39,9 +44,11 @@ sys_configs_3:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_4:
   id: 4
+  owner_id: 
   config_section: "vacation_half_year"
   config_key: "02"
   value1: "10"
@@ -53,9 +60,11 @@ sys_configs_4:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_5:
   id: 5
+  owner_id: 
   config_section: "vacation_half_year"
   config_key: "03"
   value1: "11"
@@ -67,9 +76,11 @@ sys_configs_5:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_6:
   id: 6
+  owner_id: 
   config_section: "vacation_half_year"
   config_key: "04"
   value1: "11"
@@ -81,9 +92,11 @@ sys_configs_6:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_7:
   id: 7
+  owner_id: 
   config_section: "vacation_half_year"
   config_key: "05"
   value1: "12"
@@ -95,9 +108,11 @@ sys_configs_7:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_8:
   id: 8
+  owner_id: 
   config_section: "vacation_half_year"
   config_key: "06"
   value1: "12"
@@ -109,9 +124,11 @@ sys_configs_8:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_9:
   id: 9
+  owner_id: 
   config_section: "vacation_half_year"
   config_key: "07"
   value1: "14"
@@ -123,9 +140,11 @@ sys_configs_9:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_10:
   id: 10
+  owner_id: 
   config_section: "vacation_half_year"
   config_key: "08"
   value1: "14"
@@ -137,9 +156,11 @@ sys_configs_10:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_11:
   id: 11
+  owner_id: 
   config_section: "vacation_half_year"
   config_key: "09"
   value1: "16"
@@ -151,9 +172,11 @@ sys_configs_11:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_12:
   id: 12
+  owner_id: 
   config_section: "vacation_half_year"
   config_key: "10"
   value1: "16"
@@ -165,9 +188,11 @@ sys_configs_12:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_13:
   id: 13
+  owner_id: 
   config_section: "vacation_half_year"
   config_key: "11"
   value1: "18"
@@ -179,9 +204,11 @@ sys_configs_13:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_14:
   id: 14
+  owner_id: 
   config_section: "vacation_half_year"
   config_key: "12"
   value1: "18"
@@ -193,9 +220,11 @@ sys_configs_14:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_15:
   id: 15
+  owner_id: 
   config_section: "vacation_half_year"
   config_key: "13"
   value1: "20"
@@ -207,9 +236,11 @@ sys_configs_15:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_16:
   id: 16
+  owner_id: 
   config_section: "vacation_half_year"
   config_key: "14"
   value1: "20"
@@ -221,9 +252,11 @@ sys_configs_16:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_17:
   id: 17
+  owner_id: 
   config_section: "vacation_month"
   config_key: "1"
   value1: "2"
@@ -235,9 +268,11 @@ sys_configs_17:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_18:
   id: 18
+  owner_id: 
   config_section: "vacation_month"
   config_key: "2"
   value1: "3"
@@ -249,9 +284,11 @@ sys_configs_18:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_19:
   id: 19
+  owner_id: 
   config_section: "vacation_month"
   config_key: "3"
   value1: "4"
@@ -263,9 +300,11 @@ sys_configs_19:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_20:
   id: 20
+  owner_id: 
   config_section: "vacation_month"
   config_key: "4"
   value1: "5"
@@ -277,9 +316,11 @@ sys_configs_20:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_21:
   id: 21
+  owner_id: 
   config_section: "vacation_month"
   config_key: "5"
   value1: "6"
@@ -291,9 +332,11 @@ sys_configs_21:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_22:
   id: 22
+  owner_id: 
   config_section: "vacation_month"
   config_key: "6"
   value1: "8"
@@ -305,9 +348,11 @@ sys_configs_22:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_23:
   id: 23
+  owner_id: 
   config_section: "annual_day_count"
   config_key: "total_max"
   value1: "40"
@@ -319,9 +364,11 @@ sys_configs_23:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_24:
   id: 24
+  owner_id: 
   config_section: "life_plan_day_count"
   config_key: "total_max"
   value1: "40"
@@ -333,9 +380,11 @@ sys_configs_24:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_25:
   id: 25
+  owner_id: 
   config_section: "life_plan_day_count"
   config_key: "behavior_max"
   value1: "3"
@@ -347,9 +396,11 @@ sys_configs_25:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_26:
   id: 26
+  owner_id: 
   config_section: "regular_in_time"
   config_key: "regular"
   value1: "9:30"
@@ -361,9 +412,11 @@ sys_configs_26:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_27:
   id: 27
+  owner_id: 
   config_section: "regular_in_time"
   config_key: "defact"
   value1: "10:30"
@@ -375,9 +428,11 @@ sys_configs_27:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_28:
   id: 28
+  owner_id: 
   config_section: "regular_in_time"
   config_key: "pm"
   value1: "13:30"
@@ -389,9 +444,11 @@ sys_configs_28:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_29:
   id: 29
+  owner_id: 
   config_section: "regular_out_time"
   config_key: "regular"
   value1: "17:30"
@@ -403,9 +460,11 @@ sys_configs_29:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_30:
   id: 30
+  owner_id: 
   config_section: "regular_out_time"
   config_key: "early_am"
   value1: "12:30"
@@ -417,9 +476,11 @@ sys_configs_30:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_31:
   id: 31
+  owner_id: 
   config_section: "regular_out_time"
   config_key: "early_full"
   value1: "15:30"
@@ -431,9 +492,11 @@ sys_configs_31:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_32:
   id: 32
+  owner_id: 
   config_section: "max_out_time"
   config_key: "regular"
   value1: "29:00"
@@ -445,9 +508,11 @@ sys_configs_32:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_33:
   id: 33
+  owner_id: 
   config_section: "rest_hour"
   config_key: "regular"
   value1: "1:00"
@@ -459,9 +524,11 @@ sys_configs_33:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_34:
   id: 34
+  owner_id: 
   config_section: "rest_hour"
   config_key: "half"
   value1: "0:00"
@@ -473,9 +540,11 @@ sys_configs_34:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_35:
   id: 35
+  owner_id: 
   config_section: "hour_total"
   config_key: "full"
   value1: "7:00"
@@ -487,9 +556,11 @@ sys_configs_35:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_36:
   id: 36
+  owner_id: 
   config_section: "hour_total"
   config_key: "none"
   value1: "0:00"
@@ -501,9 +572,11 @@ sys_configs_36:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_37:
   id: 37
+  owner_id: 
   config_section: "regular_over_time"
   config_key: "meel"
   value1: "20:00"
@@ -515,9 +588,11 @@ sys_configs_37:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_38:
   id: 38
+  owner_id: 
   config_section: "regular_over_time"
   config_key: "taxi"
   value1: "22:00"
@@ -529,9 +604,11 @@ sys_configs_38:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_39:
   id: 39
+  owner_id: 
   config_section: "month_start_date"
   config_key: "regular"
   value1: "1"
@@ -543,9 +620,11 @@ sys_configs_39:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_40:
   id: 40
+  owner_id: 
   config_section: "year_start_date"
   config_key: "regular"
   value1: "04/01"
@@ -557,9 +636,11 @@ sys_configs_40:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_41:
   id: 41
+  owner_id: 
   config_section: "before_year_count"
   config_key: "regular"
   value1: "2"
@@ -571,9 +652,11 @@ sys_configs_41:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_42:
   id: 42
+  owner_id: 
   config_section: "before_month_count"
   config_key: "regular"
   value1: "2"
@@ -585,9 +668,11 @@ sys_configs_42:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_43:
   id: 43
+  owner_id: 
   config_section: "directory_path"
   config_key: "image_dir"
   value1: "C:/tmp/picture/"
@@ -599,9 +684,11 @@ sys_configs_43:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_44:
   id: 44
+  owner_id: 
   config_section: "directory_path"
   config_key: "history_dir"
   value1: "C:/tmp/history/"
@@ -613,9 +700,11 @@ sys_configs_44:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_45:
   id: 45
+  owner_id: 
   config_section: "summer_vacation"
   config_key: "start_date"
   value1: "2009/07/01"
@@ -627,9 +716,11 @@ sys_configs_45:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_46:
   id: 46
+  owner_id: 
   config_section: "summer_vacation"
   config_key: "end_date"
   value1: "2009/09/30"
@@ -641,9 +732,11 @@ sys_configs_46:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_47:
   id: 47
+  owner_id: 
   config_section: "summer_vacation"
   config_key: "day_total"
   value1: "3"
@@ -655,9 +748,11 @@ sys_configs_47:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_48:
   id: 48
+  owner_id: 
   config_section: "calculate_vacation"
   config_key: "year"
   value1: "2008"
@@ -669,9 +764,11 @@ sys_configs_48:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_49:
   id: 49
+  owner_id: 
   config_section: "color_approval_status_type"
   config_key: "entry"
   value1: "#90ee90"
@@ -683,9 +780,11 @@ sys_configs_49:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_50:
   id: 50
+  owner_id: 
   config_section: "color_approval_status_type"
   config_key: "approved"
   value1: "#add8e6"
@@ -697,9 +796,11 @@ sys_configs_50:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_51:
   id: 51
+  owner_id: 
   config_section: "color_approval_status_type"
   config_key: "reject"
   value1: "#ff0000"
@@ -711,9 +812,11 @@ sys_configs_51:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_52:
   id: 52
+  owner_id: 
   config_section: "seq"
   config_key: "sales_management_code"
   value1: "50100"
@@ -725,9 +828,11 @@ sys_configs_52:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_53:
   id: 53
+  owner_id: 
   config_section: "delivery_mails"
   config_key: "mail_from"
   value1: "ses@dev.applicative.jp"
@@ -739,9 +844,11 @@ sys_configs_53:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 sys_configs_54:
   id: 54
+  owner_id: 
   config_section: "delivery_mails"
   config_key: "mail_from_name"
   value1: "アプリカティブ案件情報"
@@ -753,4 +860,5 @@ sys_configs_54:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0

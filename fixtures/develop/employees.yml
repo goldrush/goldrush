@@ -10,7 +10,7 @@ employees_1:
   employee_name: "管理者"
   employee_kana_name: "管理者"
   employee_short_name: "管理者"
-  birthday_date: "2000/01/01"
+  birthday_date: <%= "2000/01/01"%>
   sex_type: "man"
   email: ""
   zip1: ""
@@ -35,7 +35,7 @@ employees_1:
   address3_3: ""
   address3_4: ""
   tel3: ""
-  entry_date: "2008/01/01"
+  entry_date: <%= "2008/01/01"%>
   resignation_date: 
   resignation_reason: ""
   attached_file1: ""
@@ -49,6 +49,7 @@ employees_1:
   account_name: ""
   active_date: 
   inactive_date: 
+  leave_day: 
   active_flg: 0
   approver_flg: 0
   credit_card_flg: 0
@@ -59,6 +60,7 @@ employees_1:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 employees_2:
   id: 2
@@ -72,7 +74,7 @@ employees_2:
   employee_name: "ユーザー１"
   employee_kana_name: "ユーザー１"
   employee_short_name: "ユーザー１"
-  birthday_date: "2000/01/02"
+  birthday_date: <%= "2000/01/02"%>
   sex_type: "man"
   email: ""
   zip1: ""
@@ -97,7 +99,7 @@ employees_2:
   address3_3: ""
   address3_4: ""
   tel3: ""
-  entry_date: "2008/01/02"
+  entry_date: <%= "2008/01/02"%>
   resignation_date: 
   resignation_reason: ""
   attached_file1: ""
@@ -111,6 +113,7 @@ employees_2:
   account_name: ""
   active_date: 
   inactive_date: 
+  leave_day: 
   active_flg: 0
   approver_flg: 1
   credit_card_flg: 0
@@ -121,6 +124,7 @@ employees_2:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 employees_3:
   id: 3
@@ -134,7 +138,7 @@ employees_3:
   employee_name: "ユーザー２"
   employee_kana_name: "ユーザー２"
   employee_short_name: "ユーザー２"
-  birthday_date: "2000/01/02"
+  birthday_date: <%= "2000/01/03"%>
   sex_type: "man"
   email: ""
   zip1: ""
@@ -159,7 +163,7 @@ employees_3:
   address3_3: ""
   address3_4: ""
   tel3: ""
-  entry_date: "2008/01/02"
+  entry_date: <%= "2008/01/02"%>
   resignation_date: 
   resignation_reason: ""
   attached_file1: ""
@@ -173,6 +177,7 @@ employees_3:
   account_name: ""
   active_date: 
   inactive_date: 
+  leave_day: 
   active_flg: 0
   approver_flg: 1
   credit_card_flg: 0
@@ -183,6 +188,7 @@ employees_3:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 employees_4:
   id: 4
@@ -196,7 +202,7 @@ employees_4:
   employee_name: "ユーザー３"
   employee_kana_name: "ユーザー３"
   employee_short_name: "ユーザー３"
-  birthday_date: "2000/01/02"
+  birthday_date: <%= "2000/01/04"%>
   sex_type: "man"
   email: ""
   zip1: ""
@@ -221,7 +227,7 @@ employees_4:
   address3_3: ""
   address3_4: ""
   tel3: ""
-  entry_date: "2008/01/02"
+  entry_date: <%= "2008/01/02"%>
   resignation_date: 
   resignation_reason: ""
   attached_file1: ""
@@ -235,6 +241,7 @@ employees_4:
   account_name: ""
   active_date: 
   inactive_date: 
+  leave_day: 
   active_flg: 0
   approver_flg: 1
   credit_card_flg: 0
@@ -245,6 +252,7 @@ employees_4:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 employees_5:
   id: 5
@@ -258,7 +266,7 @@ employees_5:
   employee_name: "ユーザー４"
   employee_kana_name: "ユーザー４"
   employee_short_name: "ユーザー４"
-  birthday_date: "2000/01/02"
+  birthday_date: <%= "2000/01/05"%>
   sex_type: "man"
   email: ""
   zip1: ""
@@ -283,7 +291,7 @@ employees_5:
   address3_3: ""
   address3_4: ""
   tel3: ""
-  entry_date: "2008/01/02"
+  entry_date: <%= "2008/01/02"%>
   resignation_date: 
   resignation_reason: ""
   attached_file1: ""
@@ -297,6 +305,7 @@ employees_5:
   account_name: ""
   active_date: 
   inactive_date: 
+  leave_day: 
   active_flg: 0
   approver_flg: 1
   credit_card_flg: 0
@@ -307,6 +316,7 @@ employees_5:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 employees_6:
   id: 6
@@ -320,7 +330,7 @@ employees_6:
   employee_name: "ユーザー５"
   employee_kana_name: "ユーザー５"
   employee_short_name: "ユーザー５"
-  birthday_date: "2000/01/02"
+  birthday_date: <%= "2000/01/06"%>
   sex_type: "man"
   email: ""
   zip1: ""
@@ -345,7 +355,7 @@ employees_6:
   address3_3: ""
   address3_4: ""
   tel3: ""
-  entry_date: "2008/01/02"
+  entry_date: <%= "2008/01/02"%>
   resignation_date: 
   resignation_reason: ""
   attached_file1: ""
@@ -359,6 +369,7 @@ employees_6:
   account_name: ""
   active_date: 
   inactive_date: 
+  leave_day: 
   active_flg: 0
   approver_flg: 1
   credit_card_flg: 0
@@ -369,6 +380,7 @@ employees_6:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 employees_7:
   id: 7
@@ -382,7 +394,7 @@ employees_7:
   employee_name: "ユーザー６"
   employee_kana_name: "ユーザー６"
   employee_short_name: "ユーザー６"
-  birthday_date: "2000/01/02"
+  birthday_date: <%= "2000/01/07"%>
   sex_type: "man"
   email: ""
   zip1: ""
@@ -407,7 +419,7 @@ employees_7:
   address3_3: ""
   address3_4: ""
   tel3: ""
-  entry_date: "2008/01/02"
+  entry_date: <%= "2008/01/02"%>
   resignation_date: 
   resignation_reason: ""
   attached_file1: ""
@@ -421,6 +433,7 @@ employees_7:
   account_name: ""
   active_date: 
   inactive_date: 
+  leave_day: 
   active_flg: 0
   approver_flg: 1
   credit_card_flg: 0
@@ -431,6 +444,7 @@ employees_7:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 employees_8:
   id: 8
@@ -444,7 +458,7 @@ employees_8:
   employee_name: "ユーザー７"
   employee_kana_name: "ユーザー７"
   employee_short_name: "ユーザー７"
-  birthday_date: "2000/01/02"
+  birthday_date: <%= "2000/01/08"%>
   sex_type: "man"
   email: ""
   zip1: ""
@@ -469,7 +483,7 @@ employees_8:
   address3_3: ""
   address3_4: ""
   tel3: ""
-  entry_date: "2008/01/02"
+  entry_date: <%= "2008/01/02"%>
   resignation_date: 
   resignation_reason: ""
   attached_file1: ""
@@ -483,6 +497,7 @@ employees_8:
   account_name: ""
   active_date: 
   inactive_date: 
+  leave_day: 
   active_flg: 0
   approver_flg: 1
   credit_card_flg: 0
@@ -493,6 +508,7 @@ employees_8:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 employees_9:
   id: 9
@@ -506,7 +522,7 @@ employees_9:
   employee_name: "ユーザー８"
   employee_kana_name: "ユーザー８"
   employee_short_name: "ユーザー８"
-  birthday_date: "2000/01/02"
+  birthday_date: <%= "2000/01/09"%>
   sex_type: "man"
   email: ""
   zip1: ""
@@ -531,7 +547,7 @@ employees_9:
   address3_3: ""
   address3_4: ""
   tel3: ""
-  entry_date: "2008/01/02"
+  entry_date: <%= "2008/01/02"%>
   resignation_date: 
   resignation_reason: ""
   attached_file1: ""
@@ -545,6 +561,7 @@ employees_9:
   account_name: ""
   active_date: 
   inactive_date: 
+  leave_day: 
   active_flg: 0
   approver_flg: 1
   credit_card_flg: 0
@@ -555,6 +572,7 @@ employees_9:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 employees_10:
   id: 10
@@ -568,7 +586,7 @@ employees_10:
   employee_name: "ユーザー９"
   employee_kana_name: "ユーザー９"
   employee_short_name: "ユーザー９"
-  birthday_date: "2000/01/02"
+  birthday_date: <%= "2000/01/10"%>
   sex_type: "man"
   email: ""
   zip1: ""
@@ -593,7 +611,7 @@ employees_10:
   address3_3: ""
   address3_4: ""
   tel3: ""
-  entry_date: "2008/01/02"
+  entry_date: <%= "2008/01/02"%>
   resignation_date: 
   resignation_reason: ""
   attached_file1: ""
@@ -607,6 +625,7 @@ employees_10:
   account_name: ""
   active_date: 
   inactive_date: 
+  leave_day: 
   active_flg: 0
   approver_flg: 1
   credit_card_flg: 0
@@ -617,6 +636,7 @@ employees_10:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 employees_11:
   id: 11
@@ -630,7 +650,7 @@ employees_11:
   employee_name: "ユーザー１０"
   employee_kana_name: "ユーザー１０"
   employee_short_name: "ユーザー１０"
-  birthday_date: "2000/01/02"
+  birthday_date: <%= "2000/01/11"%>
   sex_type: "man"
   email: ""
   zip1: ""
@@ -655,7 +675,7 @@ employees_11:
   address3_3: ""
   address3_4: ""
   tel3: ""
-  entry_date: "2008/01/02"
+  entry_date: <%= "2008/01/02"%>
   resignation_date: 
   resignation_reason: ""
   attached_file1: ""
@@ -669,6 +689,7 @@ employees_11:
   account_name: ""
   active_date: 
   inactive_date: 
+  leave_day: 
   active_flg: 0
   approver_flg: 1
   credit_card_flg: 0
@@ -679,4 +700,5 @@ employees_11:
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0

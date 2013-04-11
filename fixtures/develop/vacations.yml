@@ -12,11 +12,15 @@ vacations_1:
   cutoff_day_total: 0
   life_plan_day_total: 10
   life_plan_used_total: 0
+  pre_comp_hour_total: 0
+  pre_comp_used_total: 0
+  pre_cutoff_comp_hour_total: 0
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 vacations_2:
   id: 2
@@ -32,11 +36,15 @@ vacations_2:
   cutoff_day_total: 0
   life_plan_day_total: 10
   life_plan_used_total: 0
+  pre_comp_hour_total: 0
+  pre_comp_used_total: 0
+  pre_cutoff_comp_hour_total: 0
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 vacations_3:
   id: 3
@@ -52,11 +60,15 @@ vacations_3:
   cutoff_day_total: 0
   life_plan_day_total: 10
   life_plan_used_total: 0
+  pre_comp_hour_total: 0
+  pre_comp_used_total: 0
+  pre_cutoff_comp_hour_total: 0
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 vacations_4:
   id: 4
@@ -72,11 +84,15 @@ vacations_4:
   cutoff_day_total: 0
   life_plan_day_total: 10
   life_plan_used_total: 0
+  pre_comp_hour_total: 0
+  pre_comp_used_total: 0
+  pre_cutoff_comp_hour_total: 0
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 vacations_5:
   id: 5
@@ -92,11 +108,15 @@ vacations_5:
   cutoff_day_total: 0
   life_plan_day_total: 10
   life_plan_used_total: 0
+  pre_comp_hour_total: 0
+  pre_comp_used_total: 0
+  pre_cutoff_comp_hour_total: 0
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 vacations_6:
   id: 6
@@ -112,11 +132,15 @@ vacations_6:
   cutoff_day_total: 0
   life_plan_day_total: 10
   life_plan_used_total: 0
+  pre_comp_hour_total: 0
+  pre_comp_used_total: 0
+  pre_cutoff_comp_hour_total: 0
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 vacations_7:
   id: 7
@@ -132,11 +156,15 @@ vacations_7:
   cutoff_day_total: 0
   life_plan_day_total: 10
   life_plan_used_total: 0
+  pre_comp_hour_total: 0
+  pre_comp_used_total: 0
+  pre_cutoff_comp_hour_total: 0
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 vacations_8:
   id: 8
@@ -152,11 +180,15 @@ vacations_8:
   cutoff_day_total: 0
   life_plan_day_total: 10
   life_plan_used_total: 0
+  pre_comp_hour_total: 0
+  pre_comp_used_total: 0
+  pre_cutoff_comp_hour_total: 0
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 vacations_9:
   id: 9
@@ -172,11 +204,15 @@ vacations_9:
   cutoff_day_total: 0
   life_plan_day_total: 10
   life_plan_used_total: 0
+  pre_comp_hour_total: 0
+  pre_comp_used_total: 0
+  pre_cutoff_comp_hour_total: 0
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 vacations_10:
   id: 10
@@ -192,11 +228,15 @@ vacations_10:
   cutoff_day_total: 0
   life_plan_day_total: 10
   life_plan_used_total: 0
+  pre_comp_hour_total: 0
+  pre_comp_used_total: 0
+  pre_cutoff_comp_hour_total: 0
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
 vacations_11:
   id: 11
@@ -212,9 +252,13 @@ vacations_11:
   cutoff_day_total: 0
   life_plan_day_total: 10
   life_plan_used_total: 0
+  pre_comp_hour_total: 0
+  pre_comp_used_total: 0
+  pre_cutoff_comp_hour_total: 0
   created_at: <%= Time.now.to_s(:db) %>
   updated_at: <%= Time.now.to_s(:db) %>
   lock_version: 0
   created_user: "initial"
   updated_user: "initial"
+  deleted_at: 
   deleted: 0
