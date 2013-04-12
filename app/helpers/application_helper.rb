@@ -15,7 +15,7 @@ module ApplicationHelper
       if t.today?
         t.strftime("%H:%M")
       else
-        t.strftime("%Y/%m")
+        t.strftime("%Y/%m/%d")
       end
     else
       time
