@@ -58,7 +58,7 @@
 function openBpPicList() {
     if(document.getElementById("bp_member_business_partner_id").value != "")
     {
-      disp_wide('<%=url_for :controller => 'bp_pic', :action => 'list', :popup =>1 %>' + '&id' + document.getElementById("bp_member_business_partner_id").value)
+      disp_wide('<%=url_for :controller => 'bp_pic', :action => 'list', :popup =>1 %>' + '&id=' + document.getElementById("bp_member_business_partner_id").value)
     }
 }
 

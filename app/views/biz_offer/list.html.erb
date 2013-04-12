@@ -45,7 +45,7 @@ function changeFlg(id, type){
     url: ajax_url + '?id=' + id + '&type=' + type,
     success: function(data, dataType){
     
-    star_list = document.getElementsByName("starred_icon_name_" + id)
+    star_list = document.getElementsByName("starred_icon_name_" + id);
     
         if (data == '1') {
           for (i=0; i < star_list.length; i++){

@@ -139,10 +139,17 @@ function changeFlg(id, type){
   jQuery.ajax({
     url: ajax_url + '?id=' + id + '&type=' + type,
     success: function(data, dataType){
+    
+     star_list = document.getElementsByName("starred_icon_name_" + id);
+    
         if (data == '1') {
-          $("#starred_icon_" + id)[0].style.color = '#ffff00';
+          for(i = 0; i < star_list.length; i++){
+            star_list[i].style.color = '#ffff00';
+          }
         } else {
-          $("#starred_icon_" + id)[0].style.color = '#dfdfdf';
+          for(i = 0; i < star_list.length; i++){
+            star_list[i].style.color = '#dfdfdf';
+          }
         }
     }
   });
