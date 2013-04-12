@@ -2,6 +2,7 @@
 
   <%= back_to_link "取引先担当の新規追加", :action => :new_details, :id => @bp_pic_group.id, :delivery_mail_id => @delivery_mail_id %>
   <%= form_tag(url_for(:controller => :delivery_mails, :action => :add_details), :method => :post) do %>
+    <%= back_to_field_tag %>
     <table class="show_table">
       <tr>
         <% if @called_by_delivery_mail_create %>

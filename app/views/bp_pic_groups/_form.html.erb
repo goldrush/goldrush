@@ -1,5 +1,5 @@
 <%= form_for(@bp_pic_group) do |f| %>
-<%= hidden_field_tag 'back_to', params[:back_to] %>
+<%= back_to_field_tag %>
 <%= f.hidden_field :lock_version %>
   <% if @bp_pic_group.errors.any? %>
     <div id="error_explanation">

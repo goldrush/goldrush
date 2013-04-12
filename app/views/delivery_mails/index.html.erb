@@ -48,4 +48,4 @@
 <br />
 
 <%= back_to_link getLongName('table_name','delivery_mails') + ' の新規作成', {:controller => :delivery_mails , :action => :new, :id => params[:id] }, :method => :get %> |
-<%= link_or_back '戻る' %>
+<%= link_or_back '戻る', :controller => :bp_pic_groups %>

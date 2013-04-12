@@ -1,7 +1,7 @@
 <h1><%= getLongName('table_name','bp_pic_groups')%> 明細登録</h1>
 
 <%= form_tag(url_for(:action => :create_details), :method => :post) do %>
-  <%= hidden_field_tag 'back_to', params[:back_to] %>
+  <%= back_to_field_tag %>
   <p>取引先担当IDを羅列して登録</p>
   <%= text_area_tag 'bp_pic_ids', nil, :size => "50x20" %><br />
   <%= hidden_field_tag 'bp_pic_group_id', @bp_pic_group_id %>
