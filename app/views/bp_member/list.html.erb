@@ -63,6 +63,7 @@
     <th><%=getShortName('bp_members', 'employment_type') %></th>
     <th><%=getShortName('bp_members', 'payment_min') %></th>
     <th>添付ファイル</th>
+    <th>Star</th>
   </tr>
 
 
@@ -90,6 +91,7 @@
     <td><%=h bp_member.employment_type_name %></td>
     <td align=right><%=h((bp_member.payment_min.blank? || bp_member.payment_min == 0) ? "" : "#{bp_member.payment_min_view}万円") %></td>
     <td align=center><%=h bp_member.attachment? ? "○" : "" %></td>
+    <td style="width: 7em;text-align:center"><span class="linked_star"><%= star_links(bp_member.human_resource) %></span></td>
   </tr>
 <% end %>
 </table>
@@ -129,3 +131,23 @@ function setBpMember(bp_member_id, business_partner_name, human_resource_name) {
 // -->
 </script>
 
+<script type="text/javascript">
+<!--
+var ajax_url = '<%= url_for(:controller => :human_resource, :action => :change_star) %>';
+
+function changeFlg(id, type){
+  jQuery.ajax({
+    url: ajax_url + '?id=' + id + '&type=' + type,
+    success: function(data, dataType){
+        if (data == '1') {
+          $("#starred_icon_" + id)[0].style.color = '#ffff00';
+        } else {
+          $("#starred_icon_" + id)[0].style.color = '#dfdfdf';
+        }
+    }
+  });
+  return false;
+}
+
+// -->
+</script>

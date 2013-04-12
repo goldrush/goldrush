@@ -98,3 +98,6 @@ table.input_table th {
   background-color: #F0BB8C
 }
 
+span.linked_star a:hover {
+  text-decoration: none;
+}

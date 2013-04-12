@@ -62,6 +62,18 @@ class BpPicController < ApplicationController
     valid_of_business_partner_id
     render :action => 'edit'
   end
+  
+  def change_star
+    bp_pic = BpPic.find(params[:id])
+    if bp_pic.starred == 1
+      bp_pic.starred = 0
+    else
+      bp_pic.starred = 1
+    end
+      set_user_column bp_pic
+      bp_pic.save!
+    render :text => bp_pic.starred
+  end
 
   def destroy
     @bp_pic = BpPic.find(params[:id], :conditions =>["deleted = 0"])

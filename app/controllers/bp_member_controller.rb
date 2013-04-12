@@ -211,4 +211,5 @@ class BpMemberController < ApplicationController
     end
     upcased_initial
   end
+  
 end

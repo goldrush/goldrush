@@ -142,4 +142,16 @@ class BusinessController < ApplicationController
     
     redirect_to :action => 'list'
   end
+  
+    def change_star
+    business = Business.find(params[:id])
+    if business.starred == 1
+      business.starred = 0
+    else
+      business.starred = 1
+    end
+      set_user_column business
+      business.save!
+    render :text => business.starred
+  end
 end

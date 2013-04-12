@@ -267,4 +267,16 @@ class BusinessPartnerController < ApplicationController
     flash[:notice] = 'インポートが完了しました'
     redirect_to(back_to || {:action => :list})
   end
+  
+  def change_star
+    business_partner = BusinessPartner.find(params[:id])
+    if business_partner.starred == 1
+      business_partner.starred = 0
+    else
+      business_partner.starred = 1
+    end
+      set_user_column business_partner
+      business_partner.save!
+    render :text => business_partner.starred
+  end
 end

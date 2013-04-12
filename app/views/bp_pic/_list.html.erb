@@ -4,6 +4,7 @@
     <th><%=getShortName('bp_pics', 'bp_pic_name_kana') %></th>
     <th><%=getShortName('bp_pics', 'depertment') %></th>
     <th><%=getShortName('bp_pics', 'position') %></th>
+    <th>Star</th>
   </tr>
   
 <% for bp_pic in @bp_pics %>
@@ -12,6 +13,28 @@
     <td><%=h bp_pic.bp_pic_name_kana %></td>
     <td><%=h bp_pic.depertment %></td>
     <td><%=h bp_pic.position %></td>
+    <td style="width: 7em;text-align:center"><span class="linked_star"><%= star_links(bp_pic) %></span></td>
   </tr>
 <% end %>
 </table>
+
+<script type="text/javascript">
+<!--
+var ajax_url = '<%= url_for(:controller => :bp_pic, :action => :change_star) %>';
+
+function changeFlg(id, type){
+  jQuery.ajax({
+    url: ajax_url + '?id=' + id + '&type=' + type,
+    success: function(data, dataType){
+        if (data == '1') {
+          $("#starred_icon_" + id)[0].style.color = '#ffff00';
+        } else {
+          $("#starred_icon_" + id)[0].style.color = '#dfdfdf';
+        }
+    }
+  });
+  return false;
+}
+
+// -->
+</script>

@@ -57,4 +57,17 @@ class HumanResourceController < ApplicationController
     
     redirect_to :action => 'list'
   end
+  
+  def change_star
+    puts '<<<<<<<<<< human_resource #{params[:id]}'
+    human_resource = HumanResource.find(params[:id])
+    if human_resource.starred == 1
+      human_resource.starred = 0
+    else
+      human_resource.starred = 1
+    end
+      set_user_column human_resource
+      human_resource.save!
+    render :text => human_resource.starred
+  end
 end

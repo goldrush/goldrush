@@ -40,6 +40,7 @@
     <th><%=getShortName('business_partners', 'eu_flg') %></th>
     <th><%=getShortName('business_partners', 'upper_flg') %></th>
     <th><%=getShortName('business_partners', 'down_flg') %></th>
+    <th>Star</th>
   </tr>
   
 <% for business_partner in @business_partners %>
@@ -61,6 +62,7 @@
     <td><%=h business_partner.eu_flg %></td>
     <td><%=h business_partner.upper_flg %></td>
     <td><%=h business_partner.down_flg %></td>
+    <td style="width: 7em;text-align:center"><span class="linked_star"><%= star_links(business_partner) %></span></td>
   </tr>
 <% end %>
 </table>
@@ -137,4 +139,23 @@ function setBpFull(business_partner_id, business_partner_code, sales_management_
 <% end # if popup? %>
 
 
+<script type="text/javascript">
+<!--
+var ajax_url = '<%= url_for(:controller => :business_partner, :action => :change_star) %>';
 
+function changeFlg(id, type){
+  jQuery.ajax({
+    url: ajax_url + '?id=' + id + '&type=' + type,
+    success: function(data, dataType){
+        if (data == '1') {
+          $("#starred_icon_" + id)[0].style.color = '#ffff00';
+        } else {
+          $("#starred_icon_" + id)[0].style.color = '#dfdfdf';
+        }
+    }
+  });
+  return false;
+}
+
+// -->
+</script>
