@@ -64,8 +64,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # ----------------------------------------------------------------------------
-  # ----------------------------------------------------------------------------
   def rescue_action_locally(exception)
     case exception
       when ValidationAbort
