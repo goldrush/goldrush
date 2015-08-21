@@ -94,9 +94,9 @@ EOS
 
   def detect_low_skill
     if self.biz_offer_flg == 1 && self.payment && self.payment <= 40
-      SystemNotifier.send_info_mail("[GoldRush] ロースキル案件 ID:#{delivery_mail.id}", <<EOS).deliver
+      SystemNotifier.send_info_mail("[GoldRush] ロースキル案件 ID:#{self.id}", <<EOS).deliver
 
-#{SysConfig.get_system_notifier_url_prefix}/delivery_mails/#{delivery_mail.id}
+#{SysConfig.get_system_notifier_url_prefix}/import_mail/show/#{self.id}
 
 件名: #{mail_subject}
 From: #{mail_sender_name}
@@ -258,14 +258,15 @@ EOS
         OutflowMail.create_outflow_mails(import_mail)
       end
 
-      # ロースキルを探してメールする
-      import_mail.detect_low_skill
-
     end # transaction
 
     if attachment_flg == 1
       AttachmentFile.set_property_file(import_mail_id)
     end
+
+    # ロースキルを探してメールする
+    import_mail.detect_low_skill
+
   end
 
   def ImportMail.import
