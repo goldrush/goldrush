@@ -70,9 +70,9 @@ class ImportMailMatchController < ApplicationController
     #_redirect_or_back_to :action => :index
     render :text => <<EOS
 (function(){
-  $('#tr_head_#{params[:id]}').css("display", "none");
-  $('#tr_head2_#{params[:id]}').css("display", "none");
-  $('#tr_detail_#{params[:id]}').css("display", "none");
+  $('#tr_head_#{params[:id]}').css("background-color", "lightgrey");
+  $('#tr_head2_#{params[:id]}').css("background-color", "lightgrey");
+  $('#tr_detail_#{params[:id]}').css("background-color", "lightgrey");
 })();
 EOS
   end
