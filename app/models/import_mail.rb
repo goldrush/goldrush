@@ -455,7 +455,8 @@ EOS
     self.payment = detect_payments_in(body)
     self.nearest_station = detect_nearest_station_in(body)
     self.tag_text = make_tags(body)
-    self.subject_tag_text = make_tags(Tag.pre_proc_body(mail_subject))
+    stags = make_tags(Tag.pre_proc_body(mail_subject)).split(",")
+    self.subject_tag_text = stags.select{|t| Tag.verygood_tags.include?(t) || Tag.good_tags.include?(t)}.join(",")
     self.proper_flg = detect_proper_in(body) ? 1 : 0
     self.interview_count = detect_interview_count_in(body) 
     analyze_foreign_type(body)

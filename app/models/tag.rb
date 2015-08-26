@@ -130,7 +130,7 @@ class Tag < ActiveRecord::Base
       end
     end
 
-    words.join(",")
+    words.sort.uniq.join(",")
   end
 
   def tag_key_name
